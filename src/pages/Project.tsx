@@ -31,125 +31,127 @@ const screens: Screen[] = [
 
 const Project: React.FC = () => {
   const [selected, setSelected] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
 
   const containerStyle: CSSProperties = {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     minHeight: '100vh',
     background: '#f4f7fb',
-    position: 'relative',
-    paddingBottom: '70px',
+    padding: '2rem 1rem 2rem 1rem',
+    gap: '1rem', // small gap between image & scroll strip
   };
 
-  const mainContentStyle: CSSProperties = {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '2rem',
-  };
-
-  const screenImageStyle: CSSProperties = {
-    maxWidth: '90vw',
-    maxHeight: '60vh',
-    borderRadius: '18px',
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)',
-    background: '#fff',
+  const imageStyle: CSSProperties = {
+    width: 'min(100%, 1100px)',
+    maxHeight: '65vh',
     objectFit: 'contain',
-    display: 'block',
-    margin: '0 auto',
-  };
-
-  const sidebarStyle: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '1rem',
-    minWidth: 180,
-    height: '100vh',
-    background: 'rgba(255, 255, 255, 0.25)',
-    boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.10)',
-    overflowY: 'auto',
-    padding: '1rem 0.5rem',
-  };
-
-  const previewStyle = (isSelected: boolean): CSSProperties => ({
-    width: 150,
-    height: 60,
-    borderRadius: '12px',
-    border: isSelected ? '3px solid #00c56b' : '2px solid #d5e9e2',
-    boxShadow: isSelected ? '0 2px 8px #00c56b33' : 'none',
-    objectFit: 'cover',
-    cursor: isSelected ? 'default' : 'pointer',
-    opacity: isSelected ? 1 : 0.7,
+    borderRadius: '16px',
+    boxShadow: '0 8px 32px rgba(31,38,135,0.18)',
     background: '#fff',
-    transition: 'all 0.2s',
-    display: 'block',
+  };
+
+  const titleStyle: CSSProperties = {
+    fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
+    fontWeight: 800,
+    color: '#1e3c72',
+    textAlign: 'center',
+    margin: 0,
+  };
+
+  const descStyle: CSSProperties = {
+    fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.15rem)',
+    color: '#2a5298',
+    textAlign: 'center',
+    maxWidth: '62ch',
+    margin: 0,
+  };
+
+  const scrollStrip: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '0.75rem',
+    overflowX: 'auto',
+    padding: '0.25rem 0',
+    scrollbarWidth: 'thin',
+    scrollSnapType: 'x mandatory',
+    WebkitOverflowScrolling: 'touch',
+    maxWidth: '100%',
+  };
+
+  const thumbStyle = (isSelected: boolean): CSSProperties => ({
+    flex: '0 0 auto',
+    width: 140,
+    height: 78,
+    borderRadius: '10px',
+    border: isSelected ? '3px solid #00c56b' : '2px solid #d5e9e2',
+    boxShadow: isSelected ? '0 2px 10px #00c56b33' : 'none',
+    objectFit: 'cover',
+    cursor: 'pointer',
+    scrollSnapAlign: 'center',
+    background: '#fff',
+    position: 'relative',
   });
 
+  const tooltipStyle: CSSProperties = {
+    position: 'absolute',
+    bottom: '100%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    color: 'white',
+    padding: '4px 8px',
+    borderRadius: '4px',
+    fontSize: '12px',
+    whiteSpace: 'nowrap',
+    pointerEvents: 'none',
+    opacity: 1,
+    transition: 'opacity 0.2s ease',
+    marginBottom: '5px',
+    zIndex: 10,
+  };
+
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <div style={containerStyle}>
-      <div style={mainContentStyle}>
+    <>
+      <div style={containerStyle}>
         <img
           src={screens[selected].image}
           alt={screens[selected].title}
-          style={screenImageStyle}
+          style={imageStyle}
         />
-        <h1 style={{ fontSize: '2rem', fontWeight: 800, color: '#1e3c72', margin: 0, textAlign: 'center' }}>
-          {screens[selected].title}
-        </h1>
-        <p style={{ fontSize: '1.15rem', color: '#2a5298', margin: 0, textAlign: 'center', maxWidth: 600 }}>
-          {screens[selected].description}
-        </p>
+        <h1 style={titleStyle}>{screens[selected].title}</h1>
+        <p style={descStyle}>{screens[selected].description}</p>
+
+        {/* Scroll strip under the image */}
+        <div style={scrollStrip}>
+          {screens.map((screen, idx) => (
+            <div 
+              key={idx} 
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <img
+                src={screen.image}
+                alt={screen.title}
+                style={thumbStyle(selected === idx)}
+                onClick={() => setSelected(idx)}
+              />
+              {hoveredIndex === idx && (
+                <div style={tooltipStyle}>
+                  {screen.title}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-      <div style={sidebarStyle}>
-        {screens.map((screen, idx) => (
-          <div
-            key={idx}
-            style={{ position: 'relative', width: 150, height: 60 }}
-            onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <img
-              src={screen.image}
-              alt={screen.title}
-              style={previewStyle(selected === idx)}
-              onClick={() => selected !== idx && setSelected(idx)}
-            />
-            {hovered === idx && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  width: '100%',
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #0073b1 0%, #00c56b 100%)',
-                  color: '#fff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: '12px',
-                  fontSize: '0.95rem',
-                  fontWeight: 700,
-                  zIndex: 2,
-                  pointerEvents: 'none',
-                  textAlign: 'center',
-                  padding: '0.5rem',
-                }}
-              >
-                {screen.title}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+
       <Footer />
-    </div>
+    </>
   );
 };
 

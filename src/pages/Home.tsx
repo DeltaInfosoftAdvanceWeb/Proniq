@@ -8,18 +8,20 @@ const heroStyle: CSSProperties = {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '4rem 2rem 2rem 2rem',
+  padding: '4rem 2rem',
   background: 'linear-gradient(135deg, #0073b1 0%, #00c56b 100%)',
   color: '#fff',
-  gap: '3rem',
+  gap: '2.5rem',
   flexWrap: 'wrap',
+  position: 'relative',
+  overflow: 'hidden',
 };
 
 const heroTextStyle: CSSProperties = {
   maxWidth: 500,
   display: 'flex',
   flexDirection: 'column',
-  gap: '1.5rem',
+  gap: '1rem',
 };
 
 const ctaButtonStyle: CSSProperties = {
@@ -27,144 +29,272 @@ const ctaButtonStyle: CSSProperties = {
   color: '#fff',
   border: 'none',
   borderRadius: '30px',
-  padding: '1rem 2.5rem',
-  fontWeight: 700,
-  fontSize: '1.1rem',
+  padding: '0.85rem 2rem',
+  fontWeight: 600,
+  fontSize: '1rem',
   cursor: 'pointer',
-  boxShadow: '0 4px 14px 0 rgba(34, 139, 230, 0.2)',
-  marginTop: '1rem',
-  transition: 'background 0.3s',
+  marginTop: '1.5rem',
+  transition: 'all 0.3s ease',
+  boxShadow: '0 4px 15px rgba(0, 115, 177, 0.3)',
+  position: 'relative',
+  overflow: 'hidden',
+  zIndex: 1,
 };
 
 const heroImgStyle: CSSProperties = {
   width: 340,
   maxWidth: '90vw',
-  borderRadius: '18px',
-  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)',
+  borderRadius: '12px',
+  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+  transition: 'all 0.5s ease',
 };
 
 const featuresSectionStyle: CSSProperties = {
-  background: '#fff',
-  color: '#1e3c72',
-  padding: '3rem 1rem',
+  background: 'linear-gradient(180deg, #fafafa 0%, #f0f9ff 100%)',
+  color: '#333',
+  padding: '3.5rem 1.5rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  position: 'relative',
 };
 
 const featuresGridStyle: CSSProperties = {
   display: 'flex',
-  gap: '2.5rem',
+  gap: '1.5rem',
   flexWrap: 'wrap',
   justifyContent: 'center',
-  marginTop: '2rem',
+  marginTop: '1.5rem',
 };
 
 const featureCardStyle: CSSProperties = {
-  background: 'linear-gradient(120deg, #f8fafc 60%, #e0f5ef 100%)',
+  background: 'rgba(255, 255, 255, 0.9)',
+  backdropFilter: 'blur(10px)',
   borderRadius: '16px',
-  boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.10)',
+  border: '1px solid rgba(234, 234, 234, 0.3)',
   padding: '2rem 1.5rem',
-  maxWidth: 270,
+  maxWidth: 260,
   minWidth: 220,
   textAlign: 'center',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)',
+  transition: 'all 0.4s ease',
 };
 
 const featureIconStyle: CSSProperties = {
-  width: 56,
-  height: 56,
+  width: 50,
+  height: 50,
   marginBottom: '1rem',
+  filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+  transition: 'transform 0.3s ease',
 };
 
 const featureCards = [
   {
     icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     alt: "Dashboard",
-    title: "Unified Dashboard",
-    desc: "See all your projects, tasks, and deadlines in one clear, customizable view.",
+    title: "Simple Dashboard",
+    desc: "All your projects and tasks in one view.",
   },
   {
     icon: "https://cdn-icons-png.flaticon.com/512/1828/1828817.png",
     alt: "Collaboration",
     title: "Team Collaboration",
-    desc: "Assign tasks, share updates, and communicate with your team in real time.",
+    desc: "Work together efficiently in real time.",
   },
   {
     icon: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
     alt: "Analytics",
-    title: "Progress Analytics",
-    desc: "Track progress, spot bottlenecks, and make data-driven decisions with ease.",
+    title: "Quick Analytics",
+    desc: "Track progress and identify bottlenecks.",
   },
   {
     icon: "https://cdn-icons-png.flaticon.com/512/753/753345.png",
     alt: "Productivity",
-    title: "Boost Productivity",
-    desc: "Stay organized, reduce stress, and deliver projects on time, every time.",
+    title: "Productivity",
+    desc: "Deliver projects on time, every time.",
   },
 ];
 
 const Home: React.FC = () => {
   return (
-    <div style={{ minHeight: '100vh', background: '#f4f7fb', position: 'relative', paddingBottom: '70px' }}>
+    <div style={{ minHeight: '100vh', background: '#fafafa', position: 'relative', paddingBottom: '20px' }}>
       {/* Hero Section */}
       <motion.section
         style={heroStyle}
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
+        {/* Background animated elements */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,197,107,0.2) 0%, rgba(0,115,177,0) 70%)',
+            top: '-100px',
+            right: '-100px',
+            zIndex: 0
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.7, 0.5],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: 'reverse'
+          }}
+        />
+        <motion.div
+          style={{
+            position: 'absolute',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,115,177,0.15) 0%, rgba(0,197,107,0) 70%)',
+            bottom: '-50px',
+            left: '10%',
+            zIndex: 0
+          }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            delay: 1
+          }}
+        />
         <motion.div
           style={heroTextStyle}
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2, type: "spring", stiffness: 100 }}
         >
-          <h1 style={{ fontSize: '2.7rem', fontWeight: 800, lineHeight: 1.1, color: '#ffffff', margin: 0 }}>
-            Work Smart. <br /> Stay Unique.
-          </h1>
-          <p style={{ fontSize: '1.25rem', color: '#f3f3f3', margin: 0 }}>
-            Proniq empowers teams with intelligent tools to manage projects efficiently while staying true to their unique workflows.
-          </p>
-          <button
+          <motion.h1 
+            style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1.2, color: '#ffffff', margin: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            Work Smart. <br/><span style={{ background: 'linear-gradient(90deg, #ffffff, #a0e9c8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Stay Unique.</span>
+          </motion.h1>
+          <motion.p 
+            style={{ fontSize: '1.15rem', color: '#f3f3f3', margin: 0, lineHeight: 1.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            Proniq helps teams manage projects efficiently with simple, powerful tools.
+          </motion.p>
+          <motion.button
             style={ctaButtonStyle}
-            onMouseOver={e => (e.currentTarget.style.background = 'linear-gradient(90deg, #0073b1 0%, #00c56b 100%)')}
-            onMouseOut={e => (e.currentTarget.style.background = 'linear-gradient(90deg, #00c56b 0%, #0073b1 100%)')}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 6px 20px rgba(0, 115, 177, 0.4)'
+            }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             onClick={() => window.location.href = '/project'}
           >
             Get Started
-          </button>
+          </motion.button>
         </motion.div>
         <motion.img
           src="/Project.png"
           alt="Project Management Illustration"
           style={heroImgStyle}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ opacity: 0, x: 30, rotate: -3 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, type: "spring", stiffness: 100 }}
+          whileHover={{ 
+            scale: 1.03, 
+            boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2)',
+            rotate: 2
+          }}
         />
       </motion.section>
 
       {/* Features Section */}
       <section style={featuresSectionStyle}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: 0, color: '#0b4c85' }}>
-          Why Choose Proniq?
-        </h2>
+        {/* Background decoration */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            background: 'radial-gradient(circle at 70% 20%, rgba(0, 197, 107, 0.03) 0%, rgba(0, 115, 177, 0.01) 50%, transparent 70%)',
+            top: 0,
+            left: 0,
+            zIndex: 0
+          }}
+        />
+        <motion.h2 
+          style={{ 
+            fontSize: '2rem', 
+            fontWeight: 700, 
+            marginBottom: '1rem', 
+            color: '#0073b1',
+            position: 'relative',
+            zIndex: 1,
+            textAlign: 'center'
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Why Choose <span style={{ color: '#00c56b' }}>Proniq</span>?
+        </motion.h2>
         <div style={featuresGridStyle}>
           {featureCards.map((card, idx) => (
             <motion.div
               key={card.title}
               style={featureCardStyle}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 + idx * 0.15 }}
-              whileHover={{ scale: 1.05, boxShadow: '0 8px 24px 0 rgba(31, 38, 135, 0.18)' }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 + idx * 0.15, type: "spring", stiffness: 100 }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+                borderColor: '#00c56b' 
+              }}
             >
-              <img src={card.icon} alt={card.alt} style={featureIconStyle} />
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: '0.5rem 0' }}>{card.title}</h3>
-              <p style={{ color: '#1c6078', fontSize: '1rem' }}>{card.desc}</p>
+              <motion.img 
+                src={card.icon} 
+                alt={card.alt} 
+                style={featureIconStyle} 
+                whileHover={{ y: -5, scale: 1.1 }}
+              />
+              <motion.h3 
+                style={{ 
+                  fontSize: '1.2rem', 
+                  fontWeight: 600, 
+                  margin: '0.7rem 0',
+                  background: 'linear-gradient(90deg, #0073b1, #00c56b)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                {card.title}
+              </motion.h3>
+              <motion.p 
+                style={{ 
+                  color: '#444', 
+                  fontSize: '0.95rem',
+                  lineHeight: 1.5 
+                }}
+              >
+                {card.desc}
+              </motion.p>
             </motion.div>
           ))}
         </div>
