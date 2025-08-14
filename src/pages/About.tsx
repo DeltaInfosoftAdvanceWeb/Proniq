@@ -64,7 +64,7 @@ const taglineStyle: React.CSSProperties = {
 const About: React.FC = () => {
   // Load the Rive animation
   const { RiveComponent } = useRive({
-    src: '/proniq.riv',         // Path to your .riv file in public folder
+    src: '/logo.riv',         // Path to your .riv file in public folder
     autoplay: true,
     stateMachines: ['State Machine 1'], // Or animations: ['AnimationName']
   });
@@ -188,7 +188,7 @@ const About: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          About Proniq
+          About proniq
         </motion.h1>
         
         <motion.div
@@ -212,7 +212,7 @@ const About: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               style={{ display: 'inline-block' }}
             >
-              <strong style={{ color: '#0073b1' }}>Proniq</strong> is a smart project management showcase platform developed by <strong style={{ color: '#00c56b' }}>Delta Infosoft Pvt. Ltd.</strong>.
+              <strong style={{ color: '#0073b1' }}>proniq</strong> is a smart project management showcase platform developed by <strong style={{ color: '#00c56b' }}>Delta Infosoft Pvt. Ltd.</strong>.
               It visually demonstrates how modern workflows — from planning to billing — are efficiently handled through our ERP-based project modules.
             </motion.span>
             <br /><br />

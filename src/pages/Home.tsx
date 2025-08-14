@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
@@ -91,34 +91,173 @@ const featureIconStyle: CSSProperties = {
   transition: 'transform 0.3s ease',
 };
 
+/* ——— Industry Section Styles ——— */
+const industrySectionStyle: CSSProperties = {
+  background: 'linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%)',
+  color: '#2b2b2b',
+  padding: '3.5rem 1.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  position: 'relative',
+};
+
+const selectorWrapStyle: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.75rem',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+};
+
+const staticPrefixStyle: CSSProperties = {
+  fontSize: '1.6rem',
+  fontWeight: 800,
+  color: '#0a2b3e',
+  letterSpacing: '0.2px',
+};
+
+const bigGradientWordStyle: CSSProperties = {
+  fontSize: '1.8rem',
+  fontWeight: 900,
+  background: 'linear-gradient(90deg, #0073b1, #00c56b)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  display: 'inline-block',
+};
+
+const chipBarStyle: CSSProperties = {
+  display: 'flex',
+  gap: '0.5rem',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  marginTop: '0.75rem',
+};
+
+const chipStyle: CSSProperties = {
+  border: '1px solid #cfe9f7',
+  padding: '0.55rem 0.9rem',
+  borderRadius: '999px',
+  cursor: 'pointer',
+  fontWeight: 700,
+  background: '#fff',
+  color: '#0073b1',
+};
+
+const chipActiveStyle: CSSProperties = {
+  ...chipStyle,
+  background: 'linear-gradient(90deg, #00c56b, #0073b1)',
+  color: '#fff',
+  border: 'none',
+  boxShadow: '0 6px 18px rgba(0,115,177,0.18)',
+};
+
+const dynamicCardStyle: CSSProperties = {
+  marginTop: '1.5rem',
+  background: '#ffffff',
+  borderRadius: '18px',
+  border: '1px solid rgba(0,0,0,0.06)',
+  padding: '1.5rem',
+  maxWidth: 980,
+  width: '100%',
+  boxShadow: '0 16px 36px rgba(0,0,0,0.08)',
+};
+
+const bulletsStyle: CSSProperties = {
+  margin: 0,
+  paddingLeft: '1.1rem',
+  lineHeight: 1.7,
+  color: '#384047',
+};
+
+const actionsRowStyle: CSSProperties = {
+  display: 'flex',
+  gap: '0.75rem',
+  flexWrap: 'wrap',
+  marginTop: '1rem',
+};
+
+const ghostButtonStyle: CSSProperties = {
+  background: 'transparent',
+  color: '#0073b1',
+  border: '1px solid #cfe9f7',
+  borderRadius: '10px',
+  padding: '0.6rem 1rem',
+  fontWeight: 600,
+  cursor: 'pointer',
+};
+
+const solidButtonStyle: CSSProperties = {
+  background: 'linear-gradient(90deg, #00c56b 0%, #0073b1 100%)',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '10px',
+  padding: '0.6rem 1rem',
+  fontWeight: 700,
+  cursor: 'pointer',
+  boxShadow: '0 6px 18px rgba(0,115,177,0.18)',
+};
+/* ——— End Industry Styles ——— */
+
 const featureCards = [
-  {
-    icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-    alt: "Dashboard",
-    title: "Simple Dashboard",
-    desc: "All your projects and tasks in one view.",
-  },
-  {
-    icon: "https://cdn-icons-png.flaticon.com/512/1828/1828817.png",
-    alt: "Collaboration",
-    title: "Team Collaboration",
-    desc: "Work together efficiently in real time.",
-  },
-  {
-    icon: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
-    alt: "Analytics",
-    title: "Quick Analytics",
-    desc: "Track progress and identify bottlenecks.",
-  },
-  {
-    icon: "https://cdn-icons-png.flaticon.com/512/753/753345.png",
-    alt: "Productivity",
-    title: "Productivity",
-    desc: "Deliver projects on time, every time.",
-  },
+  { icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', alt: 'Dashboard', title: 'Simple Dashboard', desc: 'All your projects and tasks in one view.' },
+  { icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828817.png', alt: 'Collaboration', title: 'Team Collaboration', desc: 'Work together efficiently in real time.' },
+  { icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828884.png', alt: 'Analytics', title: 'Quick Analytics', desc: 'Track progress and identify bottlenecks.' },
+  { icon: 'https://cdn-icons-png.flaticon.com/512/753/753345.png', alt: 'Productivity', title: 'Productivity', desc: 'Deliver projects on time, every time.' },
 ];
 
+const INDUSTRIES = [
+  {
+    key: 'architecture',
+    label: 'Architecture',
+    title: 'Architecture Firms',
+    seeHref: '/solutions/architecture',
+    img: 'https://images.unsplash.com/photo-1560185008-b033106af5cb?auto=format&fit=crop&w=1600&q=60',
+    bullets: [
+      'Project planning with Gantt & milestones',
+      'BOQ, RFQ & vendor comparison',
+      'Drawing & QAP version control',
+      'Client approvals & change orders',
+      'Resource scheduling & timesheets',
+      'CRM → Estimate → Project → Invoice workflow',
+    ],
+  },
+  {
+    key: 'construction',
+    label: 'Construction',
+    title: 'Construction & EPC',
+    seeHref: '/solutions/construction',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=60',
+    bullets: [
+      'Site progress tracking & DPRs',
+      'Material planning, GRN & stock at sites',
+      'Subcontractor bills & RA measurements',
+      'Quality checklists, snag lists & safety',
+      'Budget vs Actuals with cost codes',
+      'Asset, tools & maintenance logs',
+    ],
+  },
+  {
+    key: 'heavy',
+    label: 'Heavy Engineering',
+    title: 'Heavy Engineering & Fabrication',
+    seeHref: '/solutions/heavy-engineering',
+    img: 'https://images.unsplash.com/photo-1581091215367-59ab6dcef1b4?auto=format&fit=crop&w=1600&q=60',
+    bullets: [
+      'Make-to-order BOM & routing',
+      'Production planning & work orders',
+      'Heat/lot traceability & QA',
+      'Machine utilization & downtime',
+      'Dispatch planning with e-way docs',
+      'After-sales service & warranty',
+    ],
+  },
+] as const;
+
 const Home: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = INDUSTRIES[activeIndex];
+
   return (
     <div style={{ minHeight: '100vh', background: '#fafafa', position: 'relative', paddingBottom: '20px' }}>
       {/* Hero Section */}
@@ -126,7 +265,7 @@ const Home: React.FC = () => {
         style={heroStyle}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         {/* Background animated elements */}
         <motion.div
@@ -138,17 +277,10 @@ const Home: React.FC = () => {
             background: 'radial-gradient(circle, rgba(0,197,107,0.2) 0%, rgba(0,115,177,0) 70%)',
             top: '-100px',
             right: '-100px',
-            zIndex: 0
+            zIndex: 0,
           }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0.7, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            repeatType: 'reverse'
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, repeatType: 'reverse' }}
         />
         <motion.div
           style={{
@@ -159,34 +291,29 @@ const Home: React.FC = () => {
             background: 'radial-gradient(circle, rgba(0,115,177,0.15) 0%, rgba(0,197,107,0) 70%)',
             bottom: '-50px',
             left: '10%',
-            zIndex: 0
+            zIndex: 0,
           }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            delay: 1
-          }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse', delay: 1 }}
         />
         <motion.div
           style={heroTextStyle}
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.7, delay: 0.2, type: 'spring', stiffness: 100 }}
         >
-          <motion.h1 
+          <motion.h1
             style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1.2, color: '#ffffff', margin: 0 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Work Smart. <br/><span style={{ background: 'linear-gradient(90deg, #ffffff, #a0e9c8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Stay Unique.</span>
+            Work Smart. <br />
+            <span style={{ background: 'linear-gradient(90deg, #ffffff, #a0e9c8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Stay Unique.
+            </span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             style={{ fontSize: '1.15rem', color: '#f3f3f3', margin: 0, lineHeight: 1.5 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -196,15 +323,12 @@ const Home: React.FC = () => {
           </motion.p>
           <motion.button
             style={ctaButtonStyle}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: '0 6px 20px rgba(0, 115, 177, 0.4)'
-            }}
+            whileHover={{ scale: 1.05, boxShadow: '0 6px 20px rgba(0, 115, 177, 0.4)' }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            onClick={() => window.location.href = '/project'}
+            onClick={() => (window.location.href = '/project')}
           >
             Get Started
           </motion.button>
@@ -215,18 +339,13 @@ const Home: React.FC = () => {
           style={heroImgStyle}
           initial={{ opacity: 0, x: 30, rotate: -3 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, type: "spring", stiffness: 100 }}
-          whileHover={{ 
-            scale: 1.03, 
-            boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2)',
-            rotate: 2
-          }}
+          transition={{ duration: 0.7, delay: 0.4, type: 'spring', stiffness: 100 }}
+          whileHover={{ scale: 1.03, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2)', rotate: 2 }}
         />
       </motion.section>
 
       {/* Features Section */}
       <section style={featuresSectionStyle}>
-        {/* Background decoration */}
         <motion.div
           style={{
             position: 'absolute',
@@ -235,18 +354,18 @@ const Home: React.FC = () => {
             background: 'radial-gradient(circle at 70% 20%, rgba(0, 197, 107, 0.03) 0%, rgba(0, 115, 177, 0.01) 50%, transparent 70%)',
             top: 0,
             left: 0,
-            zIndex: 0
+            zIndex: 0,
           }}
         />
-        <motion.h2 
-          style={{ 
-            fontSize: '2rem', 
-            fontWeight: 700, 
-            marginBottom: '1rem', 
+        <motion.h2
+          style={{
+            fontSize: '2rem',
+            fontWeight: 700,
+            marginBottom: '1rem',
             color: '#0073b1',
             position: 'relative',
             zIndex: 1,
-            textAlign: 'center'
+            textAlign: 'center',
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -261,23 +380,14 @@ const Home: React.FC = () => {
               style={featureCardStyle}
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 + idx * 0.15, type: "spring", stiffness: 100 }}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
-                borderColor: '#00c56b' 
-              }}
+              transition={{ duration: 0.6, delay: 0.2 + idx * 0.15, type: 'spring', stiffness: 100 }}
+              whileHover={{ scale: 1.05, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)', borderColor: '#00c56b' }}
             >
-              <motion.img 
-                src={card.icon} 
-                alt={card.alt} 
-                style={featureIconStyle} 
-                whileHover={{ y: -5, scale: 1.1 }}
-              />
-              <motion.h3 
-                style={{ 
-                  fontSize: '1.2rem', 
-                  fontWeight: 600, 
+              <motion.img src={card.icon} alt={card.alt} style={featureIconStyle} whileHover={{ y: -5, scale: 1.1 }} />
+              <motion.h3
+                style={{
+                  fontSize: '1.2rem',
+                  fontWeight: 600,
                   margin: '0.7rem 0',
                   background: 'linear-gradient(90deg, #0073b1, #00c56b)',
                   WebkitBackgroundClip: 'text',
@@ -286,19 +396,112 @@ const Home: React.FC = () => {
               >
                 {card.title}
               </motion.h3>
-              <motion.p 
-                style={{ 
-                  color: '#444', 
-                  fontSize: '0.95rem',
-                  lineHeight: 1.5 
-                }}
-              >
-                {card.desc}
-              </motion.p>
+              <motion.p style={{ color: '#444', fontSize: '0.95rem', lineHeight: 1.5 }}>{card.desc}</motion.p>
             </motion.div>
           ))}
         </div>
       </section>
+
+      {/* Industry Solutions (Selector → Dynamic image + details) */}
+      <section style={industrySectionStyle} aria-labelledby="industry-solutions">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: 'center', marginBottom: '0.75rem' }}
+        >
+          <div style={selectorWrapStyle}>
+            <span style={staticPrefixStyle}>Are you a</span>
+            <motion.span
+              key={active.key}
+              style={bigGradientWordStyle}
+              initial={{ opacity: 0, y: 8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.35, type: 'spring', stiffness: 160 }}
+            >
+              {active.label}
+            </motion.span>
+            <span style={staticPrefixStyle}>company?</span>
+          </div>
+
+          <div style={chipBarStyle} role="tablist" aria-label="Industry selector">
+            {INDUSTRIES.map((ind, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <motion.button
+                  key={ind.key}
+                  role="tab"
+                  aria-selected={isActive}
+                  style={isActive ? chipActiveStyle : chipStyle}
+                  whileHover={{ scale: isActive ? 1.0 : 1.04 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setActiveIndex(i)}
+                >
+                  {ind.label}
+                </motion.button>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        <motion.div
+          key={`card-${active.key}`}
+          style={dynamicCardStyle}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35 }}
+        >
+          <motion.img
+            src={active.img}
+            alt={active.title}
+            style={{ width: '100%', borderRadius: '12px', marginBottom: '1rem', objectFit: 'cover', maxHeight: '260px' }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+          />
+
+          <motion.h3
+            style={{ margin: 0, fontSize: '1.4rem', color: '#0a2b3e' }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
+          >
+            {active.title} — What we deliver
+          </motion.h3>
+
+          <motion.ul
+            style={bulletsStyle}
+            initial="hidden"
+            animate="show"
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
+          >
+            {active.bullets.map((b) => (
+              <motion.li key={b} variants={{ hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0 } }}>
+                {b}
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          <div style={actionsRowStyle}>
+            <button
+              style={ghostButtonStyle}
+              onClick={() => (window.location.href = active.seeHref)}
+              aria-label={`See ${active.title} solutions`}
+            >
+              See solutions
+            </button>
+            <button
+              style={solidButtonStyle}
+              onClick={() => (window.location.href = '/contact')}
+              aria-label="Talk to us"
+            >
+              Talk to us
+            </button>
+          </div>
+        </motion.div>
+      </section>
+
       <Footer />
     </div>
   );
