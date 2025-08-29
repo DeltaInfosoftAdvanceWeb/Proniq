@@ -38,7 +38,7 @@ const screens: Screen[] = [
   {
     title: "Drawing & QAP Dashboard",
     description: "Status of drawing and QAP by design team and vendors with upload cards.",
-    image: "/5.png",
+    image: "/p15.png",
   },
   {
     title: "Final BOQ Approval",
@@ -86,7 +86,7 @@ const screens: Screen[] = [
     title: "Project Planning (Detailed View)",
     description:
       "Zoomed-in project planning screen showing granular task timelines, team assignments, or execution progress by phase.",
-    image: "/15.png",
+    image: "/p3.png",
   },
   {
     title: "Site Wise Status",
@@ -118,6 +118,42 @@ const screens: Screen[] = [
       "Monitor individual and team-level task activities including assigned, pending, completed, and overdue tasks using visual progress indicators.",
     image: "/p16.png",
   },
+  {
+    title: "Customer Master",
+    description:
+      "This module acts as the central customer database, allowing businesses to: Maintain customer records (names, codes, addresses, GST info). Export/import data for reporting. Connect customer details with other ERP modules (Projects, Planning, Orders, etc.).",
+    image: "/T1.png",
+  },
+    {
+    title: "Project Overview",
+    description:
+      "The Projects Overview screen functions as a central hub for project management, enabling teams to: Track all projects with codes, heads, phases, and descriptions. Prioritize tasks with priority indicators. Switch between list, board, and calendar views for different working styles. Export project data for reporting and compliance.",
+    image: "/T2.png",
+  },
+   {
+    title: "Task Management",
+    description:
+      "The Task Management screen of Proniq ERP. It shows a list of tasks with details like task name, status, priority, progress, assigned team, and actions. Users can view total tasks, see how many are done or pending, and switch between table, card, or calendar views. The page also provides quick filters, a search bar, and an option to create new tasks for efficient tracking and management.",
+    image: "/T3.png",
+  },
+   {
+    title: "Task Management – Cards View",
+    description:
+      "Monitor individual and team-level task activities including assigned, pending, completed, and overdue tasks using visual progress indicators.",
+    image: "/T4.png",
+  },
+   {
+    title: "User Activity Dashboard",
+    description:
+      "Task Management – Calendar View in Proniq ERP. It displays tasks in a calendar format, helping users track assignments by date. The calendar shows the current month (August 2025) with navigation to move between months, weeks, or days. A legend on top highlights task status using colors—green for Done, orange for Working, red for Pending, and blue for Other. Users can quickly view deadlines, monitor workload distribution, and create or adjust tasks directly on specific dates, making it easier to manage schedules and ensure timely completion.",
+    image: "/T5.png",
+  },
+   {
+    title: "Task Details",
+    description:
+      "The Task Details page in Proniq ERP gives a complete view of an individual task. It highlights the task name, status, priority, and type of work, along with linked project details. The page shows scheduling information such as start and end dates, required duration, and actual time spent, as well as billing and tracking data with creation and update timestamps. It also lists the assigned team members and their assignment dates. Additional tabs for comments, issues, and dependencies help in collaboration and tracking, making this page a central point for managing and monitoring a task’s progress.",
+    image: "/T7.png",
+  },
 ]
 
 const Project: React.FC = () => {
@@ -126,6 +162,8 @@ const Project: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const thumbRefs = useRef<(HTMLImageElement | null)[]>([])
 
   useEffect(() => {
     if (!isPaused) {
@@ -149,6 +187,18 @@ const Project: React.FC = () => {
       }
     }
   }, [isPaused])
+
+  // Auto-scroll to selected thumbnail
+  useEffect(() => {
+    const selectedThumb = thumbRefs.current[selected]
+    if (selectedThumb && scrollContainerRef.current) {
+      selectedThumb.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      })
+    }
+  }, [selected])
 
   const handleImageMouseEnter = () => {
     setIsPaused(true)
@@ -213,12 +263,15 @@ const Project: React.FC = () => {
   const scrollStrip: CSSProperties = {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
     gap: "0.75rem",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     padding: "0.25rem 0",
-    maxWidth: "100%",
-    overflow: "hidden",
+    maxWidth: "1100px",
+    overflowX: "auto",
+    overflowY: "hidden",
+    margin: "0 auto",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#888 #eee",
   }
 
   const thumbStyle = (isSelected: boolean, idx: number): CSSProperties => ({
@@ -290,7 +343,7 @@ const Project: React.FC = () => {
         <h1 style={titleStyle}>{screens[selected].title}</h1>
         <p style={descStyle}>{screens[selected].description}</p>
 
-        <div style={scrollStrip}>
+        <div style={scrollStrip} ref={scrollContainerRef}>
           {screens.map((screen, idx) => (
             <div
               key={idx}
@@ -299,6 +352,7 @@ const Project: React.FC = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <img
+                ref={el => { thumbRefs.current[idx] = el }}
                 src={screen.image || "/placeholder.svg"}
                 alt={screen.title}
                 style={thumbStyle(selected === idx, idx)}

@@ -212,7 +212,7 @@ const INDUSTRIES = [
     label: 'Architecture',
     title: 'Architecture Firms',
     seeHref: '/solutions/architecture',
-    img: 'https://images.unsplash.com/photo-1560185008-b033106af5cb?auto=format&fit=crop&w=1600&q=60',
+    img: '/Archi.jpg', // Fixed image path for public folder
     bullets: [
       'Project planning with Gantt & milestones',
       'BOQ, RFQ & vendor comparison',
@@ -227,7 +227,7 @@ const INDUSTRIES = [
     label: 'Construction',
     title: 'Construction & EPC',
     seeHref: '/solutions/construction',
-    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=60',
+    img: '/ContructionandERP.jpg',
     bullets: [
       'Site progress tracking & DPRs',
       'Material planning, GRN & stock at sites',
@@ -242,7 +242,7 @@ const INDUSTRIES = [
     label: 'Heavy Engineering',
     title: 'Heavy Engineering & Fabrication',
     seeHref: '/solutions/heavy-engineering',
-    img: 'https://images.unsplash.com/photo-1581091215367-59ab6dcef1b4?auto=format&fit=crop&w=1600&q=60',
+    img: '/HeavyEngineering.jpg',
     bullets: [
       'Make-to-order BOM & routing',
       'Production planning & work orders',

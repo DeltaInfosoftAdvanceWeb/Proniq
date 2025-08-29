@@ -64,7 +64,7 @@ const taglineStyle: React.CSSProperties = {
 const About: React.FC = () => {
   // Load the Rive animation
   const { RiveComponent } = useRive({
-    src: '/logo.riv',         // Path to your .riv file in public folder
+    src: '/proniq.riv',         // Path to your .riv file in public folder
     autoplay: true,
     stateMachines: ['State Machine 1'], // Or animations: ['AnimationName']
   });
