@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import { useRive } from '@rive-app/react-canvas';
 import { motion } from 'framer-motion';
+import BackButton from '../components/BackButton';
 
 const containerStyle: React.CSSProperties = {
   minHeight: '100vh',

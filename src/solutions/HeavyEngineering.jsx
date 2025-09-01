@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
+import BackButton from '../components/BackButton';
 
 const containerStyle = {
   minHeight: '100vh',
@@ -377,6 +378,7 @@ const benefits = [
 const HeavyEngineering = () => {
   return (
     <div style={containerStyle}>
+      <BackButton label="← Back Home" />
       {/* Background animated elements */}
       <motion.div
         style={{
@@ -628,7 +630,7 @@ const HeavyEngineering = () => {
               <li style={benefitItemStyle}>
                 <span style={checkIconStyle}>✓</span>
                 Automated dispatch planning reduced delivery delays by 50%
-              </li>
+        </li>
             </ul>
 
             <p style={caseStudyTextStyle}>
@@ -796,8 +798,8 @@ const HeavyEngineering = () => {
         </motion.div>
       </motion.div>
       <Footer />
-    </div>
-  );
+  </div>
+);
 };
 
 export default HeavyEngineering;

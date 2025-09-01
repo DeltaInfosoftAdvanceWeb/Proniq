@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import type { CSSProperties } from "react"
 import Footer from "../components/Footer"
+import BackButton from "../components/BackButton"
 
 interface Screen {
   title: string

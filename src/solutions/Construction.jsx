@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
+import BackButton from '../components/BackButton';
 
 const containerStyle = {
   minHeight: '100vh',
@@ -377,6 +378,7 @@ const benefits = [
 const Construction = () => {
   return (
     <div style={containerStyle}>
+      <BackButton label="← Back Home" />
       {/* Background animated elements */}
       <motion.div
         style={{
@@ -727,7 +729,7 @@ const Construction = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.8 }}
         >
-          {clients.length === 0 ? (
+      {clients.length === 0 ? (
             <motion.li 
               style={clientItemStyle}
               initial={{ opacity: 0 }}
@@ -796,8 +798,8 @@ const Construction = () => {
         </motion.div>
       </motion.div>
       <Footer />
-    </div>
-  );
+  </div>
+);
 };
 
 export default Construction;

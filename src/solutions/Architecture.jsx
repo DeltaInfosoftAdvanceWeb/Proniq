@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
+import BackButton from '../components/BackButton';
 
 const containerStyle = {
   minHeight: '100vh',
@@ -377,6 +378,7 @@ const benefits = [
 const Architecture = () => {
   return (
     <div style={containerStyle}>
+      <BackButton />
       {/* Background animated elements */}
       <motion.div
         style={{

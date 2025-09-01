@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Project from './pages/Project';
+import Contact from './pages/Contact';
 import Architecture from './solutions/Architecture';
 import Construction from './solutions/Construction';
 import HeavyEngineering from './solutions/HeavyEngineering';
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/solutions/architecture" element={<Architecture />} />
           <Route path="/solutions/construction" element={<Construction />} />
           <Route path="/solutions/heavy-engineering" element={<HeavyEngineering />} />
