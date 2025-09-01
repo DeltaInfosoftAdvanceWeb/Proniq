@@ -212,7 +212,6 @@ const Contact = () => {
 
   return (
     <div style={containerStyle as React.CSSProperties}>
-      <BackButton label="← Back Home" />
       {/* Background animated elements */}
       <motion.div
         style={{
@@ -330,7 +329,7 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>15+</div>
+            <div style={statNumberStyle}>13+</div>
             <div style={statLabelStyle}>Years Experience</div>
           </motion.div>
           <motion.div 
@@ -338,7 +337,7 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>500+</div>
+            <div style={statNumberStyle}>100+</div>
             <div style={statLabelStyle}>Happy Clients</div>
           </motion.div>
           <motion.div 
@@ -354,7 +353,7 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>96%</div>
+            <div style={statNumberStyle}>98%</div>
             <div style={statLabelStyle}>Client Satisfaction</div>
           </motion.div>
         </motion.div>
@@ -396,13 +395,13 @@ const Contact = () => {
               </a>
             </p>
             <p style={contactInfoStyle}>
-              <strong>Sales Team:</strong><br />
+              <strong>Sales & Business:</strong><br />
               <a href="mailto:sales@deltainfosoft.com" style={contactLinkStyle}>
                 sales@deltainfosoft.com
               </a>
             </p>
             <p style={contactInfoStyle}>
-              <strong>Support:</strong><br />
+              <strong>Technical Support:</strong><br />
               <a href="mailto:support@deltainfosoft.com" style={contactLinkStyle}>
                 support@deltainfosoft.com
               </a>
@@ -430,14 +429,14 @@ const Contact = () => {
               </a>
             </p>
             <p style={contactInfoStyle}>
-              <strong>Sales Hotline:</strong><br />
+              <strong>Sales & Business:</strong><br />
               <a href="tel:+91 84012 81010" style={contactLinkStyle}>
               +91 84012 81010
               </a>
             </p>
             <p style={contactInfoStyle}>
-              <strong>Support:</strong><br />
-              <a href="tel:+91-84012 81010" style={contactLinkStyle}>
+              <strong>Technical Support:</strong><br />
+              <a href="tel:+918401281010" style={contactLinkStyle}>
                 +91 84012 81010
               </a>
             </p>
@@ -459,14 +458,14 @@ const Contact = () => {
             </h3>
             <p style={contactInfoStyle}>
               <strong>LinkedIn:</strong><br />
-              <a href="linkedin.com/company/delta-infosoft-pvt-ltd/" style={contactLinkStyle} target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/company/delta-infosoft-pvt-ltd/" style={contactLinkStyle} target="_blank" rel="noopener noreferrer">
                 Delta Infosoft Pvt. Ltd.
               </a>
             </p>
             <p style={contactInfoStyle}>
-              <strong>Twitter:</strong><br />
+              <strong>Twitter/X:</strong><br />
               <a href="https://x.com/delta_infosoft" style={contactLinkStyle} target="_blank" rel="noopener noreferrer">
-                @deltainfosoft
+                @delta_infosoft
               </a>
             </p>
             <p style={contactInfoStyle}>
@@ -477,9 +476,7 @@ const Contact = () => {
             </p>
           </motion.div>
         </motion.div>
-        
 
-   
         {/* Office Locations Section */}
         <motion.h2 
           style={sectionTitleStyle}
@@ -508,7 +505,8 @@ const Contact = () => {
               Delta Infosoft Pvt. Ltd.<br />
               A-701, Safal Profitaire,<br />
               Opp. Ramada Hotel, Corporate Road, Satellite,<br />
-              Ahmedabad Gujarat - 380015<br />Delta Infosoft Pvt. Ltd.
+              Ahmedabad, Gujarat - 380015<br />
+              India
             </p>
           </motion.div>
 
@@ -524,7 +522,8 @@ const Contact = () => {
               Delta Infosoft Pvt. Ltd.<br />
               206-Valkeshwar Complex, Cozy Road,<br />
               Behind Gitanjali Complex, <br />
-              Palanpur,Gujarat 385001<br />
+              Palanpur, Gujarat - 385001<br />
+              India
             </p>
           </motion.div>
 
@@ -540,10 +539,9 @@ const Contact = () => {
               Delta Infosoft Pvt. Ltd.<br />
               3rd Floor, Mahima Trinity Mall,<br />
               Swej Farm Rd, Radha Vihar, Shiva Colony,<br />
-              Govindpuri, Jaipur, Rajasthan 302019<br />
+              Govindpuri, Jaipur, Rajasthan - 302019<br />
+              India
             </p>
-
-
           </motion.div>
         </motion.div>
 
@@ -565,16 +563,20 @@ const Contact = () => {
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
             <div>
-              <strong style={{ color: '#0073b1' }}>Monday - Saturday:</strong><br />
-              <span style={{ color: '#666' }}>9:00 AM - 7:00 PM IST</span>
+              <strong style={{ color: '#0073b1' }}>Monday - Friday:</strong><br />
+              <span style={{ color: '#666' }}>9:00 AM - 6:00 PM IST</span>
+            </div>
+            <div>
+              <strong style={{ color: '#0073b1' }}>Saturday:</strong><br />
+              <span style={{ color: '#666' }}>9:00 AM - 2:00 PM IST</span>
             </div>
             <div>
               <strong style={{ color: '#0073b1' }}>Sunday:</strong><br />
               <span style={{ color: '#666' }}>Closed</span>
             </div>
             <div>
-              <strong style={{ color: '#0073b1' }}>24/7 Support:</strong><br />
-              <span style={{ color: '#666' }}>Available for existing clients</span>
+              <strong style={{ color: '#0073b1' }}>Emergency Support:</strong><br />
+              <span style={{ color: '#666' }}>24/7 for critical issues</span>
             </div>
           </div>
         </motion.div>

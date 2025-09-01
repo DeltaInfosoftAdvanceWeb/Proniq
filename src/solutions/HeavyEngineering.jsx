@@ -508,7 +508,7 @@ const HeavyEngineering = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>15+</div>
+            <div style={statNumberStyle}>13+</div>
             <div style={statLabelStyle}>Years Experience</div>
           </motion.div>
           <motion.div 
@@ -516,7 +516,7 @@ const HeavyEngineering = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>600+</div>
+            <div style={statNumberStyle}>30+</div>
             <div style={statLabelStyle}>Manufacturing Projects</div>
           </motion.div>
           <motion.div 
@@ -524,7 +524,7 @@ const HeavyEngineering = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>96%</div>
+            <div style={statNumberStyle}>98%</div>
             <div style={statLabelStyle}>Client Satisfaction</div>
           </motion.div>
           <motion.div 
@@ -532,7 +532,7 @@ const HeavyEngineering = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>40+</div>
+            <div style={statNumberStyle}>10+</div>
             <div style={statLabelStyle}>Engineering Clients</div>
           </motion.div>
         </motion.div>

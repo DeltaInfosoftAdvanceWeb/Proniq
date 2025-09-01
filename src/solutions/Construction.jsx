@@ -508,7 +508,7 @@ const Construction = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>15+</div>
+            <div style={statNumberStyle}>13+</div>
             <div style={statLabelStyle}>Years Experience</div>
           </motion.div>
           <motion.div 
@@ -516,7 +516,7 @@ const Construction = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>800+</div>
+            <div style={statNumberStyle}>30+</div>
             <div style={statLabelStyle}>Construction Projects</div>
           </motion.div>
           <motion.div 
@@ -524,7 +524,7 @@ const Construction = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>95%</div>
+            <div style={statNumberStyle}>98%</div>
             <div style={statLabelStyle}>Client Satisfaction</div>
           </motion.div>
           <motion.div 
@@ -532,7 +532,7 @@ const Construction = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>75+</div>
+            <div style={statNumberStyle}>10+</div>
             <div style={statLabelStyle}>Construction Clients</div>
           </motion.div>
         </motion.div>

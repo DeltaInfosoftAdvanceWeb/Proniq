@@ -45,8 +45,8 @@ const heroImgStyle: CSSProperties = {
   width: 340,
   maxWidth: '90vw',
   borderRadius: '12px',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
   transition: 'all 0.5s ease',
+  filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.2))',
 };
 
 const featuresSectionStyle: CSSProperties = {
@@ -334,13 +334,13 @@ const Home: React.FC = () => {
           </motion.button>
         </motion.div>
         <motion.img
-          src="/Project.png"
+          src="/RF.gif"
           alt="Project Management Illustration"
           style={heroImgStyle}
           initial={{ opacity: 0, x: 30, rotate: -3 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ duration: 0.7, delay: 0.4, type: 'spring', stiffness: 100 }}
-          whileHover={{ scale: 1.03, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2)', rotate: 2 }}
+          whileHover={{ scale: 1.03, filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))', rotate: 2 }}
         />
       </motion.section>
 
@@ -455,10 +455,21 @@ const Home: React.FC = () => {
           <motion.img
             src={active.img}
             alt={active.title}
-            style={{ width: '100%', borderRadius: '12px', marginBottom: '1rem', objectFit: 'cover', maxHeight: '260px' }}
+            style={{ 
+              width: '100%', 
+              borderRadius: '12px', 
+              marginBottom: '1rem', 
+              objectFit: 'cover', 
+              maxHeight: '260px',
+              filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15))'
+            }}
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
+            whileHover={{ 
+              scale: 1.02, 
+              filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25))' 
+            }}
           />
 
           <motion.h3

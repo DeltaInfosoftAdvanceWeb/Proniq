@@ -508,7 +508,7 @@ const Architecture = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>15+</div>
+            <div style={statNumberStyle}>13+</div>
             <div style={statLabelStyle}>Years Experience</div>
           </motion.div>
           <motion.div 
@@ -516,7 +516,7 @@ const Architecture = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>500+</div>
+            <div style={statNumberStyle}>30+</div>
             <div style={statLabelStyle}>Projects Delivered</div>
           </motion.div>
           <motion.div 
@@ -532,7 +532,7 @@ const Architecture = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={statNumberStyle}>50+</div>
+            <div style={statNumberStyle}>10+</div>
             <div style={statLabelStyle}>Architecture Clients</div>
           </motion.div>
         </motion.div>
