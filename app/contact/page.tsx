@@ -576,7 +576,7 @@ const Contact = () => {
             </div>
             <div>
               <strong style={{ color: '#0073b1' }}>Emergency Support:</strong><br />
-              <span style={{ color: '#666' }}>Always connected, always protected</span>
+              <span style={{ color: '#666' }}>Always connected, Always protected</span>
             </div>
           </div>
         </motion.div>

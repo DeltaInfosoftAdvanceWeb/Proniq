@@ -47,7 +47,7 @@ const linkStyle: React.CSSProperties = {
 
 const Footer: React.FC = () => (
   <footer style={footerStyle}>
-    © {new Date().getFullYear()} Proniq. All rights reserved.
+    © {new Date().getFullYear()} proniq. All rights reserved.
     Work Smart. Stay Unique.
   </footer>
 );

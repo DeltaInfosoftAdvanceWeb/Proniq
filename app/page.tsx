@@ -90,6 +90,7 @@ const featureIconStyle: CSSProperties = {
   marginBottom: '1rem',
   filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
   transition: 'transform 0.3s ease',
+  borderRadius: '30px',
 };
 
 /* ——— Industry Section Styles ——— */
@@ -101,6 +102,7 @@ const industrySectionStyle: CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   position: 'relative',
+  height: '100vh'
 };
 
 const selectorWrapStyle: CSSProperties = {
@@ -190,21 +192,35 @@ const ghostButtonStyle: CSSProperties = {
 
 const solidButtonStyle: CSSProperties = {
   background: 'linear-gradient(90deg, #00c56b 0%, #0073b1 100%)',
+  backgroundSize: '200% 100%',
+  backgroundPosition: '0% 0',
   color: '#fff',
-  border: 'none',
+  border: '1px solid ',
   borderRadius: '10px',
   padding: '0.6rem 1rem',
   fontWeight: 700,
   cursor: 'pointer',
   boxShadow: '0 6px 18px rgba(0,115,177,0.18)',
 };
+
+
+const solidButtonStyleTalk: CSSProperties = {
+  background: 'white',
+  color: '#2c2c2cff',
+  border: '1px solid linear-gradient(90deg, #00c56b 0%, #0073b1 100%)',
+  borderRadius: '10px',
+  padding: '0.6rem 1rem',
+  fontWeight: 700,
+  cursor: 'pointer',
+};
+
 /* ——— End Industry Styles ——— */
 
 const featureCards = [
-  { icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', alt: 'Dashboard', title: 'Simple Dashboard', desc: 'All your projects and tasks in one view.' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828817.png', alt: 'Collaboration', title: 'Team Collaboration', desc: 'Work together efficiently in real time.' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828884.png', alt: 'Analytics', title: 'Quick Analytics', desc: 'Track progress and identify bottlenecks.' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/753/753345.png', alt: 'Productivity', title: 'Productivity', desc: 'Deliver projects on time, every time.' },
+  { icon: 'dashboard.png', alt: 'Dashboard', title: 'Simple Dashboard', desc: 'All your projects and tasks in one view.' },
+  { icon: 'team.png', alt: 'Collaboration', title: 'Team Collaboration', desc: 'Work together efficiently in real time.' },
+  { icon: 'analytics.png', alt: 'Analytics', title: 'Quick Analytics', desc: 'Track progress and identify bottlenecks.' },
+  { icon: 'productivity.png', alt: 'Productivity', title: 'Productivity', desc: 'Deliver projects on time, every time.' },
 ];
 
 const INDUSTRIES = [
@@ -213,7 +229,7 @@ const INDUSTRIES = [
     label: 'Architecture',
     title: 'Architecture Firms',
     seeHref: '/solutions/architecture',
-    img: '/Archi.jpg',
+    img: '/architecture.jpeg',
     bullets: [
       'Project planning with Gantt & milestones',
       'BOQ, RFQ & vendor comparison',
@@ -222,13 +238,14 @@ const INDUSTRIES = [
       'Resource scheduling & timesheets',
       'CRM → Estimate → Project → Invoice workflow',
     ],
+  
   },
   {
     key: 'construction',
     label: 'Construction',
-    title: 'Construction & EPC',
+    title: 'Construction',
     seeHref: '/solutions/construction',
-    img: '/ContructionandERP.jpg',
+    img: '/construction.jpeg',
     bullets: [
       'Site progress tracking & DPRs',
       'Material planning, GRN & stock at sites',
@@ -240,10 +257,10 @@ const INDUSTRIES = [
   },
   {
     key: 'heavy',
-    label: 'Heavy Engineering',
-    title: 'Heavy Engineering & Fabrication',
+    label: 'Engineering',
+    title: 'Engineering & Manufacturing',
     seeHref: '/solutions/heavy-engineering',
-    img: '/HeavyEngineering.jpg',
+    img: '/heavyengineering.jpeg',
     bullets: [
       'Make-to-order BOM & routing',
       'Production planning & work orders',
@@ -372,7 +389,7 @@ const Home: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Why Choose <span style={{ color: '#00c56b' }}>Proniq</span>?
+          Why Choose <span style={{ color: '#00c56b' }}>proniq</span>?
         </motion.h2>
         <div style={featuresGridStyle}>
           {featureCards.map((card, idx) => (
@@ -461,7 +478,7 @@ const Home: React.FC = () => {
               borderRadius: '12px',
               marginBottom: '1rem',
               objectFit: 'cover',
-              maxHeight: '260px',
+              maxHeight: '370px',
               filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.15))',
             }}
             whileHover={{
@@ -493,15 +510,61 @@ const Home: React.FC = () => {
           </motion.ul>
 
           <div style={actionsRowStyle}>
-            <button
-              style={ghostButtonStyle}
+            <motion.button
+              style={{ ...solidButtonStyle, position: 'relative', overflow: 'hidden' }}
               onClick={() => (window.location.href = active.seeHref)}
               aria-label={`See ${active.title} solutions`}
+              whileHover={{
+                scale: 1.07,
+                rotate: -0.4,
+                y: -2,
+                boxShadow: '0 14px 36px rgba(0,115,177,0.42)',
+                backgroundPosition: '100% 0'
+              }}
+              whileTap={{ scale: 0.98, rotate: 0, y: 0 }}
+              whileInView={{
+                scale: [1, 1.04, 1],
+                boxShadow: [
+                  '0 6px 18px rgba(0,115,177,0.18)',
+                  '0 10px 26px rgba(0,115,177,0.28)',
+                  '0 6px 18px rgba(0,115,177,0.18)'
+                ]
+              }}
+              viewport={{ once: false, amount: 0.6 }}
+              transition={{ duration: 1.6, repeat: Infinity, repeatType: 'mirror' }}
             >
-              See solutions
-            </button>
+              <span style={{ position: 'relative', zIndex: 2 }}>See solutions →</span>
+
+              {/* Shimmer sweep */}
+              <motion.span
+                aria-hidden
+                style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', pointerEvents: 'none', zIndex: 1 }}
+              >
+                <motion.span
+                  style={{
+                    position: 'absolute', top: 0, bottom: 0, width: '50%',
+                    background: 'linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)',
+                    transform: 'skewX(-20deg)'
+                  }}
+                  initial={{ x: '-150%' }}
+                  animate={{ x: ['-150%', '150%'] }}
+                  transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </motion.span>
+
+              {/* Ping badge */}
+              <motion.span aria-hidden style={{ position: 'absolute', top: -6, right: -6, width: 12, height: 12, zIndex: 3 }}>
+                <span style={{ position: 'absolute', inset: 0, background: '#00c56b', borderRadius: '50%', boxShadow: '0 0 0 2px #fff' }} />
+                <motion.span
+                  style={{ position: 'absolute', inset: -8, borderRadius: '50%', border: '2px solid #00c56b' }}
+                  initial={{ scale: 0.8, opacity: 0.8 }}
+                  animate={{ scale: [0.9, 1.6, 0.9], opacity: [0.8, 0, 0.8] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+                />
+              </motion.span>
+            </motion.button>
             <button
-              style={solidButtonStyle}
+              style={solidButtonStyleTalk}
               onClick={() => (window.location.href = '/contact')}
               aria-label="Talk to us"
             >
