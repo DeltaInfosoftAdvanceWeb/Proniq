@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../../components/Footer';
 import BackButton from '../../components/BackButton';
+import LogosCarousel from '../../components/LogosCarousel';
 
 const containerStyle = {
   minHeight: '100vh',
@@ -48,149 +49,22 @@ const textStyle = {
   lineHeight: 1.75,
 };
 
+const heroImageStyle = {
+  width: '100%',
+  maxWidth: '800px',
+  height: '300px',
+  objectFit: 'cover',
+  borderRadius: '16px',
+  margin: '2rem auto',
+  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+};
+
 const sectionTitleStyle = {
   fontSize: '1.8rem',
   fontWeight: 600,
   color: '#0073b1',
   marginBottom: '1.5rem',
   marginTop: '2rem',
-};
-
-const featuresGridStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  gap: '2rem',
-  marginTop: '1.5rem',
-};
-
-const featureCardStyle = {
-  background: 'rgba(0, 115, 177, 0.05)',
-  borderRadius: '12px',
-  padding: '2rem',
-  border: '1px solid rgba(0, 115, 177, 0.1)',
-  textAlign: 'left',
-  transition: 'all 0.3s ease',
-  position: 'relative',
-  overflow: 'hidden',
-};
-
-const featureImageStyle = {
-  width: '100%',
-  height: '200px',
-  objectFit: 'cover',
-  borderRadius: '8px',
-  marginBottom: '1rem',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-};
-
-const featureTitleStyle = {
-  fontSize: '1.2rem',
-  fontWeight: 600,
-  color: '#0073b1',
-  marginBottom: '0.5rem',
-};
-
-const featureDescStyle = {
-  fontSize: '0.95rem',
-  color: '#666',
-  lineHeight: 1.5,
-};
-
-const statsContainerStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-  gap: '2rem',
-  marginTop: '1.5rem',
-};
-
-const statCardStyle = {
-  background: 'linear-gradient(135deg, #0073b1, #00c56b)',
-  color: 'white',
-  borderRadius: '12px',
-  padding: '2rem',
-  textAlign: 'center',
-  boxShadow: '0 8px 16px rgba(0, 115, 177, 0.2)',
-};
-
-const statNumberStyle = {
-  fontSize: '2.5rem',
-  fontWeight: 700,
-  marginBottom: '0.5rem',
-};
-
-const statLabelStyle = {
-  fontSize: '1rem',
-  opacity: 0.9,
-};
-
-const clientsTitleStyle = {
-  fontSize: '1.8rem',
-  fontWeight: 600,
-  color: '#0073b1',
-  marginBottom: '1.5rem',
-  marginTop: '2rem',
-};
-
-const clientsListStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-  gap: '1.5rem',
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
-};
-
-const clientItemStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '1.5rem',
-  padding: '2rem',
-  background: 'rgba(0, 115, 177, 0.05)',
-  borderRadius: '12px',
-  border: '1px solid rgba(0, 115, 177, 0.1)',
-  transition: 'all 0.3s ease',
-};
-
-const clientImageStyle = {
-  width: '80px',
-  height: '80px',
-  borderRadius: '12px',
-  objectFit: 'cover',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-};
-
-const clientInfoStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  flex: 1,
-};
-
-const clientNameStyle = {
-  fontSize: '1.2rem',
-  fontWeight: 600,
-  color: '#0073b1',
-  marginBottom: '0.25rem',
-};
-
-const clientDescStyle = {
-  fontSize: '0.95rem',
-  color: '#666',
-  fontStyle: 'italic',
-};
-
-const clientStatsStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-end',
-  gap: '0.25rem',
-};
-
-const clientStatStyle = {
-  fontSize: '0.9rem',
-  color: '#0073b1',
-  fontWeight: 500,
 };
 
 const benefitsListStyle = {
@@ -281,526 +155,273 @@ const caseStudyCardLabelStyle = {
   color: '#666',
 };
 
-const heroImageStyle = {
-  width: '100%',
-  maxWidth: '800px',
-  height: '300px',
-  objectFit: 'cover',
-  borderRadius: '16px',
-  margin: '2rem auto',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+const clientsTitleStyle = {
+  fontSize: '1.8rem',
+  fontWeight: 600,
+  color: '#0073b1',
+  marginBottom: '1.5rem',
+  marginTop: '2rem',
+  textAlign: 'center' as const,
 };
 
-const clients = [
+const featuresGridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: '2rem',
+  marginTop: '1.5rem',
+};
+
+const featureCardStyle = {
+  background: 'rgba(0, 115, 177, 0.05)',
+  borderRadius: '12px',
+  padding: '2rem',
+  border: '1px solid rgba(0, 115, 177, 0.1)',
+  textAlign: 'left',
+  transition: 'all 0.3s ease',
+  position: 'relative',
+  overflow: 'hidden',
+};
+
+const featureImageStyle = {
+  width: '100%',
+  height: '200px',
+  objectFit: 'cover',
+  borderRadius: '8px',
+  marginBottom: '1rem',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+};
+
+const featureTitleStyle = {
+  fontSize: '1.2rem',
+  fontWeight: 600,
+  color: '#0073b1',
+  marginBottom: '0.5rem',
+};
+
+const featureDescStyle = {
+  fontSize: '0.95rem',
+  color: '#666',
+  lineHeight: 1.5,
+};
+
+const statsContainerStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+  gap: '2rem',
+  marginTop: '1.5rem',
+};
+
+const statCardStyle = {
+  background: 'linear-gradient(135deg, #0073b1, #00c56b)',
+  color: 'white',
+  borderRadius: '12px',
+  padding: '2rem',
+  textAlign: 'center',
+  boxShadow: '0 8px 16px rgba(0, 115, 177, 0.2)',
+};
+
+const statNumberStyle = {
+  fontSize: '2.5rem',
+  fontWeight: 700,
+  marginBottom: '0.5rem',
+};
+
+const statLabelStyle = {
+  fontSize: '1rem',
+  opacity: 0.9,
+};
+
+const engineeringClients = [
   { 
-    name: 'MegaSteel Corp', 
-    img: '/HeavyEngineering.jpg',
-    description: 'Leading steel manufacturing and fabrication company',
-    projects: '180+',
-    teamSize: '200',
-    location: 'Mumbai, India'
+    name: 'Dara Engineering', 
+    img: '/logos/daraengineering.png',  // add proper path
+    description: 'Precision manufacturing & tooling experts', 
+    projects: '100+', 
+    teamSize: '200', 
+    location: 'Ahmedabad, India' 
   },
   { 
-    name: 'Titan Machinery', 
-    img: '/HeavyEngineering.jpg',
-    description: 'Heavy machinery and equipment manufacturing',
-    projects: '95',
-    teamSize: '150',
-    location: 'Pune, India'
+    name: 'Smart Builders', 
+    img: '/logos/SmartBuilders.png', 
+    description: 'Industrial infrastructure & fabrication', 
+    projects: '78', 
+    teamSize: '95', 
+    location: 'Pune, India' 
   },
   { 
-    name: 'IronWorks Ltd', 
-    img: '/HeavyEngineering.jpg',
-    description: 'Specialized iron and steel fabrication',
-    projects: '120',
-    teamSize: '85',
-    location: 'Chennai, India'
-  },
-  { 
-    name: 'Precision Engineering', 
-    img: '/HeavyEngineering.jpg',
-    description: 'High-precision engineering and manufacturing',
-    projects: '75',
-    teamSize: '120',
-    location: 'Bangalore, India'
-  },
-  { 
-    name: 'Heavy Metal Works', 
-    img: '/HeavyEngineering.jpg',
-    description: 'Heavy metal fabrication and structural steel',
-    projects: '110',
-    teamSize: '95',
-    location: 'Delhi, India'
-  },
+    name: 'Advanced Machinery Works', 
+    img: '/logos/AdvancedMachinery.png', 
+    description: 'Heavy engineering and machinery', 
+    projects: '65', 
+    teamSize: '85', 
+    location: 'Bangalore, India' 
+  }
 ];
 
 const features = [
   {
-    title: 'Make-to-Order BOM & Routing',
-    description: 'Comprehensive Bill of Materials management with detailed routing, work instructions, and production planning for custom manufacturing.',
-    image: '/p4.png'
+    title: 'Production Scheduling & Capacity Planning',
+    description: 'Plan production cycles, allocate machines and workforce to meet delivery timelines efficiently.',
+    image: '/Production Scheduling & Capacity Planning.jpeg'
   },
   {
-    title: 'Production Planning & Work Orders',
-    description: 'Advanced production scheduling, work order management, and capacity planning with real-time machine utilization tracking.',
-    image: '/p5.png'
+    title: 'Quality Assurance & Inspection Logs',
+    description: 'Track inspections, defects, and corrective actions throughout manufacturing processes.',
+    image: '/Quality Assurance & Inspection Logs.jpeg'
   },
   {
-    title: 'Heat/Lot Traceability & QA',
-    description: 'Complete traceability for heat numbers, lot tracking, and quality assurance with automated testing and compliance reporting.',
-    image: '/p6.png'
+    title: 'Inventory & Material Traceability',
+    description: 'Manage raw materials, consumables, and finished goods with serial / batch tracking.',
+    image: '/Inventory & Material Traceability.jpeg'
   },
   {
-    title: 'Machine Utilization & Downtime',
-    description: 'Real-time machine monitoring, utilization analytics, and predictive maintenance to minimize downtime and optimize productivity.',
-    image: '/p7.png'
+    title: 'Work Order & Maintenance Management',
+    description: 'Issue and track work orders; schedule preventive maintenance and downtime analysis.',
+    image: '/wo.jpeg'
   },
   {
-    title: 'Dispatch Planning with E-way Docs',
-    description: 'Automated dispatch planning, e-way bill generation, and logistics management with real-time shipment tracking.',
-    image: '/p8.png'
-  },
-  {
-    title: 'After-Sales Service & Warranty',
-    description: 'Comprehensive service management, warranty tracking, and customer support with automated service scheduling.',
-    image: '/p9.png'
+    title: 'Cost vs Actual Reporting & Job Costing',
+    description: 'Compare estimated vs actual costs per job / batch to catch overheads early and improve profitability.',
+    image: '/Cost vs Actual Reporting & Job Costing.jpeg'
   }
 ];
 
-const benefits = [
-  'Increase production efficiency by 45%',
-  'Reduce machine downtime by 60%',
-  'Improve quality compliance by 80%',
-  'Cut manufacturing costs by 35%',
-  'Enhance traceability by 90%',
-  'Streamline dispatch operations by 70%'
+const stats = [
+  { number: '20+', label: 'Years Manufacturing' },
+  { number: '150+', label: 'Clients' },
+  { number: '500+', label: 'Projects Delivered' },
+  { number: '99%', label: 'Quality Compliance' },
 ];
 
-const HeavyEngineering = () => {
+const EngineeringPMS = () => {
   return (
     <div style={containerStyle}>
-      <BackButton label="← Back Home" />
-      {/* Background animated elements */}
-      <motion.div
-        style={{
-          position: 'absolute',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0,197,107,0.2) 0%, rgba(0,115,177,0) 70%)',
-          top: '-150px',
-          right: '-150px',
-          zIndex: 0
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.5, 0.7, 0.5],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: 'reverse'
-        }}
-      />
-      <motion.div
-        style={{
-          position: 'absolute',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0,115,177,0.15) 0%, rgba(0,197,107,0) 70%)',
-          bottom: '-100px',
-          left: '5%',
-          zIndex: 0
-        }}
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          delay: 1
-        }}
-      />
-      <motion.div
-        style={{
-          position: 'absolute',
-          width: '200px',
-          height: '200px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-          top: '30%',
-          left: '10%',
-          zIndex: 0
-        }}
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: 'reverse'
-        }}
-      />
+      <BackButton label="← Back Home" href="/" />
       
       <motion.div 
         style={cardStyle}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
-        whileHover={{ 
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
-          y: -5
-        }}
       >
-        <motion.h1 
-          style={titleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          Heavy Engineering Solutions by Delta Infosoft
+        <motion.h1 style={titleStyle}>
+          Engineering & Manufacturing Solutions by Delta Infosoft
         </motion.h1>
-        
-        <motion.p 
-          style={textStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          Delta Infosoft Pvt. Ltd. delivers comprehensive ERP-based manufacturing solutions specifically designed for heavy engineering companies. 
-          Our Proniq platform streamlines every aspect of manufacturing operations, from production planning to after-sales service, 
-          helping heavy engineering firms work smarter and stay unique in today's competitive market.
+
+        <motion.p style={textStyle}>
+          Delta Infosoft’s <strong>Project Management System (PMS)</strong> is designed for engineering and manufacturing firms like Dara Engineering to manage end-to-end operations — from production planning, quality, maintenance, and job costing to audit compliance and delivery timelines.
         </motion.p>
 
         {/* Hero Image */}
         <motion.img
-          src="/HeavyEngineering.jpg"
-          alt="Heavy Engineering Manufacturing"
+          src="/heavyengineering.jpeg"
+          alt="Engineering & Manufacturing Project Management System"
           style={heroImageStyle}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          whileHover={{ scale: 1.02 }}
         />
 
-        {/* Statistics Section */}
-        <motion.h2 
-          style={sectionTitleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          Delta Infosoft Impact
-        </motion.h2>
-
-        <motion.div 
-          style={statsContainerStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <motion.div 
-            style={statCardStyle}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div style={statNumberStyle}>13+</div>
-            <div style={statLabelStyle}>Years Experience</div>
-          </motion.div>
-          <motion.div 
-            style={statCardStyle}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div style={statNumberStyle}>30+</div>
-            <div style={statLabelStyle}>Manufacturing Projects</div>
-          </motion.div>
-          <motion.div 
-            style={statCardStyle}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div style={statNumberStyle}>98%</div>
-            <div style={statLabelStyle}>Client Satisfaction</div>
-          </motion.div>
-          <motion.div 
-            style={statCardStyle}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div style={statNumberStyle}>10+</div>
-            <div style={statLabelStyle}>Engineering Clients</div>
-          </motion.div>
-        </motion.div>
-
-        {/* Case Study Section */}
-        <motion.div 
-          style={caseStudyStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <motion.h2 
-            style={caseStudyTitleStyle}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
-          >
-            Case Study: MegaSteel Corp Manufacturing Excellence
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-          >
-            <h3 style={caseStudySubtitleStyle}>The Challenge</h3>
-            <p style={caseStudyTextStyle}>
-              MegaSteel Corp, a leading steel manufacturing company in Mumbai with 200 team members, was struggling with production inefficiencies, 
-              quality control issues, and poor traceability. They were managing complex manufacturing processes with manual systems, 
-              leading to production delays, quality defects, and customer complaints. Their existing systems couldn't handle the complexity 
-              of modern heavy engineering manufacturing.
-            </p>
-
-            <h3 style={caseStudySubtitleStyle}>Delta Infosoft Solution</h3>
-            <p style={caseStudyTextStyle}>
-              Delta Infosoft implemented the Proniq platform with specialized manufacturing modules. The solution included 
-              comprehensive BOM management, production planning, quality control systems, machine monitoring, and traceability features. 
-              The implementation was completed in 12 weeks with extensive training for all manufacturing teams.
-            </p>
-
-            <h3 style={caseStudySubtitleStyle}>Results Achieved</h3>
-            <div style={caseStudyGridStyle}>
-              <motion.div 
-                style={caseStudyCardStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div style={caseStudyCardValueStyle}>45%</div>
-                <div style={caseStudyCardTitleStyle}>Production Efficiency</div>
-                <div style={caseStudyCardLabelStyle}>Increased output</div>
-              </motion.div>
-              <motion.div 
-                style={caseStudyCardStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div style={caseStudyCardValueStyle}>60%</div>
-                <div style={caseStudyCardTitleStyle}>Reduced Downtime</div>
-                <div style={caseStudyCardLabelStyle}>Machine optimization</div>
-              </motion.div>
-              <motion.div 
-                style={caseStudyCardStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div style={caseStudyCardValueStyle}>80%</div>
-                <div style={caseStudyCardTitleStyle}>Quality Improvement</div>
-                <div style={caseStudyCardLabelStyle}>Defect reduction</div>
-              </motion.div>
-              <motion.div 
-                style={caseStudyCardStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div style={caseStudyCardValueStyle}>₹4.8Cr</div>
-                <div style={caseStudyCardTitleStyle}>Cost Savings</div>
-                <div style={caseStudyCardLabelStyle}>Annual operational savings</div>
-              </motion.div>
-            </div>
-
-            <h3 style={caseStudySubtitleStyle}>Key Improvements</h3>
-            <ul style={benefitsListStyle}>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Automated BOM management reduced planning time by 70%
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Real-time machine monitoring improved utilization by 60%
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Complete traceability eliminated quality issues
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Automated dispatch planning reduced delivery delays by 50%
-        </li>
-            </ul>
-
-            <p style={caseStudyTextStyle}>
-              <strong>"Delta Infosoft's Proniq platform transformed our manufacturing operations. The automated production planning and 
-              real-time monitoring have made us more efficient and quality-focused. We've seen significant improvements in production 
-              output and customer satisfaction."</strong> - Vikram Singh, CEO, MegaSteel Corp
-            </p>
-          </motion.div>
-        </motion.div>
-
-        {/* Features Section */}
-        <motion.h2 
-          style={sectionTitleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
-        >
-          What We Deliver for Heavy Engineering Companies
-        </motion.h2>
-
-        <motion.div 
-          style={featuresGridStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        >
-          {features.map((feature, index) => (
+        {/* Features Grid */}
+        <motion.div style={sectionTitleStyle}>Key Features</motion.div>
+        <div style={featuresGridStyle}>
+          {features.map((feat, idx) => (
             <motion.div 
-              key={feature.title}
+              key={idx}
               style={featureCardStyle}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: '0 8px 16px rgba(0, 115, 177, 0.15)',
-                background: 'rgba(0, 115, 177, 0.08)'
-              }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.2 }}
             >
-              <motion.img 
-                src={feature.image} 
-                alt={feature.title}
-                style={featureImageStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              />
-              <h3 style={featureTitleStyle}>{feature.title}</h3>
-              <p style={featureDescStyle}>{feature.description}</p>
+              <img src={feat.image} alt={feat.title} style={featureImageStyle} />
+              <h3 style={featureTitleStyle}>{feat.title}</h3>
+              <p style={featureDescStyle}>{feat.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <motion.div style={sectionTitleStyle}>By the Numbers</motion.div>
+        <motion.div style={statsContainerStyle}>
+          {stats.map((stat, i) => (
+            <motion.div key={i} style={statCardStyle}>
+              <div style={statNumberStyle}>{stat.number}</div>
+              <div style={statLabelStyle}>{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Benefits Section */}
-        <motion.h2 
-          style={sectionTitleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.4 }}
-        >
-          Proven Benefits with Delta Infosoft
-        </motion.h2>
+        {/* Case Study */}
+        <motion.div style={caseStudyStyle}>
+          <motion.h2 style={caseStudyTitleStyle}>
+            Case Study: Dara Engineering — End-to-End Manufacturing
+          </motion.h2>
 
-        <motion.ul 
-          style={benefitsListStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
-        >
-          {benefits.map((benefit, index) => (
-            <motion.li 
-              key={benefit}
-              style={benefitItemStyle}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.6 + index * 0.1 }}
-            >
-              <span style={checkIconStyle}>✓</span>
-              {benefit}
-            </motion.li>
-          ))}
-        </motion.ul>
+          <h3 style={caseStudySubtitleStyle}>Industry</h3>
+          <p style={caseStudyTextStyle}>Precision Engineering & Manufacturing</p>
 
-        {/* Clients Section */}
-        <motion.h2 
-          style={clientsTitleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.7 }}
-        >
-          Trusted by Leading Indian Heavy Engineering Companies
-        </motion.h2>
+          <h3 style={caseStudySubtitleStyle}>Challenges</h3>
+          <ul style={benefitsListStyle}>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Meeting strict tolerances, minimizing rework in fabrication processes.</li>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Managing inventory, raw materials, and supplier lead times.</li>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Scheduling preventive maintenance and reducing unexpected downtime.</li>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Accurate costing per job including overheads, labor, materials, and wastage.</li>
+          </ul>
 
-        <motion.ul 
-          style={clientsListStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.8 }}
-        >
-          {clients.length === 0 ? (
-            <motion.li 
-              style={clientItemStyle}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.9 }}
-            >
-              Loading...
-            </motion.li>
-          ) : (
-            clients.map((client, index) => (
-              <motion.li 
-                key={client.name}
-                style={clientItemStyle}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.9 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: '0 8px 16px rgba(0, 115, 177, 0.15)',
-                  background: 'rgba(0, 115, 177, 0.08)'
-                }}
-              >
-                <motion.img 
-                  src={client.img} 
-                  alt={client.name} 
-                  style={clientImageStyle}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <div style={clientInfoStyle}>
-                  <span style={clientNameStyle}>{client.name}</span>
-                  <span style={clientDescStyle}>{client.description}</span>
-                </div>
-                <div style={clientStatsStyle}>
-                  <span style={clientStatStyle}>{client.projects} Projects</span>
-                  <span style={clientStatStyle}>{client.teamSize} Team Members</span>
-                  <span style={clientStatStyle}>{client.location}</span>
-                </div>
-              </motion.li>
-            ))
-          )}
-        </motion.ul>
-
-        {/* Company Info */}
-        <motion.div
-          style={{
-            marginTop: '2rem',
-            padding: '2rem',
-            background: 'rgba(0, 115, 177, 0.05)',
-            borderRadius: '12px',
-            border: '1px solid rgba(0, 115, 177, 0.1)',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2.0 }}
-        >
-          <h3 style={{ color: '#0073b1', marginBottom: '1rem', fontSize: '1.3rem' }}>
-            About Delta Infosoft Pvt. Ltd.
-          </h3>
-          <p style={{ color: '#666', lineHeight: 1.6, fontSize: '1rem' }}>
-            Delta Infosoft is a leading software development company specializing in ERP solutions for project-based industries. 
-            Our Proniq platform is designed to help heavy engineering companies manage their manufacturing operations efficiently 
-            with smart workflows, real-time tracking, and comprehensive reporting capabilities. We believe in "Work Smart. Stay Unique." 
-            - helping our clients achieve more with intelligent manufacturing solutions.
+          <h3 style={caseStudySubtitleStyle}>Our Solution: PMS (Project Management System)</h3>
+          <p style={caseStudyTextStyle}>
+            Dara Engineering adopted Delta Infosoft’s <strong>PMS</strong> to integrate production scheduling, quality tracking, and maintenance workflows into a centralized platform — delivering improved visibility and control across the shop floor.
           </p>
+
+          <h3 style={caseStudySubtitleStyle}>Key Modules Deployed</h3>
+          <ul style={benefitsListStyle}>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Production & job scheduling.</li>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Quality inspection & defect tracking.</li>
+            <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Inventory & materials traceability.</li>
+          </ul>
+
+          <h3 style={caseStudySubtitleStyle}>Impact & Results</h3>
+          <div style={caseStudyGridStyle}>
+            <motion.div style={caseStudyCardStyle}><div style={caseStudyCardValueStyle}>30%</div><div style={caseStudyCardTitleStyle}>Reduced Downtime</div><div style={caseStudyCardLabelStyle}>Maintenance & planning</div></motion.div>
+            <motion.div style={caseStudyCardStyle}><div style={caseStudyCardValueStyle}>25%</div><div style={caseStudyCardTitleStyle}>Material Cost Savings</div><div style={caseStudyCardLabelStyle}>Less wastage & better procurement</div></motion.div>
+            <motion.div style={caseStudyCardStyle}><div style={caseStudyCardValueStyle}>20%</div><div style={caseStudyCardTitleStyle}>Increased Throughput</div><div style={caseStudyCardLabelStyle}>Optimized production schedule</div></motion.div>
+          </div>
         </motion.div>
+
+        {/* Clients Logos */}
+        <motion.h2 style={clientsTitleStyle}>Trusted by Engineering & Manufacturing Leaders</motion.h2>
+        <LogosCarousel 
+          logos={[
+            "/logos/Aditya Birla.png",
+            "/logos/ALGO.png",
+            "/logos/Angel.png",
+            "/logos/Bansan Dairy.png",
+            "/logos/CHEM 1.png",
+            "/logos/DEL.png",
+            "/logos/Desire.png",
+            "/logos/DNC.png",
+            "/logos/Duke.png",
+            "/logos/Flotech.png",
+            "/logos/FlowTech.png",
+            "/logos/GA.png",
+            "/logos/Group 1000005864.png",
+            "/logos/Harsiddh.png",
+            "/logos/KSB.png",
+            "/logos/Lahoty.png",
+            "/logos/Leak-Proof.png",
+            "/logos/Mascot.png",
+            "/logos/Oswal.png",
+            "/logos/Pluga.png",
+            "/logos/Prompt.png",
+            "/logos/Ratnamani.png",
+            "/logos/Unnati.png",
+            "/logos/Waterman.png",
+          ]}
+          height={100}
+          gap={48}
+          duration={25}
+          ariaLabel="Trusted partners logos carousel"
+        />
       </motion.div>
       <Footer />
-  </div>
-);
+    </div>
+  );
 };
 
-export default HeavyEngineering;
+export default EngineeringPMS;

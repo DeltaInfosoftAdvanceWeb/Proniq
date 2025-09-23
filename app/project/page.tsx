@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef, CSSProperties } from "react"
 import Footer from "../components/Footer"
-import BackButton from "../components/component"
 
 interface Screen {
   title: string
@@ -164,6 +163,15 @@ const Project = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const thumbRefs = useRef<(HTMLImageElement | null)[]>([])
 
+  // Track viewport width to toggle responsive behavior below 1070px
+  const [isNarrow, setIsNarrow] = useState(false)
+  useEffect(() => {
+    const onResize = () => setIsNarrow(window.innerWidth < 1070)
+    onResize()
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
+
   useEffect(() => {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
@@ -207,6 +215,7 @@ const Project = () => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
+    width: "100%",
     minHeight: "100vh",
     background: "white",
     padding: "2rem 1rem 2rem 1rem",
@@ -214,14 +223,28 @@ const Project = () => {
     perspective: "1000px",
     perspectiveOrigin: "center center",
   }
+  
+
+  const contentWrapperStyle: CSSProperties = {
+    width: "100%",
+    maxWidth: isNarrow ? "100%" : "1070px",
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "1rem",
+  }
 
   const imageStyle: CSSProperties = {
-    width: "min(100%, 1100px)",
+    width: "100%",               // use full width of the wrapper
+    maxWidth: isNarrow ? "100%" : "1070px",  // responsive cap
     maxHeight: "65vh",
     objectFit: "contain",
     borderRadius: "20px",
     boxShadow: isTransitioning ? "0 25px 50px rgba(0,0,0,0.4)" : "0 20px 40px rgba(0,0,0,0.3)",
     background: "#fff",
+    display: "block",
+    margin: "0 auto",
     transform: isTransitioning
       ? "scale(0.95) rotateY(5deg) translateZ(-20px)"
       : "scale(1) rotateY(0deg) translateZ(0px)",
@@ -256,9 +279,10 @@ const Project = () => {
     display: "flex",
     flexDirection: "row",
     gap: "0.75rem",
-    justifyContent: "flex-start",
+    justifyContent: "center",   // center thumbnails when there's extra space
     padding: "0.25rem 0",
-    maxWidth: "1100px",
+    width: "100%",
+    maxWidth: isNarrow ? "100%" : "1070px",
     overflowX: "auto",
     overflowY: "hidden",
     margin: "0 auto",
@@ -319,34 +343,36 @@ const Project = () => {
   return (
     <>
       <div style={containerStyle}>
-        <img
-          src={screens[selected].image || "/placeholder.svg"}
-          alt={screens[selected].title}
-          style={imageStyle}
-          onMouseEnter={handleImageMouseEnter}
-          onMouseLeave={handleImageMouseLeave}
-        />
-        <h1 style={titleStyle}>{screens[selected].title}</h1>
-        <p style={descStyle}>{screens[selected].description}</p>
+        <div style={contentWrapperStyle}>
+          <img
+            src={screens[selected].image || "/placeholder.svg"}
+            alt={screens[selected].title}
+            style={imageStyle}
+            onMouseEnter={handleImageMouseEnter}
+            onMouseLeave={handleImageMouseLeave}
+          />
+          <h1 style={titleStyle}>{screens[selected].title}</h1>
+          <p style={descStyle}>{screens[selected].description}</p>
 
-        <div style={scrollStrip} ref={scrollContainerRef}>
-          {screens.map((screen, idx) => (
-            <div
-              key={idx}
-              style={{ position: "relative" }}
-              onMouseEnter={() => setHoveredIndex(idx)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <img
-                ref={el => { thumbRefs.current[idx] = el }}
-                src={screen.image || "/placeholder.svg"}
-                alt={screen.title}
-                style={thumbStyle(selected === idx, idx)}
-                onClick={() => handleThumbnailClick(idx)}
-              />
-              {hoveredIndex === idx && <div style={tooltipStyle}>{screen.title}</div>}
-            </div>
-          ))}
+          <div style={scrollStrip} ref={scrollContainerRef}>
+            {screens.map((screen, idx) => (
+              <div
+                key={idx}
+                style={{ position: "relative" }}
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <img
+                  ref={el => { thumbRefs.current[idx] = el }}
+                  src={screen.image || "/placeholder.svg"}
+                  alt={screen.title}
+                  style={thumbStyle(selected === idx, idx)}
+                  onClick={() => handleThumbnailClick(idx)}
+                />
+                {hoveredIndex === idx && <div style={tooltipStyle}>{screen.title}</div>}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

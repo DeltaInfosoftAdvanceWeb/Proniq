@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../../components/Footer';
 import BackButton from '../../components/BackButton';
+import LogosCarousel from '../../components/LogosCarousel';
 
 const containerStyle = {
   minHeight: '100vh',
@@ -129,42 +130,38 @@ const clientsTitleStyle = {
   color: '#0073b1',
   marginBottom: '1.5rem',
   marginTop: '2rem',
+  textAlign: 'center' as const,
 };
 
 const clientsListStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-  gap: '1.5rem',
+  display: 'block',
   listStyle: 'none',
   padding: 0,
   margin: 0,
 };
 
 const clientItemStyle = {
-  display: 'flex',
+  display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   gap: '1.5rem',
-  padding: '2rem',
-  background: 'rgba(0, 115, 177, 0.05)',
+  padding: '1rem 1.5rem',
+  background: 'transparent',
   borderRadius: '12px',
-  border: '1px solid rgba(0, 115, 177, 0.1)',
+  border: 'none',
   transition: 'all 0.3s ease',
 };
 
 const clientImageStyle = {
-  width: '80px',
-  height: '80px',
-  borderRadius: '12px',
-  objectFit: 'cover',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  width: 'auto',
+  height: '60px',
+  objectFit: 'contain',
+  filter: 'grayscale(0%)',
+  opacity: 0.95,
 };
 
 const clientInfoStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  flex: 1,
+  display: 'none',
 };
 
 const clientNameStyle = {
@@ -181,10 +178,7 @@ const clientDescStyle = {
 };
 
 const clientStatsStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-end',
-  gap: '0.25rem',
+  display: 'none',
 };
 
 const clientStatStyle = {
@@ -479,7 +473,7 @@ const Construction = () => {
 
         {/* Hero Image */}
         <motion.img
-          src="/ContructionandERP.jpg"
+          src="/construction.jpeg"
           alt="Construction Project Management"
           style={heroImageStyle}
           initial={{ opacity: 0, scale: 0.9 }}
@@ -551,7 +545,7 @@ const Construction = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.9 }}
           >
-            Case Study: BuildRight Co. Digital Transformation
+            Case Study: GA Infra — Construction & Contracting
           </motion.h2>
 
           <motion.div
@@ -559,22 +553,43 @@ const Construction = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0 }}
           >
-            <h3 style={caseStudySubtitleStyle}>The Challenge</h3>
+            <h3 style={caseStudySubtitleStyle}>Industry</h3>
+            <p style={caseStudyTextStyle}>Construction & Contracting</p>
+
+            <h3 style={caseStudySubtitleStyle}>Challenges</h3>
+            <ul style={benefitsListStyle}>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Handling complex tendering & bidding processes with EMD tracking.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Difficulty in stage-wise payment approvals and monitoring sub-contractor work.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Manual BOQ planning led to procurement delays and cost overruns.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Inefficient RA bill processing slowed down client billing cycles.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Lack of integration between site activity, accounts, and project management.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Employee-related processes like payroll, attendance, and F&F were disconnected from project execution.</li>
+            </ul>
+
+            <h3 style={caseStudySubtitleStyle}>Our Solution: Delta iERP for Construction & Contracting</h3>
             <p style={caseStudyTextStyle}>
-              BuildRight Co., a major construction company in Mumbai with 150 team members, was facing significant challenges with 
-              project delays, material wastage, and inefficient site management. They were managing 25+ concurrent construction projects 
-              with manual processes, leading to cost overruns, safety incidents, and client dissatisfaction. Their existing systems 
-              couldn't handle the complexity of modern construction projects.
+              GA Infra implemented Delta iERP — a specialized ERP system built for contract-based projects.
             </p>
 
-            <h3 style={caseStudySubtitleStyle}>Delta Infosoft Solution</h3>
-            <p style={caseStudyTextStyle}>
-              Delta Infosoft implemented the Proniq platform with specialized construction modules. The solution included 
-              real-time site progress tracking, automated material management, subcontractor billing, quality control systems, 
-              and comprehensive safety monitoring. The implementation was completed in 10 weeks with extensive training for all site teams.
-            </p>
+            <h3 style={caseStudySubtitleStyle}>Key Modules Deployed</h3>
+            <ul style={benefitsListStyle}>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Tendering & Bidding</strong>: Centralized tender management with EMD tracking.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>BOQ Planning → Procurement</strong>: Streamlined procurement cycle linked with project budgets.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Work Order Processing</strong>: Stage-wise approvals for site execution and subcontractors.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>RA Bills & Payment Management</strong>: Automated client billing and stage-wise payment reconciliation.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Subcontract Management</strong>: Transparent tracking of subcontractor performance and payments.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Accounts & Finance Integration</strong>: Unified financial & project accounting for real-time cost visibility.</li>
+            </ul>
 
-            <h3 style={caseStudySubtitleStyle}>Results Achieved</h3>
+            <h3 style={caseStudySubtitleStyle}>HR & Employee Modules</h3>
+            <ul style={benefitsListStyle}>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Interview to Joining Process automation.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Payroll & Attendance integrated with project teams.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Salary, Reports & Statutory Compliance automated.</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> Full & Final Settlement workflows digitized.</li>
+            </ul>
+
+            <h3 style={caseStudySubtitleStyle}>Results & Impact</h3>
             <div style={caseStudyGridStyle}>
               <motion.div 
                 style={caseStudyCardStyle}
@@ -582,107 +597,54 @@ const Construction = () => {
                 transition={{ duration: 0.2 }}
               >
                 <div style={caseStudyCardValueStyle}>30%</div>
-                <div style={caseStudyCardTitleStyle}>Faster Completion</div>
-                <div style={caseStudyCardLabelStyle}>Reduced project timelines</div>
+                <div style={caseStudyCardTitleStyle}>Faster Tender Approvals</div>
+                <div style={caseStudyCardLabelStyle}>Digital workflows</div>
               </motion.div>
               <motion.div 
                 style={caseStudyCardStyle}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <div style={caseStudyCardValueStyle}>40%</div>
-                <div style={caseStudyCardTitleStyle}>Less Material Waste</div>
-                <div style={caseStudyCardLabelStyle}>Improved efficiency</div>
+                <div style={caseStudyCardValueStyle}>25%</div>
+                <div style={caseStudyCardTitleStyle}>Procurement Cost Savings</div>
+                <div style={caseStudyCardLabelStyle}>BOQ → procurement link</div>
               </motion.div>
               <motion.div 
                 style={caseStudyCardStyle}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <div style={caseStudyCardValueStyle}>75%</div>
-                <div style={caseStudyCardTitleStyle}>Safety Improvement</div>
-                <div style={caseStudyCardLabelStyle}>Reduced incidents</div>
+                <div style={caseStudyCardValueStyle}>98%</div>
+                <div style={caseStudyCardTitleStyle}>Accuracy in RA Bills</div>
+                <div style={caseStudyCardLabelStyle}>Stage-wise calculation</div>
               </motion.div>
               <motion.div 
                 style={caseStudyCardStyle}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <div style={caseStudyCardValueStyle}>₹5.2Cr</div>
-                <div style={caseStudyCardTitleStyle}>Cost Savings</div>
-                <div style={caseStudyCardLabelStyle}>Annual operational savings</div>
+                <div style={caseStudyCardValueStyle}>Real-time</div>
+                <div style={caseStudyCardTitleStyle}>Financial Visibility</div>
+                <div style={caseStudyCardLabelStyle}>Unified finance + project data</div>
               </motion.div>
             </div>
 
-            <h3 style={caseStudySubtitleStyle}>Key Improvements</h3>
-            <ul style={benefitsListStyle}>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Real-time site monitoring reduced delays by 45%
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Automated material tracking eliminated wastage
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Digital quality checks improved compliance by 80%
-              </li>
-              <li style={benefitItemStyle}>
-                <span style={checkIconStyle}>✓</span>
-                Subcontractor management streamlined by 65%
-              </li>
-            </ul>
-
             <p style={caseStudyTextStyle}>
-              <strong>"Delta Infosoft's Proniq platform revolutionized our construction operations. The real-time site tracking and 
-              automated material management have made us more efficient and safer. We've seen significant improvements in project 
-              delivery times and cost control."</strong> - Amit Patel, CEO, BuildRight Co.
+              <strong>“Delta iERP has transformed the way we manage our projects. From tendering to RA bills, everything is transparent, faster, and easier to track. Our teams save time, and management gets real-time visibility into costs and progress.”</strong> — GA Infra, Project Director
             </p>
+
+            <h3 style={caseStudySubtitleStyle}>Case Study Summary</h3>
+            <ul style={benefitsListStyle}>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Client</strong>: GA Infra</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Industry</strong>: Construction & Contracting</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>ERP Used</strong>: Delta iERP</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Focus Areas</strong>: Tendering, BOQ Procurement, Subcontracting, RA Bills, Project Accounting, HRMS</li>
+              <li style={benefitItemStyle}><span style={checkIconStyle}>✓</span> <strong>Business Impact</strong>: Faster approvals, reduced costs, higher accuracy, better compliance</li>
+            </ul>
           </motion.div>
         </motion.div>
 
-        {/* Features Section */}
-        <motion.h2 
-          style={sectionTitleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
-        >
-          What We Deliver for Construction Companies
-        </motion.h2>
-
-        <motion.div 
-          style={featuresGridStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        >
-          {features.map((feature, index) => (
-            <motion.div 
-              key={feature.title}
-              style={featureCardStyle}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: '0 8px 16px rgba(0, 115, 177, 0.15)',
-                background: 'rgba(0, 115, 177, 0.08)'
-              }}
-            >
-              <motion.img 
-                src={feature.image} 
-                alt={feature.title}
-                style={featureImageStyle}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              />
-              <h3 style={featureTitleStyle}>{feature.title}</h3>
-              <p style={featureDescStyle}>{feature.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+       
 
         {/* Benefits Section */}
         <motion.h2 
@@ -721,58 +683,48 @@ const Construction = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.7 }}
         >
-          Trusted by Leading Indian Construction Companies
+          Trusted by Leading Indian Companies
         </motion.h2>
 
-        <motion.ul 
-          style={clientsListStyle}
+        {/* Logos Carousel */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.8 }}
         >
-      {clients.length === 0 ? (
-            <motion.li 
-              style={clientItemStyle}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.9 }}
-            >
-              Loading...
-            </motion.li>
-          ) : (
-            clients.map((client, index) => (
-              <motion.li 
-                key={client.name}
-                style={clientItemStyle}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.9 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: '0 8px 16px rgba(0, 115, 177, 0.15)',
-                  background: 'rgba(0, 115, 177, 0.08)'
-                }}
-              >
-                <motion.img 
-                  src={client.img} 
-                  alt={client.name} 
-                  style={clientImageStyle}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <div style={clientInfoStyle}>
-                  <span style={clientNameStyle}>{client.name}</span>
-                  <span style={clientDescStyle}>{client.description}</span>
-                </div>
-                <div style={clientStatsStyle}>
-                  <span style={clientStatStyle}>{client.projects} Projects</span>
-                  <span style={clientStatStyle}>{client.teamSize} Team Members</span>
-                  <span style={clientStatStyle}>{client.location}</span>
-                </div>
-              </motion.li>
-            ))
-          )}
-        </motion.ul>
+          <LogosCarousel 
+            logos={[
+              "/logos/Aditya Birla.png",
+              "/logos/ALGO.png",
+              "/logos/Angel.png",
+              "/logos/Bansan Dairy.png",
+              "/logos/CHEM 1.png",
+              "/logos/DEL.png",
+              "/logos/Desire.png",
+              "/logos/DNC.png",
+              "/logos/Duke.png",
+              "/logos/Flotech.png",
+              "/logos/FlowTech.png",
+              "/logos/GA.png",
+              "/logos/Group 1000005864.png",
+              "/logos/Harsiddh.png",
+              "/logos/KSB.png",
+              "/logos/Lahoty.png",
+              "/logos/Leak-Proof.png",
+              "/logos/Mascot.png",
+              "/logos/Oswal.png",
+              "/logos/Pluga.png",
+              "/logos/Prompt.png",
+              "/logos/Ratnamani.png",
+              "/logos/Unnati.png",
+              "/logos/Waterman.png",
+            ]}
+            height={100}
+            gap={48}
+            duration={25}
+            ariaLabel="Trusted partners logos carousel"
+          />
+        </motion.div>
 
         {/* Company Info */}
         <motion.div
@@ -798,7 +750,6 @@ const Construction = () => {
           </p>
         </motion.div>
       </motion.div>
-      <Footer />
     </div>
   );
 };
