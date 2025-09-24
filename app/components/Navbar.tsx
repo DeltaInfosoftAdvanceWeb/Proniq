@@ -125,9 +125,9 @@ const Navbar: React.FC = () => {
       <nav style={navbarStyle}>
         <Link href="/" style={logoStyle}>
           <img
-            src="/proniq.png"
+            src="/pro-niq.png"
             alt="Proniq Logo"
-            style={{ height: '4rem', marginRight: '0.5rem', verticalAlign: 'middle', borderRadius: '8px' }}
+            style={{ height: '7rem', marginRight: '0.5rem', verticalAlign: 'middle', borderRadius: '8px' }}
           />
           Proniq
         </Link>

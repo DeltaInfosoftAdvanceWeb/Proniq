@@ -65,7 +65,7 @@ const taglineStyle: React.CSSProperties = {
 export default function AboutPage() {
   // Load the Rive animation
   const { RiveComponent } = useRive({
-    src: '/PRONIQ-TM.RIV',         // Path to your .riv file in public folder
+    src: '/proniq-animation.riv',         // Path to your .riv file in public folder
     autoplay: true,
     stateMachines: ['State Machine 1'], // Or animations: ['AnimationName']
   });
