@@ -1,0 +1,21 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E5E7EB"/>
+    </linearGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+  <!-- Screen area -->
+  <rect x="80" y="60" width="1040" height="580" rx="28" fill="url(#bezel)" stroke="#D1D5DB"/>
+  <rect x="120" y="100" width="960" height="500" rx="16" fill="#0F172A"/>
+  <!-- Camera dot -->
+  <circle cx="600" cy="85" r="4" fill="#475569"/>
+  <!-- Base -->
+  <rect x="100" y="650" width="1000" height="22" rx="8" fill="url(#base)"/>
+  <!-- Subtle shadow -->
+  <ellipse cx="600" cy="690" rx="460" ry="12" fill="rgba(15,23,42,0.08)" />
+</svg>

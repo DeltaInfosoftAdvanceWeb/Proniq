@@ -1,0 +1,140 @@
+export function TaskTrackingSVG() {
+  return (
+    <div className="w-full max-w-3xl mx-auto">
+      <svg viewBox="0 0 1000 500" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+        {/* Title */}
+        <text x="500" y="50" fontSize="42" fontWeight="bold" textAnchor="middle" fill="#000" className="font-sans">
+          Track your task from assign date to completion
+        </text>
+
+        {/* Timeline line */}
+        <line x1="100" y1="150" x2="900" y2="150" stroke="#000" strokeWidth="3" />
+
+        {/* Arrow at the end */}
+        <polygon points="900,150 880,140 880,160" fill="#000" />
+
+        {/* Stage 1: Assigned */}
+        <circle cx="150" cy="150" r="35" fill="#000" opacity="0.2" stroke="#000" strokeWidth="3" />
+        <text x="150" y="155" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#000">
+          1
+        </text>
+        <text x="150" y="210" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#000">
+          Assigned
+        </text>
+        <text x="150" y="235" fontSize="14" textAnchor="middle" fill="#666">
+          Assign Date
+        </text>
+
+        {/* Stage 2: In Progress */}
+        <circle cx="350" cy="150" r="35" fill="#000" opacity="0.4" stroke="#000" strokeWidth="3" />
+        <text x="350" y="155" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#000">
+          2
+        </text>
+        <text x="350" y="210" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#000">
+          In Progress
+        </text>
+        <text x="350" y="235" fontSize="14" textAnchor="middle" fill="#666">
+          Started Work
+        </text>
+
+        {/* Stage 3: Review */}
+        <circle cx="550" cy="150" r="35" fill="#000" opacity="0.6" stroke="#000" strokeWidth="3" />
+        <text x="550" y="155" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#fff">
+          3
+        </text>
+        <text x="550" y="210" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#000">
+          In Review
+        </text>
+        <text x="550" y="235" fontSize="14" textAnchor="middle" fill="#666">
+          Quality Check
+        </text>
+
+        {/* Stage 4: Completed */}
+        <circle cx="750" cy="150" r="35" fill="#000" stroke="#000" strokeWidth="3" />
+        <text x="750" y="155" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#fff">
+          4
+        </text>
+        <text x="750" y="210" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#000">
+          Completed
+        </text>
+        <text x="750" y="235" fontSize="14" textAnchor="middle" fill="#666">
+          Completion Date
+        </text>
+
+        {/* Checkmark in final circle */}
+        <text x="750" y="165" fontSize="28" fontWeight="bold" textAnchor="middle" fill="#fff">
+          ✓
+        </text>
+
+        {/* Bottom description boxes */}
+        <g>
+          {/* Box 1 */}
+          <rect x="50" y="300" width="150" height="150" rx="10" fill="#f5f5f5" stroke="#000" strokeWidth="2" />
+          <text x="125" y="330" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#000">
+            Task Created
+          </text>
+          <text x="125" y="360" fontSize="12" textAnchor="middle" fill="#333">
+            Initial assignment
+          </text>
+          <text x="125" y="380" fontSize="12" textAnchor="middle" fill="#333">
+            and setup
+          </text>
+          <text x="125" y="420" fontSize="11" textAnchor="middle" fill="#666" fontStyle="italic">
+            Duration: 1 day
+          </text>
+        </g>
+
+        <g>
+          {/* Box 2 */}
+          <rect x="275" y="300" width="150" height="150" rx="10" fill="#f5f5f5" stroke="#000" strokeWidth="2" />
+          <text x="350" y="330" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#000">
+            Execution
+          </text>
+          <text x="350" y="360" fontSize="12" textAnchor="middle" fill="#333">
+            Work in
+          </text>
+          <text x="350" y="380" fontSize="12" textAnchor="middle" fill="#333">
+            progress
+          </text>
+          <text x="350" y="420" fontSize="11" textAnchor="middle" fill="#666" fontStyle="italic">
+            Duration: 3-5 days
+          </text>
+        </g>
+
+        <g>
+          {/* Box 3 */}
+          <rect x="500" y="300" width="150" height="150" rx="10" fill="#f5f5f5" stroke="#000" strokeWidth="2" />
+          <text x="575" y="330" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#000">
+            Review &amp;
+          </text>
+          <text x="575" y="350" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#000">
+            Feedback
+          </text>
+          <text x="575" y="380" fontSize="12" textAnchor="middle" fill="#333">
+            Quality assurance
+          </text>
+          <text x="575" y="420" fontSize="11" textAnchor="middle" fill="#666" fontStyle="italic">
+            Duration: 1-2 days
+          </text>
+        </g>
+
+        <g>
+          {/* Box 4 */}
+          <rect x="725" y="300" width="150" height="150" rx="10" fill="#000" stroke="#000" strokeWidth="2" />
+          <text x="800" y="330" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#fff">
+            Delivered
+          </text>
+          <text x="800" y="360" fontSize="12" textAnchor="middle" fill="#fff">
+            Task
+          </text>
+          <text x="800" y="380" fontSize="12" textAnchor="middle" fill="#fff">
+            completed
+          </text>
+          <text x="800" y="420" fontSize="11" textAnchor="middle" fill="#ccc" fontStyle="italic">
+            Ready to deploy
+          </text>
+        </g>
+      </svg>
+    </div>
+  )
+}
