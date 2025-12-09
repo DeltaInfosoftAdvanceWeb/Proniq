@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,11 +118,15 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
   }
 
   html {
@@ -128,11 +134,7 @@
     scroll-behavior: auto;
   }
 
-  /* Optimize for smooth scrolling performance */
-  html,
-  body {
-    overscroll-behavior: none;
-  }
+  /* Optimize for smooth scrolling performance - Removed overscroll-behavior */
 }
 
 @layer utilities {
@@ -141,11 +143,15 @@
   }
 
   .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-lg;
+    @apply bg-white backdrop-blur-lg border border-white shadow-lg;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .glass-dark {
-    @apply bg-slate-900/70 backdrop-blur-lg border border-white/10 shadow-lg;
+    @apply backdrop-blur-lg border shadow-lg;
+    background-color: rgba(15, 23, 42, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .text-gradient {
@@ -167,6 +173,47 @@
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+  }
+
+  /* Fade-in animation for product cards */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fadeIn:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .animate-fadeIn:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .animate-fadeIn:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+
+  .animate-fadeIn:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .animate-fadeIn:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+
+  .animate-fadeIn:nth-child(6) {
+    animation-delay: 0.3s;
   }
 }
 

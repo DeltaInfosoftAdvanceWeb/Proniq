@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+/* ---------- NAV LINKS ---------- */
 const links = [
   { href: "/", label: "Home" },
   { href: "/industries", label: "Industries", dropdown: true },
@@ -11,12 +12,13 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+/* ✅ EXPLICIT INDUSTRY SLUGS (NO AUTO-GENERATION) */
 const industries = [
-  "Manufacturing",
-  "Interior Architecture",
-  "Infrastructure",
-  "Construction",
-  "Engineering",
+  { title: "Manufacturing", slug: "manufacturing" },
+  { title: "Interior Architecture", slug: "interior-architecture" },
+  { title: "Infrastructure", slug: "infrastructure" },
+  { title: "Construction", slug: "construction" },
+  { title: "Engineering", slug: "engineering" },
 ];
 
 export default function Navbar() {
@@ -25,6 +27,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showIndustries, setShowIndustries] = useState(false);
 
+  /* ---------- SCROLL EFFECT ---------- */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
@@ -36,26 +39,26 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 px-4 pt-4">
       <div
         className={`mx-auto max-w-6xl rounded-full transition-all duration-300
-          ${scrolled
+        ${scrolled
             ? "bg-white/80 backdrop-blur-xl border border-slate-200 shadow-md py-3 px-6"
             : "bg-transparent py-4 px-6"
           }`}
       >
         <div className="flex items-center justify-between">
-          {/* Logo */}
+
+          {/* ---------- LOGO ---------- */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="./proniq.png" alt="PRONIQ" className="w-9 h-8" />
+            <img src="/proniq.png" alt="PRONIQ" className="w-9 h-8" />
             <span className="text-lg font-bold text-slate-900">PRONIQ</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* ---------- DESKTOP NAV ---------- */}
           <nav className="hidden md:flex items-center gap-1 relative">
             {links.map((l) => {
               const active = pathname === l.href;
 
               if (l.dropdown) {
                 return (
-                  /* ✅ SINGLE HOVER WRAPPER (IMPORTANT) */
                   <div
                     key={l.href}
                     className="relative"
@@ -64,7 +67,7 @@ export default function Navbar() {
                   >
                     <button
                       className={`px-4 py-2 text-sm font-medium rounded-full transition
-                        ${active || showIndustries
+                      ${active || showIndustries
                           ? "bg-slate-100 text-slate-900"
                           : "text-slate-700 hover:bg-slate-100"
                         }`}
@@ -72,39 +75,39 @@ export default function Navbar() {
                       Industries
                     </button>
 
-                    {/* ========= DROPDOWN PANEL ========= */}
+                    {/* ---------- DROPDOWN ---------- */}
                     {showIndustries && (
                       <>
-                        {/* Hover Bridge (prevents flicker) */}
+                        {/* Hover bridge */}
                         <div className="absolute top-full left-0 w-full h-4" />
 
                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[520px] rounded-2xl bg-white border border-slate-200 shadow-xl">
                           <div className="grid grid-cols-2">
-                            {/* Left list */}
+
+                            {/* LEFT LIST */}
                             <div className="py-3">
-                              {industries.map((title) => {
-                                const slug =
-                                  "/industries/" +
-                                  title.toLowerCase().replace(/\s+/g, "-");
-                                const isActive = pathname === slug;
+                              {industries.map((item) => {
+                                const href = `/industries/${item.slug}`;
+                                const isActive = pathname === href;
 
                                 return (
                                   <Link
-                                    key={title}
-                                    href={slug}
+                                    key={item.slug}
+                                    href={href}
+                                    onClick={() => setShowIndustries(false)}
                                     className={`block px-6 py-3 text-sm transition
-                                      ${isActive
-                                        ? "bg-primary/10 text-primary font-semibold"
+                                    ${isActive
+                                        ? "bg-blue-50 text-blue-600 font-semibold"
                                         : "text-slate-700 hover:bg-slate-100"
                                       }`}
                                   >
-                                    {title}
+                                    {item.title}
                                   </Link>
                                 );
                               })}
                             </div>
 
-                            {/* Right info panel */}
+                            {/* RIGHT INFO */}
                             <div className="border-l border-slate-200 bg-slate-50 p-6">
                               <p className="text-xs uppercase tracking-wide text-slate-400">
                                 Industries
@@ -113,17 +116,19 @@ export default function Navbar() {
                                 Built for real-world operations
                               </h4>
                               <p className="mt-2 text-sm text-slate-600">
-                                Each industry comes with tailored workflows,
-                                planning, execution tracking, and reporting.
+                                ERP workflows designed to match how each
+                                industry actually works.
                               </p>
 
                               <Link
                                 href="/industries"
-                                className="inline-block mt-4 text-sm font-semibold text-primary"
+                                onClick={() => setShowIndustries(false)}
+                                className="inline-block mt-4 text-sm font-semibold text-blue-600"
                               >
                                 View all industries →
                               </Link>
                             </div>
+
                           </div>
                         </div>
                       </>
@@ -137,7 +142,7 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   className={`px-4 py-2 text-sm font-medium rounded-full transition
-                    ${active
+                  ${active
                       ? "bg-slate-100 text-slate-900"
                       : "text-slate-700 hover:bg-slate-100"
                     }`}
@@ -148,7 +153,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* CTA */}
+          {/* ---------- CTA ---------- */}
           <div className="hidden md:block">
             <Link
               href="/contact"
@@ -158,9 +163,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle (unchanged) */}
+          {/* ---------- MOBILE TOGGLE ---------- */}
           <button
-            className="md:hidden p-2 rounded-full hover:bg-slate-100"
+            className="md:hidden p-2 rounded-full hover:bg-slate-100 relative z-50"
             onClick={() => setOpen(!open)}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
@@ -178,6 +183,48 @@ export default function Navbar() {
               />
             </div>
           </button>
+
+          {/* ---------- MOBILE MENU OVERLAY ---------- */}
+          {open && (
+            <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl flex flex-col pt-24 px-6 animate-in slide-in-from-top-10 duration-200">
+              <nav className="flex flex-col gap-4">
+                {links.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className={`text-2xl font-bold ${pathname === l.href ? "text-primary" : "text-slate-900"
+                      }`}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+                <div className="h-px bg-slate-100 my-2" />
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                  Industries
+                </p>
+                {industries.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/industries/${item.slug}`}
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium text-slate-600 hover:text-primary transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+                <div className="h-px bg-slate-100 my-4" />
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="w-full py-4 bg-primary text-white text-center rounded-xl font-bold text-lg shadow-lg shadow-primary/20"
+                >
+                  Get Started
+                </Link>
+              </nav>
+            </div>
+          )}
+
         </div>
       </div>
     </header>

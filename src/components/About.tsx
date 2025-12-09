@@ -6,10 +6,10 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useEffect, useState, useRef, Fragment } from "react";
 
 const features = [
-  { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "�" },
+  { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "📋" },
   { label: "Quick Actions", angle: 45, color: "from-violet-500 to-purple-500", icon: "⚡" },
   { label: "Task Tracking", angle: 90, color: "from-pink-500 to-rose-500", icon: "✓" },
-  { label: "Progress Reports", angle: 135, color: "from-fuchsia-500 to-pink-500", icon: "�" },
+  { label: "Progress Reports", angle: 135, color: "from-fuchsia-500 to-pink-500", icon: "📈" },
   { label: "QAP", angle: 180, color: "from-emerald-400 to-green-500", icon: "🎯" },
   { label: "Dashboard", angle: 225, color: "from-cyan-400 to-teal-500", icon: "📱" },
   { label: "RA Bills", angle: 270, color: "from-blue-400 to-cyan-500", icon: "💰" },
@@ -50,78 +50,84 @@ function FeatureBubbles() {
         />
       </div>
 
-      {/* Connecting Lines & Nodes */}
+      {/* Connecting Lines Container */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <defs>
+          <linearGradient id="lineGradient" x1="50%" y1="50%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#64748b" stopOpacity="0" />
+            <stop offset="100%" stopColor="#64748b" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+        {features.map((feature, i) => {
+          const radius = 42; // Percentage from center
+          const x = 50 + radius * Math.cos((feature.angle * Math.PI) / 180);
+          const y = 50 + radius * Math.sin((feature.angle * Math.PI) / 180);
+
+          return (
+            <motion.line
+              key={i}
+              x1="50%"
+              y1="50%"
+              x2={`${x}%`}
+              y2={`${y}%`}
+              stroke="url(#lineGradient)"
+              strokeWidth="1"
+              strokeDasharray="4 4"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.3 }}
+              viewport={{ once: true, margin: "-100px", amount: 0.3 }}
+              transition={{ duration: 1, delay: i * 0.1 }}
+            />
+          );
+        })}
+      </svg>
+
+      {/* Nodes */}
       {features.map((feature, i) => {
         const radius = 42; // Percentage from center
         const x = 50 + radius * Math.cos((feature.angle * Math.PI) / 180);
         const y = 50 + radius * Math.sin((feature.angle * Math.PI) / 180);
 
         return (
-          <Fragment key={i}>
-            {/* Connecting Line */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-              <motion.line
-                x1="50%"
-                y1="50%"
-                x2={`${x}%`}
-                y2={`${y}%`}
-                stroke="url(#lineGradient)"
-                strokeWidth="1"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: i * 0.1 }}
-              />
-              <defs>
-                <linearGradient id="lineGradient" x1="50%" y1="50%" x2={`${x}%`} y2={`${y}%`}>
-                  <stop offset="0%" stopColor="#64748b" stopOpacity="0" />
-                  <stop offset="100%" stopColor="#64748b" stopOpacity="0.5" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Node */}
-            <motion.div
-              className="absolute z-10"
-              style={{ left: `${x}%`, top: `${y}%` }}
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                delay: i * 0.1
-              }}
-            >
-              <motion.button
-                className={`
+          <motion.div
+            key={i}
+            className="absolute z-10"
+            style={{ left: `${x}%`, top: `${y}%`, willChange: 'transform, opacity' }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px", amount: 0.3 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              delay: i * 0.1
+            }}
+          >
+            <motion.button
+              className={`
                   relative group flex items-center gap-2 px-4 py-2.5 rounded-full 
                   bg-white border border-slate-100 shadow-lg shadow-slate-200/50
                   hover:shadow-xl hover:scale-105 transition-all duration-300
                   -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
                 `}
-                whileHover={{ y: -2 }}
-              >
-                <div className={`
+            >
+              <div className={`
                   w-8 h-8 rounded-full flex items-center justify-center text-white text-sm
                   bg-gradient-to-br ${feature.color} shadow-inner
                 `}>
-                  {feature.icon}
-                </div>
-                <span className="font-semibold text-slate-700 text-sm group-hover:text-slate-900">
-                  {feature.label}
-                </span>
+                {feature.icon}
+              </div>
+              <span className="font-semibold text-slate-700 text-sm group-hover:text-slate-900">
+                {feature.label}
+              </span>
 
-                {/* Hover Glow */}
-                <div className={`
+              {/* Hover Glow */}
+              <div className={`
                   absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300
                   bg-gradient-to-r ${feature.color} blur-md -z-10
                 `} />
-              </motion.button>
-            </motion.div>
-          </Fragment>
+            </motion.button>
+          </motion.div>
         );
       })}
     </div>

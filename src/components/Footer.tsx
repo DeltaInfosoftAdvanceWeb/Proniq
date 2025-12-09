@@ -23,8 +23,8 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-6">
                         <Link href="/" className="inline-flex items-center gap-2 group">
-                            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-blue-600 shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
-                                <span className="text-white font-bold text-xl">P</span>
+                            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl  shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
+                                <img src="/proniq.png" alt="PRONIQ" className="w-10 h-8" />
                             </div>
                             <span className="text-2xl font-bold text-white tracking-tight">PRONIQ</span>
                         </Link>
@@ -41,13 +41,13 @@ export default function Footer() {
 
                     {/* Links Columns */}
                     <div className="lg:col-span-2 space-y-6">
-                        <h3 className="text-white font-semibold text-lg">Product</h3>
+                        <h3 className="text-white font-semibold text-lg">Industries</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="/features">Features</FooterLink>
-                            <FooterLink href="/pricing">Pricing</FooterLink>
-                            <FooterLink href="/integrations">Integrations</FooterLink>
-                            <FooterLink href="/changelog">Changelog</FooterLink>
-                            <FooterLink href="/docs">Documentation</FooterLink>
+                            <FooterLink href="/features">Manufacturing</FooterLink>
+                            <FooterLink href="/pricing">Construction</FooterLink>
+                            <FooterLink href="/integrations">Interior Architecture</FooterLink>
+                            <FooterLink href="/changelog">Infrastructure</FooterLink>
+                            <FooterLink href="/docs">Engineering</FooterLink>
                         </ul>
                     </div>
 
@@ -55,10 +55,8 @@ export default function Footer() {
                         <h3 className="text-white font-semibold text-lg">Company</h3>
                         <ul className="space-y-3">
                             <FooterLink href="/about">About Us</FooterLink>
-                            <FooterLink href="/careers">Careers</FooterLink>
-                            <FooterLink href="/blog">Blog</FooterLink>
+                            <FooterLink href="/industries">Industries</FooterLink>
                             <FooterLink href="/contact">Contact</FooterLink>
-                            <FooterLink href="/partners">Partners</FooterLink>
                         </ul>
                     </div>
 
@@ -86,7 +84,7 @@ export default function Footer() {
                         <div className="pt-6 space-y-3">
                             <div className="flex items-start gap-3 text-slate-400 text-sm">
                                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                <span>123 Innovation Drive, Tech Valley, CA 94043</span>
+                                <span>701, Safal Profitaire, Prahladnagar, Ahmedabad, Gujarat 380015</span>
                             </div>
                             <div className="flex items-center gap-3 text-slate-400 text-sm">
                                 <Mail className="w-5 h-5 text-primary shrink-0" />

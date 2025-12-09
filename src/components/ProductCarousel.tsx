@@ -1,138 +1,110 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-    Handshake,
-    Users,
-    ShoppingCart,
-    Building2,
-    Calculator,
-    Clock,
-    TrendingUp,
-    Hourglass,
-    Layers,
-    KanbanSquare,
-    Database,
-    DoorOpen,
-    Box,
-    Wifi,
-    Truck,
-    CalendarDays,
-    Store,
-    ScanBarcode,
-    Package,
-    Activity
-} from "lucide-react";
+import Image from "next/image";
 
 const products = [
-    // Row 1
-    { title: "Delta iDealer", icon: Handshake, color: "border-blue-400 text-blue-500" },
-    { title: "Delta CRM", icon: Users, color: "border-blue-400 text-blue-500" },
-    { title: "LABHCART", icon: ShoppingCart, color: "border-purple-400 text-purple-500" },
-    { title: "Delta Project", icon: Building2, color: "border-pink-400 text-pink-500" },
-    { title: "Delta iAccount", icon: Calculator, color: "border-teal-400 text-teal-500" },
+    // Row 1 (5)
+    { title: "Delta iDealer", logo: "/Logos/Delta iDealer.png", color: "border-blue-400" },
+    { title: "Delta CRM", logo: "/Logos/Deta iCRM.png", color: "border-blue-400" },
+    { title: "LABHCART", logo: "/Logos/Labhcart.png", color: "border-purple-400" },
+    { title: "Delta BigData", logo: "/Logos/Delta BigData.png", color: "border-cyan-400" },
+    { title: "Delta iAccount", logo: "/Logos/Delta iAccount.png", color: "border-teal-400" },
 
-    // Row 2
-    { title: "Delta iAttendance", icon: Clock, color: "border-amber-400 text-amber-500" },
-    { title: "Performance Mgmt", icon: TrendingUp, color: "border-amber-400 text-amber-500" },
-    { title: "Delta MyTime", icon: Hourglass, color: "border-amber-400 text-amber-500" },
-    { title: "DELTA iERP", icon: Layers, color: "border-pink-400 text-pink-500" },
-    { title: "PRONIQ", icon: Activity, color: "border-primary text-primary", isCenter: true },
-    { title: "Delta KANBAN", icon: KanbanSquare, color: "border-cyan-400 text-cyan-500" },
-    { title: "Delta BigData", icon: Database, color: "border-cyan-400 text-cyan-500" },
+    // Row 2 (6)
+    { title: "Delta iAttendance", logo: "/Logos/Delta iAttendance.png", color: "border-amber-400" },
+    { title: "Performance Mgmt", logo: "/Logos/Performance Management  System.png", color: "border-amber-400" },
+    { title: "Delta MyTime", logo: "/Logos/Delta Mytime.png", color: "border-amber-400" },
+    { title: "DELTA iERP", logo: "/Logos/Delta iERP.png", color: "border-pink-400" },
+    { title: "PRONIQ", logo: "/proniq.png", color: "border-primary", isCenter: true },
+    { title: "Delta KANBAN", logo: "/Logos/Delta Kanban.png", color: "border-cyan-400" },
 
-    // Row 3
-    { title: "Delta GateModule", icon: DoorOpen, color: "border-rose-400 text-rose-500" },
-    { title: "Delta Inventory", icon: Box, color: "border-rose-400 text-rose-500" },
-    { title: "Delta IOT", icon: Wifi, color: "border-rose-400 text-rose-500" },
-    { title: "iVendor Connect", icon: Truck, color: "border-rose-400 text-rose-500" },
-    { title: "Project Planning", icon: CalendarDays, color: "border-rose-400 text-rose-500" },
+    // Row 3 (5)
+    { title: "Delta GateModule", logo: "/Logos/Delta GateModule.png", color: "border-rose-400" },
+    { title: "Delta Inventory", logo: "/Logos/Delta Inventory.png", color: "border-rose-400" },
+    { title: "Delta IOT", logo: "/Logos/Delta IOT.png", color: "border-rose-400" },
+    { title: "iVendor Connect", logo: "/Logos/Delta iVendor connect.png", color: "border-rose-400" },
+    { title: "Project Planning", logo: "/Logos/Project Management.png", color: "border-rose-400" },
 
-    // Row 4
-    { title: "Delta iShop", icon: Store, color: "border-pink-400 text-pink-500" },
-    { title: "Delta Barcode", icon: ScanBarcode, color: "border-pink-400 text-pink-500" },
-    { title: "Delta iStock", icon: Package, color: "border-pink-400 text-pink-500" },
+    // Row 4 (3)
+    { title: "Delta iShop", logo: "/Logos/iShop.png", color: "border-pink-400" },
+    { title: "Delta Barcode", logo: "/Logos/Delta Barcode.png", color: "border-pink-400" },
+    { title: "Delta iStock", logo: "/Logos/Delta iStock.png", color: "border-pink-400" },
 ];
+
+function ProductCard({ title, logo, color, isCenter = false }: any) {
+    return (
+        <div
+            className={`
+        flex flex-col items-center justify-center
+        bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300
+        hover:-translate-y-1.5 opacity-0 animate-fadeIn
+        ${isCenter
+                    ? "w-44 h-44 md:w-52 md:h-52 border-4 border-primary z-10"
+                    : "w-32 h-32 md:w-40 md:h-40 border-2"}
+        ${color}
+      `}
+        >
+            <div
+                className={`
+          flex items-center justify-center rounded-full mb-3
+          ${isCenter ? "w-28 h-28 bg-primary/10" : "w-24 h-24 bg-slate-50"}
+        `}
+            >
+                <Image
+                    src={logo}
+                    alt={title}
+                    width={isCenter ? 96 : 80}
+                    height={isCenter ? 96 : 80}
+                    className={`${isCenter ? "w-24 h-24" : "w-20 h-20"} object-contain`}
+                />
+            </div>
+
+            <span
+                className={`
+          text-center font-semibold leading-tight px-2
+          ${isCenter ? "text-lg text-slate-900" : "text-xs md:text-sm text-slate-700"}
+        `}
+            >
+                {title}
+            </span>
+        </div>
+    );
+}
 
 export default function ProductCarousel() {
     return (
-        <section className="py-24 bg-slate-50 overflow-hidden">
+        <section className="py-24 bg-slate-50">
             <div className="container mx-auto px-6 text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                     Delta's Product <span className="text-gradient">Ecosystem</span>
                 </h2>
                 <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                    A comprehensive suite of interconnected modules designed to power every aspect of your business.
+                    A comprehensive suite of interconnected modules designed to power every
+                    aspect of your business.
                 </p>
             </div>
 
             <div className="container mx-auto px-4 max-w-7xl">
-                <div className="flex flex-col items-center gap-6 md:gap-8">
+                <div className="flex flex-col items-center gap-8">
 
-                    {/* Row 1 */}
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(0, 5).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
+                        {products.slice(0, 5).map((p, i) => <ProductCard key={i} {...p} />)}
                     </div>
 
-                    {/* Row 2 */}
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center">
-                        {products.slice(5, 12).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
+                        {products.slice(5, 11).map((p, i) => <ProductCard key={i} {...p} />)}
                     </div>
 
-                    {/* Row 3 */}
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(12, 17).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
+                        {products.slice(11, 16).map((p, i) => <ProductCard key={i} {...p} />)}
                     </div>
 
-                    {/* Row 4 */}
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(17, 20).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
+                        {products.slice(16).map((p, i) => <ProductCard key={i} {...p} />)}
                     </div>
 
                 </div>
             </div>
         </section>
-    );
-}
-
-function ProductCard({ title, icon: Icon, color, isCenter = false }: any) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -5 }}
-            className={`
-        relative flex flex-col items-center justify-center
-        bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300
-        ${isCenter ? "w-40 h-40 md:w-48 md:h-48 border-4 border-primary z-10" : "w-28 h-28 md:w-32 md:h-32 border-2"}
-        ${color}
-      `}
-        >
-            <div className={`
-        flex items-center justify-center rounded-full mb-3
-        ${isCenter ? "w-20 h-20 bg-primary/10" : "w-12 h-12 bg-slate-50"}
-      `}>
-                {isCenter ? (
-                    <img src="./proniq.png" alt="PRONIQ" className="w-14 h-14 object-contain" />
-                ) : (
-                    <Icon className={`w-6 h-6 ${isCenter ? "text-primary" : "currentColor"}`} />
-                )}
-            </div>
-            <span className={`
-        text-center font-bold leading-tight px-2
-        ${isCenter ? "text-lg text-slate-900" : "text-[10px] md:text-xs text-slate-700"}
-      `}>
-                {title}
-            </span>
-        </motion.div>
     );
 }

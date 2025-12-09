@@ -1,0 +1,105 @@
+﻿
+> proniq@0.1.0 build
+> next build
+
+   Γû▓ Next.js 16.0.7 (Turbopack)
+
+   Creating an optimized production build ...
+node.exe : 
+At C:\Program 
+Files\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS 
+$args
++   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (:String)   
+  [], RemoteException
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+> Build error occurred
+Error: Turbopack build failed 
+with 1 errors:
+./src/app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: C:\Users\dipl1
+\Documents\Proniq New\proniq\s
+rc\app\globals.css:1:1: The 
+`outline-ring/50` class does 
+not exist. If 
+`outline-ring/50` is a custom 
+class, make sure it is 
+defined within a `@layer` 
+directive.
+    at Input.error (node_modul
+es/postcss/lib/input.js:135:16
+) [C:\Users\dipl1\Documents\Pr
+oniq New\proniq\.next\build\ch
+unks\node_modules_fe693df6._.j
+s:4651:22]
+    at AtRule.error (node_modu
+les/postcss/lib/node.js:146:32
+) [C:\Users\dipl1\Documents\Pr
+oniq New\proniq\.next\build\ch
+unks\node_modules_fe693df6._.j
+s:928:38]
+    [at processApply (C:\Users
+\dipl1\Documents\Proniq New\pr
+oniq\node_modules\tailwindcss\
+lib\lib\expandApplyAtRules.js:
+380:29)]
+    [at C:\Users\dipl1\Documen
+ts\Proniq New\proniq\node_modu
+les\tailwindcss\lib\lib\expand
+ApplyAtRules.js:551:9]
+    [at C:\Users\dipl1\Documen
+ts\Proniq New\proniq\node_modu
+les\tailwindcss\lib\processTai
+lwindFeatures.js:55:50]
+    [at async plugins (C:\User
+s\dipl1\Documents\Proniq New\p
+roniq\node_modules\tailwindcss
+\lib\plugin.js:38:17)]
+    at async 
+LazyResult.runAsync (node_modu
+les/postcss/lib/lazy-result.js
+:293:11) [C:\Users\dipl1\Docum
+ents\Proniq New\proniq\.next\b
+uild\chunks\node_modules_fe693
+df6._.js:6206:21]
+    at async transform (turbop
+ack:///[turbopack-node]/transf
+orms/postcss.ts:70:34) [C:\Use
+rs\dipl1\Documents\Proniq New\
+proniq\.next\build\chunks\[roo
+t-of-the-server]__51225daf._.j
+s:146:36]
+    at async run (turbopack://
+/[turbopack-node]/ipc/evaluate
+.ts:92:23) [C:\Users\dipl1\Doc
+uments\Proniq New\proniq\.next
+\build\chunks\[root-of-the-ser
+ver]__974941ed._.js:443:31]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css 
+[Client Component Browser]
+    ./src/app/layout.tsx 
+[Server Component]
+
+
+    at async transform (turbop
+ack:///[turbopack-node]/transf
+orms/postcss.ts:70:34) [C:\Use
+rs\dipl1\Documents\Proniq New\
+proniq\.next\build\chunks\[roo
+t-of-the-server]__51225daf._.j
+s:146:36])
+    at async run (turbopack://
+/[turbopack-node]/ipc/evaluate
+.ts:92:23) [C:\Users\dipl1\Doc
+uments\Proniq New\proniq\.next
+\build\chunks\[root-of-the-ser
+ver]__974941ed._.js:443:31])
