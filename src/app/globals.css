@@ -215,6 +215,16 @@
   .animate-fadeIn:nth-child(6) {
     animation-delay: 0.3s;
   }
+
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(100%);
+    }
+  }
 }
 
 h1,
