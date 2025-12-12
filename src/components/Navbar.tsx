@@ -15,7 +15,7 @@ const links = [
 /* ✅ EXPLICIT INDUSTRY SLUGS (NO AUTO-GENERATION) */
 const industries = [
   { title: "Manufacturing", slug: "manufacturing" },
-  { title: "Interior Architecture", slug: "interior-architecture" },
+  { title: "Interior Architecture", slug: "interior-architechture" },
   { title: "Infrastructure", slug: "infrastructure" },
   { title: "Construction", slug: "construction" },
   { title: "Engineering", slug: "engineering" },

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ConstructionHologram from "@/components/ConstructionHologram";
+import CTA from "@/components/CTA";
 
 export default function Construction() {
     return (
@@ -587,34 +588,7 @@ export default function Construction() {
                     </div>
                 </div>
             </section>
-
-            {/* CTA */}
-            <section className="px-6 py-24 bg-white text-center relative overflow-hidden">
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/5 via-teal-200/10 to-transparent" />
-                <div className="relative z-10 mx-auto max-w-3xl">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                        Ready to modernize how you manage construction projects?
-                    </h2>
-                    <p className="mt-4 text-base md:text-lg text-slate-600">
-                        See how your team can manage estimation, site execution, procurement, and billing on a
-                        single ERP tailored for construction.
-                    </p>
-                    <div className="mt-8 flex flex-wrap justify-center gap-4">
-                        <Link
-                            href="/contact"
-                            className="inline-block rounded-xl bg-gradient-to-r from-primary to-teal-500 px-8 py-4 text-sm md:text-base font-bold text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all"
-                        >
-                            Schedule a Free Consultation
-                        </Link>
-                        <Link
-                            href="#solutions"
-                            className="inline-block rounded-xl border border-slate-200 bg-white px-8 py-4 text-sm md:text-base font-medium text-slate-700 hover:bg-slate-50 transition"
-                        >
-                            Explore Modules
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            <CTA />
         </main>
     );
 }

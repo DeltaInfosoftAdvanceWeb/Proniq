@@ -1,124 +1,529 @@
 import Link from "next/link";
+import ConstructionHologram from "@/components/ConstructionHologram";
+import CTA from "@/components/CTA";
 
 export default function Manufacturing() {
     return (
-        <main className="min-h-screen bg-white text-gray-900">
+        <main className="min-h-screen bg-slate-50 text-slate-900">
+
             {/* Hero Section */}
-            <section className="px-6 py-28 text-center bg-gradient-to-b from-gray-50 to-white">
-                <div className="mx-auto max-w-4xl">
-                    <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                        ERP for the <span className="text-blue-600">Manufacturing Industry</span>
+            <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
+                {/* Background image */}
+                <div className="absolute inset-0 z-0">
+                    <div className="h-full w-full bg-[url('/site/manufacturing-hero.png')] bg-cover bg-center bg-no-repeat transform scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
+                </div>
+
+                {/* Centered content */}
+                <div className="relative z-10 px-4 max-w-5xl mx-auto mt-20">
+                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-900/30 backdrop-blur-md">
+                        <p className="text-xs font-bold tracking-[0.2em] uppercase text-blue-300">
+                            Manufacturing ERP Platform
+                        </p>
+                    </div>
+
+                    <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-2xl">
+                        Manufacture Smarter. <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-500">
+                            Scale Faster.
+                        </span>
                     </h1>
-                    <p className="mt-6 text-lg text-gray-600">
-                        Digitize production workflows with advanced planning, inventory, and quality control systems. 
-                        Gain real-time visibility into every stage of your manufacturing process.
+
+                    <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
+                        Digitize production, procurement, quality, and inventory with real-time factory intelligence.
+                        One platform for planning, execution, costing, and customer fulfilment.
                     </p>
 
-                    <div className="mt-10 flex justify-center gap-4">
+                    <div className="mt-10 flex flex-wrap justify-center gap-5">
                         <Link
                             href="/contact"
-                            className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                            className="group relative px-8 py-4 bg-blue-500 hover:bg-blue-400 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                         >
-                            Book a Demo
+                            <span className="relative z-10">Start Your Transformation</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" />
                         </Link>
                         <Link
                             href="#solutions"
-                            className="rounded-full border border-gray-300 px-6 py-3 text-sm text-gray-700 hover:bg-gray-100 transition"
+                            className="px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-white font-medium hover:bg-white/10 transition-all hover:border-white/40"
                         >
-                            Explore Features
+                            Explore Modules
                         </Link>
                     </div>
                 </div>
             </section>
 
+            {/* Visual Story (reuse hologram component) */}
+            <div className="-mt-[10vh] relative z-50">
+                <ConstructionHologram />
+            </div>
+
             {/* Who It's For */}
-            <section className="px-6 py-20">
+            <section className="px-6 py-20 bg-white">
                 <div className="mx-auto max-w-6xl">
-                    <h2 className="text-3xl font-semibold text-center mb-12">
-                        Built for Manufacturers
+                    <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+                        Built for every manufacturing workflow
                     </h2>
+                    <p className="text-center text-sm md:text-base text-slate-500 mb-12 max-w-2xl mx-auto">
+                        Whether you run discrete, process, or contract manufacturing — unify your production,
+                        planning, QC, costing, and dispatch operations in one ERP.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                        {[
+                            {
+                                title: "Discrete Manufacturers",
+                                pain: "Complex assemblies and multi-level BOMs slow production.",
+                                desc: "Streamline MRP, shop floor execution, and traceability from raw material to dispatch.",
+                                bullets: [
+                                    "Multi-level BOMs & routing",
+                                    "Real-time production tracking",
+                                ],
+                            },
+                            {
+                                title: "Process Manufacturers",
+                                pain: "Batch variations and QC failures disrupt consistency.",
+                                desc: "Manage recipes, batch QC, traceability, and yield calculations with precision.",
+                                bullets: [
+                                    "Batch & formula management",
+                                    "In-process QC automation",
+                                ],
+                            },
+                            {
+                                title: "Contract / Job-Work Units",
+                                pain: "Low visibility on job costing & material consumption.",
+                                desc: "Track issued materials, WIP, and job-wise profitability effortlessly.",
+                                bullets: [
+                                    "Job work order tracking",
+                                    "Material issue/return control",
+                                ],
+                            },
+                        ].map((item) => (
+                            <div
+                                key={item.title}
+                                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all"
+                            >
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-500 mb-2">
+                                    {item.pain}
+                                </p>
+                                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-3 text-sm text-slate-600">{item.desc}</p>
+
+                                <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
+                                    What you get
+                                </p>
+                                <ul className="mt-2 space-y-1 text-xs text-slate-600">
+                                    {item.bullets.map((point) => (
+                                        <li key={point} className="flex gap-2">
+                                            <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-blue-500" />
+                                            <span>{point}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+            </section>
+
+            {/* Manufacturing Feature Modules */}
+            <section id="solutions" className="px-6 py-24 bg-slate-50 overflow-hidden">
+                <div className="mx-auto max-w-7xl">
+
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+                            ERP modules built for modern manufacturing
+                        </h2>
+                        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                            Plan, execute, track, and optimize — gain real-time visibility into production, inventory,
+                            quality, costing, and supply chain operations.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {/* Production Planning */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-100 border-b relative overflow-hidden">
+                                <div className="absolute inset-x-6 top-6 bg-white rounded-t-xl shadow-lg border border-slate-200 p-4">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <div className="h-2 w-24 bg-slate-200 rounded-full" />
+                                        <div className="h-2 w-10 bg-blue-100 rounded-full" />
+                                    </div>
+                                    <div className="space-y-3">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="flex items-center justify-between text-[10px] pb-2 border-b border-slate-50">
+                                                <span className="text-slate-500 font-medium">Work Order #{i}</span>
+                                                <span className={`font-mono font-bold ${i === 2 ? 'text-red-500' : 'text-slate-700'}`}>
+                                                    {i === 2 ? "Delayed" : "On-Time"}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase mb-3">
+                                    Planning
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                    Production Planning & MRP
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Generate MRP, schedule work orders, and plan machine capacity for optimal throughput.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500" />MRP & MPS workflows</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500" />Machine load planning</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Quality Control */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-100 border-b relative overflow-hidden">
+                                <div className="absolute left-1/2 -translate-x-1/2 top-6 w-40 h-64 bg-gray-900 rounded-t-[2rem] p-2 shadow-2xl">
+                                    <div className="w-full h-full bg-white rounded-t-[1.5rem] overflow-hidden">
+                                        <div className="bg-blue-500 h-12 flex items-center justify-center text-white text-[10px] font-bold">
+                                            QC Check Report
+                                        </div>
+                                        <div className="p-3 space-y-2">
+                                            <div className="flex justify-between text-[10px] text-slate-600">
+                                                <span>Batch 2024-09A</span>
+                                                <span className="text-blue-500 font-bold">PASS</span>
+                                            </div>
+                                            <div className="h-1 w-full bg-slate-200 rounded-full">
+                                                <div className="h-full bg-blue-500 w-[85%] rounded-full" />
+                                            </div>
+                                            <p className="text-[9px] text-slate-500">85% compliance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase mb-3">
+                                    Quality
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                                    Quality Control & Compliance
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Track incoming, in-process, and final QC with automated rejection workflows.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />Batch & lot traceability</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />QC automation rules</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Inventory & Procurement */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+
+                            <div className="h-48 bg-slate-100 p-6 flex flex-col justify-center gap-3">
+                                <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 flex justify-between items-center">
+                                    <div>
+                                        <div className="text-[10px] font-bold text-slate-700">Steel Rod 12mm</div>
+                                        <div className="text-[9px] text-slate-400">Warehouse A</div>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="text-[10px] font-bold text-blue-600">5.4T</div>
+                                        <div className="text-[8px] text-emerald-500">In Stock</div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 flex justify-between items-center opacity-80">
+                                    <div>
+                                        <div className="text-[10px] font-bold text-slate-700">Chemical Solvent B</div>
+                                        <div className="text-[9px] text-slate-400">Tank 03</div>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="text-[10px] font-bold text-red-500">Low Stock</div>
+                                        <div className="text-[8px] text-slate-400">Reorder Level: 120L</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase mb-3">
+                                    Inventory
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                                    Inventory & Procurement Control
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Manage multi-location warehouses, reorder levels, and vendor rate contracts.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-orange-500" />Stock audits & GRNs</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-orange-500" />Vendor pricing history</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Job Costing */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+
+                            <div className="h-48 bg-slate-100 flex items-center justify-center">
+                                <div className="relative w-32 h-32">
+                                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                        <path className="text-slate-200" d="M18 2.0845a 16 16 0 1 1 0 32a 16 16 0 1 1 0 -32" fill="none" stroke="currentColor" strokeWidth="4" />
+                                        <path className="text-indigo-500" strokeDasharray="72, 100" d="M18 2.0845a 16 16 0 1 1 0 32a 16 16 0 1 1 0 -32" fill="none" strokeWidth="4" />
+                                    </svg>
+
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                        <span className="text-2xl font-bold text-slate-800">72%</span>
+                                        <span className="text-[9px] text-slate-500 uppercase">Cost Efficiency</span>
+                                    </div>
+
+                                    <div className="absolute -right-8 bottom-0 bg-white p-2 rounded-lg shadow-lg border border-slate-100 text-[9px]">
+                                        <span className="text-red-500 font-bold">⚠ Overrun Risk</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase mb-3">
+                                    Finance
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                    Job Costing & Profitability
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Compare planned vs. actual costs for materials, labor, and machine time.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />Cost leakage detection</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />Profitability dashboards</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Billing & Analytics */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+
+                            <div className="h-48 bg-slate-100 p-6 grid grid-cols-2 gap-3">
+                                <div className="bg-white p-3 rounded-xl shadow-sm border flex flex-col justify-between">
+                                    <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                        <svg className="w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div className="text-[16px] font-bold text-slate-900">₹2.4Cr</div>
+                                        <div className="text-[9px] text-slate-500">Sales</div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white p-3 rounded-xl shadow-sm border flex flex-col justify-between">
+                                    <div className="w-8 h-8 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center">
+                                        <svg className="w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeWidth="2" d="M12 8v4l3 3m6-3a 9 9 0 1 1 -18 0a 9 9 0 0 1 18 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div className="text-[16px] font-bold text-slate-900">9 Days</div>
+                                        <div className="text-[9px] text-slate-500">Avg. Collection</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-rose-50 text-rose-600 text-xs font-bold uppercase mb-3">
+                                    Analytics
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-rose-600 transition-colors">
+                                    Billing & Dashboards
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Automate billing from production and dispatch activities while monitoring cashflow health.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-rose-500" />Real-time KPIs</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-rose-500" />MIS reports</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* Sub-Industries */}
+            <section className="relative px-6 py-20 bg-white overflow-hidden">
+
+                <div className="pointer-events-none absolute inset-0">
+                    <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-blue-400/5 blur-[110px]" />
+                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-indigo-400/5 blur-[110px]" />
+                </div>
+
+                <div className="relative z-10 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+                    <div className="order-2 md:order-1 text-center md:text-left">
+                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-blue-500 mb-3">
+                            One platform, many production types
+                        </p>
+
+                        <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-slate-900">
+                            Configure workflows for every manufacturing vertical you operate in
+                        </h2>
+
+                        <p className="text-sm md:text-base text-slate-500 mb-6">
+                            One ERP core, multiple verticals — activate production rules, QC norms,
+                            BOM structures, and costing models unique to each product line.
+                        </p>
+
+                        <div className="mb-5 flex flex-wrap justify-center md:justify-start gap-2 text-[11px]">
+                            <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">Batch Control</span>
+                            <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">BOM Variants</span>
+                            <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">Unified Reports</span>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                            {[
+                                "Automobile Components",
+                                "Food & Beverages",
+                                "Chemicals & Plastics",
+                                "Engineering Goods",
+                                "Pharmaceuticals",
+                                "Textiles & Garments",
+                            ].map((name) => (
+                                <Link
+                                    key={name}
+                                    href="#"
+                                    className="rounded-full border border-slate-200 bg-white/70 px-6 py-2 text-xs md:text-sm font-medium text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all"
+                                >
+                                    {name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Manufacturing Dashboard 3D Component */}
+                    <div className="order-1 md:order-2 perspective-[1200px] group/3d">
+
+                        <div className="relative w-full aspect-[4/3] transition-all duration-700 ease-out transform-style-3d group-hover/3d:[transform:rotateY(-12deg)_rotateX(6deg)_scale(1.05)]">
+
+                            <div className="absolute inset-4 bg-blue-500/30 blur-3xl -z-10 transition-all group-hover/3d:bg-blue-500/50" />
+
+                            <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden flex flex-col">
+
+                                {/* Header */}
+                                <div className="relative z-10 px-6 py-4 border-b border-slate-700/50 flex justify-between items-center bg-slate-900/50">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex gap-1.5">
+                                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                                            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                                        </div>
+                                        <span className="text-[10px] font-mono text-slate-400 tracking-widest">
+                                            MANUFACTURING_OS
+                                        </span>
+                                    </div>
+
+                                    <div className="px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-bold text-blue-400 animate-pulse">
+                                        LIVE FACTORY SYNC
+                                    </div>
+                                </div>
+
+                                {/* Dashboard Stats */}
+                                <div className="relative z-10 p-6 grid grid-cols-2 gap-4 h-full">
+                                    {[
+                                        { label: "Work Orders", count: "42", unit: "Active", color: "from-blue-500 to-indigo-600", icon: "🛠️" },
+                                        { label: "Production", count: "87%", unit: "Efficiency", color: "from-emerald-500 to-teal-600", icon: "⚙️" },
+                                        { label: "Inventory", count: "11", unit: "Low Stock Items", color: "from-amber-500 to-orange-600", icon: "📦" },
+                                        { label: "QC", count: "96%", unit: "Pass Rate", color: "from-rose-500 to-pink-600", icon: "✔️" },
+                                    ].map((item, i) => (
+                                        <div
+                                            key={i}
+                                            className="group/card relative bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 transition-all transform-style-3d hover:bg-slate-700/50 hover:border-slate-600 group-hover/3d:[transform:translateZ(30px)] cursor-pointer"
+                                            style={{ transitionDelay: `${i * 50}ms` }}
+                                        >
+                                            <div className="flex justify-between items-start mb-3">
+                                                <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-sm`}>
+                                                    {item.icon}
+                                                </div>
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                            </div>
+                                            <div className="space-y-0.5">
+                                                <div className="text-2xl font-bold text-white tracking-tight">{item.count}</div>
+                                                <div className="text-[10px] uppercase tracking-wider text-slate-400">{item.unit}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="relative z-10 mt-auto px-6 py-3 border-t border-slate-700/50 bg-slate-900/50 flex justify-between items-center">
+                                    <div className="flex -space-x-2">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="w-5 h-5 rounded-full bg-slate-600 border border-slate-800" />
+                                        ))}
+                                    </div>
+                                    <div className="text-[9px] text-slate-500 font-mono">ALL SYSTEMS OPERATIONAL</div>
+                                </div>
+                            </div>
+
+                            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl shadow-2xl flex items-center justify-center group-hover/3d:[transform:translateZ(80px)_rotate(-10deg)]">
+                                <span className="text-2xl font-bold text-white">AI</span>
+                            </div>
+
+                            <div className="absolute -left-6 top-1/2 w-12 h-24 bg-slate-800/90 backdrop-blur-md border border-slate-600 rounded-xl shadow-xl flex flex-col items-center justify-evenly group-hover/3d:[transform:translateZ(50px)]">
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+                                ))}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Client Outcomes */}
+            <section className="px-6 py-20 bg-slate-100">
+                <div className="mx-auto max-w-6xl">
+                    <h2 className="text-3xl font-semibold text-center mb-4 text-slate-900">
+                        What manufacturers achieve with our ERP
+                    </h2>
+
+                    <p className="text-center text-sm md:text-base text-slate-600 mb-10 max-w-3xl mx-auto">
+                        Give plant heads, production managers, QA teams, and finance a unified view — reduce downtime,
+                        improve throughput, and increase profitability with data-driven manufacturing.
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
-                            "Discrete Manufacturers",
-                            "Process Industries",
-                            "Contract Manufacturers",
+                            {
+                                metric: "20–35%",
+                                label: "increase in production efficiency",
+                            },
+                            {
+                                metric: "30–50%",
+                                label: "reduction in material wastage & rework",
+                            },
+                            {
+                                metric: "100%",
+                                label: "traceability across batches, QC & dispatch",
+                            },
                         ].map((item) => (
                             <div
-                                key={item}
-                                className="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm hover:shadow-md transition"
+                                key={item.label}
+                                className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"
                             >
-                                <h3 className="text-lg font-medium">{item}</h3>
-                                <p className="mt-3 text-sm text-gray-600">
-                                    Optimize operations and maximize efficiency.
-                                </p>
+                                <p className="text-3xl font-bold text-blue-500">{item.metric}</p>
+                                <p className="mt-3 text-sm text-slate-700">{item.label}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Key Features */}
-            <section id="solutions" className="px-6 py-20 bg-gray-50">
-                <div className="mx-auto max-w-6xl">
-                    <h2 className="text-3xl font-semibold text-center mb-14">
-                        Manufacturing ERP Capabilities
-                    </h2>
+            <CTA />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {[
-                            {
-                                title: "Production Planning",
-                                desc: "Plan and optimize production schedules with precision.",
-                            },
-                            {
-                                title: "Quality Control",
-                                desc: "Maintain quality standards throughout the production process.",
-                            },
-                            {
-                                title: "Inventory Management",
-                                desc: "Track and manage inventory levels efficiently.",
-                            },
-                            {
-                                title: "Supply Chain Visibility",
-                                desc: "Monitor suppliers and materials in real time.",
-                            },
-                            {
-                                title: "Production Tracking",
-                                desc: "Track production progress and identify bottlenecks.",
-                            },
-                            {
-                                title: "Cost Management",
-                                desc: "Control costs and improve profitability.",
-                            },
-                        ].map((feature) => (
-                            <div
-                                key={feature.title}
-                                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition"
-                            >
-                                <h3 className="text-lg font-medium">{feature.title}</h3>
-                                <p className="mt-2 text-gray-600">{feature.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="px-6 py-20 text-center">
-                <div className="mx-auto max-w-2xl">
-                    <h2 className="text-3xl font-bold">Optimize Your Manufacturing Operations</h2>
-                    <p className="mt-4 text-gray-600">
-                        Join leading manufacturers using PRONIQ to increase efficiency and profitability.
-                    </p>
-                    <Link
-                        href="/contact"
-                        className="mt-8 inline-block rounded-full bg-blue-600 px-8 py-3 text-white font-semibold hover:bg-blue-700 transition"
-                    >
-                        Get Started Today
-                    </Link>
-                </div>
-            </section>
         </main>
     );
 }
