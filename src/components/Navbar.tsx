@@ -15,7 +15,7 @@ const links = [
 /* ✅ EXPLICIT INDUSTRY SLUGS (NO AUTO-GENERATION) */
 const industries = [
   { title: "Manufacturing", slug: "manufacturing" },
-  { title: "Interior Architecture", slug: "interior-architechture" },
+  { title: "Interior Architecture", slug: "interior-architecture" },
   { title: "Infrastructure", slug: "infrastructure" },
   { title: "Construction", slug: "construction" },
   { title: "Engineering", slug: "engineering" },
@@ -48,7 +48,7 @@ export default function Navbar() {
 
           {/* ---------- LOGO ---------- */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/proniq.png" alt="PRONIQ" className="w-9 h-8" />
+            <img src="/proniq.png" alt="PRONIQ" className="w-12 h-8" />
             <span className="text-lg font-bold text-slate-900">PRONIQ</span>
           </Link>
 
@@ -174,7 +174,7 @@ export default function Navbar() {
                   }`}
               />
               <span
-                className={`h-0.5 bg-slate-900 transition ${open && "opacity-0"
+                className={`h-0.5 bg-slate-900 transition ${open && "hidden"
                   }`}
               />
               <span
@@ -186,7 +186,7 @@ export default function Navbar() {
 
           {/* ---------- MOBILE MENU OVERLAY ---------- */}
           {open && (
-            <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl flex flex-col pt-24 px-6 animate-in slide-in-from-top-10 duration-200">
+            <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl flex flex-col pt-24 px-6 animate-in slide-in-from-top-10 duration-200 overflow-y-auto pb-10">
               <nav className="flex flex-col gap-4">
                 {links.map((l) => (
                   <Link

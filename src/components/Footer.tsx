@@ -32,10 +32,9 @@ export default function Footer() {
                             Empowering construction businesses with next-generation tools for seamless project management, from estimation to billing.
                         </p>
                         <div className="flex items-center gap-4 pt-2">
-                            <SocialLink href="#" icon={Twitter} label="Twitter" />
-                            <SocialLink href="#" icon={Linkedin} label="LinkedIn" />
-                            <SocialLink href="#" icon={Github} label="GitHub" />
-                            <SocialLink href="#" icon={Instagram} label="Instagram" />
+                            <SocialLink href="https://x.com/delta_infosoft/" icon={Twitter} label="Twitter" />
+                            <SocialLink href="https://www.linkedin.com/company/delta-infosoft/" icon={Linkedin} label="LinkedIn" />
+                            <SocialLink href="https://www.instagram.com/delta_infosoft/" icon={Instagram} label="Instagram" />
                         </div>
                     </div>
 
@@ -43,11 +42,11 @@ export default function Footer() {
                     <div className="lg:col-span-2 space-y-6">
                         <h3 className="text-white font-semibold text-lg">Industries</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="/features">Manufacturing</FooterLink>
-                            <FooterLink href="/pricing">Construction</FooterLink>
-                            <FooterLink href="/integrations">Interior Architecture</FooterLink>
-                            <FooterLink href="/changelog">Infrastructure</FooterLink>
-                            <FooterLink href="/docs">Engineering</FooterLink>
+                            <FooterLink href="/industries/manufacturing">Manufacturing</FooterLink>
+                            <FooterLink href="/industries/construction">Construction</FooterLink>
+                            <FooterLink href="/industries/interior-architecture">Interior Architecture</FooterLink>
+                            <FooterLink href="/industries/infrastructure">Infrastructure</FooterLink>
+                            <FooterLink href="/industries/engineering">Engineering</FooterLink>
                         </ul>
                     </div>
 
@@ -88,7 +87,7 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center gap-3 text-slate-400 text-sm">
                                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                                <a href="mailto:hello@proniq.com" className="hover:text-white transition-colors">hello@proniq.com</a>
+                                <a href="mailto:info@deltainfosoft.com" className="hover:text-white transition-colors">info@deltainfosoft.com</a>
                             </div>
                         </div>
                     </div>

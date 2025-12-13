@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import ConstructionHologram from "@/components/ConstructionHologram";
-import CTA from "@/components/CTA";
+import TransformCTA from "@/components/TransformCTA";
 
 export default function Construction() {
     return (
@@ -24,7 +26,7 @@ export default function Construction() {
 
                     <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-2xl">
                         Build Smarter. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-teal-500">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500">
                             Build Faster.
                         </span>
                     </h1>
@@ -36,10 +38,10 @@ export default function Construction() {
                     <div className="mt-10 flex flex-wrap justify-center gap-5">
                         <Link
                             href="/contact"
-                            className="group relative px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-bold shadow-[0_0_20px_rgba(20,184,166,0.5)] hover:shadow-[0_0_30px_rgba(20,184,166,0.7)] transition-all duration-300 overflow-hidden"
+                            className="group relative px-8 py-4 bg-teal-600 hover:bg-teal-500 text-white rounded-full font-bold shadow-[0_0_20px_rgba(20,184,166,0.5)] hover:shadow-[0_0_30px_rgba(20,184,166,0.7)] transition-all duration-300 overflow-hidden"
                         >
                             <span className="relative z-10">Start Your Transformation</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                            {/* <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" /> */}
                         </Link>
                         <Link
                             href="#solutions"
@@ -418,8 +420,8 @@ export default function Construction() {
             <section className="relative px-6 py-20 bg-white overflow-hidden">
                 {/* Soft background accents */}
                 <div className="pointer-events-none absolute inset-0">
-                    <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-primary/5 blur-[110px]" />
-                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-teal-400/5 blur-[110px]" />
+                    <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-teal-500/5 blur-[110px]" />
+                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-emerald-400/5 blur-[110px]" />
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -513,7 +515,7 @@ export default function Construction() {
                                                 <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-sm shadow-lg`}>
                                                     {item.icon}
                                                 </div>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.8)]" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-teal-500 shadow-[0_0_5px_rgba(16,185,129,0.8)]" />
                                             </div>
                                             <div className="space-y-0.5">
                                                 <div className="text-2xl font-bold text-white tracking-tight">{item.count}</div>
@@ -588,7 +590,7 @@ export default function Construction() {
                     </div>
                 </div>
             </section>
-            <CTA />
+            <TransformCTA />
         </main>
     );
 }

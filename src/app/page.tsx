@@ -8,9 +8,8 @@ import Benefits from "@/components/Benefits";
 import Industry from "@/components/Industry";
 import WhyChoose from "@/components/WhyChoose";
 import About from "@/components/About";
-import ContactCTA from "@/components/ContactCTA";
 import { useRef } from "react";
-import CTA from "@/components/CTA";
+import TransformCTA from "@/components/TransformCTA";
 
 export default function Home() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -38,14 +37,12 @@ export default function Home() {
       <Hero scrollToTimeline={scrollToTimeline} />
       <FeatureBento />
       <Timeline ref={timelineRef} />
-      <Screenshots />
       <Benefits />
       <Industry />
       <WhyChoose />
       <About />
       {/* CTA Section */}
-      <CTA />
-      <ContactCTA />
+      <TransformCTA />
     </div>
   );
 }

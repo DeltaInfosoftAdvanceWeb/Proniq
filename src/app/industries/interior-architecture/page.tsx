@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import ConstructionHologram from "@/components/ConstructionHologram";
-import CTA from "@/components/CTA";
+import TransformCTA from "@/components/TransformCTA";
 
 export default function InteriorArchitecture() {
     return (
@@ -16,15 +18,15 @@ export default function InteriorArchitecture() {
 
                 {/* Centered content */}
                 <div className="relative z-10 px-4 max-w-5xl mx-auto mt-20">
-                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-teal-400/30 bg-teal-900/30 backdrop-blur-md">
-                        <p className="text-xs font-bold tracking-[0.2em] uppercase text-teal-300">
+                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-purple-400/30 bg-purple-900/30 backdrop-blur-md">
+                        <p className="text-xs font-bold tracking-[0.2em] uppercase text-purple-300">
                             Interior & Architecture Workflow OS
                         </p>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-2xl">
                         Design Better. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-teal-500">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-500">
                             Deliver Faster.
                         </span>
                     </h1>
@@ -37,10 +39,10 @@ export default function InteriorArchitecture() {
                     <div className="mt-10 flex flex-wrap justify-center gap-5">
                         <Link
                             href="/contact"
-                            className="group relative px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(20,184,166,0.5)]"
+                            className="group relative px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(147,51,234,0.5)]"
                         >
                             <span className="relative z-10">Start Your Transformation</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" />
+                            {/* <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" /> */}
                         </Link>
                         <Link
                             href="#solutions"
@@ -101,12 +103,12 @@ export default function InteriorArchitecture() {
                         ].map((item) => (
                             <div
                                 key={item.title}
-                                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all"
+                                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-purple-200 transition-all"
                             >
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-500 mb-2">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-purple-500 mb-2">
                                     {item.pain}
                                 </p>
-                                <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                                <h3 className="text-lg font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
                                     {item.title}
                                 </h3>
                                 <p className="mt-3 text-sm text-slate-600">{item.desc}</p>
@@ -117,7 +119,7 @@ export default function InteriorArchitecture() {
                                 <ul className="mt-2 space-y-1 text-xs text-slate-600">
                                     {item.bullets.map((point) => (
                                         <li key={point} className="flex gap-2">
-                                            <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-teal-500" />
+                                            <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-purple-500" />
                                             <span>{point}</span>
                                         </li>
                                     ))}
@@ -151,7 +153,7 @@ export default function InteriorArchitecture() {
                                 <div className="absolute inset-x-6 top-6 bg-white rounded-t-xl shadow-lg border border-slate-200 p-4">
                                     <div className="flex justify-between items-center mb-3">
                                         <div className="h-2 w-20 bg-slate-200 rounded-full" />
-                                        <div className="h-2 w-8 bg-emerald-100 rounded-full" />
+                                        <div className="h-2 w-8 bg-purple-100 rounded-full" />
                                     </div>
                                     <div className="space-y-3">
                                         {[1, 2, 3].map(i => (
@@ -193,7 +195,7 @@ export default function InteriorArchitecture() {
                             <div className="h-48 bg-slate-100 relative overflow-hidden">
                                 <div className="absolute left-1/2 -translate-x-1/2 top-6 w-40 h-64 bg-slate-900 rounded-t-[2rem] p-2 shadow-2xl">
                                     <div className="w-full h-full bg-white rounded-t-[1.5rem] overflow-hidden">
-                                        <div className="bg-teal-500 h-12 flex items-center justify-center text-white text-[10px] font-bold">
+                                        <div className="bg-purple-500 h-12 flex items-center justify-center text-white text-[10px] font-bold">
                                             Site Progress
                                         </div>
                                         <div className="p-3 space-y-2">
@@ -205,13 +207,13 @@ export default function InteriorArchitecture() {
                                                 </div>
                                             </div>
 
-                                            <div className="p-2 bg-emerald-50 rounded-lg border border-emerald-100">
-                                                <div className="flex justify-between text-[8px] text-emerald-800 font-bold mb-1">
+                                            <div className="p-2 bg-purple-50 rounded-lg border border-purple-100">
+                                                <div className="flex justify-between text-[8px] text-purple-800 font-bold mb-1">
                                                     <span>Carpentry Work</span>
                                                     <span>72%</span>
                                                 </div>
-                                                <div className="w-full bg-emerald-200 h-1 rounded-full overflow-hidden">
-                                                    <div className="w-[72%] h-full bg-emerald-500" />
+                                                <div className="w-full bg-purple-200 h-1 rounded-full overflow-hidden">
+                                                    <div className="w-[72%] h-full bg-purple-500" />
                                                 </div>
                                             </div>
 
@@ -221,10 +223,10 @@ export default function InteriorArchitecture() {
                             </div>
 
                             <div className="p-8 flex-1 flex flex-col">
-                                <span className="inline-block py-1 px-3 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase mb-3">
+                                <span className="inline-block py-1 px-3 rounded-full bg-purple-50 text-purple-600 text-xs font-bold uppercase mb-3">
                                     Execution
                                 </span>
-                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
                                     Site Execution Tracking
                                 </h3>
                                 <p className="text-slate-600 text-sm leading-relaxed mt-3 flex-1">
@@ -232,8 +234,8 @@ export default function InteriorArchitecture() {
                                     from the site engineer’s mobile app.
                                 </p>
                                 <ul className="space-y-2 text-xs text-slate-500 font-medium mt-4">
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />Geo-tagged site photos</li>
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />Snag list management</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500" />Geo-tagged site photos</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500" />Snag list management</li>
                                 </ul>
                             </div>
                         </div>
@@ -356,10 +358,10 @@ export default function InteriorArchitecture() {
                             </div>
 
                             <div className="p-8 flex-1 flex flex-col">
-                                <span className="inline-block py-1 px-3 rounded-full bg-purple-50 text-purple-600 text-xs font-bold uppercase mb-3">
+                                <span className="inline-block py-1 px-3 rounded-full bg-pink-50 text-pink-600 text-xs font-bold uppercase mb-3">
                                     Approvals
                                 </span>
-                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pink-600 transition-colors">
                                     Drawing & Material Approvals
                                 </h3>
                                 <p className="text-slate-600 text-sm leading-relaxed mt-3 flex-1">
@@ -367,8 +369,8 @@ export default function InteriorArchitecture() {
                                     time-stamped approvals in one place.
                                 </p>
                                 <ul className="space-y-2 text-xs text-slate-500 font-medium mt-4">
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500" />Client portal access</li>
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500" />Revision control</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-pink-500" />Client portal access</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-pink-500" />Revision control</li>
                                 </ul>
                             </div>
                         </div>
@@ -425,14 +427,14 @@ export default function InteriorArchitecture() {
             <section className="relative px-6 py-20 bg-white overflow-hidden">
 
                 <div className="pointer-events-none absolute inset-0">
-                    <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-primary/5 blur-[110px]" />
-                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-teal-400/5 blur-[110px]" />
+                    <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-purple-500/5 blur-[110px]" />
+                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-pink-400/5 blur-[110px]" />
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                     <div className="order-2 md:order-1 text-center md:text-left">
-                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-teal-500 mb-3">
+                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-purple-500 mb-3">
                             One platform, many design verticals
                         </p>
 
@@ -476,7 +478,7 @@ export default function InteriorArchitecture() {
 
                         <div className="relative w-full aspect-[4/3] transition-all duration-700 ease-out transform-style-3d group-hover/3d:[transform:rotateY(-12deg)_rotateX(6deg)_scale(1.05)]">
 
-                            <div className="absolute inset-4 bg-teal-500/30 blur-3xl -z-10 transition-all group-hover/3d:bg-teal-500/50" />
+                            <div className="absolute inset-4 bg-purple-500/30 blur-3xl -z-10 transition-all group-hover/3d:bg-purple-500/50" />
 
                             <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden flex flex-col">
 
@@ -493,7 +495,7 @@ export default function InteriorArchitecture() {
                                         </span>
                                     </div>
 
-                                    <div className="px-2 py-1 rounded bg-teal-500/10 border border-teal-500/20 text-[9px] font-bold text-teal-400 animate-pulse">
+                                    <div className="px-2 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-[9px] font-bold text-purple-400 animate-pulse">
                                         LIVE SYNC
                                     </div>
                                 </div>
@@ -515,7 +517,7 @@ export default function InteriorArchitecture() {
                                                 <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-sm`}>
                                                     {item.icon}
                                                 </div>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                                             </div>
                                             <div className="space-y-0.5">
                                                 <div className="text-2xl font-bold text-white tracking-tight">{item.count}</div>
@@ -536,7 +538,7 @@ export default function InteriorArchitecture() {
 
                             </div>
 
-                            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-2xl shadow-2xl flex items-center justify-center group-hover/3d:[transform:translateZ(80px)_rotate(-10deg)]">
+                            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-2xl flex items-center justify-center group-hover/3d:[transform:translateZ(80px)_rotate(-10deg)]">
                                 <span className="text-2xl font-bold text-white">AI</span>
                             </div>
 
@@ -583,7 +585,7 @@ export default function InteriorArchitecture() {
                                 key={item.label}
                                 className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"
                             >
-                                <p className="text-3xl font-bold text-emerald-500">{item.metric}</p>
+                                <p className="text-3xl font-bold text-purple-500">{item.metric}</p>
                                 <p className="mt-3 text-sm text-slate-700">{item.label}</p>
                             </div>
                         ))}
@@ -591,7 +593,7 @@ export default function InteriorArchitecture() {
                 </div>
             </section>
 
-            <CTA />
+            <TransformCTA />
 
         </main>
     );

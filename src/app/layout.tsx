@@ -20,6 +20,10 @@ import SmoothScroll from "@/components/SmoothScroll";
 // });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/proniq.png",
+    apple: "/proniq.png",
+  },
   title: "PRONIQ — Premium Single‑Product Landing",
   description:
     "A clean, modern, luxury‑grade product landing crafted with Next.js and Tailwind.",

@@ -18,7 +18,7 @@ const features = [
 
 function FeatureBubbles() {
   return (
-    <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center">
+    <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center scale-[0.85] sm:scale-100">
       {/* Ambient Glows */}
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-3xl animate-pulse" />
 
@@ -105,19 +105,19 @@ function FeatureBubbles() {
           >
             <motion.button
               className={`
-                  relative group flex items-center gap-2 px-4 py-2.5 rounded-full 
+                  relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
                   bg-white border border-slate-100 shadow-lg shadow-slate-200/50
                   hover:shadow-xl hover:scale-105 transition-all duration-300
                   -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
                 `}
             >
               <div className={`
-                  w-8 h-8 rounded-full flex items-center justify-center text-white text-sm
+                  w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs sm:text-sm
                   bg-gradient-to-br ${feature.color} shadow-inner
                 `}>
                 {feature.icon}
               </div>
-              <span className="font-semibold text-slate-700 text-sm group-hover:text-slate-900">
+              <span className="hidden sm:block font-semibold text-slate-700 text-sm group-hover:text-slate-900">
                 {feature.label}
               </span>
 
@@ -136,7 +136,7 @@ function FeatureBubbles() {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24">
+    <section id="about" className="relative py-24 overflow-hidden">
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-16 md:grid-cols-2">
           {/* Left column: text */}
@@ -169,11 +169,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
-            <button className="group flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
-              Learn more about our team{" "}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           {/* Right column: bubbles */}

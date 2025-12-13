@@ -9,10 +9,10 @@ export default function WhyChoose() {
   const stats = [
     {
       label: "Performance Boost",
-      value: "+38%",
+      value: "+30%",
       description: "Increase in operational efficiency for construction teams.",
       icon: BoltIcon,
-      trend: "Proven Impact",
+      trend: "Highest Efficiency",
     },
     {
       label: "Time Saved",
@@ -20,11 +20,11 @@ export default function WhyChoose() {
       suffix: "/mo",
       description: "Average time saved on manual tracking and reporting.",
       icon: ClockIcon,
-      trend: "High Efficiency",
+      trend: "Proven Impact",
     },
     {
       label: "Client Satisfaction",
-      value: "95%",
+      value: "98%",
       description: "Of our partners report better project control and clarity.",
       icon: HandThumbUpIcon,
       trend: "Top Rated",

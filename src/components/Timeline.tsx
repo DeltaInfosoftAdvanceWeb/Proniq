@@ -23,7 +23,8 @@ import {
   AlertCircle,
   Minus,
   Maximize,
-  Plus
+  Plus,
+  Move
 } from 'lucide-react';
 
 /* ========================================================
@@ -459,6 +460,10 @@ function Flow({ ref }: { ref: any }) {
             to billing and analytics — ensuring full visibility and
             accountability at every stage.
           </p>
+          <div className="mt-4 md:hidden flex items-center justify-center gap-2 text-sm text-slate-400 animate-pulse">
+            <Move className="w-4 h-4" />
+            <span>Pinch to zoom & drag to explore</span>
+          </div>
         </div>
       </div>
       <div className="relative flex-1">
@@ -486,7 +491,7 @@ function Flow({ ref }: { ref: any }) {
             <Background gap={24} size={1} color="#e2e8f0" />
             <ZoomControls />
             <MiniMap
-              className="!bg-white !border !border-slate-200 !shadow-lg rounded-xl overflow-hidden m-4"
+              className="!bg-white !border !border-slate-200 !shadow-lg rounded-xl overflow-hidden m-4 hidden md:block"
               nodeColor={(n) => {
                 if (n.type === 'dashboard') return '#4f46e5';
                 if (n.type === 'approval') return '#f59e0b';

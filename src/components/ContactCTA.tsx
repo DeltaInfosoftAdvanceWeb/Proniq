@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, MapPin, Send, Building2, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Building2, Linkedin, Instagram, Facebook } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -49,21 +49,21 @@ const socialLinks = [
     handle: "Delta Infosoft Pvt. Ltd.",
     icon: Linkedin,
     color: "from-blue-600 to-blue-400",
-    url: "#",
+    url: "https://in.linkedin.com/company/delta-infosoft-pvt-ltd",
   },
   {
-    platform: "Twitter/X",
-    handle: "@delta_infosoft",
-    icon: Twitter,
+    platform: "Instagram",
+    handle: "Delta Infosoft",
+    icon: Instagram,
     color: "from-sky-500 to-blue-400",
-    url: "#",
+    url: "https://www.instagram.com/delta_infosoft/",
   },
   {
     platform: "Facebook",
     handle: "Delta Infosoft",
     icon: Facebook,
     color: "from-blue-700 to-blue-500",
-    url: "#",
+    url: "https://www.facebook.com/delta_infosoft/",
   },
 ];
 

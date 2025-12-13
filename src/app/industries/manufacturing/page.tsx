@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import ConstructionHologram from "@/components/ConstructionHologram";
-import CTA from "@/components/CTA";
+import TransformCTA from "@/components/TransformCTA";
 
 export default function Manufacturing() {
     return (
@@ -16,15 +18,15 @@ export default function Manufacturing() {
 
                 {/* Centered content */}
                 <div className="relative z-10 px-4 max-w-5xl mx-auto mt-20">
-                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-900/30 backdrop-blur-md">
-                        <p className="text-xs font-bold tracking-[0.2em] uppercase text-blue-300">
+                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-900/30 backdrop-blur-md">
+                        <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-300">
                             Manufacturing ERP Platform
                         </p>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-2xl">
                         Manufacture Smarter. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-500">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
                             Scale Faster.
                         </span>
                     </h1>
@@ -37,10 +39,10 @@ export default function Manufacturing() {
                     <div className="mt-10 flex flex-wrap justify-center gap-5">
                         <Link
                             href="/contact"
-                            className="group relative px-8 py-4 bg-blue-500 hover:bg-blue-400 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                            className="group relative px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)]"
                         >
                             <span className="relative z-10">Start Your Transformation</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" />
+                            {/* <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" /> */}
                         </Link>
                         <Link
                             href="#solutions"
@@ -101,12 +103,12 @@ export default function Manufacturing() {
                         ].map((item) => (
                             <div
                                 key={item.title}
-                                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all"
+                                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-cyan-200 transition-all"
                             >
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-500 mb-2">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-600 mb-2">
                                     {item.pain}
                                 </p>
-                                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                <h3 className="text-lg font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">
                                     {item.title}
                                 </h3>
                                 <p className="mt-3 text-sm text-slate-600">{item.desc}</p>
@@ -117,7 +119,7 @@ export default function Manufacturing() {
                                 <ul className="mt-2 space-y-1 text-xs text-slate-600">
                                     {item.bullets.map((point) => (
                                         <li key={point} className="flex gap-2">
-                                            <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-blue-500" />
+                                            <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-cyan-500" />
                                             <span>{point}</span>
                                         </li>
                                     ))}
@@ -151,7 +153,7 @@ export default function Manufacturing() {
                                 <div className="absolute inset-x-6 top-6 bg-white rounded-t-xl shadow-lg border border-slate-200 p-4">
                                     <div className="flex justify-between items-center mb-3">
                                         <div className="h-2 w-24 bg-slate-200 rounded-full" />
-                                        <div className="h-2 w-10 bg-blue-100 rounded-full" />
+                                        <div className="h-2 w-10 bg-cyan-100 rounded-full" />
                                     </div>
                                     <div className="space-y-3">
                                         {[1, 2, 3].map(i => (
@@ -186,18 +188,18 @@ export default function Manufacturing() {
                         {/* Quality Control */}
                         <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
                             <div className="h-48 bg-slate-100 border-b relative overflow-hidden">
-                                <div className="absolute left-1/2 -translate-x-1/2 top-6 w-40 h-64 bg-gray-900 rounded-t-[2rem] p-2 shadow-2xl">
+                                <div className="absolute left-1/2 -translate-x-1/2 top-6 w-40 h-64 bg-slate-900 rounded-t-[2rem] p-2 shadow-2xl">
                                     <div className="w-full h-full bg-white rounded-t-[1.5rem] overflow-hidden">
-                                        <div className="bg-blue-500 h-12 flex items-center justify-center text-white text-[10px] font-bold">
+                                        <div className="bg-cyan-500 h-12 flex items-center justify-center text-white text-[10px] font-bold">
                                             QC Check Report
                                         </div>
                                         <div className="p-3 space-y-2">
                                             <div className="flex justify-between text-[10px] text-slate-600">
                                                 <span>Batch 2024-09A</span>
-                                                <span className="text-blue-500 font-bold">PASS</span>
+                                                <span className="text-cyan-500 font-bold">PASS</span>
                                             </div>
                                             <div className="h-1 w-full bg-slate-200 rounded-full">
-                                                <div className="h-full bg-blue-500 w-[85%] rounded-full" />
+                                                <div className="h-full bg-cyan-500 w-[85%] rounded-full" />
                                             </div>
                                             <p className="text-[9px] text-slate-500">85% compliance</p>
                                         </div>
@@ -206,18 +208,18 @@ export default function Manufacturing() {
                             </div>
 
                             <div className="p-8 flex flex-col flex-1">
-                                <span className="inline-block py-1 px-3 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase mb-3">
+                                <span className="inline-block py-1 px-3 rounded-full bg-cyan-50 text-cyan-600 text-xs font-bold uppercase mb-3">
                                     Quality
                                 </span>
-                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">
                                     Quality Control & Compliance
                                 </h3>
                                 <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
                                     Track incoming, in-process, and final QC with automated rejection workflows.
                                 </p>
                                 <ul className="space-y-2 text-xs font-medium text-slate-500">
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />Batch & lot traceability</li>
-                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500" />QC automation rules</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />Batch & lot traceability</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />QC automation rules</li>
                                 </ul>
                             </div>
                         </div>
@@ -359,13 +361,13 @@ export default function Manufacturing() {
 
                 <div className="pointer-events-none absolute inset-0">
                     <div className="absolute -top-[25%] -left-[10%] h-[50%] w-[50%] rounded-full bg-blue-400/5 blur-[110px]" />
-                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-indigo-400/5 blur-[110px]" />
+                    <div className="absolute bottom-[-25%] -right-[15%] h-[45%] w-[45%] rounded-full bg-cyan-400/5 blur-[110px]" />
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                     <div className="order-2 md:order-1 text-center md:text-left">
-                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-blue-500 mb-3">
+                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-cyan-500 mb-3">
                             One platform, many production types
                         </p>
 
@@ -409,7 +411,7 @@ export default function Manufacturing() {
 
                         <div className="relative w-full aspect-[4/3] transition-all duration-700 ease-out transform-style-3d group-hover/3d:[transform:rotateY(-12deg)_rotateX(6deg)_scale(1.05)]">
 
-                            <div className="absolute inset-4 bg-blue-500/30 blur-3xl -z-10 transition-all group-hover/3d:bg-blue-500/50" />
+                            <div className="absolute inset-4 bg-cyan-500/30 blur-3xl -z-10 transition-all group-hover/3d:bg-cyan-500/50" />
 
                             <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden flex flex-col">
 
@@ -426,7 +428,7 @@ export default function Manufacturing() {
                                         </span>
                                     </div>
 
-                                    <div className="px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-bold text-blue-400 animate-pulse">
+                                    <div className="px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-[9px] font-bold text-cyan-400 animate-pulse">
                                         LIVE FACTORY SYNC
                                     </div>
                                 </div>
@@ -434,7 +436,7 @@ export default function Manufacturing() {
                                 {/* Dashboard Stats */}
                                 <div className="relative z-10 p-6 grid grid-cols-2 gap-4 h-full">
                                     {[
-                                        { label: "Work Orders", count: "42", unit: "Active", color: "from-blue-500 to-indigo-600", icon: "🛠️" },
+                                        { label: "Work Orders", count: "42", unit: "Active", color: "from-blue-500 to-cyan-600", icon: "🛠️" },
                                         { label: "Production", count: "87%", unit: "Efficiency", color: "from-emerald-500 to-teal-600", icon: "⚙️" },
                                         { label: "Inventory", count: "11", unit: "Low Stock Items", color: "from-amber-500 to-orange-600", icon: "📦" },
                                         { label: "QC", count: "96%", unit: "Pass Rate", color: "from-rose-500 to-pink-600", icon: "✔️" },
@@ -448,7 +450,7 @@ export default function Manufacturing() {
                                                 <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-sm`}>
                                                     {item.icon}
                                                 </div>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                                             </div>
                                             <div className="space-y-0.5">
                                                 <div className="text-2xl font-bold text-white tracking-tight">{item.count}</div>
@@ -468,7 +470,7 @@ export default function Manufacturing() {
                                 </div>
                             </div>
 
-                            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl shadow-2xl flex items-center justify-center group-hover/3d:[transform:translateZ(80px)_rotate(-10deg)]">
+                            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl shadow-2xl flex items-center justify-center group-hover/3d:[transform:translateZ(80px)_rotate(-10deg)]">
                                 <span className="text-2xl font-bold text-white">AI</span>
                             </div>
 
@@ -514,7 +516,7 @@ export default function Manufacturing() {
                                 key={item.label}
                                 className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"
                             >
-                                <p className="text-3xl font-bold text-blue-500">{item.metric}</p>
+                                <p className="text-3xl font-bold text-cyan-500">{item.metric}</p>
                                 <p className="mt-3 text-sm text-slate-700">{item.label}</p>
                             </div>
                         ))}
@@ -522,7 +524,7 @@ export default function Manufacturing() {
                 </div>
             </section>
 
-            <CTA />
+            <TransformCTA />
 
         </main>
     );
