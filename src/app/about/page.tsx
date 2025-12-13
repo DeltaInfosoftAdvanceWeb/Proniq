@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import ProductCarousel from "@/components/ProductCarousel";
+import TransformCTA from "@/components/TransformCTA";
 
 export default function Page() {
   return (
@@ -19,6 +20,7 @@ export default function Page() {
       </section>
       <About />
       <ProductCarousel />
+      <TransformCTA />
     </main>
   );
 }

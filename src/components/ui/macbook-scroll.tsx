@@ -68,7 +68,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-75 transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-90 md:scale-100 md:pt-40 md:pb-80"
+      className="flex min-h-[100vh] md:min-h-[200vh] shrink-0 scale-[0.5] transform flex-col items-center justify-start pt-10 pb-10 [perspective:800px] sm:scale-75 md:scale-100 md:pt-40 md:pb-80"
     >
       <motion.h2
         style={{
@@ -191,7 +191,7 @@ export const Lid = ({
               ease: "easeInOut"
             }
           }}
-          className="absolute left-[-220px] top-[25%] group cursor-pointer"
+          className="hidden md:block absolute left-[-220px] top-[25%] group cursor-pointer"
         >
           <div className="relative">
             {/* Glowing connection line */}
@@ -271,7 +271,7 @@ export const Lid = ({
               ease: "easeInOut"
             }
           }}
-          className="absolute right-[-220px] top-[25%] group cursor-pointer"
+          className="hidden md:block absolute right-[-220px] top-[25%] group cursor-pointer"
         >
           <div className="relative">
             {/* Glowing connection line */}

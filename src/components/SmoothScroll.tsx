@@ -2,34 +2,32 @@
 
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
+import { usePathname } from "next/navigation";
 
 export default function SmoothScroll() {
+    const pathname = usePathname();
+
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.5,
+            duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smoothWheel: true,
-            smoothTouch: true,
             touchMultiplier: 1.5,
-            wheelMultiplier: 1,
+            wheelMultiplier: 1.2,
             infinite: false,
-            normalizeWheel: true,
         });
-
-        let frame: number;
 
         const raf = (time: number) => {
             lenis.raf(time);
-            frame = requestAnimationFrame(raf);
+            requestAnimationFrame(raf);
         };
 
-        frame = requestAnimationFrame(raf);
+        requestAnimationFrame(raf);
 
         return () => {
-            cancelAnimationFrame(frame);
             lenis.destroy();
         };
-    }, []);
+    }, [pathname]);
 
     return null;
 }
