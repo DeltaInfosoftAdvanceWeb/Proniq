@@ -11,7 +11,7 @@ export default function Engineering() {
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/site/construction-hero-sunset.png')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
+                    <div className="h-full w-full bg-[url('/site/engineering.png')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
                     {/* Gradient overlay for cinematic feel */}
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>

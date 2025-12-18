@@ -168,7 +168,7 @@ export const Lid = ({
         <img
           src={src as string}
           alt="aceternity logo"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+          className="absolute inset-0 h-full w-full rounded-lg object-fill object-left-top"
         />
 
         {/* Left side popup annotation - Enhanced with glassmorphism */}

@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Factory, Ruler, Building2, HardHat, Building, ArrowRight, CheckCircle2, Sparkles, Layers } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
 import TransformCTA from "@/components/TransformCTA";
 
 const industries = [
@@ -16,7 +15,7 @@ const industries = [
         description:
             "Digitize production workflows with advanced planning, inventory, and quality control systems. Gain real-time visibility into every stage of your manufacturing process.",
         features: ["Production Planning", "Quality Control", "Inventory Management"],
-        image: "/manufacturing.jpeg",
+        image: "/site/manu.png",
         gradient: "from-blue-600 to-cyan-500",
         shadow: "shadow-blue-500/20",
         accent: "text-blue-600",
@@ -30,7 +29,7 @@ const industries = [
         description:
             "Manage design projects, materials, vendors, and clients from a single unified platform. Streamline communication and ensure every detail is perfect.",
         features: ["Project Tracking", "Vendor Management", "Client Portal"],
-        image: "/interior.jpeg",
+        image: "/site/interior.png",
         gradient: "from-purple-600 to-pink-500",
         shadow: "shadow-purple-500/20",
         accent: "text-purple-600",
@@ -44,7 +43,7 @@ const industries = [
         description:
             "Control large-scale infrastructure programs with precision planning and real-time reporting. Keep multi-year projects on track and within budget.",
         features: ["Program Management", "Real-time Reporting", "Budget Tracking"],
-        image: "/infra.jpeg",
+        image: "/site/infra.png",
         gradient: "from-orange-500 to-amber-500",
         shadow: "shadow-orange-500/20",
         accent: "text-orange-600",
@@ -58,7 +57,7 @@ const industries = [
         description:
             "Track site progress, subcontractors, safety, and billing with live project visibility. Connect the field to the office seamlessly.",
         features: ["Site Management", "Safety Compliance", "Subcontractor Portal"],
-        image: "/construnction.jpeg",
+        image: "/site/construction-hero-sunset.png",
         gradient: "from-emerald-600 to-teal-500",
         shadow: "shadow-emerald-500/20",
         accent: "text-emerald-600",
@@ -72,7 +71,7 @@ const industries = [
         description:
             "Streamline engineering workflows with drawing control, approvals, and version history. Ensure technical accuracy and compliance at every step.",
         features: ["Document Control", "Approval Workflows", "Version History"],
-        image: "/engineering.jpeg",
+        image: "/site/engineering.png",
         gradient: "from-indigo-600 to-blue-500",
         shadow: "shadow-indigo-500/20",
         accent: "text-indigo-600",
@@ -81,14 +80,11 @@ const industries = [
 ];
 
 export default function IndustriesPage() {
-    const [activeIndustry, setActiveIndustry] = useState(industries[0]);
-    const containerRef = useRef<HTMLDivElement>(null);
-
     return (
         <main className="bg-white text-slate-900 selection:bg-teal-500/20 selection:text-teal-700 font-sans">
 
             {/* ---------------- HERO SECTION ---------------- */}
-            <section className="relative min-h-[60vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
@@ -103,212 +99,173 @@ export default function IndustriesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-bold tracking-widest uppercase mb-8 shadow-sm">
-                            <Layers className="w-3 h-3 text-teal-500 " />
-                            <span>Industries We Serve</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-bold tracking-[0.2em] uppercase mb-8 shadow-sm">
+                            <Layers className="w-4 h-4 text-teal-500 " />
+                            <span>Sectors.01 — 05</span>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-slate-900">
-                            Tailored Solutions for <br />
-                            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 text-gradient">
-                                Complex Operations
+                        <h1 className="text-6xl md:text-8xl font-bold mb-10 tracking-tight leading-[1] text-slate-900">
+                            Our Industry <br />
+                            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">
+                                Ecosystems
                             </span>
                         </h1>
 
-                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-500 leading-relaxed font-light">
-                            One platform, infinite possibilities. We've built specialized modules that adapt to the unique DNA of your industry—from the factory floor to the construction site.
+                        <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-500 leading-relaxed font-light">
+                            Specialized modules engineered to adapt to your unique DNA—from the factory floor to the construction site.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* ---------------- STICKY SCROLL CONTAINER ---------------- */}
-            <section className="relative border-t border-slate-100" ref={containerRef}>
-                <div className="hidden lg:flex max-w-[1600px] mx-auto">
+            {/* ---------------- INDUSTRY REVEAL SECTIONS ---------------- */}
+            <div className="relative">
+                {industries.map((industry, index) => (
+                    <section key={industry.id} className="relative min-h-screen lg:min-h-[90vh] flex items-center py-20 lg:py-0 border-b border-slate-100 last:border-0 overflow-hidden">
+                        {/* Subtle background element for each section */}
+                        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] pointer-events-none" />
 
-                    {/* LEFT: Scrollable Content List */}
-                    <div className="w-[45%] py-20 pl-8 pr-12 xl:pl-24 relative z-10">
-                        <div className="space-y-40 pb-[20vh]">
-                            {industries.map((industry, index) => (
+                        <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10">
+                            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center`}>
+
+                                {/* Image Column: Consistently on the left for "In Front" requirement */}
                                 <motion.div
-                                    key={industry.id}
-                                    className="group"
-                                    initial={{ opacity: 0.2 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ amount: 0.6, margin: "-20% 0px -20% 0px" }}
-                                    onViewportEnter={() => setActiveIndustry(industry)}
+                                    className={`relative lg:order-1`}
+                                    initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <div className="flex items-start gap-6">
-                                        {/* Number/Icon Indicator */}
-                                        <div className="hidden md:flex flex-col items-center gap-4 pt-1">
-                                            <span className="text-sm font-mono font-bold text-slate-300">0{index + 1}</span>
-                                            <div className={`w-px h-24 bg-gradient-to-b ${activeIndustry.id === industry.id ? 'from-slate-300 to-transparent' : 'from-slate-100 to-transparent'}`} />
+                                    {/* Premium Image Frame */}
+                                    <div className="relative aspect-[4/5] lg:aspect-[16/11] rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.12)] border-[12px] border-white group">
+                                        <Image
+                                            src={industry.image}
+                                            alt={industry.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-[4s] ease-out"
+                                            priority={index < 2}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
+
+                                        {/* Corner HUD */}
+                                        <div className="absolute top-10 left-10">
+                                            <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/20 text-white font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                                                <industry.icon className="w-5 h-5 text-teal-400" />
+                                                <span>Deploy.OS_{industry.id.substring(0, 3)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Atmospheric Glow */}
+                                    <div className={`absolute -inset-20 bg-gradient-to-br ${industry.gradient} opacity-[0.06] blur-[140px] rounded-full -z-10`} />
+                                </motion.div>
+
+                                {/* Content Column: Consistently on the right */}
+                                <motion.div
+                                    className={`relative lg:order-2`}
+                                    initial={{ opacity: 0, x: 50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ duration: 0.8, delay: 0.2 }}
+                                >
+                                    <div className="space-y-10">
+                                        <div className="flex items-center gap-6">
+                                            <span className="text-xl font-mono font-bold text-slate-200 tracking-[0.4em]">0{index + 1}</span>
+                                            <div className={`h-px w-16 bg-gradient-to-r ${industry.gradient}`} />
+                                            <span className={`text-sm font-bold uppercase tracking-[0.3em] ${industry.accent}`}>Professional Solutions</span>
                                         </div>
 
-                                        <div className="flex-1">
-                                            <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${industry.gradient} text-white mb-6 shadow-lg shadow-current/20 transform group-hover:scale-110 transition-transform duration-300`}>
-                                                <industry.icon className="w-7 h-7" />
-                                            </div>
-
-                                            <h2 className="text-4xl font-bold mb-4 text-slate-900 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-600 transition-all">
+                                        <h2 className="text-5xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1] transition-colors">
+                                            Next-Gen <br />
+                                            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${industry.gradient}`}>
                                                 {industry.title}
-                                            </h2>
+                                            </span>
+                                        </h2>
 
-                                            <p className="text-lg text-slate-600 mb-8 leading-relaxed font-light">
-                                                {industry.description}
-                                            </p>
+                                        <p className="text-xl lg:text-3xl text-slate-500 font-light leading-relaxed max-w-xl">
+                                            {industry.description}
+                                        </p>
 
-                                            <div className="mb-8">
-                                                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Key Capabilities</h4>
-                                                <div className="flex flex-wrap gap-3">
-                                                    {industry.features.map((feature, i) => (
-                                                        <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-sm font-medium text-slate-600">
-                                                            <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${industry.gradient}`} />
-                                                            {feature}
-                                                        </span>
-                                                    ))}
-                                                </div>
+                                        <div className="space-y-5 pt-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">Standard Capabilities</p>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {industry.features.map((feature, i) => (
+                                                    <div key={i} className="flex items-center gap-4 p-5 rounded-3xl bg-slate-50/50 border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:border-slate-200 group/item">
+                                                        <div className={`shrink-0 w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center transition-transform group-hover/item:scale-110`}>
+                                                            <CheckCircle2 className={`w-5 h-5 ${industry.accent}`} />
+                                                        </div>
+                                                        <span className="text-slate-700 font-semibold text-lg">{feature}</span>
+                                                    </div>
+                                                ))}
                                             </div>
+                                        </div>
 
+                                        <div className="pt-10">
                                             <Link
                                                 href={`/industries/${industry.slug}`}
-                                                className={`inline-flex items-center gap-2 font-bold transition-all group/link ${industry.accent}`}
+                                                className={`group/link inline-flex items-center gap-5 py-6 px-12 rounded-full bg-slate-900 text-white font-bold text-xl transition-all hover:bg-slate-800 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-95`}
                                             >
-                                                <span className="border-b-2 border-transparent group-hover/link:border-current">Explore Solution</span>
-                                                <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
+                                                Explore Ecosystem
+                                                <ArrowRight className="w-6 h-6 transform group-hover/link:translate-x-2 transition-transform duration-300" />
                                             </Link>
                                         </div>
                                     </div>
                                 </motion.div>
-                            ))}
+
+                            </div>
                         </div>
+                    </section>
+                ))}
+            </div>
+
+            {/* ---------------- PLATFORM SHOWCASE ---------------- */}
+            <section className="py-40 bg-slate-950 overflow-hidden relative">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05] pointer-events-none" />
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <div className="text-center mb-32">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold tracking-[0.3em] uppercase mb-8">
+                            <Sparkles className="w-5 h-5" />
+                            <span>System Modules</span>
+                        </div>
+                        <h2 className="text-5xl md:text-8xl font-bold text-white mb-10 tracking-tight">
+                            Unified <br className="lg:hidden" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">Technology.</span>
+                        </h2>
+                        <p className="text-slate-400 max-w-2xl mx-auto text-2xl font-light leading-relaxed">
+                            A single source of truth for the entire lifecycle of industrial operations.
+                        </p>
                     </div>
 
-                    {/* RIGHT: Sticky Image Display */}
-                    <div className="w-[55%] sticky top-0 h-screen flex items-center justify-center px-8 lg:px-16 overflow-hidden bg-slate-50/50">
-                        {/* Background Decor */}
-                        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.04]" />
-                        <AnimatePresence mode="wait">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                        {[
+                            { src: "/site/manu.png", label: "Production" },
+                            { src: "/site/interior.png", label: "Design Hub" },
+                            { src: "/site/infra.png", label: "Infra Ops" },
+                            { src: "/site/construction-hero-sunset.png", label: "Site Control" },
+                            { src: "/site/engineering.png", label: "Engineer OS" },
+                            { src: "/p10.png", label: "Dashboards" },
+                            { src: "/p11.png", label: "Analytics" },
+                            { src: "/p12.png", label: "Resources" },
+                            { src: "/p13.png", label: "Schedules" },
+                            { src: "/p14.png", label: "Budgets" },
+                        ].map((item, idx) => (
                             <motion.div
-                                key={activeIndustry.id}
-                                className="relative w-full aspect-[16/10] max-w-3xl"
-                                initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                                animate={{ opacity: 1, x: 0, scale: 1 }}
-                                exit={{ opacity: 0, x: -50, scale: 1.05 }}
-                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/5 bg-slate-900 shadow-2xl"
                             >
-                                {/* Glow Effect */}
-                                <div className={`absolute -inset-4 bg-gradient-to-r ${activeIndustry.gradient} opacity-20 blur-2xl rounded-[2rem]`} />
-
-                                {/* Glass Container */}
-                                <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl border border-white/60 bg-white/20 backdrop-blur-sm z-10 p-2">
-                                    <div className="relative h-full w-full rounded-xl overflow-hidden bg-slate-900">
-                                        <Image
-                                            src={activeIndustry.image}
-                                            alt={activeIndustry.title}
-                                            fill
-                                            className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
-                                            priority
-                                        />
-
-                                        {/* Overlay Content */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.2 }}
-                                            >
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <div className={`p-1.5 rounded-lg bg-white/10 backdrop-blur-md`}>
-                                                        <activeIndustry.icon className="w-4 h-4 text-white" />
-                                                    </div>
-                                                    <span className="text-white/80 font-mono text-xs uppercase tracking-widest">{activeIndustry.title} OS</span>
-                                                </div>
-                                                <h3 className="text-3xl font-bold text-white mb-2">
-                                                    Next-Gen {activeIndustry.title}
-                                                </h3>
-                                                <p className="text-white/70 text-sm max-w-md line-clamp-2">
-                                                    {activeIndustry.description}
-                                                </p>
-                                            </motion.div>
-                                        </div>
-                                    </div>
+                                <Image src={item.src} alt={item.label} fill className="object-cover opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 pointer-events-none" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
+                                <div className="absolute bottom-8 left-8 right-8">
+                                    <p className="text-white font-bold text-sm uppercase tracking-[0.2em] mb-2">{item.label}</p>
+                                    <div className="w-10 h-1.5 bg-teal-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700" />
                                 </div>
-
-                                {/* Floating Elements for visual flair */}
-                                <motion.div
-                                    className="absolute -right-6 -top-6 p-4 bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-slate-100 z-20 hidden xl:block"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4 }}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${activeIndustry.gradient} flex items-center justify-center text-white`}>
-                                            <Sparkles className="w-5 h-5" />
-                                        </div>
-                                        <div>
-                                            <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Efficiency</div>
-                                            <div className="text-lg font-bold text-slate-900">+30% Boost</div>
-                                        </div>
-                                    </div>
-                                </motion.div>
                             </motion.div>
-                        </AnimatePresence>
+                        ))}
                     </div>
-                </div>
-
-                {/* MOBILE VIEW (Stacked Cards) */}
-                <div className="lg:hidden px-4 py-16 space-y-24">
-                    {industries.map((industry) => (
-                        <div key={industry.id} className="relative">
-                            {/* Sticky Header for Mobile */}
-                            <div className="sticky top-20 z-10 mb-6">
-                                <span className={`inline-block px-4 py-1 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-sm text-xs font-bold uppercase tracking-wider ${industry.accent}`}>
-                                    {industry.title}
-                                </span>
-                            </div>
-
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100">
-                                <div className="relative aspect-[4/3] w-full">
-                                    <Image
-                                        src={industry.image}
-                                        alt={industry.title}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
-                                    <div className="absolute bottom-6 left-6 right-6">
-                                        <div className={`inline-flex p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white mb-4`}>
-                                            <industry.icon className="w-6 h-6" />
-                                        </div>
-                                        <h2 className="text-3xl font-bold text-white mb-2">{industry.title}</h2>
-                                    </div>
-                                </div>
-                                <div className="p-8">
-                                    <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                        {industry.description}
-                                    </p>
-                                    <div className="space-y-4 mb-8">
-                                        {industry.features.map((feature, i) => (
-                                            <div key={i} className="flex items-center gap-3">
-                                                <div className={`shrink-0 w-6 h-6 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center`}>
-                                                    <CheckCircle2 className={`w-3.5 h-3.5 ${industry.accent}`} />
-                                                </div>
-                                                <span className="text-slate-700 font-medium">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <Link
-                                        href={`/industries/${industry.slug}`}
-                                        className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all ${industry.shadow}`}
-                                    >
-                                        Explore Solution
-                                        <ArrowRight className="w-4 h-4" />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </section>
 

@@ -207,17 +207,6 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                   </button>
                 </div>
 
-                {/* Trust indicators */}
-                <div className="pt-8 border-t border-slate-200/60 space-y-6">
-                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">
-                    Trusted by innovative companies
-                  </p>
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                    {["Duke Plasto", "Desire Energy Solutions", "Dara Infras", "GA Infra"].map((item, i) => (
-                      <span key={i} className="text-lg font-bold text-slate-400 hover:text-slate-600 transition-colors">{item}</span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Right content - Visual */}
@@ -281,7 +270,7 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
                         {[1, 2, 3].map((i) => (
-                          <img src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
+                          <img key={i} src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
                         ))}
                       </div>
                       <div className="text-xs font-medium text-slate-600">

@@ -12,7 +12,7 @@ export default function Infrastructure() {
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/site/construction-hero-sunset.png')] bg-cover bg-center bg-no-repeat transform scale-105" />
+                    <div className="h-full w-full bg-[url('/site/infra.png')] bg-cover bg-center bg-no-repeat transform scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>
 
@@ -23,13 +23,6 @@ export default function Infrastructure() {
                             Infrastructure Operations Platform
                         </p>
                     </div>
-
-                    <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-2xl">
-                        Connect the World. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">
-                            Build the Future.
-                        </span>
-                    </h1>
 
                     <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
                         From highways to power grids — manage complex linear assets, heavy machinery, and field crews

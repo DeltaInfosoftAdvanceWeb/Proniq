@@ -21,8 +21,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/proniq.png",
-    apple: "/proniq.png",
+    icon: "/Logos/favicon/favicon.png ",
+    apple: "/Logos/favicon/favicon.png ",
   },
   title: "PRONIQ — Premium Single‑Product Landing",
   description:

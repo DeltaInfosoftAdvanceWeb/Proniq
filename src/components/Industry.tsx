@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Factory, Ruler, Building2, HardHat, Building, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const industries = [
     {
@@ -11,6 +12,7 @@ const industries = [
         icon: Factory,
         description: "Streamline production workflows and quality control",
         gradient: "from-blue-500 to-cyan-500",
+        image: "/site/manu.png",
     },
     {
         id: "interior-architecture",
@@ -18,6 +20,7 @@ const industries = [
         icon: Ruler,
         description: "Manage design projects from concept to completion",
         gradient: "from-purple-500 to-pink-500",
+        image: "/site/interior.png",
     },
     {
         id: "infrastructure",
@@ -25,6 +28,7 @@ const industries = [
         icon: Building2,
         description: "Handle large-scale infrastructure projects",
         gradient: "from-orange-500 to-amber-500",
+        image: "/site/infra.png",
     },
     {
         id: "construction",
@@ -32,6 +36,7 @@ const industries = [
         icon: HardHat,
         description: "Coordinate construction activities in real-time",
         gradient: "from-green-500 to-emerald-500",
+        image: "/site/construction-hero-sunset.png",
     },
     {
         id: "engineering",
@@ -39,6 +44,7 @@ const industries = [
         icon: Building,
         description: "Optimize engineering workflows and documentation",
         gradient: "from-indigo-500 to-blue-500",
+        image: "/site/engineering.png",
     },
 ];
 
@@ -89,18 +95,25 @@ export default function Industry() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="h-full"
                         >
-                            <Link href="/industries" className="block h-full group">
+                            <Link href={`/industries/${industry.id}`} className="block h-full group">
                                 <motion.div
                                     className="relative h-full p-6 rounded-2xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all overflow-hidden flex flex-col"
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
+                                    {/* Image background on hover */}
+                                    {industry.image && (
+                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                                            <Image src={industry.image} alt="" fill className="object-cover" />
+                                        </div>
+                                    )}
+
                                     {/* Gradient overlay on hover */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-0 group-hover:opacity-5 transition-opacity`} />
 
                                     {/* Icon */}
                                     <motion.div
-                                        className={`relative mb-4 w-16 h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}
+                                        className={`relative mb-4 w-16 h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center shadow-lg flex-shrink-0 z-10`}
                                         whileHover={{ rotate: [0, -10, 10, 0] }}
                                         transition={{ duration: 0.5 }}
                                     >

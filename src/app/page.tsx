@@ -8,6 +8,7 @@ import Benefits from "@/components/Benefits";
 import Industry from "@/components/Industry";
 import WhyChoose from "@/components/WhyChoose";
 import About from "@/components/About";
+import WhoUses from "@/components/WhoUses";
 import { useRef } from "react";
 import TransformCTA from "@/components/TransformCTA";
 
@@ -20,7 +21,7 @@ export default function Home() {
   };
   return (
     <div className="bg-white">
-      <div className="w-full bg-gradient-to-b from-white to-slate-50">
+      <div className="w-full bg-gradient-to-b from-white to-slate-50 object-fit:fill">
         <MacbookScroll
           src="p1.png"
           showGradient={true}
@@ -40,6 +41,7 @@ export default function Home() {
       <Benefits />
       <Industry />
       <WhyChoose />
+      <WhoUses />
       <About />
       {/* CTA Section */}
       <TransformCTA />
