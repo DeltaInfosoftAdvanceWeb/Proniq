@@ -61,6 +61,13 @@ const roles: Role[] = [
         position: "middle-right",
         icon: TrendingUp,
     },
+    {
+        title: "General Contractor",
+        img: "/se.png",
+        color: "#ea580c",
+        bg: "#ffedd5",
+        position: "top-left",
+    },
 ];
 
 const bubbleVariants = {
@@ -199,6 +206,10 @@ export default function WhoUses() {
                             case "middle-right":
                                 containerClass =
                                     "top-1/2 right-[4%] -translate-y-1/2 flex flex-col items-center";
+                                break;
+                            case "top-left":
+                                containerClass =
+                                    "top-[18%] left-[14%] flex flex-col items-center";
                                 break;
                             default:
                                 containerClass =

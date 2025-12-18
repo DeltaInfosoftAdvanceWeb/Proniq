@@ -21,7 +21,7 @@ export default function Home() {
   };
   return (
     <div className="bg-white">
-      <div className="w-full bg-gradient-to-b from-white to-slate-50 object-fit:fill">
+      <div className="w-full bg-gradient-to-b from-white to-slate-50 ">
         <MacbookScroll
           src="p1.png"
           showGradient={true}

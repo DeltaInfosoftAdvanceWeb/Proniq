@@ -459,8 +459,8 @@ export default function InteriorArchitecture() {
                                 { name: "Commercial Offices" },
                                 { name: "Retail & Showrooms" },
                                 { name: "Hospitality & Restaurants" },
-                                { name: "Modular Furniture" },
                                 { name: "Architectural Projects" },
+                                { name: "Civil & Turnkey Contractors" },
                             ].map((item) => (
                                 <Link
                                     key={item.name}

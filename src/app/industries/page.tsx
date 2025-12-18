@@ -1,12 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Factory, Ruler, Building2, HardHat, Building, ArrowRight, CheckCircle2, Sparkles, Layers } from "lucide-react";
+import { Factory, Ruler, Building2, HardHat, Building, ArrowRight, CheckCircle2, Sparkles, Layers, Landmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import TransformCTA from "@/components/TransformCTA";
 
 const industries = [
+    {
+        id: "contractors",
+        slug: "contractors",
+        title: "Contractors",
+        icon: HardHat,
+        description:
+            "Our flagship ecosystem for General & Specialist Contractors. Automate Running Account (RA) billing, track job costing, and unify site logs with head-office finance.",
+        features: ["Automated RA Billing", "Measurement Books", "Unified Job Costing"],
+        image: "/site/construction-hero-sunset.png",
+        gradient: "from-amber-600 to-orange-500",
+        shadow: "shadow-amber-500/20",
+        accent: "text-amber-600",
+        bg: "bg-amber-50",
+    },
+    {
+        id: "construction",
+        slug: "construction",
+        title: "Construction",
+        icon: Building2,
+        description:
+            "Track site progress, safety, and billing with live project visibility. Connect the field to the office and manage subcontractors with surgical precision.",
+        features: ["Site Management", "Subcontractor Portal", "Safety Compliance"],
+        image: "/site/construction-hero-sunset.png",
+        gradient: "from-emerald-600 to-teal-500",
+        shadow: "shadow-emerald-500/20",
+        accent: "text-emerald-600",
+        bg: "bg-emerald-50",
+    },
     {
         id: "manufacturing",
         slug: "manufacturing",
@@ -39,7 +67,7 @@ const industries = [
         id: "infrastructure",
         slug: "infrastructure",
         title: "Infrastructure",
-        icon: Building2,
+        icon: Landmark,
         description:
             "Control large-scale infrastructure programs with precision planning and real-time reporting. Keep multi-year projects on track and within budget.",
         features: ["Program Management", "Real-time Reporting", "Budget Tracking"],
@@ -50,26 +78,12 @@ const industries = [
         bg: "bg-orange-50",
     },
     {
-        id: "construction",
-        slug: "construction",
-        title: "Construction",
-        icon: HardHat,
-        description:
-            "Track site progress, subcontractors, safety, and billing with live project visibility. Connect the field to the office seamlessly.",
-        features: ["Site Management", "Safety Compliance", "Subcontractor Portal"],
-        image: "/site/construction-hero-sunset.png",
-        gradient: "from-emerald-600 to-teal-500",
-        shadow: "shadow-emerald-500/20",
-        accent: "text-emerald-600",
-        bg: "bg-emerald-50",
-    },
-    {
         id: "engineering",
         slug: "engineering",
         title: "Engineering",
         icon: Building,
         description:
-            "Streamline engineering workflows with drawing control, approvals, and version history. Ensure technical accuracy and compliance at every step.",
+            "Streamline engineering workflows with drawing control, approvals, and version history. Ensure technical accuracy and contractor compliance at every step.",
         features: ["Document Control", "Approval Workflows", "Version History"],
         image: "/site/engineering.png",
         gradient: "from-indigo-600 to-blue-500",

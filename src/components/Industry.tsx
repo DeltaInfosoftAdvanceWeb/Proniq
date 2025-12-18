@@ -7,6 +7,22 @@ import Image from "next/image";
 
 const industries = [
     {
+        id: "contractors",
+        title: "Contractors",
+        icon: HardHat,
+        description: "Our flagship ecosystem for General & Specialist Contractors",
+        gradient: "from-amber-500 to-orange-500",
+        image: "/site/construction-hero-sunset.png",
+    },
+    {
+        id: "construction",
+        title: "Construction",
+        icon: HardHat,
+        description: "Coordinate construction activities and site safety in real-time",
+        gradient: "from-green-500 to-emerald-500",
+        image: "/site/construction-hero-sunset.png",
+    },
+    {
         id: "manufacturing",
         title: "Manufacturing",
         icon: Factory,
@@ -26,17 +42,9 @@ const industries = [
         id: "infrastructure",
         title: "Infrastructure",
         icon: Building2,
-        description: "Handle large-scale infrastructure projects",
+        description: "Handle large-scale infrastructure projects and remote sites",
         gradient: "from-orange-500 to-amber-500",
         image: "/site/infra.png",
-    },
-    {
-        id: "construction",
-        title: "Construction",
-        icon: HardHat,
-        description: "Coordinate construction activities in real-time",
-        gradient: "from-green-500 to-emerald-500",
-        image: "/site/construction-hero-sunset.png",
     },
     {
         id: "engineering",
@@ -85,7 +93,7 @@ export default function Industry() {
                 </motion.div>
 
                 {/* Industries Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mb-12">
                     {industries.map((industry, index) => (
                         <motion.div
                             key={industry.id}

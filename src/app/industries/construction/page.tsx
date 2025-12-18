@@ -452,17 +452,17 @@ export default function Construction() {
 
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
                             {[
-                                { name: "Real Estate", slug: "" },
-                                { name: "Infrastructure", slug: "" },
-                                { name: "Industrial & Warehousing", slug: "" },
-                                { name: "Roads & Highways", slug: "" },
-                                { name: "MEP & Fit-out", slug: "" },
-                                { name: "General Contractors", slug: "" },
+                                { name: "Residential", slug: "" },
+                                { name: "Commercial", slug: "" },
+                                { name: "Industrial", slug: "" },
+                                { name: "Institutional", slug: "" },
+                                { name: "General Contractors", slug: "contractors" },
+                                { name: "Specialist Contractors", slug: "contractors" },
                             ].map((item) => (
                                 <Link
-                                    key={item.slug}
-                                    href={`/industries/construction/${item.slug}`}
-                                    className="rounded-full border border-slate-200 bg-white/70 px-6 py-2 text-xs md:text-sm font-medium text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all shadow-sm hover:shadow-md"
+                                    key={item.name}
+                                    href={item.slug ? `/industries/${item.slug}` : "#"}
+                                    className="rounded-full border border-slate-200 bg-white/70 px-6 py-2 text-xs md:text-sm font-medium text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all shadow-sm hover:shadow-md font-bold"
                                 >
                                     {item.name}
                                 </Link>

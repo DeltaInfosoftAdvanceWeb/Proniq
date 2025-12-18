@@ -59,26 +59,25 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Newsletter / Contact Column */}
+                    {/* CTA Column */}
                     <div className="lg:col-span-4 space-y-6">
-                        <h3 className="text-white font-semibold text-lg">Stay Updated</h3>
-                        <p className="text-slate-400 text-sm">
-                            Subscribe to our newsletter for the latest updates and features.
-                        </p>
-                        <form className="relative max-w-sm" onSubmit={(e) => e.preventDefault()}>
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full pl-4 pr-12 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                            />
-                            <button
-                                type="submit"
-                                className="absolute right-1.5 top-1.5 p-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
-                                aria-label="Subscribe"
-                            >
-                                <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </form>
+                        <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/20 via-blue-900/10 to-transparent border border-white/10 relative overflow-hidden group">
+                            <div className="relative z-10">
+                                <h3 className="text-white font-bold text-xl mb-3">Ready to Transform?</h3>
+                                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                                    Experience the future of project execution. Schedule a personalized demo with our experts today.
+                                </p>
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 group-hover:scale-105"
+                                >
+                                    Book a Free Demo
+                                    <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
+                            {/* Decorative element */}
+                            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all" />
+                        </div>
 
                         <div className="pt-6 space-y-3">
                             <div className="flex items-start gap-3 text-slate-400 text-sm">
