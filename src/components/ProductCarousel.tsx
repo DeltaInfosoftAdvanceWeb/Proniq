@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 const products = [
     // Row 1 (5)
@@ -37,29 +38,49 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1,
+            staggerChildren: 0.05, // Reduced stagger delay
         },
     },
 };
 
-const itemVariants: any = {
+const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 0.5,
-            ease: "easeOut",
+            duration: 0.3, // Reduced duration
+            // ease: "easeOut",
         },
     },
 };
 
-
 function ProductCard({ title, logo, color, isCenter = false }: any) {
+    const [isInView, setIsInView] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting);
+            },
+            { threshold: 0.1, rootMargin: "50px" }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <motion.div
+            ref={ref}
             variants={itemVariants}
-            whileHover={{ y: -6, scale: 1.02 }}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            whileHover={{ y: -4, scale: 1.01 }} // Reduced animation intensity
             className={`
         flex flex-col items-center justify-center
         bg-white rounded-2xl shadow-sm
@@ -78,10 +99,11 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
                 <Image
                     src={logo}
                     alt={title}
-                    width={isCenter ? 96 : 80}
-                    height={isCenter ? 96 : 80}
-                    sizes="(max-width: 768px) 80px, 96px"
-                    className={`${isCenter ? "w-24 h-24" : "w-20 h-20"} object-contain`}
+                    width={isCenter ? 64 : 48} // Smaller images for better performance
+                    height={isCenter ? 64 : 48}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 48px, 64px"
+                    className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}
                 />
             </div>
 
@@ -104,7 +126,7 @@ export default function ProductCarousel() {
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
                 >
                     Delta's Product <span className="text-gradient">Ecosystem</span>
@@ -112,7 +134,7 @@ export default function ProductCarousel() {
                 <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     transition={{ delay: 0.2 }}
                     className="text-xl text-slate-600 max-w-2xl mx-auto"
                 >
@@ -122,8 +144,12 @@ export default function ProductCarousel() {
             </div>
 
             <div className="container mx-auto px-4 max-w-7xl">
-                <div
+                <motion.div
                     className="flex flex-col items-center gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px", amount: 0.1 }}
                 >
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                         {products.slice(0, 5).map((p) => <ProductCard key={p.title} {...p} />)}
@@ -140,7 +166,7 @@ export default function ProductCarousel() {
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                         {products.slice(16).map((p) => <ProductCard key={p.title} {...p} />)}
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

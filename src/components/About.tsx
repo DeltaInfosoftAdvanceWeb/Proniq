@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
 const features = [
@@ -27,11 +27,13 @@ function FeatureBubbles() {
       <div className="absolute inset-[15%] rounded-full border border-slate-200/50" />
       <div className="absolute inset-[30%] rounded-full border border-slate-100/50" />
 
-      {/* Rotating Ring */}
+      {/* Rotating Ring - Only animate when in view */}
       <motion.div
         className="absolute inset-[10%] rounded-full border border-dashed border-slate-300/50"
         animate={{ rotate: 360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        whileInView={{ rotate: [0, 360] }}
+        viewport={{ once: true, margin: "-100px" }}
       />
 
       {/* Central Hub */}
@@ -50,7 +52,7 @@ function FeatureBubbles() {
         />
       </div>
 
-      {/* Connecting Lines Container */}
+      {/* Connecting Lines Container - Pre-calculated for performance */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <defs>
           <linearGradient id="lineGradient" x1="50%" y1="50%" x2="100%" y2="100%">
@@ -58,18 +60,21 @@ function FeatureBubbles() {
             <stop offset="100%" stopColor="#64748b" stopOpacity="0.5" />
           </linearGradient>
         </defs>
-        {features.map((feature, i) => {
-          const radius = 42; // Percentage from center
-          const x = 50 + radius * Math.cos((feature.angle * Math.PI) / 180);
-          const y = 50 + radius * Math.sin((feature.angle * Math.PI) / 180);
+        {(() => {
+          // Pre-calculate positions to avoid recalculation on every render
+          const radius = 42;
+          const positions = features.map(feature => ({
+            x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
+            y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180)
+          }));
 
-          return (
+          return positions.map((pos, i) => (
             <motion.line
               key={i}
               x1="50%"
               y1="50%"
-              x2={`${x}%`}
-              y2={`${y}%`}
+              x2={`${pos.x}%`}
+              y2={`${pos.y}%`}
               stroke="url(#lineGradient)"
               strokeWidth="1"
               strokeDasharray="4 4"
@@ -78,17 +83,21 @@ function FeatureBubbles() {
               viewport={{ once: true, margin: "-100px", amount: 0.3 }}
               transition={{ duration: 1, delay: i * 0.1 }}
             />
-          );
-        })}
+          ));
+        })()}
       </svg>
 
-      {/* Nodes */}
-      {features.map((feature, i) => {
-        const radius = 42; // Percentage from center
-        const x = 50 + radius * Math.cos((feature.angle * Math.PI) / 180);
-        const y = 50 + radius * Math.sin((feature.angle * Math.PI) / 180);
+      {/* Nodes - Pre-calculated positions for performance */}
+      {(() => {
+        // Pre-calculate positions once
+        const radius = 42;
+        const positions = features.map(feature => ({
+          x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
+          y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180),
+          feature
+        }));
 
-        return (
+        return positions.map(({ x, y, feature }, i) => (
           <motion.div
             key={i}
             className="absolute z-10"
@@ -128,8 +137,8 @@ function FeatureBubbles() {
                 `} />
             </motion.button>
           </motion.div>
-        );
-      })}
+        ));
+      })()}
     </div>
   );
 }
