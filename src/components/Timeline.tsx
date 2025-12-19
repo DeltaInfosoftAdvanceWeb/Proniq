@@ -15,8 +15,12 @@ import ReactFlow, {
   useReactFlow,
   Panel,
   ReactFlowProvider,
+  getNodesBounds,
+  getViewportForBounds,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { toPng } from 'html-to-image';
+import { jsPDF } from 'jspdf';
 import {
   LayoutDashboard,
   CheckCircle2,
@@ -24,7 +28,11 @@ import {
   Minus,
   Maximize,
   Plus,
-  Move
+  Move,
+  Download,
+  FileDown,
+  ImageIcon,
+  ArrowRight
 } from 'lucide-react';
 
 /* ========================================================
@@ -406,34 +414,105 @@ const initialEdges: Edge[] = [
 ];
 
 /* ========================================================
-   3. CUSTOM ZOOM CONTROLS
+   3. CUSTOM ZOOM & EXPORT CONTROLS
 ======================================================== */
-const ZoomControls = () => {
-  const { zoomIn, zoomOut, fitView } = useReactFlow();
+const TimelineControls = () => {
+  const { zoomIn, zoomOut, fitView, getNodes } = useReactFlow();
+
+  const exportFullFlow = async (type: 'png' | 'pdf') => {
+    const nodes = getNodes();
+    if (nodes.length === 0) return;
+
+    const bounds = getNodesBounds(nodes);
+    const element = document.querySelector('.react-flow__viewport') as HTMLElement;
+
+    if (!element) return;
+
+    // Calculate dimensions with padding
+    const width = bounds.width + 400;
+    const height = bounds.height + 400;
+
+    try {
+      const dataUrl = await toPng(element, {
+        backgroundColor: '#f8fafc',
+        width: width,
+        height: height,
+        style: {
+          width: `${width}px`,
+          height: `${height}px`,
+          // Center the flow in the export
+          transform: `translate(${-bounds.x + 200}px, ${-bounds.y + 200}px) scale(1)`,
+        },
+      });
+
+      if (type === 'png') {
+        const link = document.createElement('a');
+        link.download = 'proniq-full-workflow.png';
+        link.href = dataUrl;
+        link.click();
+      } else {
+        const pdf = new jsPDF('l', 'px', [width, height]);
+        pdf.addImage(dataUrl, 'PNG', 0, 0, width, height);
+        pdf.save('proniq-full-workflow.pdf');
+      }
+    } catch (err) {
+      console.error('Export failed', err);
+    }
+  };
 
   return (
-    <Panel position="bottom-right" className="flex gap-2">
-      <button
-        onClick={() => zoomOut()}
-        className="bg-white p-2 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 text-slate-600 transition-colors"
-        title="Zoom Out"
-      >
-        <Minus className="w-5 h-5" />
-      </button>
-      <button
-        onClick={() => fitView({ duration: 800 })}
-        className="bg-white p-2 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 text-slate-600 transition-colors"
-        title="Fit View"
-      >
-        <Maximize className="w-5 h-5" />
-      </button>
-      <button
-        onClick={() => zoomIn()}
-        className="bg-white p-2 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 text-slate-600 transition-colors"
-        title="Zoom In"
-      >
-        <Plus className="w-5 h-5" />
-      </button>
+    <Panel position="top-right" className="z-[50] m-4">
+      <div className="flex flex-col gap-2 p-3 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-2xl shadow-indigo-500/10 min-w-[160px] transform origin-top-right">
+
+        {/* Header Section */}
+        <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-1">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest text-nowrap">Workflow Pro</span>
+          </div>
+          <Download className="w-3 h-3 text-slate-300" />
+        </div>
+
+        {/* Buttons List */}
+        <div className="space-y-1.5">
+          <button
+            onClick={() => exportFullFlow('png')}
+            className="group w-full flex items-center justify-between gap-2 bg-slate-50 hover:bg-slate-900 text-slate-600 hover:text-white px-2.5 py-2 rounded-xl text-[10px] font-bold transition-all duration-300"
+          >
+            <div className="flex items-center gap-2">
+              <ImageIcon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
+              <span>Full Image</span>
+            </div>
+            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
+          </button>
+
+          <button
+            onClick={() => exportFullFlow('pdf')}
+            className="group w-full flex items-center justify-between gap-2 bg-slate-50 hover:bg-primary text-slate-600 hover:text-white px-2.5 py-2 rounded-xl text-[10px] font-bold transition-all duration-300"
+          >
+            <div className="flex items-center gap-2">
+              <FileDown className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
+              <span>Full PDF</span>
+            </div>
+            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
+          </button>
+        </div>
+
+        {/* Navigation Section */}
+        <div className="pt-2 mt-1 border-t border-slate-100 flex items-center justify-between">
+          <button onClick={() => zoomOut()} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 transition-colors" title="Zoom Out">
+            <Minus className="w-3.5 h-3.5" />
+          </button>
+          <div className="h-3 w-px bg-slate-200 mx-1" />
+          <button onClick={() => fitView({ duration: 800 })} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 transition-colors" title="Fit View">
+            <Maximize className="w-3.5 h-3.5" />
+          </button>
+          <div className="h-3 w-px bg-slate-200 mx-1" />
+          <button onClick={() => zoomIn()} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 transition-colors" title="Zoom In">
+            <Plus className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
     </Panel>
   );
 };
@@ -489,7 +568,7 @@ function Flow({ ref }: { ref: any }) {
             zoomOnDoubleClick={true}
           >
             <Background gap={24} size={1} color="#e2e8f0" />
-            <ZoomControls />
+            <TimelineControls />
             <MiniMap
               className="!bg-white !border !border-slate-200 !shadow-lg rounded-xl overflow-hidden m-4 hidden md:block"
               nodeColor={(n) => {

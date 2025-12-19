@@ -100,13 +100,13 @@ export default function ContactCTA() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl opacity-50" />
 
-        {/* Horizontal Moving Lines */}
-        {[...Array(8)].map((_, i) => (
+        {/* Horizontal Moving Lines - Reduced count for performance */}
+        {[...Array(4)].map((_, i) => (
           <motion.div
             key={`h-${i}`}
             className="absolute bg-gradient-to-r from-transparent via-primary/20 to-transparent h-[1px] w-[500px]"
             initial={{
-              top: `${(i * 12) + 10}%`,
+              top: `${(i * 25) + 10}%`,
               left: '-500px',
               opacity: 0,
               rotate: -2
@@ -116,22 +116,22 @@ export default function ContactCTA() {
               opacity: [0, 1, 1, 0],
             }}
             transition={{
-              duration: 20 + Math.random() * 15,
+              duration: 25 + Math.random() * 15,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 3,
+              delay: i * 5,
             }}
             style={{ filter: 'blur(0.5px)' }}
           />
         ))}
 
-        {/* Vertical Moving Lines */}
-        {[...Array(6)].map((_, i) => (
+        {/* Vertical Moving Lines - Reduced count for performance */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
             key={`v-${i}`}
             className="absolute bg-gradient-to-b from-transparent via-primary/10 to-transparent w-[1px] h-[300px]"
             initial={{
-              left: `${(i * 15) + 8}%`,
+              left: `${(i * 30) + 8}%`,
               top: '-300px',
               opacity: 0
             }}
@@ -140,10 +140,10 @@ export default function ContactCTA() {
               opacity: [0, 0.6, 0.6, 0],
             }}
             transition={{
-              duration: 15 + Math.random() * 10,
+              duration: 20 + Math.random() * 10,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 4,
+              delay: i * 6,
             }}
           />
         ))}

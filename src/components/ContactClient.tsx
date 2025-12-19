@@ -118,14 +118,14 @@ export default function ContactClient() {
             {/* HEADER */}
             <section className="relative pt-32 pb-20 px-6 bg-slate-900 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-primary/20" />
-                {/* Moving Lines Background */}
+                {/* Moving Lines Background - Reduced for performance */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    {[...Array(10)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                         <motion.div
                             key={i}
                             className="absolute h-[1px] w-[600px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
                             initial={{
-                                top: `${(i * 10) + 5}%`,
+                                top: `${(i * 20) + 5}%`,
                                 left: '-600px',
                                 opacity: 0,
                                 rotate: -15
@@ -135,20 +135,20 @@ export default function ContactClient() {
                                 opacity: [0, 1, 1, 0],
                             }}
                             transition={{
-                                duration: 15 + Math.random() * 10,
+                                duration: 20 + Math.random() * 10,
                                 repeat: Infinity,
                                 ease: "linear",
-                                delay: i * 2,
+                                delay: i * 3,
                             }}
                             style={{ filter: 'blur(0.5px)' }}
                         />
                     ))}
-                    {[...Array(8)].map((_, i) => (
+                    {[...Array(4)].map((_, i) => (
                         <motion.div
                             key={`v-${i}`}
                             className="absolute w-[1px] h-[400px] bg-gradient-to-b from-transparent via-primary/30 to-transparent"
                             initial={{
-                                left: `${(i * 12.5) + 5}%`,
+                                left: `${(i * 25) + 5}%`,
                                 top: '-400px',
                                 opacity: 0
                             }}
@@ -157,10 +157,10 @@ export default function ContactClient() {
                                 opacity: [0, 0.8, 0.8, 0],
                             }}
                             transition={{
-                                duration: 12 + Math.random() * 8,
+                                duration: 18 + Math.random() * 8,
                                 repeat: Infinity,
                                 ease: "linear",
-                                delay: i * 1.5,
+                                delay: i * 4,
                             }}
                         />
                     ))}

@@ -33,19 +33,14 @@ export default function SmoothScroll() {
         // Synchronize ScrollTrigger with Lenis
         lenis.on("scroll", ScrollTrigger.update);
 
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+        const updateLenis = (time: number) => {
+            lenis.raf(time * 1000);
+        };
 
-        requestAnimationFrame(raf);
+        gsap.ticker.add(updateLenis);
+        gsap.ticker.lagSmoothing(0);
 
-        // Initial resize
-        const timeout = setTimeout(() => {
-            lenis.resize();
-            ScrollTrigger.refresh();
-        }, 500);
-
+        // Resize handler with debounce-like behavior
         const handleResize = () => {
             lenis.resize();
             ScrollTrigger.refresh();
@@ -53,10 +48,17 @@ export default function SmoothScroll() {
 
         window.addEventListener("resize", handleResize);
 
+        // Initial refreshes
+        const t1 = setTimeout(handleResize, 100);
+        const t2 = setTimeout(handleResize, 1000);
+
         return () => {
             lenis.destroy();
+            gsap.ticker.remove(updateLenis);
             window.removeEventListener("resize", handleResize);
-            clearTimeout(timeout);
+            clearTimeout(t1);
+            clearTimeout(t2);
+            lenisRef.current = null;
         };
     }, []);
 

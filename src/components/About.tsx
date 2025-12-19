@@ -104,7 +104,7 @@ function FeatureBubbles() {
             }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
+              whileHover={{ boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
               className={`
                   relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
                   bg-white border border-slate-100 shadow-lg shadow-slate-200/50

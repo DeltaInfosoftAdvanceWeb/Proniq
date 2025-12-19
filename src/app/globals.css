@@ -264,7 +264,3 @@ button:not(.motion-btn),
 a:not(.motion-link) {
   @apply transition-colors duration-300 ease-out;
 }
-
-.react-flow__panel {
-  display: none !important;
-}
