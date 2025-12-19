@@ -38,7 +38,7 @@ export default function SmoothScroll() {
         };
 
         gsap.ticker.add(updateLenis);
-        gsap.ticker.lagSmoothing(0);
+        // gsap.ticker.lagSmoothing(0); // Removed to allow smoothing of frame drops
 
         // Resize handler with debounce-like behavior
         const handleResize = () => {

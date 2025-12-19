@@ -40,7 +40,7 @@ function FeatureBubbles() {
 
       {/* Central Hub - Simplified animations */}
       <div className="relative z-20 w-32 h-32 bg-white rounded-full shadow-2xl shadow-primary/20 flex items-center justify-center p-6 border border-slate-100">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl animate-pulse" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl opacity-60" />
         <Image
           src="/proniq.png"
           alt="PRONIQ"

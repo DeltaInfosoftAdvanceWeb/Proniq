@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+
 
 const products = [
     // Row 1 (5)
@@ -56,30 +56,9 @@ const itemVariants = {
 };
 
 function ProductCard({ title, logo, color, isCenter = false }: any) {
-    const [isInView, setIsInView] = useState(false);
-    const ref = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsInView(entry.isIntersecting);
-            },
-            { threshold: 0.1, rootMargin: "50px" }
-        );
-
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <motion.div
-            ref={ref}
             variants={itemVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
             whileHover={{ y: -4, scale: 1.01 }} // Reduced animation intensity
             className={`
         flex flex-col items-center justify-center
