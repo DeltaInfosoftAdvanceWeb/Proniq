@@ -11,68 +11,87 @@ export default function SmoothScroll() {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Register ScrollTrigger if not already
-        if (typeof window !== "undefined") {
-            gsap.registerPlugin(ScrollTrigger);
-        }
+        if (typeof window === "undefined") return;
+
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
 
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: "vertical",
+            gestureOrientation: "vertical",
             smoothWheel: true,
-            touchMultiplier: 1.5,
-            wheelMultiplier: 1.2,
+            wheelMultiplier: 1,
+            touchMultiplier: 2,
             infinite: false,
         });
 
+
         lenisRef.current = lenis;
 
-        // Sync Lenis with ScrollTrigger
+        // Synchronize ScrollTrigger with Lenis
         lenis.on("scroll", ScrollTrigger.update);
 
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
+        function raf(time: number) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
 
-        gsap.ticker.lagSmoothing(0);
+        requestAnimationFrame(raf);
 
-        // Initial resize to ensure correct height
-        const resizeTimeout = setTimeout(() => {
+        // Initial resize
+        const timeout = setTimeout(() => {
             lenis.resize();
+            ScrollTrigger.refresh();
         }, 500);
 
         const handleResize = () => {
             lenis.resize();
+            ScrollTrigger.refresh();
         };
+
         window.addEventListener("resize", handleResize);
 
         return () => {
             lenis.destroy();
-            gsap.ticker.remove((time) => {
-                lenis.raf(time * 1000);
-            });
             window.removeEventListener("resize", handleResize);
-            clearTimeout(resizeTimeout);
+            clearTimeout(timeout);
         };
     }, []);
-
 
     // Handle route changes
     useEffect(() => {
         if (lenisRef.current) {
-            // Scroll to top on route change
+            // Immediately scroll to top
             lenisRef.current.scrollTo(0, { immediate: true });
 
-            // Force resize after navigation
-            const timeout = setTimeout(() => {
-                lenisRef.current?.resize();
-                ScrollTrigger.refresh();
-            }, 100);
+            // Clear memory
+            ScrollTrigger.clearScrollMemory();
 
-            return () => clearTimeout(timeout);
+            // Multiple refreshes to catch lazy-loaded content
+            const timers = [
+                setTimeout(() => {
+                    lenisRef.current?.resize();
+                    ScrollTrigger.refresh(true);
+                    lenisRef.current?.start();
+                }, 50),
+                setTimeout(() => {
+                    lenisRef.current?.resize();
+                    ScrollTrigger.refresh();
+                }, 250),
+                setTimeout(() => {
+                    lenisRef.current?.resize();
+                    ScrollTrigger.refresh();
+                }, 1000)
+            ];
+
+            return () => timers.forEach(t => clearTimeout(t));
         }
     }, [pathname]);
 
+
     return null;
 }
+
 

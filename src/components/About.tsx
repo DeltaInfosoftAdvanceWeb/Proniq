@@ -136,7 +136,8 @@ function FeatureBubbles() {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 overflow-hidden">
+    <section id="about" className="relative py-24">
+
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-16 md:grid-cols-2">
           {/* Left column: text */}
