@@ -2,10 +2,11 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
-const features = [
+// Pre-calculate all positions outside component to avoid recalculation
+const precalculatedFeatures = [
   { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "📋" },
   { label: "Quick Actions", angle: 45, color: "from-violet-500 to-purple-500", icon: "⚡" },
   { label: "Task Tracking", angle: 90, color: "from-pink-500 to-rose-500", icon: "✓" },
@@ -14,35 +15,32 @@ const features = [
   { label: "Dashboard", angle: 225, color: "from-cyan-400 to-teal-500", icon: "📱" },
   { label: "RA Bills", angle: 270, color: "from-blue-400 to-cyan-500", icon: "💰" },
   { label: "BOQ Upload", angle: 315, color: "from-indigo-400 to-blue-500", icon: "📊" },
-];
+].map(feature => {
+  const radius = 42;
+  return {
+    ...feature,
+    x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
+    y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180)
+  };
+});
 
 function FeatureBubbles() {
   return (
     <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center scale-[0.85] sm:scale-100">
-      {/* Ambient Glows */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-3xl animate-pulse" />
+      {/* Ambient Glows - Simplified */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-3xl" />
 
-      {/* Orbital Rings */}
+      {/* Orbital Rings - Static for performance */}
       <div className="absolute inset-0 rounded-full border border-slate-200/50" />
       <div className="absolute inset-[15%] rounded-full border border-slate-200/50" />
       <div className="absolute inset-[30%] rounded-full border border-slate-100/50" />
 
-      {/* Rotating Ring - Only animate when in view */}
-      <motion.div
-        className="absolute inset-[10%] rounded-full border border-dashed border-slate-300/50"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        whileInView={{ rotate: [0, 360] }}
-        viewport={{ once: true, margin: "-100px" }}
-      />
+      {/* Static ring instead of animated */}
+      <div className="absolute inset-[10%] rounded-full border border-dashed border-slate-300/30" />
 
-      {/* Central Hub */}
+      {/* Central Hub - Simplified animations */}
       <div className="relative z-20 w-32 h-32 bg-white rounded-full shadow-2xl shadow-primary/20 flex items-center justify-center p-6 border border-slate-100">
-        <motion.div
-          className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl animate-pulse" />
         <Image
           src="/proniq.png"
           alt="PRONIQ"
@@ -52,93 +50,62 @@ function FeatureBubbles() {
         />
       </div>
 
-      {/* Connecting Lines Container - Pre-calculated for performance */}
+      {/* Static SVG lines for better performance */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <defs>
           <linearGradient id="lineGradient" x1="50%" y1="50%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#64748b" stopOpacity="0" />
-            <stop offset="100%" stopColor="#64748b" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#64748b" stopOpacity="0.3" />
           </linearGradient>
         </defs>
-        {(() => {
-          // Pre-calculate positions to avoid recalculation on every render
-          const radius = 42;
-          const positions = features.map(feature => ({
-            x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
-            y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180)
-          }));
-
-          return positions.map((pos, i) => (
-            <motion.line
-              key={i}
-              x1="50%"
-              y1="50%"
-              x2={`${pos.x}%`}
-              y2={`${pos.y}%`}
-              stroke="url(#lineGradient)"
-              strokeWidth="1"
-              strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.3 }}
-              viewport={{ once: true, margin: "-100px", amount: 0.3 }}
-              transition={{ duration: 1, delay: i * 0.1 }}
-            />
-          ));
-        })()}
+        {precalculatedFeatures.map((feature, i) => (
+          <line
+            key={i}
+            x1="50%"
+            y1="50%"
+            x2={`${feature.x}%`}
+            y2={`${feature.y}%`}
+            stroke="url(#lineGradient)"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+            opacity="0.2"
+          />
+        ))}
       </svg>
 
-      {/* Nodes - Pre-calculated positions for performance */}
-      {(() => {
-        // Pre-calculate positions once
-        const radius = 42;
-        const positions = features.map(feature => ({
-          x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
-          y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180),
-          feature
-        }));
-
-        return positions.map(({ x, y, feature }, i) => (
-          <motion.div
-            key={i}
-            className="absolute z-10"
-            style={{ left: `${x}%`, top: `${y}%` }}
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px", amount: 0.3 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-              delay: i * 0.1
-            }}
+      {/* Simplified nodes - No heavy motion animations */}
+      {precalculatedFeatures.map((feature, i) => (
+        <div
+          key={i}
+          className="absolute z-10"
+          style={{ left: `${feature.x}%`, top: `${feature.y}%` }}
+        >
+          <button
+            className={`
+              relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
+              bg-white border border-slate-100 shadow-lg shadow-slate-200/50
+              -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
+              hover:shadow-xl hover:scale-105 transition-all duration-200
+            `}
           >
-            <motion.button
-              whileHover={{ boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-              className={`
-                  relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
-                  bg-white border border-slate-100 shadow-lg shadow-slate-200/50
-                  -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
-                `}
-            >
-              <div className={`
-                  w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs sm:text-sm
-                  bg-gradient-to-br ${feature.color} shadow-inner
-                `}>
-                {feature.icon}
-              </div>
-              <span className="hidden sm:block font-semibold text-slate-700 text-sm group-hover:text-slate-900">
-                {feature.label}
-              </span>
+            <div className={`
+              w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs sm:text-sm
+              bg-gradient-to-br ${feature.color} shadow-inner
+            `}>
+              {feature.icon}
+            </div>
+            <span className="hidden sm:block font-semibold text-slate-700 text-sm group-hover:text-slate-900">
+              {feature.label}
+            </span>
 
-              {/* Hover Glow */}
-              <div className={`
-                  absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300
-                  bg-gradient-to-r ${feature.color} blur-md -z-10
-                `} />
-            </motion.button>
-          </motion.div>
-        ));
-      })()}
+            {/* Hover Glow */}
+            <div className={`
+              absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300
+              bg-gradient-to-r ${feature.color} blur-md -z-10
+            `} />
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
@@ -146,7 +113,6 @@ function FeatureBubbles() {
 export default function About() {
   return (
     <section id="about" className="relative py-24">
-
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-16 md:grid-cols-2">
           {/* Left column: text */}
