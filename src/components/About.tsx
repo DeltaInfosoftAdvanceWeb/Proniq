@@ -28,7 +28,7 @@ function FeatureBubbles() {
   return (
     <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center scale-[0.85] sm:scale-100">
       {/* Ambient Glows - Simplified */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-xl" />
 
       {/* Orbital Rings - Static for performance */}
       <div className="absolute inset-0 rounded-full border border-slate-200/50" />

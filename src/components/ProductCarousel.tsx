@@ -59,10 +59,10 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
     return (
         <motion.div
             variants={itemVariants}
-            whileHover={{ y: -4, scale: 1.01 }} // Reduced animation intensity
             className={`
         flex flex-col items-center justify-center
         bg-white rounded-2xl shadow-sm
+        transition-transform duration-300 will-change-transform hover:-translate-y-1 hover:scale-105
         ${isCenter
                     ? "w-44 h-44 md:w-52 md:h-52 border-4 border-primary z-10"
                     : "w-32 h-32 md:w-40 md:h-40 border-2"}
@@ -78,8 +78,9 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
                 <Image
                     src={logo}
                     alt={title}
-                    width={isCenter ? 64 : 48} // Smaller images for better performance
+                    width={isCenter ? 64 : 48}
                     height={isCenter ? 64 : 48}
+                    quality={50} // Lower quality for better performance
                     loading="lazy"
                     sizes="(max-width: 768px) 48px, 64px"
                     className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}

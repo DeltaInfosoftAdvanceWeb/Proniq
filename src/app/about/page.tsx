@@ -14,7 +14,7 @@ export default function Page() {
       <section className="relative pt-32 pb-20 px-6">
 
         <div className="absolute inset-0 bg-primary/5 -z-10" />
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay -z-10" />
+
 
         <div className="container mx-auto max-w-6xl text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
