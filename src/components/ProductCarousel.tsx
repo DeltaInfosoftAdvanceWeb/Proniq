@@ -42,7 +42,7 @@ const containerVariants = {
     },
 };
 
-const itemVariants = {
+const itemVariants: any = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
@@ -53,6 +53,7 @@ const itemVariants = {
         },
     },
 };
+
 
 function ProductCard({ title, logo, color, isCenter = false }: any) {
     return (

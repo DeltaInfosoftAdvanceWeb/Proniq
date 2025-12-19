@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Send, Clock, CheckCircle2, ShieldCheck, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
@@ -24,9 +25,10 @@ export default function ContactPage() {
   const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: '' });
   const [captchaAnswer, setCaptchaAnswer] = useState(0);
 
-  useState(() => {
+  // Properly initialize captcha with useEffect
+  useEffect(() => {
     generateCaptcha();
-  });
+  }, []);
 
   function generateCaptcha() {
     const n1 = Math.floor(Math.random() * 10) + 1;
@@ -34,6 +36,7 @@ export default function ContactPage() {
     setCaptcha({ num1: n1, num2: n2, answer: '' });
     setCaptchaAnswer(n1 + n2);
   }
+
 
   const handleStartVerification = () => {
     setIsVerifying(true);
@@ -64,13 +67,30 @@ export default function ContactPage() {
     setLoading(true);
     setError(null);
 
-    const { error } = await supabase.from('contacts').insert([form]);
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')) {
+      setError('Contact form is currently in demo mode. Please configure Supabase environment variables to enable submissions.');
+      setLoading(false);
+      return;
+    }
 
-    if (error) {
-      setError(error.message);
-      setIsVerified(false);
-      generateCaptcha();
-    } else {
+
+    try {
+
+      const { error: supabaseError } = await supabase.from('contacts').insert([
+        {
+          first_name: form.first_name,
+          last_name: form.last_name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+        }
+      ]);
+
+      if (supabaseError) {
+        console.error('Supabase Error:', supabaseError);
+        throw new Error(supabaseError.message);
+      }
+
       setSuccess(true);
       setForm({
         first_name: '',
@@ -81,10 +101,16 @@ export default function ContactPage() {
       });
       setIsVerified(false);
       generateCaptcha();
+    } catch (err: any) {
+      console.error('Submission Error:', err);
+      setError(err.message || 'Failed to send message. Please try again later.');
+      setIsVerified(false);
+      generateCaptcha();
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
+
 
   const inputClass =
     'w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 ' +
