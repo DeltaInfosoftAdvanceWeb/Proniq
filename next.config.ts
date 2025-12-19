@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: false, // Explicitly disabled to fix preload mismatch errors
     scrollRestoration: true,
+    optimizePackageImports: ['lucide-react', '@tabler/icons-react', 'framer-motion', 'gsap'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
