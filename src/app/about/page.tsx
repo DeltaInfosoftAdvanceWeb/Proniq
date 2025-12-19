@@ -1,6 +1,12 @@
 import About from "@/components/About";
 import ProductCarousel from "@/components/ProductCarousel";
 import TransformCTA from "@/components/TransformCTA";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About PRONIQ | Our Story & Vision",
+  description: "Learn about PRONIQ and our mission to empower modern infrastructure teams with operational clarity and precision-built ERP solutions.",
+};
 
 export default function Page() {
   return (

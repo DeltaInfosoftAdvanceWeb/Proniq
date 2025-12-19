@@ -95,10 +95,58 @@ export default function ContactCTA() {
 
 
     <section id="contact" className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50">
-      {/* Background decoration */}
+      {/* Background decoration with Moving Lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl opacity-50" />
+
+        {/* Horizontal Moving Lines */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`h-${i}`}
+            className="absolute bg-gradient-to-r from-transparent via-primary/20 to-transparent h-[1px] w-[500px]"
+            initial={{
+              top: `${(i * 12) + 10}%`,
+              left: '-500px',
+              opacity: 0,
+              rotate: -2
+            }}
+            animate={{
+              left: '110%',
+              opacity: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 20 + Math.random() * 15,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 3,
+            }}
+            style={{ filter: 'blur(0.5px)' }}
+          />
+        ))}
+
+        {/* Vertical Moving Lines */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`v-${i}`}
+            className="absolute bg-gradient-to-b from-transparent via-primary/10 to-transparent w-[1px] h-[300px]"
+            initial={{
+              left: `${(i * 15) + 8}%`,
+              top: '-300px',
+              opacity: 0
+            }}
+            animate={{
+              top: '110%',
+              opacity: [0, 0.6, 0.6, 0],
+            }}
+            transition={{
+              duration: 15 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 4,
+            }}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto max-w-7xl px-6 relative">
