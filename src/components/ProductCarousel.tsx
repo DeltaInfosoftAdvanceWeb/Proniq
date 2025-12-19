@@ -121,11 +121,7 @@ export default function ProductCarousel() {
             </div>
 
             <div className="container mx-auto px-4 max-w-7xl">
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                <div
                     className="flex flex-col items-center gap-8"
                 >
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
@@ -143,7 +139,7 @@ export default function ProductCarousel() {
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                         {products.slice(16).map((p) => <ProductCard key={p.title} {...p} />)}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
