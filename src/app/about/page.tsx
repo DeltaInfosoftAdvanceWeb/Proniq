@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="bg-background min-h-screen">
+    <main className="bg-background min-h-screen overflow-x-hidden">
       <section className="relative pt-32 pb-20 px-6">
 
         <div className="absolute inset-0 bg-primary/5 -z-10" />

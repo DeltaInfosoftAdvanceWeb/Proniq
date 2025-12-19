@@ -6,7 +6,7 @@ import TransformCTA from "@/components/TransformCTA";
 
 export default function ConstructionClient() {
     return (
-        <main className="min-h-screen bg-slate-50 text-slate-900">
+        <main className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 {/* Background image */}

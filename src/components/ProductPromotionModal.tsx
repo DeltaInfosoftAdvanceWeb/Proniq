@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2, ShieldCheck, Zap, BarChart3, Activity, GitBranch, Layers, ArrowRight } from 'lucide-react';
-import { url } from 'node:inspector';
 
 const ProductPromotionModal = () => {
     const [isOpen, setIsOpen] = useState(false);

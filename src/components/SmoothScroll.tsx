@@ -17,13 +17,13 @@ export default function SmoothScroll() {
         gsap.registerPlugin(ScrollTrigger);
 
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
             wheelMultiplier: 1,
-            touchMultiplier: 2,
+            touchMultiplier: 1.5,
             infinite: false,
         });
 
@@ -63,30 +63,16 @@ export default function SmoothScroll() {
     // Handle route changes
     useEffect(() => {
         if (lenisRef.current) {
-            // Immediately scroll to top
             lenisRef.current.scrollTo(0, { immediate: true });
-
-            // Clear memory
             ScrollTrigger.clearScrollMemory();
 
-            // Multiple refreshes to catch lazy-loaded content
-            const timers = [
-                setTimeout(() => {
-                    lenisRef.current?.resize();
-                    ScrollTrigger.refresh(true);
-                    lenisRef.current?.start();
-                }, 50),
-                setTimeout(() => {
-                    lenisRef.current?.resize();
-                    ScrollTrigger.refresh();
-                }, 250),
-                setTimeout(() => {
-                    lenisRef.current?.resize();
-                    ScrollTrigger.refresh();
-                }, 1000)
-            ];
+            // Single refresh after content has likely rendered
+            const timer = setTimeout(() => {
+                lenisRef.current?.resize();
+                ScrollTrigger.refresh(true);
+            }, 100);
 
-            return () => timers.forEach(t => clearTimeout(t));
+            return () => clearTimeout(timer);
         }
     }, [pathname]);
 

@@ -59,10 +59,10 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
     return (
         <motion.div
             variants={itemVariants}
+            whileHover={{ y: -6, scale: 1.02 }}
             className={`
         flex flex-col items-center justify-center
-        bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300
-        hover:-translate-y-1.5
+        bg-white rounded-2xl shadow-sm
         ${isCenter
                     ? "w-44 h-44 md:w-52 md:h-52 border-4 border-primary z-10"
                     : "w-32 h-32 md:w-40 md:h-40 border-2"}
@@ -80,6 +80,7 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
                     alt={title}
                     width={isCenter ? 96 : 80}
                     height={isCenter ? 96 : 80}
+                    sizes="(max-width: 768px) 80px, 96px"
                     className={`${isCenter ? "w-24 h-24" : "w-20 h-20"} object-contain`}
                 />
             </div>

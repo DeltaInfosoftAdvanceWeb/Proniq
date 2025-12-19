@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useEffect, useState, useRef, Fragment } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const features = [
   { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "📋" },
@@ -92,7 +92,7 @@ function FeatureBubbles() {
           <motion.div
             key={i}
             className="absolute z-10"
-            style={{ left: `${x}%`, top: `${y}%`, willChange: 'transform, opacity' }}
+            style={{ left: `${x}%`, top: `${y}%` }}
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true, margin: "-100px", amount: 0.3 }}
@@ -104,10 +104,10 @@ function FeatureBubbles() {
             }}
           >
             <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
               className={`
                   relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
                   bg-white border border-slate-100 shadow-lg shadow-slate-200/50
-                  hover:shadow-xl hover:scale-105 transition-all duration-300
                   -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
                 `}
             >

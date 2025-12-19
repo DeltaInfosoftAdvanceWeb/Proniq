@@ -22,7 +22,7 @@ export default function ConstructionHologram() {
                     trigger: containerRef.current,
                     start: "top top",
                     end: "+=200%", // 200% viewport height scroll distance
-                    scrub: 1.5, // Smooth scrubbing
+                    scrub: 1, // Snappier scrubbing
                     pin: true,
                     anticipatePin: 1,
                 },
