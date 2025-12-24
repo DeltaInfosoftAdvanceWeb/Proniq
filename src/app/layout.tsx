@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // Removed next/font imports; fonts are loaded via globals.css
 
 import "./globals.css";
+import "./performance.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
