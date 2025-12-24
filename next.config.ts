@@ -26,13 +26,6 @@ const nextConfig: NextConfig = {
 
   // Production optimizations
   productionBrowserSourceMaps: false,
-
-  // Reduce JavaScript bundle size
-  modularizeImports: {
-    'lucide-react': {
-      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
-    },
-  },
 };
 
 export default nextConfig;

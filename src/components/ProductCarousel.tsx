@@ -3,107 +3,81 @@
 import Image from "next/image";
 
 const products = [
-    // Row 1 (5)
-    { title: "Delta iDealer", logo: "/Logos/Delta iDealer.png", color: "border-blue-400" },
-    { title: "Delta CRM", logo: "/Logos/Deta iCRM.png", color: "border-blue-400" },
-    { title: "LABHCART", logo: "/Logos/Labhcart.png", color: "border-purple-400" },
-    { title: "Delta BigData", logo: "/Logos/Delta BigData.png", color: "border-cyan-400" },
-    { title: "Delta iAccount", logo: "/Logos/Delta iAccount.png", color: "border-teal-400" },
-
-    // Row 2 (6)
-    { title: "Delta iAttendance", logo: "/Logos/Delta iAttendance.png", color: "border-amber-400" },
-    { title: "Performance Mgmt", logo: "/Logos/Performance Management  System.png", color: "border-amber-400" },
-    { title: "Delta MyTime", logo: "/Logos/Delta Mytime.png", color: "border-amber-400" },
-    { title: "DELTA iERP", logo: "/Logos/Delta iERP.png", color: "border-pink-400" },
-    { title: "PRONIQ", logo: "/proniq.png", color: "border-primary", isCenter: true },
-    { title: "Delta KANBAN", logo: "/Logos/Delta Kanban.png", color: "border-cyan-400" },
-
-    // Row 3 (5)
-    { title: "Delta GateModule", logo: "/Logos/Delta GateModule.png", color: "border-rose-400" },
-    { title: "Delta Inventory", logo: "/Logos/Delta Inventory.png", color: "border-rose-400" },
-    { title: "Delta IOT", logo: "/Logos/Delta IOT.png", color: "border-rose-400" },
-    { title: "iVendor Connect", logo: "/Logos/Delta iVendor connect.png", color: "border-rose-400" },
-    { title: "Project Planning", logo: "/Logos/Project Management.png", color: "border-rose-400" },
-
-    // Row 4 (3)
-    { title: "Delta iShop", logo: "/Logos/iShop.png", color: "border-pink-400" },
-    { title: "Delta Barcode", logo: "/Logos/Delta Barcode.png", color: "border-pink-400" },
-    { title: "Delta iStock", logo: "/Logos/Delta iStock.png", color: "border-pink-400" },
+    { title: "Delta iDealer", logo: "/Logos/Delta iDealer.png", category: "Sales & Distribution" },
+    { title: "Delta CRM", logo: "/Logos/Deta iCRM.png", category: "Customer Relations" },
+    { title: "LABHCART", logo: "/Logos/Labhcart.png", category: "E-Commerce" },
+    { title: "Delta BigData", logo: "/Logos/Delta BigData.png", category: "Analytics" },
+    { title: "Delta iAccount", logo: "/Logos/Delta iAccount.png", category: "Finance" },
+    { title: "Delta iAttendance", logo: "/Logos/Delta iAttendance.png", category: "HR Management" },
+    { title: "Performance Mgmt", logo: "/Logos/Performance Management  System.png", category: "HR Management" },
+    { title: "Delta MyTime", logo: "/Logos/Delta Mytime.png", category: "Time Tracking" },
+    { title: "DELTA iERP", logo: "/Logos/Delta iERP.png", category: "Enterprise Resource" },
+    { title: "PRONIQ", logo: "/proniq.png", category: "Workflow Platform" },
+    { title: "Delta KANBAN", logo: "/Logos/Delta Kanban.png", category: "Project Management" },
+    { title: "Delta GateModule", logo: "/Logos/Delta GateModule.png", category: "Security" },
+    { title: "Delta Inventory", logo: "/Logos/Delta Inventory.png", category: "Inventory" },
+    { title: "Delta IOT", logo: "/Logos/Delta IOT.png", category: "IoT Solutions" },
+    { title: "iVendor Connect", logo: "/Logos/Delta iVendor connect.png", category: "Vendor Management" },
+    { title: "Project Planning", logo: "/Logos/Project Management.png", category: "Project Management" },
+    { title: "Delta iShop", logo: "/Logos/iShop.png", category: "E-Commerce" },
+    { title: "Delta Barcode", logo: "/Logos/Delta Barcode.png", category: "Inventory" },
+    { title: "Delta iStock", logo: "/Logos/Delta iStock.png", category: "Stock Management" },
 ];
-
-function ProductCard({ title, logo, color, isCenter = false }: any) {
-    return (
-        <div
-            className={`
-                flex flex-col items-center justify-center
-                bg-white rounded-2xl shadow-sm
-                transition-transform duration-200 hover:-translate-y-1
-                ${isCenter
-                    ? "w-44 h-44 md:w-52 md:h-52 border-4 border-primary z-10"
-                    : "w-32 h-32 md:w-40 md:h-40 border-2"}
-                ${color}
-            `}
-        >
-            <div
-                className={`
-                    flex items-center justify-center rounded-full mb-3
-                    ${isCenter ? "w-28 h-28 bg-primary/10" : "w-24 h-24 bg-slate-50"}
-                `}
-            >
-                <Image
-                    src={logo}
-                    alt={title}
-                    width={isCenter ? 64 : 48}
-                    height={isCenter ? 64 : 48}
-                    quality={50}
-                    loading="lazy"
-                    sizes="(max-width: 768px) 48px, 64px"
-                    className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}
-                />
-            </div>
-
-            <span
-                className={`
-                    text-center font-semibold leading-tight px-2
-                    ${isCenter ? "text-lg text-slate-900" : "text-xs md:text-sm text-slate-700"}
-                `}
-            >
-                {title}
-            </span>
-        </div>
-    );
-}
 
 export default function ProductCarousel() {
     return (
-        <section className="py-24 bg-slate-50">
-            <div className="container mx-auto px-6 text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                    Delta's Product <span className="text-gradient">Ecosystem</span>
-                </h2>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                    A comprehensive suite of interconnected modules designed to power every
-                    aspect of your business.
-                </p>
-            </div>
+        <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+            <div className="container mx-auto px-6">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                        Delta's Product <span className="text-gradient">Ecosystem</span>
+                    </h2>
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                        A comprehensive suite of interconnected modules designed to power every aspect of your business.
+                    </p>
+                </div>
 
-            <div className="container mx-auto px-4 max-w-7xl">
-                <div className="flex flex-col items-center gap-8">
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(0, 5).map((p) => <ProductCard key={p.title} {...p} />)}
-                    </div>
+                {/* Simple Grid Layout */}
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                        {products.map((product) => (
+                            <div
+                                key={product.title}
+                                className="group bg-white rounded-xl p-4 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-200"
+                            >
+                                {/* Logo */}
+                                <div className="aspect-square flex items-center justify-center mb-3 bg-slate-50 rounded-lg p-3">
+                                    <Image
+                                        src={product.logo}
+                                        alt={product.title}
+                                        width={64}
+                                        height={64}
+                                        quality={50}
+                                        loading="lazy"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
 
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center">
-                        {products.slice(5, 11).map((p) => <ProductCard key={p.title} {...p} />)}
-                    </div>
+                                {/* Title */}
+                                <h3 className="font-semibold text-sm text-slate-900 text-center mb-1 line-clamp-2">
+                                    {product.title}
+                                </h3>
 
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(11, 16).map((p) => <ProductCard key={p.title} {...p} />)}
+                                {/* Category */}
+                                <p className="text-xs text-slate-500 text-center">
+                                    {product.category}
+                                </p>
+                            </div>
+                        ))}
                     </div>
+                </div>
 
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(16).map((p) => <ProductCard key={p.title} {...p} />)}
-                    </div>
+                {/* Footer Note */}
+                <div className="text-center mt-12">
+                    <p className="text-sm text-slate-500">
+                        All products seamlessly integrate with each other for a unified experience
+                    </p>
                 </div>
             </div>
         </section>
