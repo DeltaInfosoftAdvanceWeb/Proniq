@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-
 
 const products = [
     // Row 1 (5)
@@ -57,7 +55,7 @@ function ProductCard({ title, logo, color, isCenter = false }: any) {
                     alt={title}
                     width={isCenter ? 64 : 48}
                     height={isCenter ? 64 : 48}
-                    quality={60}
+                    quality={50}
                     loading="lazy"
                     sizes="(max-width: 768px) 48px, 64px"
                     className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}
@@ -80,25 +78,13 @@ export default function ProductCarousel() {
     return (
         <section className="py-24 bg-slate-50">
             <div className="container mx-auto px-6 text-center mb-16">
-                <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4 }}
-                    className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-                >
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                     Delta's Product <span className="text-gradient">Ecosystem</span>
-                </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1, duration: 0.4 }}
-                    className="text-xl text-slate-600 max-w-2xl mx-auto"
-                >
+                </h2>
+                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                     A comprehensive suite of interconnected modules designed to power every
                     aspect of your business.
-                </motion.p>
+                </p>
             </div>
 
             <div className="container mx-auto px-4 max-w-7xl">
