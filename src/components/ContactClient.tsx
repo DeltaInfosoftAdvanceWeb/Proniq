@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Send, Clock, CheckCircle2, ShieldCheck, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Send, Clock, CheckCircle2, ShieldCheck, Loader2, RefreshCw, XCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 export default function ContactClient() {
@@ -18,13 +18,13 @@ export default function ContactClient() {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    // Stylish CAPTCHA States
-    const [isVerifying, setIsVerifying] = useState(false);
+    // Simple Captcha States
     const [isVerified, setIsVerified] = useState(false);
     const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: '' });
     const [captchaAnswer, setCaptchaAnswer] = useState(0);
+    const [captchaError, setCaptchaError] = useState<string | null>(null);
 
-    // Properly initialize captcha with useEffect
+    // Initialize captcha on mount
     useEffect(() => {
         generateCaptcha();
     }, []);
@@ -34,23 +34,33 @@ export default function ContactClient() {
         const n2 = Math.floor(Math.random() * 10) + 1;
         setCaptcha({ num1: n1, num2: n2, answer: '' });
         setCaptchaAnswer(n1 + n2);
+        setCaptchaError(null);
+        setIsVerified(false);
     }
-
-    const handleStartVerification = () => {
-        setIsVerifying(true);
-        // Artificial delay for "Scanning" feel
-        setTimeout(() => {
-            setIsVerifying(false);
-        }, 1500);
-    };
 
     const checkCaptcha = (val: string) => {
         setCaptcha({ ...captcha, answer: val });
-        if (parseInt(val) === captchaAnswer) {
+        setCaptchaError(null);
+
+        if (val.trim() === '') {
+            setIsVerified(false);
+            return;
+        }
+
+        const userAnswer = parseInt(val);
+        if (isNaN(userAnswer)) {
+            setCaptchaError('Please enter a valid number');
+            setIsVerified(false);
+            return;
+        }
+
+        if (userAnswer === captchaAnswer) {
             setIsVerified(true);
+            setCaptchaError(null);
             setError(null);
         } else {
             setIsVerified(false);
+            setCaptchaError('Incorrect answer. Please try again.');
         }
     };
 
@@ -97,12 +107,10 @@ export default function ContactClient() {
                 message: '',
             });
             setIsVerified(false);
-            generateCaptcha();
         } catch (err: any) {
             console.error('Submission Error:', err);
             setError(err.message || 'Failed to send message. Please try again later.');
             setIsVerified(false);
-            generateCaptcha();
         } finally {
             setLoading(false);
         }
@@ -171,7 +179,7 @@ export default function ContactClient() {
                         Get in <span className="text-primary">Touch</span>
                     </h1>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-                        Have a question or want to discuss a project? We’d love to hear from you.
+                        Have a question or want to discuss a project? We'd love to hear from you.
                     </p>
                 </div>
             </section>
@@ -290,115 +298,96 @@ export default function ContactClient() {
                                     className={`${inputClass} resize-none`}
                                 />
 
-                                {/* STYLISH CAPTCHA SECTION */}
-                                <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-sm transition-all">
-                                    <AnimatePresence mode="wait">
-                                        {!isVerified && !isVerifying && captcha.answer === '' && (
-                                            <motion.div
-                                                key="initial"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className="p-6 flex items-center justify-between group cursor-pointer"
-                                                onClick={handleStartVerification}
+                                {/* SIMPLE MATH CAPTCHA */}
+                                <div className="relative overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all">
+                                    <div className="p-6 space-y-4">
+                                        {/* Header */}
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <ShieldCheck className={`w-5 h-5 ${isVerified ? 'text-green-500' : 'text-primary'}`} />
+                                                <p className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
+                                                    {isVerified ? 'Verified' : 'Human Verification'}
+                                                </p>
+                                            </div>
+                                            <p className="text-[10px] text-slate-400 font-mono">PRONIQ Security</p>
+                                        </div>
+
+                                        {/* Math Problem */}
+                                        <div className="flex items-center gap-4">
+                                            <div className={`px-6 py-4 rounded-2xl border-2 transition-all duration-500 font-mono font-black text-2xl tracking-tighter
+                                                ${isVerified
+                                                    ? 'bg-green-50 border-green-200 text-green-600 dark:bg-green-900/20 dark:border-green-800'
+                                                    : 'bg-slate-50 border-slate-200 text-slate-900 dark:bg-slate-900/50 dark:border-slate-700 dark:text-white'
+                                                }`}
                                             >
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-10 h-10 rounded-full border-2 border-primary/30 flex items-center justify-center group-hover:border-primary transition-colors">
-                                                        <ShieldCheck className="w-5 h-5 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                                                    </div>
-                                                    <div>
-                                                        <p className="font-bold text-slate-900 dark:text-white text-sm">Human Verification</p>
-                                                        <p className="text-xs text-slate-500">Click to confirm you’re not a robot</p>
-                                                    </div>
-                                                </div>
+                                                {captcha.num1} <span className="text-slate-400 mx-1">+</span> {captcha.num2} <span className="text-slate-400 mx-1">=</span> ?
+                                            </div>
+
+                                            <div className="flex-1 relative">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    disabled={isVerified}
+                                                    placeholder="Answer"
+                                                    value={captcha.answer}
+                                                    onChange={(e) => checkCaptcha(e.target.value)}
+                                                    className={`w-full bg-white dark:bg-slate-900 border-2 rounded-2xl px-5 py-4 text-xl font-bold transition-all
+                                                        ${isVerified
+                                                            ? 'border-green-500 text-green-600 dark:text-green-400'
+                                                            : captchaError
+                                                                ? 'border-red-500 focus:border-red-500 focus:ring-0'
+                                                                : 'border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-0'
+                                                        }`}
+                                                />
+                                                {isVerified && (
+                                                    <motion.div
+                                                        initial={{ scale: 0 }}
+                                                        animate={{ scale: 1 }}
+                                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500"
+                                                    >
+                                                        <CheckCircle2 className="w-6 h-6" />
+                                                    </motion.div>
+                                                )}
+                                                {captchaError && (
+                                                    <motion.div
+                                                        initial={{ scale: 0 }}
+                                                        animate={{ scale: 1 }}
+                                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500"
+                                                    >
+                                                        <XCircle className="w-6 h-6" />
+                                                    </motion.div>
+                                                )}
+                                            </div>
+
+                                            {!isVerified && (
                                                 <motion.button
+                                                    type="button"
                                                     whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
-                                                    className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 shadow-sm"
+                                                    onClick={generateCaptcha}
+                                                    className="px-4 py-4 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-2xl hover:border-primary transition-all group"
+                                                    title="New problem"
                                                 >
-                                                    Verify
+                                                    <RefreshCw className="w-5 h-5 text-slate-600 dark:text-slate-400 group-hover:text-primary group-hover:rotate-180 transition-all duration-500" />
                                                 </motion.button>
-                                            </motion.div>
-                                        )}
+                                            )}
+                                        </div>
 
-                                        {isVerifying && (
+                                        {/* Error Message */}
+                                        {captchaError && (
                                             <motion.div
-                                                key="verifying"
-                                                initial={{ opacity: 0, y: 10 }}
+                                                initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, scale: 0.95 }}
-                                                className="p-10 flex flex-col items-center justify-center gap-4 text-center"
+                                                exit={{ opacity: 0 }}
+                                                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
                                             >
-                                                <Loader2 className="w-10 h-10 text-primary animate-spin" />
-                                                <div>
-                                                    <p className="font-bold text-slate-900 dark:text-white">Scanning Session...</p>
-                                                    <p className="text-xs text-slate-500">Analyzing behavior patterns</p>
-                                                </div>
+                                                <XCircle className="w-4 h-4 text-red-500" />
+                                                <p className="text-sm font-medium text-red-600 dark:text-red-400">
+                                                    {captchaError}
+                                                </p>
                                             </motion.div>
                                         )}
-
-                                        {(!isVerifying && (captcha.answer !== '' || isVerified || (!isVerified && isVerifying === false && captcha.num1 !== 0))) && (
-                                            <motion.div
-                                                key="challenge"
-                                                initial={{ opacity: 0, scale: 0.95 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                className="p-6 space-y-4"
-                                            >
-                                                <div className="flex items-center justify-between">
-                                                    <div className="flex items-center gap-2">
-                                                        {isVerified ? (
-                                                            <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
-                                                                <CheckCircle2 className="w-4 h-4 text-white" />
-                                                            </div>
-                                                        ) : (
-                                                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                                                                <ShieldCheck className="w-4 h-4" />
-                                                            </div>
-                                                        )}
-                                                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest">
-                                                            {isVerified ? 'Identity Confirmed' : 'Security Challenge'}
-                                                        </p>
-                                                    </div>
-                                                    <span className="text-[10px] text-slate-400 font-mono">CODE: PRONI-0X{captchaAnswer}</span>
-                                                </div>
-
-                                                <div className="flex items-center gap-4">
-                                                    <div className={`px-6 py-4 rounded-2xl border-2 transition-all duration-500 font-mono font-black text-2xl tracking-tighter
-                            ${isVerified
-                                                            ? 'bg-green-50 border-green-200 text-green-600 dark:bg-green-900/20 dark:border-green-800'
-                                                            : 'bg-white border-slate-100 text-primary dark:bg-slate-800 dark:border-slate-700'
-                                                        }`}
-                                                    >
-                                                        {captcha.num1} <span className="text-slate-300 mx-1">+</span> {captcha.num2}
-                                                    </div>
-
-                                                    <div className="flex-1 relative">
-                                                        <input
-                                                            required
-                                                            disabled={isVerified}
-                                                            placeholder="Answer"
-                                                            value={captcha.answer}
-                                                            onChange={(e) => checkCaptcha(e.target.value)}
-                                                            className={`w-full bg-white dark:bg-slate-800 border-2 rounded-2xl px-5 py-4 text-xl font-bold transition-all
-                                ${isVerified
-                                                                    ? 'border-green-500 text-green-600 opacity-60'
-                                                                    : 'border-slate-200 focus:border-primary focus:ring-0'
-                                                                }`}
-                                                        />
-                                                        {isVerified && (
-                                                            <motion.div
-                                                                initial={{ scale: 0 }}
-                                                                animate={{ scale: 1 }}
-                                                                className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500"
-                                                            >
-                                                                <CheckCircle2 className="w-6 h-6" />
-                                                            </motion.div>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                    </div>
                                 </div>
 
                                 <button
