@@ -8,15 +8,16 @@ export default function TransformCTA() {
         <section className="py-20 md:py-32 bg-slate-900 text-center text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-slate-900 to-secondary/10" />
 
-            {/* Animated Rings */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-[spin_10s_linear_infinite]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+            {/* Static Decorative Rings - No animation for better performance */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />
 
             <div className="relative max-w-4xl mx-auto px-6 z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
                     className="text-4xl md:text-6xl font-bold mb-8"
                 >
                     Ready to Transform <br /> Your Operations?

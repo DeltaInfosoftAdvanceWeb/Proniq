@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
 
 
 const products = [
@@ -34,33 +33,9 @@ const products = [
     { title: "Delta iStock", logo: "/Logos/Delta iStock.png", color: "border-pink-400" },
 ];
 
-function ProductCard({ title, logo, color, isCenter = false, priority = false }: any) {
-    const [isVisible, setIsVisible] = useState(false);
-    const cardRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(true);
-                        observer.disconnect();
-                    }
-                });
-            },
-            { rootMargin: "100px" }
-        );
-
-        if (cardRef.current) {
-            observer.observe(cardRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
+function ProductCard({ title, logo, color, isCenter = false }: any) {
     return (
         <div
-            ref={cardRef}
             className={`
                 flex flex-col items-center justify-center
                 bg-white rounded-2xl shadow-sm
@@ -77,19 +52,16 @@ function ProductCard({ title, logo, color, isCenter = false, priority = false }:
                     ${isCenter ? "w-28 h-28 bg-primary/10" : "w-24 h-24 bg-slate-50"}
                 `}
             >
-                {isVisible && (
-                    <Image
-                        src={logo}
-                        alt={title}
-                        width={isCenter ? 64 : 48}
-                        height={isCenter ? 64 : 48}
-                        quality={60}
-                        loading={priority ? "eager" : "lazy"}
-                        priority={priority}
-                        sizes="(max-width: 768px) 48px, 64px"
-                        className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}
-                    />
-                )}
+                <Image
+                    src={logo}
+                    alt={title}
+                    width={isCenter ? 64 : 48}
+                    height={isCenter ? 64 : 48}
+                    quality={60}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 48px, 64px"
+                    className={`${isCenter ? "w-16 h-16" : "w-12 h-12"} object-contain`}
+                />
             </div>
 
             <span
@@ -132,7 +104,7 @@ export default function ProductCarousel() {
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="flex flex-col items-center gap-8">
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(0, 5).map((p, i) => <ProductCard key={p.title} {...p} priority={i < 3} />)}
+                        {products.slice(0, 5).map((p) => <ProductCard key={p.title} {...p} />)}
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center">

@@ -17,13 +17,13 @@ export default function SmoothScroll() {
         gsap.registerPlugin(ScrollTrigger);
 
         const lenis = new Lenis({
-            duration: 1,
+            duration: 0.6, // Reduced from 1 for better performance
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 1.5,
+            wheelMultiplier: 0.8, // Reduced for more responsive scrolling
+            touchMultiplier: 1.2, // Reduced for better mobile performance
             infinite: false,
         });
 
@@ -38,7 +38,7 @@ export default function SmoothScroll() {
         };
 
         gsap.ticker.add(updateLenis);
-        // gsap.ticker.lagSmoothing(0); // Removed to allow smoothing of frame drops
+        gsap.ticker.lagSmoothing(500, 16); // Enable lag smoothing for better performance
 
         // Resize handler with debounce-like behavior
         const handleResize = () => {
