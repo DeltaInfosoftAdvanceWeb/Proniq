@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 const products = [
     { title: "Delta iDealer", logo: "/Logos/Delta iDealer.png", category: "Sales & Distribution" },
@@ -24,6 +25,44 @@ const products = [
     { title: "Delta iStock", logo: "/Logos/Delta iStock.png", category: "Stock Management" },
 ];
 
+function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    return (
+        <div className="group bg-white rounded-xl p-4 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-200">
+            {/* Logo */}
+            <div className="aspect-square flex items-center justify-center mb-3 bg-slate-50 rounded-lg p-3 relative">
+                {!imageLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-8 h-8 border-2 border-slate-300 border-t-primary rounded-full animate-spin" />
+                    </div>
+                )}
+                <Image
+                    src={product.logo}
+                    alt={product.title}
+                    width={64}
+                    height={64}
+                    quality={40}
+                    loading={index < 10 ? "eager" : "lazy"}
+                    onLoad={() => setImageLoaded(true)}
+                    className={`w-full h-full object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    unoptimized={false}
+                />
+            </div>
+
+            {/* Title */}
+            <h3 className="font-semibold text-sm text-slate-900 text-center mb-1 line-clamp-2">
+                {product.title}
+            </h3>
+
+            {/* Category */}
+            <p className="text-xs text-slate-500 text-center">
+                {product.category}
+            </p>
+        </div>
+    );
+}
+
 export default function ProductCarousel() {
     return (
         <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
@@ -41,34 +80,8 @@ export default function ProductCarousel() {
                 {/* Simple Grid Layout */}
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                        {products.map((product) => (
-                            <div
-                                key={product.title}
-                                className="group bg-white rounded-xl p-4 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-200"
-                            >
-                                {/* Logo */}
-                                <div className="aspect-square flex items-center justify-center mb-3 bg-slate-50 rounded-lg p-3">
-                                    <Image
-                                        src={product.logo}
-                                        alt={product.title}
-                                        width={64}
-                                        height={64}
-                                        quality={50}
-                                        loading="lazy"
-                                        className="w-full h-full object-contain"
-                                    />
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="font-semibold text-sm text-slate-900 text-center mb-1 line-clamp-2">
-                                    {product.title}
-                                </h3>
-
-                                {/* Category */}
-                                <p className="text-xs text-slate-500 text-center">
-                                    {product.category}
-                                </p>
-                            </div>
+                        {products.map((product, index) => (
+                            <ProductCard key={product.title} product={product} index={index} />
                         ))}
                     </div>
                 </div>

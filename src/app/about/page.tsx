@@ -1,6 +1,6 @@
 import About from "@/components/About";
-import ProductCarousel from "@/components/ProductCarousel";
 import TransformCTA from "@/components/TransformCTA";
+import { Zap, Layers, BarChart2 } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,7 +26,45 @@ export default function Page() {
         </div>
       </section>
       <About />
-      <ProductCarousel />
+      <section className="px-6 py-20 bg-gradient-to-r from-primary/5 via-transparent to-transparent">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Why <span className="text-gradient">PRONIQ</span>
+            </h2>
+            <p className="text-lg text-slate-600 mb-10">
+              Industry-tailored ERP that moves fast, scales with your business, and turns operations into
+              measurable outcomes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="relative group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-100 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-teal-400 text-white mb-4">
+                <Zap className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Fast Deployment</h3>
+              <p className="text-sm text-slate-600">Get started quickly with pre-built industry workflows and sensible defaults.</p>
+            </div>
+
+            <div className="relative group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-100 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-400 text-white mb-4">
+                <Layers className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Modular Architecture</h3>
+              <p className="text-sm text-slate-600">Pick modules you need: finance, inventory, projects — mix and match as you scale.</p>
+            </div>
+
+            <div className="relative group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-100 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white mb-4">
+                <BarChart2 className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Data-Driven</h3>
+              <p className="text-sm text-slate-600">Real-time dashboards and actionable insights to improve site and project outcomes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <TransformCTA />
     </main>
   );
