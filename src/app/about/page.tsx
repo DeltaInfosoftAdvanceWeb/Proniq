@@ -65,6 +65,108 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <section className="px-6 py-16">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center mb-8">
+            <h3 className="text-xl font-semibold">More Products</h3>
+            <p className="text-sm text-slate-600 mt-2">Explore other solutions built by our team and partners.</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 items-center justify-items-center">
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/proniq.png" alt="PRONIQ" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iERP.png" alt="iERP" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Inventory.png" alt="Inventory" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iShop.png" alt="iShop" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iAccount.png" alt="iAccount" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Project%20Management.png" alt="Project Management" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Approval.png" alt="Delta Approval" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Barcode.png" alt="Delta Barcode" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20BigData.png" alt="Delta BigData" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20GateModule.png" alt="Delta GateModule" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iAttendance.png" alt="iAttendance" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iDealer.png" alt="iDealer" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Infra.png" alt="Infra" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20IOT.png" alt="IOT" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iStock.png" alt="iStock" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20iVendor%20connect.png" alt="iVendor connect" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Kanban.png" alt="Kanban" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20Mytime.png" alt="Mytime" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Delta%20PPC.png" alt="PPC" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Deta%20iCRM.png" alt="iCRM" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Labhcart.png" alt="Labhcart" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Performance%20Management%20%20System.png" alt="Performance Management" className="max-h-24 object-contain" />
+            </div>
+
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+              <img src="/Logos/favicon/Performance%20Management%20%20System-1.png" alt="Performance Management 2" className="max-h-24 object-contain" />
+            </div>
+          </div>
+        </div>
+      </section>
       <TransformCTA />
     </main>
   );
