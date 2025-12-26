@@ -1,4 +1,8 @@
-"use client"
+'use client';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import { useEffect, useState, useRef } from "react"
 import {
   ChevronRight,
@@ -108,7 +112,8 @@ function TenderCard({
   );
 }
 
-export default function Page() {
+export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
+  const router = useRouter();
   const prevScroll = useRef(0);
   const [showOverlay, setShowOverlay] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
@@ -161,7 +166,7 @@ export default function Page() {
         <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-4 sm:px-6 lg:px-8" style={{ background: "#f8fafc" }}>
           <div className="max-w-7xl mx-auto">
             {/* Animated badge */}
-            <div className="flex justify-center mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.1s" }}>
+            <div className="flex justify-center mb-10 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-md transition-all cursor-pointer group hover:scale-105">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -175,7 +180,7 @@ export default function Page() {
             {/* Hero content */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
               {/* Left content */}
-              <div className="space-y-8 text-center lg:text-left animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
+              <div className="space-y-8 text-center lg:text-left animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 <div className="space-y-6">
                   <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
                     Cut Delays. <span className="text-gradient">Reduce Costs.</span>
@@ -190,7 +195,7 @@ export default function Page() {
 
                 {/* Premium CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                  <button className="group relative px-8 py-4 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                  <button className="group relative px-8 py-4 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden" onClick={scrollToTimeline}>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shimmer" />
                     <span className="relative flex items-center justify-center gap-2">
                       Launch Your Workflow
@@ -203,22 +208,11 @@ export default function Page() {
                   </button>
                 </div>
 
-                {/* Trust indicators */}
-                <div className="pt-8 border-t border-slate-200/60 space-y-6">
-                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">
-                    Trusted by innovative companies
-                  </p>
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                    {["Duke Plasto", "Desire Energy Solutions", "Dara Infras", "GA Infra"].map((item, i) => (
-                      <span key={i} className="text-lg font-bold text-slate-400 hover:text-slate-600 transition-colors">{item}</span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Right content - Visual */}
               <div
-                className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in opacity-0"
+                className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in"
                 style={{ animationDelay: "0.4s" }}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-[3rem] rotate-3 border border-white/50 backdrop-blur-sm" />
@@ -242,7 +236,16 @@ export default function Page() {
                     {/* Fake UI Body */}
                     <div className="p-6 grid grid-cols-3 gap-6">
                       <div className="col-span-2 space-y-4">
-                        <div className="h-32 from-primary/5 to-secondary/5 rounded-xl border border-primary/10"><img src="/p1.png" alt="" srcSet="/p1.png 1x, /p1@2x.png 2x" /></div>
+                        <div className="relative h-32 from-primary/5 to-secondary/5 rounded-xl border border-primary/10 overflow-hidden">
+                          <Image
+                            src="/p1.png"
+                            alt="PRONIQ Dashboard Preview"
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        </div>
                         <div className="space-y-2">
                           <div className="h-4 w-3/4 bg-slate-100 rounded" />
                           <div className="h-4 w-1/2 bg-slate-100 rounded" />
@@ -254,14 +257,14 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* Floating Elements */}
-                  <div className="absolute top-[15%] -right-12 z-20 animate-float" style={{ animationDelay: "1s" }}>
+                  {/* Floating Elements - Hidden on mobile */}
+                  <div className="hidden md:block absolute top-[15%] -right-12 z-20 animate-float" style={{ animationDelay: "1s" }}>
                     <div className="w-[260px]">
                       <TenderCard />
                     </div>
                   </div>
 
-                  <div className="absolute top-[55%] -right-8 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
+                  <div className="hidden md:block absolute top-[55%] -right-8 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
                     <div className="w-[300px]">
                       <TenderCard
                         title="Construction of New Administrative Block at Jaipur"
@@ -273,11 +276,18 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <div className="absolute bottom-[20%] -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float" style={{ animationDelay: "2s" }}>
+                  <div className="hidden md:block absolute bottom-[20%] -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float" style={{ animationDelay: "2s" }}>
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
                         {[1, 2, 3].map((i) => (
-                          <img src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
+                          <div key={i} className="relative w-5 h-5 rounded-full overflow-hidden border-2 border-white">
+                            <Image
+                              src="/user.png"
+                              alt="User avatar"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
                         ))}
                       </div>
                       <div className="text-xs font-medium text-slate-600">
@@ -367,7 +377,7 @@ export default function Page() {
           perspective: 1000px;
         }
       `}</style>
-      </main>
+      </main >
     </>
   )
 }
