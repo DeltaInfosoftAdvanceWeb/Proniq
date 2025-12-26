@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -58,9 +59,10 @@ export default function ConstructionAIHero() {
             <div className="sticky top-0 h-screen overflow-hidden">
 
                 {/* Construction Site */}
-                <img
+                <Image
                     src="/site.jpg"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     alt="Construction Site"
                 />
 
@@ -76,9 +78,15 @@ export default function ConstructionAIHero() {
                 {/* AI PANELS */}
                 <div className="absolute inset-0 flex items-center justify-center gap-6 z-30">
 
-                    <img src="/panel1.png" className="ai-panel w-48 rounded-xl shadow-xl" />
-                    <img src="/panel2.png" className="ai-panel w-48 rounded-xl shadow-xl" />
-                    <img src="/panel3.png" className="ai-panel w-48 rounded-xl shadow-xl" />
+                    <div className="ai-panel relative w-48 h-64 rounded-xl shadow-xl overflow-hidden">
+                        <Image src="/panel1.png" alt="AI Panel 1" fill className="object-cover" />
+                    </div>
+                    <div className="ai-panel relative w-48 h-64 rounded-xl shadow-xl overflow-hidden">
+                        <Image src="/panel2.png" alt="AI Panel 2" fill className="object-cover" />
+                    </div>
+                    <div className="ai-panel relative w-48 h-64 rounded-xl shadow-xl overflow-hidden">
+                        <Image src="/panel3.png" alt="AI Panel 3" fill className="object-cover" />
+                    </div>
 
                 </div>
 

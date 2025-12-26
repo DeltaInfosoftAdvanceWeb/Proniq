@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronRight, LayoutGrid, Info, PhoneCall, Home } from "lucide-react";
@@ -122,9 +123,17 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             {/* ---------- LOGO ---------- */}
-            <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-              <img src="/proniq.png" alt="PRONIQ" className="w-10 h-7 md:w-12 md:h-8 object-contain" />
-              <span className="text-base md:text-lg font-bold text-slate-900 tracking-tight">PRONIQ</span>
+            <Link href="/" className="flex items-center gap-2 md:gap-3" onClick={() => setOpen(false)}>
+              <div className="relative w-20 h-10 md:w-24 md:h-12">
+                <Image
+                  src="/proniq.png"
+                  alt="PRONIQ"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <span className="text-base md:text-xl font-bold text-slate-900 tracking-tight">PRONIQ</span>
             </Link>
 
             {/* ---------- DESKTOP NAV ---------- */}

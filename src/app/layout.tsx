@@ -1,24 +1,22 @@
 import type { Metadata } from "next";
-// Removed next/font imports; fonts are loaded via globals.css
-
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import "./performance.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
-// Fonts are loaded via globals.css; no next/font usage needed.
-// const inter = Inter({
-//   variable: "--font-sans",
-//   subsets: ["latin"],
-//   display: "swap",
-// });
-//
-// const manrope = Manrope({
-//   variable: "--font-alt",
-//   subsets: ["latin"],
-//   display: "swap",
-// });
+const inter = Inter({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-alt",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   icons: {
@@ -52,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className={`${inter.variable} ${manrope.variable} antialiased`}>
         <SmoothScroll />
         <Navbar />
         {children}

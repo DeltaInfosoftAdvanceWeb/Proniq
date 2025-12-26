@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { useEffect, useState, useRef } from "react"
 import {
@@ -235,7 +236,16 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                     {/* Fake UI Body */}
                     <div className="p-6 grid grid-cols-3 gap-6">
                       <div className="col-span-2 space-y-4">
-                        <div className="h-32 from-primary/5 to-secondary/5 rounded-xl border border-primary/10"><img src="/p1.png" alt="" srcSet="/p1.png 1x, /p1@2x.png 2x" /></div>
+                        <div className="relative h-32 from-primary/5 to-secondary/5 rounded-xl border border-primary/10 overflow-hidden">
+                          <Image
+                            src="/p1.png"
+                            alt="PRONIQ Dashboard Preview"
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        </div>
                         <div className="space-y-2">
                           <div className="h-4 w-3/4 bg-slate-100 rounded" />
                           <div className="h-4 w-1/2 bg-slate-100 rounded" />
@@ -270,7 +280,14 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
                         {[1, 2, 3].map((i) => (
-                          <img key={i} src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
+                          <div key={i} className="relative w-5 h-5 rounded-full overflow-hidden border-2 border-white">
+                            <Image
+                              src="/user.png"
+                              alt="User avatar"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
                         ))}
                       </div>
                       <div className="text-xs font-medium text-slate-600">

@@ -1,4 +1,5 @@
 import Tilt from "./Tilt";
+import Image from "next/image";
 import { Zap, Shield, Layout, MousePointer, Smartphone, Move, Info } from "lucide-react";
 
 export default function FeatureBento() {
@@ -59,11 +60,14 @@ export default function FeatureBento() {
                   {/* Header with PRONIQ logo */}
                   <div className="bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-2">
-                      <img
-                        src="/proniq.png" // update path if different
-                        alt="PRONIQ"
-                        className="h-5 w-auto"
-                      />
+                      <div className="relative h-5 w-16">
+                        <Image
+                          src="/proniq.png"
+                          alt="PRONIQ"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
                       <div className="flex flex-col">
                         <span className="text-[10px] text-slate-400 font-medium tracking-[0.16em] uppercase">
                           Overview
