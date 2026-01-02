@@ -23,7 +23,7 @@ export default function HomeClient() {
         <div className="bg-white">
             <div className="w-full bg-gradient-to-b from-white to-slate-50 ">
                 <MacbookScroll
-                    src="/p1.png"
+                    src="p1.png"
                     showGradient={true}
                     title={
                         <span className="text-center flex flex-col items-center">

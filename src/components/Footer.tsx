@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
     Twitter,
     Linkedin,
@@ -25,14 +24,7 @@ export default function Footer() {
                     <div className="lg:col-span-4 space-y-6">
                         <Link href="/" className="inline-flex items-center gap-2 group">
                             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl  shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
-                                <div className="relative w-10 h-8">
-                                    <Image
-                                        src="/proniq.png"
-                                        alt="PRONIQ"
-                                        fill
-                                        className="object-contain"
-                                    />
-                                </div>
+                                <img src="/proniq.png" alt="PRONIQ" className="w-10 h-8" />
                             </div>
                             <span className="text-2xl font-bold text-white tracking-tight">PRONIQ</span>
                         </Link>

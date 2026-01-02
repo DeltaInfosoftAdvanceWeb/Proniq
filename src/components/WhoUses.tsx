@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
 import {
     TrendingUp,
     Users,
@@ -173,14 +172,11 @@ export default function WhoUses() {
                                 className="h-64 rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center"
                             >
                                 {/* LOCAL IMAGE FROM /public */}
-                                <div className="relative w-full h-full">
-                                    <Image
-                                        src="/p5.png"
-                                        alt="Proniq interface"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
+                                <img
+                                    src="/p5.png"
+                                    alt="Proniq interface"
+                                    className="w-full h-full object-cover"
+                                />
                             </motion.div>
                         </div>
                     </motion.div>
@@ -267,14 +263,11 @@ export default function WhoUses() {
                                             className="h-11 w-11 rounded-full flex items-center justify-center overflow-hidden"
                                             style={{ backgroundColor: role.bg }}
                                         >
-                                            <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                                                <Image
-                                                    src={role.img}
-                                                    alt={role.title}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
+                                            <img
+                                                src={role.img}
+                                                alt={role.title}
+                                                className="w-8 h-8 object-cover rounded-full"
+                                            />
                                         </div>
                                     </div>
                                 </span>

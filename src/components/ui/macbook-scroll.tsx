@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
 import {
@@ -166,13 +165,10 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <Image
+        <img
           src={src as string}
-          alt="Macbook display content"
-          fill
-          className="rounded-lg object-fill object-left-top"
-          priority
-          sizes="(max-width: 768px) 100vw, 512px"
+          alt="aceternity logo"
+          className="absolute inset-0 h-full w-full rounded-lg object-fill object-left-top"
         />
 
         {/* Left side popup annotation - Enhanced with glassmorphism */}
@@ -798,13 +794,6 @@ export const OptionKey = ({ className }: { className: string }) => {
 
 const AceternityLogo = () => {
   return (
-    <div className="relative w-[60px] h-[55px]">
-      <Image
-        src="/proniq.png"
-        alt="Proniq Logo"
-        fill
-        className="object-contain"
-      />
-    </div>
+    <img src="/proniq.png" alt="Proniq Logo" style={{ width: "60px", height: "55px" }} />
   );
 };
