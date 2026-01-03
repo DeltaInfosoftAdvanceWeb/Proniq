@@ -105,6 +105,7 @@ export default function Page() {
                     src={`/Logos/favicon/${logo}`}
                     alt={logo.replace('.png', '').replace('Delta ', '')}
                     fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 15vw"
                     className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
