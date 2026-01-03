@@ -10,7 +10,7 @@ export default function EngineeringClient() {
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/site/engineering.png')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
+                    <div className="h-full w-full bg-[url('/engineering.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>
 

@@ -2,6 +2,7 @@ import About from "@/components/About";
 import TransformCTA from "@/components/TransformCTA";
 import { Zap, Layers, BarChart2 } from "lucide-react";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About PRONIQ | Our Story & Vision",
@@ -65,7 +66,54 @@ export default function Page() {
           </div>
         </div>
       </section>
-      
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Our <span className="text-gradient">Ecosystem</span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              A comprehensive suite of integrated modules designed to cover every aspect of your business operations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            {[
+              "Delta Barcode.png",
+              "Delta BigData.png",
+              "Delta GateModule.png",
+              "Delta IOT.png",
+              "Delta Inventory.png",
+              "Delta Kanban.png",
+              "Delta Mytime.png",
+              "Delta PPC.png",
+              "Delta iAccount.png",
+              "Delta iAttendance.png",
+              "Delta iDealer.png",
+              "Delta iERP.png",
+              "Delta iShop.png",
+              "Delta iStock.png",
+              "Delta iVendor connect.png"
+            ].map((logo, index) => (
+              <div
+                key={index}
+                className="w-full h-32 flex items-center justify-center p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all hover:-translate-y-1 group"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={`/Logos/favicon/${logo}`}
+                    alt={logo.replace('.png', '').replace('Delta ', '')}
+                    fill
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <TransformCTA />
     </main>
   );

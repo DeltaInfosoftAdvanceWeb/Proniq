@@ -11,7 +11,7 @@ export default function InfrastructureClient() {
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/site/infra.png')] bg-cover bg-center bg-no-repeat transform scale-105" />
+                    <div className="h-full w-full bg-[url('/infra.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>
 

@@ -79,15 +79,11 @@ export default function EngineeringHologram() {
 
             {/* Engineer Background Layer */}
             <div ref={engineerRef} className="absolute inset-0 z-0 w-full h-full">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                <img
+                    src="/engineering.jpeg"
+                    alt="Engineering Hub"
                     className="absolute inset-0 w-full h-full object-cover"
-                >
-                    <source src="/site/Engineer_Smiling_Pointing_Office.mp4" type="video/mp4" />
-                </video>
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
                 <div className="absolute inset-0 bg-indigo-900/10 mix-blend-overlay" />
             </div>

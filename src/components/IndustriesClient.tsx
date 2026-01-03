@@ -15,7 +15,7 @@ const industries = [
         description:
             "Our flagship ecosystem for General & Specialist Contractors. Automate Running Account (RA) billing, track job costing, and unify site logs with head-office finance.",
         features: ["Automated RA Billing", "Measurement Books", "Unified Job Costing"],
-        image: "/site/construction-hero-sunset.png",
+        image: "/construction.jpeg",
         gradient: "from-amber-600 to-orange-500",
         shadow: "shadow-amber-500/20",
         accent: "text-amber-600",
@@ -29,7 +29,7 @@ const industries = [
         description:
             "Track site progress, safety, and billing with live project visibility. Connect the field to the office and manage subcontractors with surgical precision.",
         features: ["Site Management", "Subcontractor Portal", "Safety Compliance"],
-        image: "/site/construction-hero-sunset.png",
+        image: "/construction.jpeg",
         gradient: "from-emerald-600 to-teal-500",
         shadow: "shadow-emerald-500/20",
         accent: "text-emerald-600",
@@ -43,7 +43,7 @@ const industries = [
         description:
             "Digitize production workflows with advanced planning, inventory, and quality control systems. Gain real-time visibility into every stage of your manufacturing process.",
         features: ["Production Planning", "Quality Control", "Inventory Management"],
-        image: "/site/manu.png",
+        image: "/manufacturing.jpeg",
         gradient: "from-blue-600 to-cyan-500",
         shadow: "shadow-blue-500/20",
         accent: "text-blue-600",
@@ -57,7 +57,7 @@ const industries = [
         description:
             "Manage design projects, materials, vendors, and clients from a single unified platform. Streamline communication and ensure every detail is perfect.",
         features: ["Project Tracking", "Vendor Management", "Client Portal"],
-        image: "/site/interior.png",
+        image: "/interior.jpeg",
         gradient: "from-purple-600 to-pink-500",
         shadow: "shadow-purple-500/20",
         accent: "text-purple-600",
@@ -71,7 +71,7 @@ const industries = [
         description:
             "Control large-scale infrastructure programs with precision planning and real-time reporting. Keep multi-year projects on track and within budget.",
         features: ["Program Management", "Real-time Reporting", "Budget Tracking"],
-        image: "/site/infra.png",
+        image: "/infra.jpeg",
         gradient: "from-orange-500 to-amber-500",
         shadow: "shadow-orange-500/20",
         accent: "text-orange-600",
@@ -85,7 +85,7 @@ const industries = [
         description:
             "Streamline engineering workflows with drawing control, approvals, and version history. Ensure technical accuracy and contractor compliance at every step.",
         features: ["Document Control", "Approval Workflows", "Version History"],
-        image: "/site/engineering.png",
+        image: "/engineering.jpeg",
         gradient: "from-indigo-600 to-blue-500",
         shadow: "shadow-indigo-500/20",
         accent: "text-indigo-600",
@@ -245,11 +245,11 @@ export default function IndustriesClient() {
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                         {[
-                            { src: "/site/manu.png", label: "Production" },
-                            { src: "/site/interior.png", label: "Design Hub" },
-                            { src: "/site/infra.png", label: "Infra Ops" },
-                            { src: "/site/construction-hero-sunset.png", label: "Site Control" },
-                            { src: "/site/engineering.png", label: "Engineer OS" },
+                            { src: "/manufacturing.jpeg", label: "Production" },
+                            { src: "/interior.jpeg", label: "Design Hub" },
+                            { src: "/infra.jpeg", label: "Infra Ops" },
+                            { src: "/construction.jpeg", label: "Site Control" },
+                            { src: "/engineering.jpeg", label: "Engineer OS" },
                             { src: "/p10.png", label: "Dashboards" },
                             { src: "/p11.png", label: "Analytics" },
                             { src: "/p12.png", label: "Resources" },

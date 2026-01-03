@@ -12,7 +12,7 @@ const industries = [
         icon: HardHat,
         description: "Our flagship ecosystem for General & Specialist Contractors",
         gradient: "from-amber-500 to-orange-500",
-        image: "/site/construction-hero-sunset.png",
+        image: "/construction.jpeg",
     },
     {
         id: "construction",
@@ -20,7 +20,7 @@ const industries = [
         icon: HardHat,
         description: "Coordinate construction activities and site safety in real-time",
         gradient: "from-green-500 to-emerald-500",
-        image: "/site/construction-hero-sunset.png",
+        image: "/construction.jpeg",
     },
     {
         id: "manufacturing",
@@ -28,7 +28,7 @@ const industries = [
         icon: Factory,
         description: "Streamline production workflows and quality control",
         gradient: "from-blue-500 to-cyan-500",
-        image: "/site/manu.png",
+        image: "/manufacturing.jpeg",
     },
     {
         id: "interior-architecture",
@@ -36,7 +36,7 @@ const industries = [
         icon: Ruler,
         description: "Manage design projects from concept to completion",
         gradient: "from-purple-500 to-pink-500",
-        image: "/site/interior.png",
+        image: "/interior.jpeg",
     },
     {
         id: "infrastructure",
@@ -44,7 +44,7 @@ const industries = [
         icon: Building2,
         description: "Handle large-scale infrastructure projects and remote sites",
         gradient: "from-orange-500 to-amber-500",
-        image: "/site/infra.png",
+        image: "/infra.jpeg",
     },
     {
         id: "engineering",
@@ -52,7 +52,7 @@ const industries = [
         icon: Building,
         description: "Optimize engineering workflows and documentation",
         gradient: "from-indigo-500 to-blue-500",
-        image: "/site/engineering.png",
+        image: "/engineering.jpeg",
     },
 ];
 
