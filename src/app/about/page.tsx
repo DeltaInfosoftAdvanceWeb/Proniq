@@ -1,8 +1,8 @@
 import About from "@/components/About";
-import TransformCTA from "@/components/TransformCTA";
-import { Zap, Layers, BarChart2, ArrowRight } from "lucide-react";
-import { Metadata } from "next";
 import Image from "next/image";
+import TransformCTA from "@/components/TransformCTA";
+import { Zap, Layers, BarChart2 } from "lucide-react";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About PRONIQ | Our Story & Vision",
@@ -18,12 +18,57 @@ export default function Page() {
 
 
         <div className="container mx-auto max-w-6xl text-center">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/pro-niq.png"
+              alt="Proniq Logo"
+              width={180}
+              height={60}
+              className="h-16 w-auto object-contain"
+              priority
+            />
+          </div>
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
             Our <span className="text-gradient">Story</span>
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-12">
             We are a team of passionate designers and engineers building the future of web development.
           </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300">
+              <Image
+                src="/Logos/favicon/Delta iERP.png"
+                alt="Delta iERP"
+                fill
+                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
+              <Image
+                src="/Logos/favicon/Delta iAccount.png"
+                alt="Delta iAccount"
+                fill
+                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300">
+              <Image
+                src="/Logos/favicon/Delta Mytime.png"
+                alt="Delta Mytime"
+                fill
+                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
+              <Image
+                src="/Logos/favicon/Delta AI.png"
+                alt="Delta AI"
+                fill
+                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+          </div>
         </div>
       </section>
       <About />
@@ -63,119 +108,6 @@ export default function Page() {
               <h3 className="font-semibold text-lg mb-2">Data-Driven</h3>
               <p className="text-sm text-slate-600">Real-time dashboards and actionable insights to improve site and project outcomes.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto max-w-6xl px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Our <span className="text-gradient">Products</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Comprehensive solutions designed to streamline every aspect of your infrastructure business.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Product 1 */}
-            <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                <Image
-                  src="/erp-dashboard-new.png"
-                  alt="Proniq ERP Suite"
-                  fill
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Proniq ERP Suite</h3>
-                <p className="text-slate-600 mb-6">
-                  The central nervous system for your business. Manage finance, HR, and operations in one unified platform.
-                </p>
-                <div className="flex text-primary font-semibold items-center group-hover:translate-x-1 transition-transform">
-                  Learn more <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
-              </div>
-            </div>
-
-            {/* Product 2 */}
-            <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                <Image
-                  src="/ModernTenderKanban.png"
-                  alt="Project & Site Management"
-                  fill
-                  className="object-cover object-left-top transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Project & Site Control</h3>
-                <p className="text-slate-600 mb-6">
-                  Real-time site tracking, tender management, and resource allocation to keep projects on schedule and budget.
-                </p>
-                <div className="flex text-primary font-semibold items-center group-hover:translate-x-1 transition-transform">
-                  Learn more <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
-              </div>
-            </div>
-
-            {/* Product 3 */}
-            <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                <Image
-                  src="/p1.png"
-                  alt="Advanced Analytics"
-                  fill
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Advanced Analytics</h3>
-                <p className="text-slate-600 mb-6">
-                  Turn data into decisions with powerful reporting tools, forecasting, and operational insights.
-                </p>
-                <div className="flex text-primary font-semibold items-center group-hover:translate-x-1 transition-transform">
-                  Learn more <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white border-t border-slate-100">
-        <div className="container mx-auto max-w-6xl px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Powered by the <span className="text-gradient">Delta Ecosystem</span>
-            </h2>
-            <p className="text-slate-600">
-              Seamlessly integrated modules for complete operational control.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {[
-              "Delta iERP.png",
-              "Delta Inventory.png",
-              "Delta PPC.png",
-              "Delta Kanban.png",
-              "Delta iAttendance.png",
-              "Delta IOT.png",
-              "Delta iAccount.png",
-              "Delta BigData.png",
-            ].map((logo, index) => (
-              <div key={index} className="relative w-32 h-16 md:w-40 md:h-20 transition-transform hover:scale-105">
-                <Image
-                  src={`/Logos/favicon/${logo}`}
-                  alt={logo.replace(".png", "")}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>
