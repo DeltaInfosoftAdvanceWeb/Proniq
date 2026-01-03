@@ -30,18 +30,18 @@ const ProductPromotionModal = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 30 }}
-                        className="relative w-full max-w-4xl overflow-hidden bg-white shadow-[0_40px_100px_-20px_rgba(9,119,153,0.35)] rounded-[2.5rem] flex flex-col md:flex-row h-auto max-h-[90vh]"
+                        className="relative w-full max-w-4xl overflow-y-auto md:overflow-hidden bg-white shadow-[0_40px_100px_-20px_rgba(9,119,153,0.35)] rounded-[2.5rem] flex flex-col md:flex-row h-auto max-h-[90vh]"
                     >
                         {/* Close Button */}
                         <button
                             onClick={closeModal}
-                            className="absolute top-5 right-5 z-[110] p-2 text-neutral-400 hover:text-white hover:bg-[#097799] transition-all bg-neutral-100 rounded-xl group"
+                            className="absolute top-5 right-5 z-[110] p-2 text-neutral-400 hover:text-white hover:bg-[#097799] transition-all bg-neutral-100/90 backdrop-blur-sm rounded-xl group"
                         >
                             <X className="w-5 h-5 group-hover:rotate-90 transition-transform" />
                         </button>
 
                         {/* Left Side: Compact 3D Workflow */}
-                        <div className="w-full md:w-[42%] bg-[#097799] relative overflow-hidden flex flex-col justify-center items-center p-8 md:p-10 min-h-[320px] md:min-h-full">
+                        <div className="w-full md:w-[42%] bg-[#097799] relative overflow-hidden flex flex-col justify-center items-center p-8 md:p-10 min-h-[220px] md:min-h-full">
                             {/* Visual Background Elements */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
                             <motion.div
@@ -88,7 +88,7 @@ const ProductPromotionModal = () => {
                         </div>
 
                         {/* Right Side: High-Conversion Content */}
-                        <div className="w-full md:w-[58%] p-8 md:p-12 lg:p-14 flex flex-col justify-center bg-white">
+                        <div className="w-full md:w-[58%] p-6 md:p-12 lg:p-14 flex flex-col justify-center bg-white">
                             <div className="mb-6">
                                 <span className="inline-block text-[10px] font-black text-[#097799] tracking-[0.2em] uppercase bg-[#097799]/5 px-3 py-1.5 rounded-lg border border-[#097799]/10">
                                     Strategic Advantage
@@ -124,7 +124,7 @@ const ProductPromotionModal = () => {
                                     whileHover={{ y: -2, boxShadow: '0 20px 40px -10px rgba(9,119,153,0.4)' }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => window.open("https://www.deltainfosoft.com/contactus", "_blank")}
-                                    className="w-full bg-[#097799] hover:bg-[#075f7a] text-white font-black py-5 rounded-2xl shadow-[0_15px_30px_-10px_rgba(9,119,153,0.3)] text-lg flex items-center justify-center gap-3 transition-all"
+                                    className="w-full bg-[#097799] hover:bg-[#075f7a] text-white font-black py-4 md:py-5 rounded-2xl shadow-[0_15px_30px_-10px_rgba(9,119,153,0.3)] text-lg flex items-center justify-center gap-3 transition-all"
                                 >
                                     Explore the iERP platform
                                     <ArrowRight className="w-5 h-5" />
