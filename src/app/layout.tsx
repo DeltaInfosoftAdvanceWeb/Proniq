@@ -22,8 +22,9 @@ import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/Logos/favicon/fav.png",
-    apple: "/Logos/favicon/fav.png",
+    icon: "/Logos/favicon/favicon-32x32.png",
+    shortcut: "/Logos/favicon/favicon.ico",
+    apple: "/Logos/favicon/apple-touch-icon.png",
   },
   title: "PRONIQ | Workflow-Driven iERP & Operations Platform",
   description:

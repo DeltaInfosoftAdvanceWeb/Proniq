@@ -27,36 +27,36 @@ export default function Page() {
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
-            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300">
+            <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300">
               <Image
                 src="/Logos/favicon/Delta iERP.png"
                 alt="Delta iERP"
                 fill
-                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
               />
             </div>
-            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
+            <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
               <Image
                 src="/Logos/favicon/Delta iAccount.png"
                 alt="Delta iAccount"
                 fill
-                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
               />
             </div>
-            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300">
+            <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300">
               <Image
                 src="/Logos/favicon/Delta Mytime.png"
                 alt="Delta Mytime"
                 fill
-                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
               />
             </div>
-            <div className="relative h-40 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-6 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
+            <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
               <Image
                 src="/Logos/favicon/Delta AI.png"
                 alt="Delta AI"
                 fill
-                className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
