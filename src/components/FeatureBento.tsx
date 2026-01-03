@@ -45,8 +45,8 @@ export default function FeatureBento() {
 
           {/* Center – mobile dashboard mockup */}
           <Tilt className="md:row-span-2">
-            <div className="h-full min-h-[500px] flex items-center justify-center p-4">
-              <div className="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+            <div className="h-full min-h-[500px] flex items-center justify-center p-4 overflow-hidden">
+              <div className="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl scale-[0.85] sm:scale-100 origin-center transition-transform">
                 {/* device chrome */}
                 <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute" />
                 <div className="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg" />

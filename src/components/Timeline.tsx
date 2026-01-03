@@ -526,7 +526,7 @@ function Flow({ ref }: { ref: any }) {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
-    <div className="relative min-h-screen bg-slate-50 flex flex-col" ref={ref}>
+    <div className="relative min-h-[60vh] md:min-h-screen bg-slate-50 flex flex-col" ref={ref}>
 
       {/* Header */}
       <div className="w-full py-10 bg-slate-50/50 shrink-0">

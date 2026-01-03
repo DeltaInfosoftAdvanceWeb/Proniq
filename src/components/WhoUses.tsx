@@ -181,7 +181,29 @@ export default function WhoUses() {
                         </div>
                     </motion.div>
 
-                    {/* floating bubbles with continuous motion */}
+                    {/* Mobile-only User Grid */}
+                    <div className="md:hidden grid grid-cols-2 gap-4 mt-12 w-full">
+                        {roles.map((role, index) => (
+                            <motion.div
+                                key={`mobile-${role.title}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-white rounded-2xl border border-slate-100 p-3 shadow-sm flex flex-col items-center gap-2 text-center"
+                            >
+                                <div
+                                    className="h-12 w-12 rounded-full flex items-center justify-center overflow-hidden border-2 shadow-sm"
+                                    style={{ backgroundColor: role.bg, borderColor: role.bg }}
+                                >
+                                    <img src={role.img} alt={role.title} className="w-8 h-8 object-cover rounded-full" />
+                                </div>
+                                <span className="text-xs font-bold text-slate-700">{role.title}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* floating bubbles with continuous motion (Desktop Only) */}
                     {roles.map((role, index) => {
                         const Icon = role.icon || Users;
                         let containerClass = "";
@@ -225,7 +247,7 @@ export default function WhoUses() {
                                 whileInView="enter"
                                 animate={controls}
                                 viewport={{ once: true, amount: 0.3 }}
-                                className={`absolute ${containerClass} gap-2`}
+                                className={`absolute ${containerClass} gap-2 hidden md:flex`}
                                 whileHover={{ scale: 1.05 }}
                             >
                                 {/* glowing effect behind avatar */}

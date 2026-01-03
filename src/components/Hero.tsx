@@ -181,7 +181,7 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
               {/* Left content */}
               <div className="space-y-8 text-center lg:text-left animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 <div className="space-y-6">
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
                     Cut Delays. <span className="text-gradient">Reduce Costs.</span>
                     <br />
                     Boost Productivity.

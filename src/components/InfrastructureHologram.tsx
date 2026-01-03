@@ -95,8 +95,8 @@ export default function InfrastructureHologram() {
             </div>
 
             {/* Holographic Screen Layer */}
-            <div ref={screenRef} className="relative z-50 w-full max-w-6xl aspect-video flex items-center justify-center transform-style-3d mt-32">
-                <div className="relative w-full h-full bg-slate-950/60 backdrop-blur-xl border border-blue-500/40 rounded-xl p-5 shadow-[0_0_50px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
+            <div ref={screenRef} className="relative z-50 w-full max-w-6xl aspect-[4/5] md:aspect-video flex items-center justify-center transform-style-3d mt-10 md:mt-32">
+                <div className="relative w-full h-full bg-slate-950/60 backdrop-blur-xl border border-blue-500/40 rounded-xl p-3 md:p-5 shadow-[0_0_50px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
                     {/* Grid effect overlay */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
@@ -104,43 +104,43 @@ export default function InfrastructureHologram() {
                     <div className="flex justify-between items-center mb-5 border-b border-blue-500/20 pb-3 relative z-10 shrink-0">
                         <div className="flex items-center gap-3">
                             <div className="w-2.5 h-2.5 bg-blue-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
-                            <span className="text-blue-50 font-bold tracking-widest text-sm">INFRA <span className="text-blue-400 font-normal">COMMAND</span></span>
+                            <span className="text-blue-50 font-bold tracking-widest text-xs md:text-sm">INFRA <span className="text-blue-400 font-normal">COMMAND</span></span>
                         </div>
                         <div className="flex gap-4 text-[10px] font-mono text-slate-400">
                             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> SATELLITE LINK</span>
-                            <span>LATENCY: 4ms</span>
+                            <span className="hidden md:inline">LATENCY: 4ms</span>
                         </div>
                     </div>
 
                     {/* Dashboard Grid */}
-                    <div className="grid grid-cols-12 grid-rows-6 gap-4 relative z-10 flex-1 min-h-0">
+                    <div className="grid grid-cols-2 md:grid-cols-12 md:grid-rows-6 gap-3 md:gap-4 relative z-10 flex-1 min-h-0 overflow-y-auto md:overflow-visible">
 
                         {/* KPI Cards (Top Row) */}
-                        <div className="col-span-3 row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex flex-col justify-between group hover:border-blue-500/40 transition-colors">
+                        <div className="col-span-1 md:col-span-3 md:row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex flex-col justify-between group hover:border-blue-500/40 transition-colors h-24 md:h-auto">
                             <div className="text-slate-400 text-[10px] font-semibold uppercase tracking-wider">Project Milestones</div>
-                            <div className="text-2xl font-bold text-white">8/12</div>
+                            <div className="text-lg md:text-2xl font-bold text-white">8/12</div>
                             <div className="flex items-center gap-2 text-[10px]">
                                 <span className="text-emerald-400 flex items-center">▲ Ahead</span>
                                 <span className="text-slate-500">Phase 2</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-1 mt-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-800 h-1 mt-auto md:mt-2 rounded-full overflow-hidden">
                                 <div className="bg-blue-500 h-full w-[66%] shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
                             </div>
                         </div>
 
-                        <div className="col-span-3 row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex flex-col justify-between group hover:border-blue-500/40 transition-colors">
+                        <div className="col-span-1 md:col-span-3 md:row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex flex-col justify-between group hover:border-blue-500/40 transition-colors h-24 md:h-auto">
                             <div className="text-slate-400 text-[10px] font-semibold uppercase tracking-wider">Resource Utilization</div>
-                            <div className="text-2xl font-bold text-white">94%</div>
+                            <div className="text-lg md:text-2xl font-bold text-white">94%</div>
                             <div className="flex items-center gap-2 text-[10px]">
                                 <span className="text-emerald-400 flex items-center">● Optimal</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-1 mt-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-800 h-1 mt-auto md:mt-2 rounded-full overflow-hidden">
                                 <div className="bg-emerald-500 h-full w-[94%] shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
                             </div>
                         </div>
 
                         {/* Main Chart (Right Side) */}
-                        <div className="col-span-6 row-span-4 bg-slate-900/50 border border-blue-500/20 rounded-lg p-4 relative overflow-hidden flex flex-col">
+                        <div className="col-span-2 md:col-span-6 md:row-span-4 bg-slate-900/50 border border-blue-500/20 rounded-lg p-4 relative overflow-hidden flex flex-col min-h-[200px]">
                             <div className="flex justify-between items-start mb-4">
                                 <div>
                                     <div className="text-slate-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Linear Progress (km)</div>
@@ -187,13 +187,13 @@ export default function InfrastructureHologram() {
                         </div>
 
                         {/* Data Table (Bottom Left) */}
-                        <div className="col-span-6 row-span-4 bg-slate-900/50 border border-blue-500/20 rounded-lg p-0 overflow-hidden flex flex-col">
+                        <div className="col-span-2 md:col-span-6 md:row-span-4 bg-slate-900/50 border border-blue-500/20 rounded-lg p-0 overflow-hidden flex flex-col min-h-[200px]">
                             <div className="p-3 border-b border-slate-800 bg-slate-800/30 flex justify-between items-center">
                                 <span className="text-slate-300 text-[10px] font-bold uppercase">Site Activities</span>
                                 <span className="text-blue-400 text-[9px]">VIEW ALL</span>
                             </div>
-                            <div className="flex-1 overflow-hidden">
-                                <table className="w-full text-left border-collapse">
+                            <div className="flex-1 overflow-hidden overflow-x-auto">
+                                <table className="w-full text-left border-collapse min-w-[300px]">
                                     <thead>
                                         <tr className="text-[9px] text-slate-500 border-b border-slate-800/50">
                                             <th className="p-2 font-medium">ZONE</th>
@@ -226,7 +226,7 @@ export default function InfrastructureHologram() {
                         </div>
 
                         {/* Bottom Right Stats */}
-                        <div className="col-span-6 row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex items-center justify-around">
+                        <div className="col-span-2 md:col-span-6 md:row-span-2 bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 flex items-center justify-around h-20 md:h-auto">
                             <div className="text-center">
                                 <div className="text-[9px] text-slate-500 uppercase mb-1">Equipment Uptime</div>
                                 <div className="text-xl font-bold text-emerald-400">98.5%</div>

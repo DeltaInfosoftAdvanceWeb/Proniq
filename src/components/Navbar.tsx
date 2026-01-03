@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronRight, LayoutGrid, Info, PhoneCall, Home } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* ---------- NAV LINKS ---------- */
 const links = [
@@ -48,69 +49,94 @@ export default function Navbar() {
   return (
     <>
       {/* ---------- MOBILE MENU OVERLAY ---------- */}
-      {open && (
-        <div className="fixed inset-0 z-[100] bg-white flex flex-col pt-24 px-6 animate-in fade-in slide-in-from-top-4 duration-300">
-          <nav className="flex flex-col gap-2 overflow-y-auto pb-10">
-            {links.filter(l => !l.dropdown).map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 p-4 rounded-2xl text-xl font-bold transition-all ${pathname === l.href
-                  ? "bg-primary/5 text-primary"
-                  : "text-slate-900 hover:bg-slate-50"
-                  }`}
-              >
-                <l.icon className="w-5 h-5 opacity-70" />
-                {l.label}
-              </Link>
-            ))}
-
-            <div className="mt-4 mb-2">
-              <p className="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">
-                Industries
-              </p>
-              <div className="grid grid-cols-1 gap-1">
-                {industries.map((item) => (
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex flex-col pt-24 px-6"
+          >
+            <nav className="flex flex-col gap-2 overflow-y-auto pb-10 h-full no-scrollbar">
+              {links.filter(l => !l.dropdown).map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05 }}
+                >
                   <Link
-                    key={item.slug}
-                    href={`/industries/${item.slug}`}
+                    href={l.href}
                     onClick={() => setOpen(false)}
-                    className={`px-4 py-3 rounded-xl text-lg font-medium transition-all ${pathname === `/industries/${item.slug}`
-                      ? "text-primary bg-primary/5"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    className={`flex items-center gap-3 p-4 rounded-2xl text-xl font-bold transition-all ${pathname === l.href
+                      ? "bg-primary/5 text-primary"
+                      : "text-slate-900 hover:bg-slate-50"
                       }`}
                   >
-                    {item.title}
+                    <l.icon className="w-5 h-5 opacity-70" />
+                    {l.label}
                   </Link>
-                ))}
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-4 mb-2"
+              >
+                <p className="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">
+                  Industries
+                </p>
+                <div className="grid grid-cols-1 gap-1">
+                  {industries.map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/industries/${item.slug}`}
+                      onClick={() => setOpen(false)}
+                      className={`px-4 py-3 rounded-xl text-lg font-medium transition-all ${pathname === `/industries/${item.slug}`
+                        ? "text-primary bg-primary/5"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                        }`}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/industries"
+                    onClick={() => setOpen(false)}
+                    className="px-4 py-3 rounded-xl text-lg font-bold text-primary flex items-center justify-between"
+                  >
+                    All Industries <ChevronRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </motion.div>
+
+              <div className="h-px bg-slate-100 my-4 shrink-0" />
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 <Link
-                  href="/industries"
+                  href="/contact"
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 rounded-xl text-lg font-bold text-primary flex items-center justify-between"
+                  className="w-full py-4 bg-primary text-white text-center rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-transform"
                 >
-                  All Industries <ChevronRight className="w-5 h-5" />
+                  <PhoneCall className="w-5 h-5" />
+                  Get Started
                 </Link>
+              </motion.div>
+
+              <div className="mt-10 text-center pb-8">
+                <p className="text-slate-400 text-xs font-medium uppercase tracking-[0.2em]">Digitizing Operations since 2018</p>
               </div>
-            </div>
-
-            <div className="h-px bg-slate-100 my-4" />
-
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="w-full py-4 bg-primary text-white text-center rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-transform"
-            >
-              <PhoneCall className="w-5 h-5" />
-              Get Started
-            </Link>
-
-            <div className="mt-10 text-center">
-              <p className="text-slate-400 text-xs font-medium uppercase tracking-[0.2em]">Digitizing Operations since 2018</p>
-            </div>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <header className="fixed top-0 inset-x-0 z-[110] px-2 md:px-4 pt-4 pointer-events-none">
         <div
@@ -122,9 +148,9 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             {/* ---------- LOGO ---------- */}
-            <Link href="/" className="flex items-center gap-4 md:gap-6" onClick={() => setOpen(false)}>
-              <img src="/proniq.png" alt="PRONIQ" className="w-20 h-10 md:w-28 md:h-14 object-contain" />
-              <span className="text-lg md:text-2xl font-bold text-slate-900 tracking-tight">PRONIQ</span>
+            <Link href="/" className="flex items-center gap-3 md:gap-6" onClick={() => setOpen(false)}>
+              <img src="/proniq.png" alt="PRONIQ" className="w-auto h-8 md:h-14 object-contain" />
+              <span className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">PRONIQ</span>
             </Link>
 
             {/* ---------- DESKTOP NAV ---------- */}
@@ -152,58 +178,66 @@ export default function Navbar() {
                       </button>
 
                       {/* ---------- DROPDOWN ---------- */}
-                      {showIndustries && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[520px]">
-                          <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                            <div className="grid grid-cols-2">
-                              {/* LEFT LIST */}
-                              <div className="py-3">
-                                {industries.map((item) => {
-                                  const href = `/industries/${item.slug}`;
-                                  const isActive = pathname === href;
+                      <AnimatePresence>
+                        {showIndustries && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[520px]"
+                          >
+                            <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
+                              <div className="grid grid-cols-2">
+                                {/* LEFT LIST */}
+                                <div className="py-3">
+                                  {industries.map((item) => {
+                                    const href = `/industries/${item.slug}`;
+                                    const isActive = pathname === href;
 
-                                  return (
-                                    <Link
-                                      key={item.slug}
-                                      href={href}
-                                      onClick={() => setShowIndustries(false)}
-                                      className={`block px-6 py-3 text-sm transition
+                                    return (
+                                      <Link
+                                        key={item.slug}
+                                        href={href}
+                                        onClick={() => setShowIndustries(false)}
+                                        className={`block px-6 py-3 text-sm transition
                                       ${isActive
-                                          ? "bg-blue-50 text-blue-600 font-semibold"
-                                          : "text-slate-700 hover:bg-slate-100"
-                                        }`}
-                                    >
-                                      {item.title}
-                                    </Link>
-                                  );
-                                })}
-                              </div>
+                                            ? "bg-blue-50 text-blue-600 font-semibold"
+                                            : "text-slate-700 hover:bg-slate-100"
+                                          }`}
+                                      >
+                                        {item.title}
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
 
-                              {/* RIGHT INFO */}
-                              <div className="border-l border-slate-200 bg-slate-50 p-6">
-                                <p className="text-xs uppercase tracking-wide text-slate-400 font-bold">
-                                  Solutions
-                                </p>
-                                <h4 className="mt-1 text-lg font-bold text-slate-900 leading-tight">
-                                  Built for real-world operations
-                                </h4>
-                                <p className="mt-2 text-sm text-slate-600 font-normal">
-                                  ERP workflows designed to match how each
-                                  industry actually works.
-                                </p>
+                                {/* RIGHT INFO */}
+                                <div className="border-l border-slate-200 bg-slate-50 p-6">
+                                  <p className="text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                    Solutions
+                                  </p>
+                                  <h4 className="mt-1 text-lg font-bold text-slate-900 leading-tight">
+                                    Built for real-world operations
+                                  </h4>
+                                  <p className="mt-2 text-sm text-slate-600 font-normal">
+                                    ERP workflows designed to match how each
+                                    industry actually works.
+                                  </p>
 
-                                <Link
-                                  href="/industries"
-                                  onClick={() => setShowIndustries(false)}
-                                  className="inline-flex items-center mt-4 text-sm font-bold text-primary hover:gap-1 transition-all"
-                                >
-                                  View all industries <ChevronRight className="w-4 h-4" />
-                                </Link>
+                                  <Link
+                                    href="/industries"
+                                    onClick={() => setShowIndustries(false)}
+                                    className="inline-flex items-center mt-4 text-sm font-bold text-primary hover:gap-1 transition-all"
+                                  >
+                                    View all industries <ChevronRight className="w-4 h-4" />
+                                  </Link>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 }
