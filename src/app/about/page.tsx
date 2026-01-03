@@ -18,16 +18,7 @@ export default function Page() {
 
 
         <div className="container mx-auto max-w-6xl text-center">
-          <div className="flex justify-center mb-8">
-            <Image
-              src="/pro-niq.png"
-              alt="Proniq Logo"
-              width={180}
-              height={60}
-              className="h-16 w-auto object-contain"
-              priority
-            />
-          </div>
+
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
             Our <span className="text-gradient">Story</span>
           </h1>
