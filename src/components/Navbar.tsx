@@ -149,7 +149,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* ---------- LOGO ---------- */}
             <Link href="/" className="flex items-center gap-3 md:gap-6" onClick={() => setOpen(false)}>
-              <img src="/proniq.png" alt="PRONIQ" className="w-auto h-8 md:h-14 object-contain" />
+              <img src="/proniq.png" alt="PRONIQ" className="w-auto h-7 md:h-10 object-contain" />
               <span className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">PRONIQ</span>
             </Link>
 
