@@ -30,7 +30,7 @@ const ProductPromotionModal = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 30 }}
-                        className="relative w-full max-w-4xl overflow-y-auto md:overflow-hidden bg-white shadow-[0_40px_100px_-20px_rgba(9,119,153,0.35)] rounded-[2.5rem] flex flex-col md:flex-row h-auto max-h-[90vh]"
+                        className="relative w-full max-w-4xl overflow-hidden bg-white shadow-[0_40px_100px_-20px_rgba(9,119,153,0.35)] rounded-[2.5rem] flex flex-col md:flex-row h-auto"
                     >
                         {/* Close Button */}
                         <button
@@ -40,8 +40,8 @@ const ProductPromotionModal = () => {
                             <X className="w-5 h-5 group-hover:rotate-90 transition-transform" />
                         </button>
 
-                        {/* Left Side: Compact 3D Workflow */}
-                        <div className="w-full md:w-[42%] bg-[#097799] relative overflow-hidden flex flex-col justify-center items-center p-8 md:p-10 min-h-[220px] md:min-h-full">
+                        {/* Left Side: Compact 3D Workflow - Hidden on mobile */}
+                        <div className="hidden md:flex w-full md:w-[42%] bg-[#097799] relative overflow-hidden flex-col justify-center items-center p-8 md:p-10 min-h-[220px] md:min-h-full">
                             {/* Visual Background Elements */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
                             <motion.div
