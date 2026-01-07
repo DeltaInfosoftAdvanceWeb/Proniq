@@ -12,7 +12,7 @@ export default function ManufacturingClient() {
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/Manufacturing.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105" />
+                    <div className="h-full w-full bg-[url('/Manufacturing-ierp.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>
 
