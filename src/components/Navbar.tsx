@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Menu, X, ChevronRight, LayoutGrid, Info, PhoneCall, Home } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -28,6 +28,21 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showIndustries, setShowIndustries] = useState(false);
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = null;
+    }
+    setShowIndustries(true);
+  };
+
+  const handleMouseLeave = () => {
+    hoverTimeout.current = setTimeout(() => {
+      setShowIndustries(false);
+    }, 150);
+  };
 
   /* ---------- SCROLL EFFECT ---------- */
   useEffect(() => {
@@ -140,7 +155,7 @@ export default function Navbar() {
 
       <header className="fixed top-0 inset-x-0 z-[110] px-2 md:px-4 pt-4 pointer-events-none">
         <div
-          className={`mx-auto max-w-6xl rounded-full transition-all duration-300 pointer-events-auto
+          className={`mx-auto max-w-6xl rounded-full transition-all duration-300 pointer-events-auto relative
           ${scrolled || open
               ? "bg-white/95 backdrop-blur-xl border border-slate-200 shadow-lg py-3 px-4 md:px-6"
               : "bg-transparent py-4 px-4 md:px-6"
@@ -154,7 +169,7 @@ export default function Navbar() {
             </Link>
 
             {/* ---------- DESKTOP NAV ---------- */}
-            <nav className="hidden md:flex items-center gap-1 relative">
+            <nav className="hidden md:flex items-center gap-1">
               {links.map((l) => {
                 const active = pathname === l.href;
 
@@ -162,9 +177,9 @@ export default function Navbar() {
                   return (
                     <div
                       key={l.href}
-                      className="relative"
-                      onMouseEnter={() => setShowIndustries(true)}
-                      onMouseLeave={() => setShowIndustries(false)}
+                      className=""
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <button
                         className={`px-4 py-2 text-sm font-medium rounded-full transition flex items-center gap-1
@@ -185,7 +200,9 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[520px]"
+                            className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[600px]"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
                           >
                             <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
                               <div className="grid grid-cols-2">
