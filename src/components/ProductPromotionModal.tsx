@@ -25,7 +25,7 @@ const ProductPromotionModal = () => {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-[#097799]/10 backdrop-blur-md">
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6 bg-[#097799]/10 backdrop-blur-md">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}

@@ -59,7 +59,7 @@ export default function ConstructionAIHero() {
 
                 {/* Construction Site */}
                 <img
-                    src="/site.jpg"
+                    src="/Contractor.jpeg"
                     className="absolute inset-0 w-full h-full object-cover"
                     alt="Construction Site"
                 />
@@ -76,9 +76,9 @@ export default function ConstructionAIHero() {
                 {/* AI PANELS */}
                 <div className="absolute inset-0 flex items-center justify-center gap-6 z-30">
 
-                    <img src="/panel1.png" className="ai-panel w-48 rounded-xl shadow-xl" />
-                    <img src="/panel2.png" className="ai-panel w-48 rounded-xl shadow-xl" />
-                    <img src="/panel3.png" className="ai-panel w-48 rounded-xl shadow-xl" />
+                    <img src="/p10.png" className="ai-panel w-48 rounded-xl shadow-xl" />
+                    <img src="/p11.png" className="ai-panel w-48 rounded-xl shadow-xl" />
+                    <img src="/p12.png" className="ai-panel w-48 rounded-xl shadow-xl" />
 
                 </div>
 

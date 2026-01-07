@@ -15,7 +15,7 @@ const industries = [
         description:
             "Our flagship ecosystem for General & Specialist Contractors. Automate Running Account (RA) billing, track job costing, and unify site logs with head-office finance.",
         features: ["Automated RA Billing", "Measurement Books", "Unified Job Costing"],
-        image: "/construction.jpeg",
+        image: "/Contractor.jpeg",
         gradient: "from-amber-600 to-orange-500",
         shadow: "shadow-amber-500/20",
         accent: "text-amber-600",
@@ -29,7 +29,7 @@ const industries = [
         description:
             "Track site progress, safety, and billing with live project visibility. Connect the field to the office and manage subcontractors with surgical precision.",
         features: ["Site Management", "Subcontractor Portal", "Safety Compliance"],
-        image: "/construction.jpeg",
+        image: "/Construnction.jpeg",
         gradient: "from-emerald-600 to-teal-500",
         shadow: "shadow-emerald-500/20",
         accent: "text-emerald-600",
@@ -43,7 +43,7 @@ const industries = [
         description:
             "Digitize production workflows with advanced planning, inventory, and quality control systems. Gain real-time visibility into every stage of your manufacturing process.",
         features: ["Production Planning", "Quality Control", "Inventory Management"],
-        image: "/manufacturing.jpeg",
+        image: "/Manufacturing.jpeg",
         gradient: "from-blue-600 to-cyan-500",
         shadow: "shadow-blue-500/20",
         accent: "text-blue-600",
@@ -57,7 +57,7 @@ const industries = [
         description:
             "Manage design projects, materials, vendors, and clients from a single unified platform. Streamline communication and ensure every detail is perfect.",
         features: ["Project Tracking", "Vendor Management", "Client Portal"],
-        image: "/interior.jpeg",
+        image: "/interior-design.jpeg",
         gradient: "from-purple-600 to-pink-500",
         shadow: "shadow-purple-500/20",
         accent: "text-purple-600",
@@ -71,7 +71,7 @@ const industries = [
         description:
             "Control large-scale infrastructure programs with precision planning and real-time reporting. Keep multi-year projects on track and within budget.",
         features: ["Program Management", "Real-time Reporting", "Budget Tracking"],
-        image: "/infra.jpeg",
+        image: "/infrastructure.jpeg",
         gradient: "from-orange-500 to-amber-500",
         shadow: "shadow-orange-500/20",
         accent: "text-orange-600",
@@ -85,7 +85,7 @@ const industries = [
         description:
             "Streamline engineering workflows with drawing control, approvals, and version history. Ensure technical accuracy and contractor compliance at every step.",
         features: ["Document Control", "Approval Workflows", "Version History"],
-        image: "/engineering.jpeg",
+        image: "/Engin-eering.jpeg",
         gradient: "from-indigo-600 to-blue-500",
         shadow: "shadow-indigo-500/20",
         accent: "text-indigo-600",
@@ -227,7 +227,17 @@ export default function IndustriesClient() {
 
             {/* ---------------- PLATFORM SHOWCASE ---------------- */}
             <section className="py-40 bg-slate-950 overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
+                {/* Background GIF */}
+                <div className="absolute inset-0 z-0 opacity-30">
+                    <Image
+                        src="/Engineer.gif"
+                        alt="Background Animation"
+                        fill
+                        className="object-cover"
+                        unoptimized
+                    />
+                </div>
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent z-10" />
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="text-center mb-32">
@@ -245,11 +255,11 @@ export default function IndustriesClient() {
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                         {[
-                            { src: "/manufacturing.jpeg", label: "Production" },
-                            { src: "/interior.jpeg", label: "Design Hub" },
-                            { src: "/infra.jpeg", label: "Infra Ops" },
-                            { src: "/construction.jpeg", label: "Site Control" },
-                            { src: "/engineering.jpeg", label: "Engineer OS" },
+                            { src: "/Manufacturing.jpeg", label: "Production" },
+                            { src: "/interior-design.jpeg", label: "Design Hub" },
+                            { src: "/infrastructure.jpeg", label: "Infra Ops" },
+                            { src: "/Construnction.jpeg", label: "Site Control" },
+                            { src: "/Engin-eering.jpeg", label: "Engineer OS" },
                             { src: "/p10.png", label: "Dashboards" },
                             { src: "/p11.png", label: "Analytics" },
                             { src: "/p12.png", label: "Resources" },

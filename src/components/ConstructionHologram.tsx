@@ -83,12 +83,17 @@ export default function ConstructionHologram() {
 
             {/* Engineer Background Layer */}
 
+            {/* Engineer Background Layer */}
+
             <div ref={engineerRef} className="absolute inset-0 z-0 w-full h-full">
-                <img
-                    src="/construction.jpeg"
-                    alt="Construction Engineer"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
+
+                <div className="absolute inset-0 z-0 opacity-100">
+                    <img
+                        src="/Engineer.gif"
+                        alt="Background Animation"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
                 {/* Cinematic Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
                 <div className="absolute inset-0 bg-teal-900/10 mix-blend-overlay" />

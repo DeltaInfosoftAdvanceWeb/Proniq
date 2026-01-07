@@ -79,11 +79,14 @@ export default function ArchitectureHologram() {
 
             {/* Engineer Background Layer */}
             <div ref={engineerRef} className="absolute inset-0 z-0 w-full h-full">
-                <img
-                    src="/interior.jpeg"
-                    alt="Architecture Studio"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
+
+                <div className="absolute inset-0 z-0 opacity-100">
+                    <img
+                        src="/Engineer.gif"
+                        alt="Background Animation"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
                 <div className="absolute inset-0 bg-purple-900/10 mix-blend-overlay" />
             </div>

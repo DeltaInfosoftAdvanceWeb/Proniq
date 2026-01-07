@@ -10,7 +10,7 @@ export default function EngineeringClient() {
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="h-full w-full bg-[url('/engineering.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
+                    <div className="h-full w-full bg-[url('/Engin-eering.jpeg')] bg-cover bg-center bg-no-repeat transform scale-105 z-index-1" />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80" />
                 </div>
 
@@ -131,21 +131,196 @@ export default function EngineeringClient() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Modules logic here (simplified for space) */}
-                        {[
-                            { title: "Project Management", icon: "📊", desc: "Track milestones, deliverables, and dependencies with Gantt and Kanban visualizations." },
-                            { title: "Resource Planning", icon: "👥", desc: "Optimize team utilization and forecast capacity to prevent project bottlenecks." },
-                            { title: "Time & Expense", icon: "⏱️", desc: "Accurately capture billable hours and expenses with automated approval workflows." },
-                            { title: "Document Control", icon: "📂", desc: "Manage revision history and transmittals to ensure everyone uses the latest design." },
-                            { title: "Quality Assurance", icon: "✅", desc: "Track non-conformances and manage corrective actions to meet strict standards." },
-                            { title: "Financial Analytics", icon: "💰", desc: "Monitor project profitability and cash flow with real-time revenue recognition." },
-                        ].map(m => (
-                            <div key={m.title} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:shadow-xl transition-all">
-                                <div className="text-3xl mb-4">{m.icon}</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-3">{m.title}</h3>
-                                <p className="text-slate-600 text-sm">{m.desc}</p>
+                        {/* 1. Project Management (Gantt) */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-50 border-b border-slate-100 flex flex-col justify-center p-6">
+                                <div className="bg-white rounded-lg shadow-sm border border-slate-100 p-3 space-y-3">
+                                    <div>
+                                        <div className="flex justify-between text-[9px] mb-1">
+                                            <span className="font-bold text-slate-700">Design Phase</span>
+                                            <span className="text-slate-400">Sep</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-100 rounded-full">
+                                            <div className="h-full bg-indigo-500 w-3/4 rounded-full" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="flex justify-between text-[9px] mb-1">
+                                            <span className="font-bold text-slate-700">Engineering</span>
+                                            <span className="text-slate-400">Oct</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-100 rounded-full relative">
+                                            <div className="absolute left-1/4 h-full bg-blue-400 w-1/2 rounded-full" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="flex justify-between text-[9px] mb-1">
+                                            <span className="font-bold text-slate-700">Procurement</span>
+                                            <span className="text-slate-400">Nov</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-100 rounded-full relative">
+                                            <div className="absolute left-1/2 h-full bg-slate-300 w-1/3 rounded-full border border-dashed border-slate-400" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        ))}
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase mb-3 w-fit">
+                                    Planning
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
+                                    Project Planning & Gantt
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Master scheduling with dependencies, critical path analysis, and baseline vs actual tracking.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />One-click schedule updates</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />Resource loading heatmaps</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* 2. Resource Management */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-100 p-6 flex items-center justify-center">
+                                <div className="grid grid-cols-3 gap-2 w-full">
+                                    {[1, 2, 3].map(i => (
+                                        <div key={i} className="bg-white rounded-xl p-2 text-center shadow-sm border border-slate-200">
+                                            <div className="w-8 h-8 mx-auto rounded-full bg-slate-100 mb-2 flex items-center justify-center text-xs">
+                                                {i === 1 ? '👨‍💻' : i === 2 ? '👩‍🔧' : '👨‍🏭'}
+                                            </div>
+                                            <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                                <div className={`h-full ${i === 2 ? 'bg-red-500' : 'bg-green-500'} w-[${i === 2 ? '95%' : '60%'}]`} />
+                                            </div>
+                                            <div className="text-[8px] mt-1 font-bold text-slate-500">{i === 2 ? 'Overloaded' : 'Optimal'}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase mb-3 w-fit">
+                                    People
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
+                                    Resource Optimization
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Balance workloads across teams and projects. Forecast hiring needs based on upcoming project pipeline.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500" />Skill matrix mapping</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500" />Utilization reports</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* 3. Timesheets & Expenses */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-50 flex items-center justify-center relative overflow-hidden">
+                                <div className="w-32 h-32 rounded-full border-4 border-slate-200 flex items-center justify-center relative bg-white shadow-sm">
+                                    <div className="absolute inset-0 rounded-full border-4 border-indigo-500 border-t-transparent rotate-45" />
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-slate-800">38:40</div>
+                                        <div className="text-[9px] text-slate-500 uppercase">Hrs Logged</div>
+                                    </div>
+                                    <div className="absolute -bottom-2 bg-green-100 text-green-700 text-[8px] font-bold px-2 py-0.5 rounded-full">Submitted</div>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase mb-3 w-fit">
+                                    Operations
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors mb-2">
+                                    Timesheets & Expenses
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Simplest way to capture billable hours and reimbursed expenses. Mobile-first entry for field teams.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-500" />Multi-level approvals</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-500" />Policy compliance checks</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* 4. Document Control */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-800 p-6 flex flex-col justify-center">
+                                <div className="space-y-2">
+                                    <div className="bg-white/10 p-2 rounded flex items-center gap-3 backdrop-blur-sm border border-white/5">
+                                        <div className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-[10px] text-white font-bold">DWG</div>
+                                        <div className="flex-1">
+                                            <div className="text-[10px] text-white">Structural_L1.dwg</div>
+                                            <div className="text-[8px] text-slate-400">Ver 2.4 • Updated just now</div>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white/5 p-2 rounded flex items-center gap-3 backdrop-blur-sm border border-white/5">
+                                        <div className="w-6 h-6 bg-red-500 rounded flex items-center justify-center text-[10px] text-white font-bold">PDF</div>
+                                        <div className="flex-1">
+                                            <div className="text-[10px] text-white">Foundation_Spec.pdf</div>
+                                            <div className="text-[8px] text-slate-400">Ver 1.0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase mb-3 w-fit">
+                                    Docs
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors mb-2">
+                                    Document Control (DMS)
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Centralized repository for drawings, RFI's, and transmittals. Ensure everyone builds from the right version.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-500" />Transmittal management</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-500" />Markup & review tools</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* 5. Cost & Billing */}
+                        <div className="group relative bg-white rounded-3xl border border-slate-200 shadow-lg hover:-translate-y-1 transition-all flex flex-col overflow-hidden">
+                            <div className="h-48 bg-slate-100 flex items-center justify-center p-6">
+                                <div className="w-full bg-white rounded-xl shadow-sm border border-slate-200 p-4">
+                                    <div className="flex justify-between items-end mb-4">
+                                        <div>
+                                            <div className="text-[10px] text-slate-400 uppercase tracking-widest">Project Margin</div>
+                                            <div className="text-2xl font-bold text-indigo-600">18.5%</div>
+                                        </div>
+                                        <div className="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded">+2.4% vs Plan</div>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <div className="flex justify-between text-[9px] text-slate-500">
+                                            <span>Billed</span>
+                                            <span>$450k</span>
+                                        </div>
+                                        <div className="flex justify-between text-[9px] text-slate-500">
+                                            <span>Cost</span>
+                                            <span>$366k</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-1">
+                                <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase mb-3 w-fit">
+                                    Finance
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
+                                    Financial Analytics
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                                    Real-time visibility into project P&L. Track budget burn-down, WIP, and revenue recognition.
+                                </p>
+                                <ul className="space-y-2 text-xs font-medium text-slate-500">
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />Revenue forecasting</li>
+                                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />Cash flow management</li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
