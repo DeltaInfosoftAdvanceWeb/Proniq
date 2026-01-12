@@ -85,7 +85,7 @@ export default function ConstructionAIHero() {
                 {/* FINAL TEXT */}
                 <div className="final-text opacity-0 absolute bottom-32 left-1/2 -translate-x-1/2 text-center text-white z-40">
                     <h2 className="text-3xl font-semibold">
-                        Proniq automates the chaos
+                        proniq automates the chaos
                     </h2>
                     <p className="opacity-70 mt-1">
                         Your team builds. AI runs operations.

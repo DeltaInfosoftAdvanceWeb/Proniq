@@ -30,6 +30,11 @@ export default function Navbar() {
   const [showIndustries, setShowIndustries] = useState(false);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
 
+  // Check if we are on a page with a dark hero section (industry subpages)
+  const isDarkHeroPage = pathname.startsWith("/industries/") && pathname !== "/industries";
+  // Determine if we should use white text
+  const useWhiteText = isDarkHeroPage && !scrolled && !open;
+
   const handleMouseEnter = () => {
     if (hoverTimeout.current) {
       clearTimeout(hoverTimeout.current);
@@ -164,8 +169,9 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* ---------- LOGO ---------- */}
             <Link href="/" className="flex items-center gap-3 md:gap-6" onClick={() => setOpen(false)}>
-              <img src="/proniq.png" alt="PRONIQ" className="w-auto h-7 md:h-10 object-contain" />
-              <span className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">PRONIQ</span>
+              <img src="/proniq.png" alt="proniq" className="w-auto h-7 md:h-10 object-contain" />
+              <span className={`text-xl md:text-2xl font-bold tracking-tight transition-colors ${useWhiteText ? "text-white" : "text-slate-900"
+                }`}>proniq</span>
             </Link>
 
             {/* ---------- DESKTOP NAV ---------- */}
@@ -177,15 +183,15 @@ export default function Navbar() {
                   return (
                     <div
                       key={l.href}
-                      className=""
+                      className="relative"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
                       <button
                         className={`px-4 py-2 text-sm font-medium rounded-full transition flex items-center gap-1
                         ${active || showIndustries
-                            ? "bg-slate-100 text-slate-900"
-                            : "text-slate-700 hover:bg-slate-100"
+                            ? (useWhiteText ? "bg-white text-slate-900" : "bg-slate-100 text-slate-900")
+                            : (useWhiteText ? "text-white hover:bg-white/10" : "text-slate-700 hover:bg-slate-100")
                           }`}
                       >
                         Industries
@@ -265,8 +271,8 @@ export default function Navbar() {
                     href={l.href}
                     className={`px-4 py-2 text-sm font-medium rounded-full transition
                     ${active
-                        ? "bg-slate-100 text-slate-900"
-                        : "text-slate-700 hover:bg-slate-100"
+                        ? (useWhiteText ? "bg-white text-slate-900" : "bg-slate-100 text-slate-900")
+                        : (useWhiteText ? "text-white hover:bg-white/10" : "text-slate-700 hover:bg-slate-100")
                       }`}
                   >
                     {l.label}
@@ -279,7 +285,11 @@ export default function Navbar() {
             <div className="hidden md:block">
               <Link
                 href="/contact"
-                className="px-5 py-2.5 text-sm font-bold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition shadow-md"
+                className={`px-5 py-2.5 text-sm font-bold rounded-full transition shadow-md
+                  ${useWhiteText
+                    ? "bg-white text-slate-900 hover:bg-slate-100"
+                    : "bg-slate-900 text-white hover:bg-slate-800"
+                  }`}
               >
                 Get Started
               </Link>

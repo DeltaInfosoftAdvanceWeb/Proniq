@@ -794,6 +794,6 @@ export const OptionKey = ({ className }: { className: string }) => {
 
 const AceternityLogo = () => {
   return (
-    <img src="/proniq.png" alt="Proniq Logo" style={{ width: "60px", height: "55px" }} />
+    <img src="/proniq.png" alt="proniq Logo" style={{ width: "60px", height: "55px" }} />
   );
 };

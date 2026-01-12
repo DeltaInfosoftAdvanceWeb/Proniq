@@ -13,7 +13,7 @@ const products = [
     { title: "Performance Mgmt", logo: "/Logos/Performance Management  System.png", category: "HR Management" },
     { title: "Delta MyTime", logo: "/Logos/Delta Mytime.png", category: "Time Tracking" },
     { title: "DELTA iERP", logo: "/Logos/Delta iERP.png", category: "Enterprise Resource" },
-    { title: "PRONIQ", logo: "/proniq.png", category: "Workflow Platform" },
+    { title: "proniq", logo: "/proniq.png", category: "Workflow Platform" },
     { title: "Delta KANBAN", logo: "/Logos/Delta Kanban.png", category: "Project Management" },
     { title: "Delta GateModule", logo: "/Logos/Delta GateModule.png", category: "Security" },
     { title: "Delta Inventory", logo: "/Logos/Delta Inventory.png", category: "Inventory" },

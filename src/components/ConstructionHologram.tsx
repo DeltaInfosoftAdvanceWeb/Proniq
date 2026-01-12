@@ -109,7 +109,7 @@ export default function ConstructionHologram() {
                     <div className="flex justify-between items-center mb-5 border-b border-teal-500/20 pb-3 relative z-10 shrink-0">
                         <div className="flex items-center gap-3">
                             <div className="w-2.5 h-2.5 bg-teal-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(45,212,191,0.8)]" />
-                            <span className="text-teal-50 font-bold tracking-widest text-xs md:text-sm">PRONIQ <span className="text-teal-400 font-normal">ANALYTICS</span></span>
+                            <span className="text-teal-50 font-bold tracking-widest text-xs md:text-sm">proniq <span className="text-teal-400 font-normal">ANALYTICS</span></span>
                         </div>
                         <div className="flex gap-4 text-[10px] font-mono text-slate-400">
                             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> LIVE DATA</span>

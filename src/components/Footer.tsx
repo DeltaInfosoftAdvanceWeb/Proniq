@@ -24,9 +24,9 @@ export default function Footer() {
                     <div className="lg:col-span-4 space-y-6">
                         <Link href="/" className="inline-flex items-center gap-2 group">
                             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl  shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
-                                <img src="/proniq.png" alt="PRONIQ" className="w-10 h-8" />
+                                <img src="/proniq.png" alt="proniq" className="w-10 h-8" />
                             </div>
-                            <span className="text-2xl font-bold text-white tracking-tight">PRONIQ</span>
+                            <span className="text-2xl font-bold text-white tracking-tight">proniq</span>
                         </Link>
                         <p className="text-slate-400 leading-relaxed max-w-sm">
                             Empowering construction businesses with next-generation tools for seamless project management, from estimation to billing.
@@ -95,7 +95,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm">
-                        © {currentYear} PRONIQ. All rights reserved.
+                        © {currentYear} proniq. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm text-slate-500">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

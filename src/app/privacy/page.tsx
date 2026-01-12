@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | PRONIQ',
-    description: 'Privacy Policy for PRONIQ services and website.',
+    title: 'Privacy Policy | proniq',
+    description: 'Privacy Policy for proniq services and website.',
 };
 
 export default function PrivacyPolicy() {
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white">1. Introduction</h2>
                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Welcome to PRONIQ. We respect your privacy and are committed to protecting your personal data.
+                        Welcome to proniq. We respect your privacy and are committed to protecting your personal data.
                         This privacy policy will inform you as to how we look after your personal data when you visit our website
                         and tell you about your privacy rights and how the law protects you.
                     </p>

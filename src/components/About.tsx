@@ -43,7 +43,7 @@ function FeatureBubbles() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl opacity-60" />
         <Image
           src="/proniq.png"
-          alt="PRONIQ"
+          alt="proniq"
           width={80}
           height={80}
           className="relative z-10 w-full h-auto object-contain"
@@ -123,7 +123,7 @@ export default function About() {
                 <span className="text-gradient">infrastructure teams</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                PRONIQ is a unified ERP platform built to simplify execution,
+                proniq is a unified ERP platform built to simplify execution,
                 billing, and progress tracking across real-world projects. We
                 combine elegant design with operational clarity to help teams
                 deliver faster, smarter, and with confidence.

@@ -119,7 +119,7 @@ export default function WhoUses() {
                             zIndex: 10,
                         }}
                     >
-                        Proniq connects every stakeholder on one platform so work moves
+                        proniq connects every stakeholder on one platform so work moves
                         faster, decisions are transparent, and coordination between
                         departments is effortless.
                     </motion.p>
@@ -174,7 +174,7 @@ export default function WhoUses() {
                                 {/* LOCAL IMAGE FROM /public */}
                                 <img
                                     src="/p5.png"
-                                    alt="Proniq interface"
+                                    alt="proniq interface"
                                     className="w-full h-full object-cover"
                                 />
                             </motion.div>

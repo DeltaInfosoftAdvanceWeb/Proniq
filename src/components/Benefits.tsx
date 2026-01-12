@@ -12,7 +12,7 @@ const benefitsData = [
     id: "estimate",
     title: "Set up cost estimates in flexible ways",
     description:
-      "Configure your cost estimation logic to match your project needs. Whether it's unit-based, lump sum, or milestone-driven, Proniq adapts to your workflow and keeps budgets in control from day one.",
+      "Configure your cost estimation logic to match your project needs. Whether it's unit-based, lump sum, or milestone-driven, proniq adapts to your workflow and keeps budgets in control from day one.",
     image: "/p4.png",
     tag: "Cost estimation",
   },
@@ -202,7 +202,7 @@ export default function Benefits() {
                 Complete projects within your own cost estimates
               </h2>
               <p className="text-base md:text-lg text-slate-600 max-w-xl">
-                Proniq connects cost estimates, material, and subcontractor flows,
+                proniq connects cost estimates, material, and subcontractor flows,
                 so your team sees the financial impact of every decision in one place.
               </p>
             </div>
@@ -214,8 +214,8 @@ export default function Benefits() {
                   <div
                     key={item.id}
                     className={`rounded-2xl border px-4 sm:px-5 transition-all duration-300 ${isActive
-                        ? "bg-slate-50 border-[rgba(9,119,153,0.4)] shadow-sm"
-                        : "bg-white border-slate-200 hover:border-slate-300"
+                      ? "bg-slate-50 border-[rgba(9,119,153,0.4)] shadow-sm"
+                      : "bg-white border-slate-200 hover:border-slate-300"
                       }`}
                   >
                     <button
@@ -225,8 +225,8 @@ export default function Benefits() {
                       <div className="flex-1">
                         <h3
                           className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${isActive
-                              ? "text-[rgb(9,119,153)]"
-                              : "text-slate-900 group-hover:text-slate-900"
+                            ? "text-[rgb(9,119,153)]"
+                            : "text-slate-900 group-hover:text-slate-900"
                             }`}
                         >
                           {item.title}
@@ -234,8 +234,8 @@ export default function Benefits() {
                       </div>
                       <div
                         className={`flex h-8 w-8 items-center justify-center rounded-full border text-slate-500 transition-all duration-300 ${isActive
-                            ? "rotate-180 text-white"
-                            : "hover:border-[rgb(9,119,153)] hover:text-[rgb(9,119,153)]"
+                          ? "rotate-180 text-white"
+                          : "hover:border-[rgb(9,119,153)] hover:text-[rgb(9,119,153)]"
                           }`}
                         style={
                           isActive

@@ -56,12 +56,12 @@ export default function FeatureBento() {
 
                 {/* screen */}
                 <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-slate-50 flex flex-col">
-                  {/* Header with PRONIQ logo */}
+                  {/* Header with proniq logo */}
                   <div className="bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-2">
                       <img
                         src="/proniq.png" // update path if different
-                        alt="PRONIQ"
+                        alt="proniq"
                         className="h-5 w-auto"
                       />
                       <div className="flex flex-col">

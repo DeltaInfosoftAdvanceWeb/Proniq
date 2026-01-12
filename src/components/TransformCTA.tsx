@@ -24,7 +24,7 @@ export default function TransformCTA() {
                 </motion.h2>
 
                 <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-                    Join industry leaders who are using PRONIQ to drive efficiency, safety, and growth.
+                    Join industry leaders who are using proniq to drive efficiency, safety, and growth.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">

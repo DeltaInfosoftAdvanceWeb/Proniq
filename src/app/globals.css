@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Premium Light Theme - PRONIQ Brand Colors */
+  /* Premium Light Theme - proniq Brand Colors */
   --background: #f8fafc;
   /* Slate 50 */
   --foreground: #0f172a;
@@ -18,11 +18,11 @@
   --popover-foreground: #0f172a;
 
   --primary: #08789a;
-  /* PRONIQ Teal */
+  /* proniq Teal */
   --primary-foreground: #ffffff;
 
   --secondary: #57e93f;
-  /* PRONIQ Lime Green */
+  /* proniq Lime Green */
   --secondary-foreground: #064e24;
   /* Dark green for contrast */
 
@@ -50,7 +50,7 @@
 }
 
 .dark {
-  /* Premium Dark Theme - PRONIQ Brand Colors */
+  /* Premium Dark Theme - proniq Brand Colors */
   --background: #020617;
   /* Slate 950 */
   --foreground: #f8fafc;

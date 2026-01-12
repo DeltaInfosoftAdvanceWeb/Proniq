@@ -28,7 +28,7 @@ export default function HomeClient() {
                     title={
                         <span className="text-center flex flex-col items-center">
                             <span className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-teal-400 to-green-500 bg-clip-text text-transparent">
-                                PRONIQ
+                                proniq
                             </span>
                             <span className="text-2xl md:text-3xl font-light text-neutral-500 dark:text-white">The workflow-driven iERP & operations platform built for execution-focused teams.</span>
                         </span>

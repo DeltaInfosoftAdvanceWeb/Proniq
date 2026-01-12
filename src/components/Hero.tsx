@@ -3,7 +3,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 import { useEffect, useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion";
 import {
+  X,
   ChevronRight,
   Sparkles,
   Zap,
@@ -116,6 +118,7 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
   const prevScroll = useRef(0);
   const [showOverlay, setShowOverlay] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const current = window.scrollY;
@@ -171,7 +174,7 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                <span className="text-sm font-medium text-slate-600 group-hover:text-primary transition-colors">Next‑Gen PRONIQ Live</span>
+                <span className="text-sm font-medium text-slate-600 group-hover:text-primary transition-colors">Next‑Gen proniq Live</span>
                 <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
               </div>
             </div>
@@ -201,7 +204,10 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </button>
-                  <button className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
+                  <button
+                    onClick={() => setVideoOpen(true)}
+                    className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                  >
                     <Play className="w-5 h-5 fill-slate-700" />
                     Take a Quick Tour
                   </button>
@@ -360,6 +366,38 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
           perspective: 1000px;
         }
       `}</style>
+        <AnimatePresence>
+          {videoOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+              onClick={() => setVideoOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              >
+                <button
+                  onClick={() => setVideoOpen(false)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                <video
+                  src="/proniq.mp4"
+                  className="w-full h-full object-contain"
+                  controls
+                  autoPlay
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main >
     </>
   )

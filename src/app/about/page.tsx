@@ -5,8 +5,8 @@ import { Zap, Layers, BarChart2 } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About PRONIQ | Our Story & Vision",
-  description: "Learn about PRONIQ and our mission to empower modern infrastructure teams with operational clarity and precision-built ERP solutions.",
+  title: "About proniq | Our Story & Vision",
+  description: "Learn about proniq and our mission to empower modern infrastructure teams with operational clarity and precision-built ERP solutions.",
 };
 
 export default function Page() {
@@ -67,7 +67,7 @@ export default function Page() {
         <div className="container mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Why <span className="text-gradient">PRONIQ</span>
+              Why <span className="text-gradient">proniq</span>
             </h2>
             <p className="text-lg text-slate-600 mb-10">
               Industry-tailored ERP that moves fast, scales with your business, and turns operations into

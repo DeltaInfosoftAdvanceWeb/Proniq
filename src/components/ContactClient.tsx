@@ -309,7 +309,7 @@ export default function ContactClient() {
                                                     {isVerified ? 'Verified' : 'Human Verification'}
                                                 </p>
                                             </div>
-                                            <p className="text-[10px] text-slate-400 font-mono">PRONIQ Security</p>
+                                            <p className="text-[10px] text-slate-400 font-mono">proniq Security</p>
                                         </div>
 
                                         {/* Math Problem */}

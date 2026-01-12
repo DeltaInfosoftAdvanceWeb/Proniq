@@ -532,7 +532,7 @@ function Flow({ ref }: { ref: any }) {
       <div className="w-full py-10 bg-slate-50/50 shrink-0">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 text-gradient">
-            How Proniq Works
+            How proniq Works
           </h1>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
             An end-to-end, approval-driven workflow from tender creation

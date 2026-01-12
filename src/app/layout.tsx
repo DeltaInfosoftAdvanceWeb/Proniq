@@ -26,23 +26,23 @@ export const metadata: Metadata = {
     shortcut: "/proniq-tp.png",
     apple: "/proniq-tp.png",
   },
-  title: "PRONIQ | Workflow-Driven iERP & Operations Platform",
+  title: "proniq | Workflow-Driven iERP & Operations Platform",
   description:
-    "PRONIQ is a premium, workflow-driven iERP platform built for execution-focused teams. Streamline operations, reduce costs, and boost productivity in construction, manufacturing, and infrastructure.",
+    "proniq is a premium, workflow-driven iERP platform built for execution-focused teams. Streamline operations, reduce costs, and boost productivity in construction, manufacturing, and infrastructure.",
   keywords: ["ERP", "iERP", "Workflow Platform", "Operations Management", "Construction Software", "Manufacturing ERP", "Project Management", "Delta Infosoft"],
   authors: [{ name: "Delta Infosoft Pvt. Ltd." }],
   openGraph: {
-    title: "PRONIQ | Workflow-Driven iERP & Operations Platform",
+    title: "proniq | Workflow-Driven iERP & Operations Platform",
     description: "The next-generation iERP platform for execution-focused teams.",
     url: "https://proniq.com",
-    siteName: "PRONIQ",
+    siteName: "proniq",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PRONIQ | iERP Platform",
-    description: "Streamline your operations with PRONIQ workflow-driven iERP.",
+    title: "proniq | iERP Platform",
+    description: "Streamline your operations with proniq workflow-driven iERP.",
   },
 };
 
