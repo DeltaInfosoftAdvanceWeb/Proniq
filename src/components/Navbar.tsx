@@ -183,7 +183,7 @@ export default function Navbar() {
                   return (
                     <div
                       key={l.href}
-                      className="relative"
+                      className=""
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
