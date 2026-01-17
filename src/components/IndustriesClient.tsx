@@ -43,7 +43,7 @@ const industries = [
         description:
             "Digitize production workflows with advanced planning, inventory, and quality control systems. Gain real-time visibility into every stage of your manufacturing process.",
         features: ["Production Planning", "Quality Control", "Inventory Management"],
-        image: "/Manufacturing.jpeg",
+        image: "/manufacturing.jpeg",
         gradient: "from-blue-600 to-cyan-500",
         shadow: "shadow-blue-500/20",
         accent: "text-blue-600",
