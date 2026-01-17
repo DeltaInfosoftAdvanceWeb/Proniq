@@ -23,31 +23,30 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-6">
                         <Link href="/" className="inline-flex items-center gap-2 group">
-                            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-blue-600 shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
-                                <span className="text-white font-bold text-xl">P</span>
+                            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl  shadow-blue-900/20 group-hover:scale-105 transition-transform duration-300">
+                                <img src="/proniq.png" alt="proniq" className="w-10 h-8" />
                             </div>
-                            <span className="text-2xl font-bold text-white tracking-tight">PRONIQ</span>
+                            <span className="text-2xl font-bold text-white tracking-tight">proniq</span>
                         </Link>
                         <p className="text-slate-400 leading-relaxed max-w-sm">
                             Empowering construction businesses with next-generation tools for seamless project management, from estimation to billing.
                         </p>
                         <div className="flex items-center gap-4 pt-2">
-                            <SocialLink href="#" icon={Twitter} label="Twitter" />
-                            <SocialLink href="#" icon={Linkedin} label="LinkedIn" />
-                            <SocialLink href="#" icon={Github} label="GitHub" />
-                            <SocialLink href="#" icon={Instagram} label="Instagram" />
+                            <SocialLink href="https://x.com/delta_infosoft/" icon={Twitter} label="Twitter" />
+                            <SocialLink href="https://www.linkedin.com/company/delta-infosoft/" icon={Linkedin} label="LinkedIn" />
+                            <SocialLink href="https://www.instagram.com/delta_infosoft/" icon={Instagram} label="Instagram" />
                         </div>
                     </div>
 
                     {/* Links Columns */}
                     <div className="lg:col-span-2 space-y-6">
-                        <h3 className="text-white font-semibold text-lg">Product</h3>
+                        <h3 className="text-white font-semibold text-lg">Industries</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="/features">Features</FooterLink>
-                            <FooterLink href="/pricing">Pricing</FooterLink>
-                            <FooterLink href="/integrations">Integrations</FooterLink>
-                            <FooterLink href="/changelog">Changelog</FooterLink>
-                            <FooterLink href="/docs">Documentation</FooterLink>
+                            <FooterLink href="/industries/manufacturing">Manufacturing</FooterLink>
+                            <FooterLink href="/industries/construction">Construction</FooterLink>
+                            <FooterLink href="/industries/interior-architecture">Interior Architecture</FooterLink>
+                            <FooterLink href="/industries/infrastructure">Infrastructure</FooterLink>
+                            <FooterLink href="/industries/engineering">Engineering</FooterLink>
                         </ul>
                     </div>
 
@@ -55,42 +54,39 @@ export default function Footer() {
                         <h3 className="text-white font-semibold text-lg">Company</h3>
                         <ul className="space-y-3">
                             <FooterLink href="/about">About Us</FooterLink>
-                            <FooterLink href="/careers">Careers</FooterLink>
-                            <FooterLink href="/blog">Blog</FooterLink>
+                            <FooterLink href="/industries">Industries</FooterLink>
                             <FooterLink href="/contact">Contact</FooterLink>
-                            <FooterLink href="/partners">Partners</FooterLink>
                         </ul>
                     </div>
 
-                    {/* Newsletter / Contact Column */}
+                    {/* CTA Column */}
                     <div className="lg:col-span-4 space-y-6">
-                        <h3 className="text-white font-semibold text-lg">Stay Updated</h3>
-                        <p className="text-slate-400 text-sm">
-                            Subscribe to our newsletter for the latest updates and features.
-                        </p>
-                        <form className="relative max-w-sm" onSubmit={(e) => e.preventDefault()}>
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full pl-4 pr-12 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                            />
-                            <button
-                                type="submit"
-                                className="absolute right-1.5 top-1.5 p-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
-                                aria-label="Subscribe"
-                            >
-                                <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </form>
+                        <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/20 via-blue-900/10 to-transparent border border-white/10 relative overflow-hidden group">
+                            <div className="relative z-10">
+                                <h3 className="text-white font-bold text-xl mb-3">Ready to Transform?</h3>
+                                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                                    Experience the future of project execution. Schedule a personalized demo with our experts today.
+                                </p>
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 group-hover:scale-105"
+                                >
+                                    Book a Free Demo
+                                    <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
+                            {/* Decorative element */}
+                            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all" />
+                        </div>
 
                         <div className="pt-6 space-y-3">
                             <div className="flex items-start gap-3 text-slate-400 text-sm">
                                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                <span>123 Innovation Drive, Tech Valley, CA 94043</span>
+                                <span>701, Safal Profitaire, Prahladnagar, Ahmedabad, Gujarat 380015</span>
                             </div>
                             <div className="flex items-center gap-3 text-slate-400 text-sm">
                                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                                <a href="mailto:hello@proniq.com" className="hover:text-white transition-colors">hello@proniq.com</a>
+                                <a href="mailto:info@deltainfosoft.com" className="hover:text-white transition-colors">info@deltainfosoft.com</a>
                             </div>
                         </div>
                     </div>
@@ -99,7 +95,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm">
-                        © {currentYear} PRONIQ. All rights reserved.
+                        © {currentYear} proniq. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm text-slate-500">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

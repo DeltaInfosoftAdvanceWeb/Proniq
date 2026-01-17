@@ -9,10 +9,10 @@ export default function WhyChoose() {
   const stats = [
     {
       label: "Performance Boost",
-      value: "+38%",
+      value: "+30%",
       description: "Increase in operational efficiency for construction teams.",
       icon: BoltIcon,
-      trend: "Proven Impact",
+      trend: "Highest Efficiency",
     },
     {
       label: "Time Saved",
@@ -20,11 +20,11 @@ export default function WhyChoose() {
       suffix: "/mo",
       description: "Average time saved on manual tracking and reporting.",
       icon: ClockIcon,
-      trend: "High Efficiency",
+      trend: "Proven Impact",
     },
     {
       label: "Client Satisfaction",
-      value: "95%",
+      value: "98%",
       description: "Of our partners report better project control and clarity.",
       icon: HandThumbUpIcon,
       trend: "Top Rated",
@@ -40,7 +40,7 @@ export default function WhyChoose() {
       <div className="container mx-auto max-w-7xl px-6 relative z-10">
         <div className="mb-16 text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-            Why Leading Teams <span className="text-gradient">Choose Proniq</span>
+            Why Leading Teams <span className="text-gradient">Choose proniq</span>
           </h2>
           <p className="text-xl text-slate-600 leading-relaxed">
             We deliver measurable results that impact your bottom line.
