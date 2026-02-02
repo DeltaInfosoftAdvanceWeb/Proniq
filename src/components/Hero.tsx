@@ -27,6 +27,8 @@ import {
   MoreHorizontal,
 } from "lucide-react"
 
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+
 interface TenderCardProps {
   title?: string;
   authority?: string;
@@ -42,74 +44,72 @@ function TenderCard({
   date = "Oct 27, 2021",
   amount = "₹0",
 }: TenderCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
   return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-        transition: "transform 0.1s ease-out"
-      }}
-      className="bg-white rounded-xl shadow-2xl border border-slate-100 p-5 cursor-pointer hover:shadow-primary/5 relative z-50"
-    >
-      <div className="space-y-4">
-        <h3 className="font-bold text-slate-900 leading-tight text-sm">
-          {title}
-        </h3>
+    <CardContainer className="">
+      <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-5 border shadow-2xl">
+        <CardItem
+          translateZ="50"
+          className="space-y-4"
+        >
+          <CardItem
+            as="h3"
+            translateZ="60"
+            className="font-bold text-slate-900 leading-tight text-sm"
+          >
+            {title}
+          </CardItem>
 
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-          <div className="flex items-center gap-2 text-slate-500">
-            <Building2 className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium truncate">{authority}</span>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <Building2 className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium truncate">{authority}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <FileText className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{tenderId}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <Calendar className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{date}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <IndianRupee className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{amount}</span>
+            </CardItem>
           </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <FileText className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{tenderId}</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <Calendar className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{date}</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <IndianRupee className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{amount}</span>
-          </div>
-        </div>
 
-        <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-          <button className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors">
-            Show Details
-            <ChevronDown className="w-3.5 h-3.5" />
-          </button>
-          <button className="text-slate-400 hover:text-slate-600 transition-colors">
-            <MoreHorizontal className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </div>
-
-
+          <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <CardItem
+              translateZ="20"
+              as="button"
+              className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              Show Details
+              <ChevronDown className="w-3.5 h-3.5" />
+            </CardItem>
+            <CardItem
+              translateZ="20"
+              as="button"
+              className="text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <MoreHorizontal className="w-4 h-4" />
+            </CardItem>
+          </div>
+        </CardItem>
+      </CardBody>
+    </CardContainer>
   );
 }
 
@@ -165,8 +165,9 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
 
 
         {/* Hero Section */}
-        <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-4 sm:px-6 lg:px-8" style={{ background: "#f8fafc" }}>
-          <div className="max-w-7xl mx-auto">
+        <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ background: "#f8fafc" }}>
+
+          <div className="max-w-7xl mx-auto relative z-10">
             {/* Animated badge */}
             <div className="flex justify-center mb-10 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-md transition-all cursor-pointer group hover:scale-105">
@@ -254,14 +255,14 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
                   </div>
 
                   {/* Floating Elements - Hidden on mobile */}
-                  <div className="hidden md:block absolute top-[15%] -right-12 z-20 animate-float" style={{ animationDelay: "1s" }}>
-                    <div className="w-[260px]">
+                  <div className="hidden md:block absolute top-[5%] -right-16 z-20 animate-float" style={{ animationDelay: "1s" }}>
+                    <div className="w-[300px]">
                       <TenderCard />
                     </div>
                   </div>
 
-                  <div className="hidden md:block absolute top-[55%] -right-8 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
-                    <div className="w-[300px]">
+                  <div className="hidden md:block absolute top-[50%] -right-12 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
+                    <div className="w-[320px]">
                       <TenderCard
                         title="Construction of New Administrative Block at Jaipur"
                         authority="PWD, Rajasthan"
@@ -402,3 +403,4 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
     </>
   )
 }
+

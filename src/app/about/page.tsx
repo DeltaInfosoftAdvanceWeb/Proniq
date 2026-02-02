@@ -29,7 +29,7 @@ export default function Page() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
             <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300">
               <Image
-                src="/Logos/favicon/Delta iERP.png"
+                src="/Logos/DeltaiERP.png"
                 alt="Delta iERP"
                 fill
                 className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
@@ -37,7 +37,7 @@ export default function Page() {
             </div>
             <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
               <Image
-                src="/Logos/favicon/Delta iAccount.png"
+                src="/Logos/DeltaiAccount.png"
                 alt="Delta iAccount"
                 fill
                 className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
@@ -45,7 +45,7 @@ export default function Page() {
             </div>
             <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300">
               <Image
-                src="/Logos/favicon/Delta Mytime.png"
+                src="/Logos/DeltaMytime.png"
                 alt="Delta Mytime"
                 fill
                 className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
@@ -53,7 +53,7 @@ export default function Page() {
             </div>
             <div className="relative h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center p-4 group hover:shadow-xl transition-all duration-300 md:translate-y-8">
               <Image
-                src="/Logos/favicon/Delta AI.png"
+                src="/Logos/DeltaAI.png"
                 alt="Delta AI"
                 fill
                 className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
