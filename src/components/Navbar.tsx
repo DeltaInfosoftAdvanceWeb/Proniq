@@ -46,7 +46,17 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     hoverTimeout.current = setTimeout(() => {
       setShowIndustries(false);
-    }, 150);
+    }, 300);
+  };
+
+  const handleIndustriesClick = () => {
+    // Toggle for touch devices
+    setShowIndustries(!showIndustries);
+    // Clear any pending timeout
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = null;
+    }
   };
 
   /* ---------- SCROLL EFFECT ---------- */
@@ -76,9 +86,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex flex-col pt-24 px-6"
+            className="fixed inset-0 z-[120] bg-white/95 backdrop-blur-2xl flex flex-col pt-24 px-6"
+            onClick={(e) => {
+              // Close menu only if clicking directly on the overlay background
+              if (e.target === e.currentTarget) {
+                setOpen(false);
+              }
+            }}
           >
-            <nav className="flex flex-col gap-2 overflow-y-auto pb-10 h-full no-scrollbar">
+            <nav className="flex flex-col gap-2 overflow-y-auto pb-10 h-full no-scrollbar" onClick={(e) => e.stopPropagation()}>
               {links.filter(l => !l.dropdown).map((l, i) => (
                 <motion.div
                   key={l.href}
@@ -158,7 +174,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <header className="fixed top-0 inset-x-0 z-[110] px-2 md:px-4 pt-4 pointer-events-none">
+      <header className={`fixed top-0 inset-x-0 px-2 md:px-4 pt-4 pointer-events-none ${open ? 'z-[125]' : 'z-[110]'}`}>
         <div
           className={`mx-auto max-w-6xl rounded-full transition-all duration-300 pointer-events-auto relative
           ${scrolled || open
@@ -188,6 +204,7 @@ export default function Navbar() {
                       onMouseLeave={handleMouseLeave}
                     >
                       <button
+                        onClick={handleIndustriesClick}
                         className={`px-4 py-2 text-sm font-medium rounded-full transition flex items-center gap-1
                         ${active || showIndustries
                             ? (useWhiteText ? "bg-white text-slate-900" : "bg-slate-100 text-slate-900")
@@ -297,7 +314,7 @@ export default function Navbar() {
 
             {/* ---------- MOBILE TOGGLE ---------- */}
             <button
-              className="md:hidden p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-900"
+              className="md:hidden p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-900 pointer-events-auto relative z-10"
               onClick={() => setOpen(!open)}
               aria-label="Toggle Menu"
             >
