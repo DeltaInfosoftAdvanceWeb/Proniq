@@ -3,15 +3,25 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
-import { Menu, X, ChevronRight, LayoutGrid, Info, PhoneCall, Home } from "lucide-react";
+import { Menu, X, ChevronRight, LayoutGrid, Info, PhoneCall, Home, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ---------- NAV LINKS ---------- */
 const links = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/industries", label: "Industries", dropdown: true, icon: LayoutGrid },
+  { href: "/solutions", label: "Solutions", dropdown: true, dropdownType: "solutions", icon: Zap },
+  { href: "/industries", label: "Industries", dropdown: true, dropdownType: "industries", icon: LayoutGrid },
   { href: "/about", label: "About", icon: Info },
   { href: "/contact", label: "Contact", icon: PhoneCall },
+];
+
+/* ✅ SOLUTIONS */
+const solutions = [
+  { title: "Workflow-Driven ERP", slug: "workflow-driven-erp", description: "Seamless project execution from tender to billing" },
+  { title: "Construction ERP", slug: "construction-erp", description: "Purpose-built for contractors and builders" },
+  { title: "Daily Progress Reporting", slug: "daily-progress-reporting", description: "Real-time site progress tracking" },
+  { title: "RA Billing Software", slug: "ra-billing-software", description: "Automate running account billing" },
+  { title: "Tender & BOQ Management", slug: "tender-boq-management", description: "From estimation to execution" },
 ];
 
 /* ✅ EXPLICIT INDUSTRY SLUGS (NO AUTO-GENERATION) */
@@ -28,7 +38,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showIndustries, setShowIndustries] = useState(false);
+  const [showSolutions, setShowSolutions] = useState(false);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const solutionsTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // Check if we are on a page with a dark hero section (industry subpages)
   const isDarkHeroPage = pathname.startsWith("/industries/") && pathname !== "/industries";
@@ -56,6 +68,30 @@ export default function Navbar() {
     if (hoverTimeout.current) {
       clearTimeout(hoverTimeout.current);
       hoverTimeout.current = null;
+    }
+  };
+
+  const handleSolutionsMouseEnter = () => {
+    if (solutionsTimeout.current) {
+      clearTimeout(solutionsTimeout.current);
+      solutionsTimeout.current = null;
+    }
+    setShowSolutions(true);
+  };
+
+  const handleSolutionsMouseLeave = () => {
+    solutionsTimeout.current = setTimeout(() => {
+      setShowSolutions(false);
+    }, 300);
+  };
+
+  const handleSolutionsClick = () => {
+    // Toggle for touch devices
+    setShowSolutions(!showSolutions);
+    // Clear any pending timeout
+    if (solutionsTimeout.current) {
+      clearTimeout(solutionsTimeout.current);
+      solutionsTimeout.current = null;
     }
   };
 
@@ -115,6 +151,32 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mt-4 mb-2"
+              >
+                <p className="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">
+                  Solutions
+                </p>
+                <div className="grid grid-cols-1 gap-1">
+                  {solutions.map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/${item.slug}`}
+                      onClick={() => setOpen(false)}
+                      className={`px-4 py-3 rounded-xl text-lg font-medium transition-all ${pathname === `/${item.slug}`
+                        ? "text-primary bg-primary/5"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                        }`}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -187,8 +249,8 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 md:gap-6" onClick={() => setOpen(false)}>
               <img src="/proniq.png" alt="proniq" className="w-auto h-7 md:h-10 object-contain" />
               <span className={`text-xl md:text-2xl font-bold tracking-tight transition-colors ${useWhiteText
-                  ? "text-white"
-                  : "bg-gradient-to-r from-blue-600 via-teal-400 to-green-500 bg-clip-text text-transparent"
+                ? "text-white"
+                : "bg-gradient-to-r from-blue-600 via-teal-400 to-green-500 bg-clip-text text-transparent"
                 }`}>proniq</span>
             </Link>
 
@@ -198,42 +260,69 @@ export default function Navbar() {
                 const active = pathname === l.href;
 
                 if (l.dropdown) {
+                  const isSolutions = l.dropdownType === "solutions";
+                  const isIndustries = l.dropdownType === "industries";
+                  const showDropdown = isSolutions ? showSolutions : showIndustries;
+                  const handleEnter = isSolutions ? handleSolutionsMouseEnter : handleMouseEnter;
+                  const handleLeave = isSolutions ? handleSolutionsMouseLeave : handleMouseLeave;
+                  const handleClick = isSolutions ? handleSolutionsClick : handleIndustriesClick;
+                  const setShowDropdown = isSolutions ? setShowSolutions : setShowIndustries;
+
                   return (
                     <div
                       key={l.href}
-                      className=""
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                      className="relative"
+                      onMouseEnter={handleEnter}
+                      onMouseLeave={handleLeave}
                     >
                       <button
-                        onClick={handleIndustriesClick}
+                        onClick={handleClick}
                         className={`px-4 py-2 text-sm font-medium rounded-full transition flex items-center gap-1
-                        ${active || showIndustries
+                        ${active || showDropdown
                             ? (useWhiteText ? "bg-white text-slate-900" : "bg-slate-100 text-slate-900")
                             : (useWhiteText ? "text-white hover:bg-white/10" : "text-slate-700 hover:bg-slate-100")
                           }`}
                       >
-                        Industries
-                        <ChevronRight className={`w-3 h-3 transition-transform ${showIndustries ? 'rotate-90' : ''}`} />
+                        {l.label}
+                        <ChevronRight className={`w-3 h-3 transition-transform ${showDropdown ? 'rotate-90' : ''}`} />
                       </button>
 
                       {/* ---------- DROPDOWN ---------- */}
                       <AnimatePresence>
-                        {showIndustries && (
+                        {showDropdown && (
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[600px]"
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
+                            className="absolute top-full left-0 pt-6 w-[600px]"
+                            onMouseEnter={handleEnter}
+                            onMouseLeave={handleLeave}
                           >
                             <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
                               <div className="grid grid-cols-2">
                                 {/* LEFT LIST */}
                                 <div className="py-3">
-                                  {industries.map((item) => {
+                                  {isSolutions && solutions.map((item) => {
+                                    const href = `/${item.slug}`;
+                                    const isActive = pathname === href;
+
+                                    return (
+                                      <Link
+                                        key={item.slug}
+                                        href={href}
+                                        onClick={() => setShowDropdown(false)}
+                                        className={`block px-6 py-3 text-sm transition
+                                      ${isActive
+                                            ? "bg-primary/10 text-primary font-semibold"
+                                            : "text-slate-700 hover:bg-slate-100"
+                                          }`}
+                                      >
+                                        {item.title}
+                                      </Link>
+                                    );
+                                  })}
+                                  {isIndustries && industries.map((item) => {
                                     const href = `/industries/${item.slug}`;
                                     const isActive = pathname === href;
 
@@ -241,10 +330,10 @@ export default function Navbar() {
                                       <Link
                                         key={item.slug}
                                         href={href}
-                                        onClick={() => setShowIndustries(false)}
+                                        onClick={() => setShowDropdown(false)}
                                         className={`block px-6 py-3 text-sm transition
                                       ${isActive
-                                            ? "bg-blue-50 text-blue-600 font-semibold"
+                                            ? "bg-primary/10 text-primary font-semibold"
                                             : "text-slate-700 hover:bg-slate-100"
                                           }`}
                                       >
@@ -256,24 +345,39 @@ export default function Navbar() {
 
                                 {/* RIGHT INFO */}
                                 <div className="border-l border-slate-200 bg-slate-50 p-6">
-                                  <p className="text-xs uppercase tracking-wide text-slate-400 font-bold">
-                                    Solutions
-                                  </p>
-                                  <h4 className="mt-1 text-lg font-bold text-slate-900 leading-tight">
-                                    Built for real-world operations
-                                  </h4>
-                                  <p className="mt-2 text-sm text-slate-600 font-normal">
-                                    ERP workflows designed to match how each
-                                    industry actually works.
-                                  </p>
-
-                                  <Link
-                                    href="/industries"
-                                    onClick={() => setShowIndustries(false)}
-                                    className="inline-flex items-center mt-4 text-sm font-bold text-primary hover:gap-1 transition-all"
-                                  >
-                                    View all industries <ChevronRight className="w-4 h-4" />
-                                  </Link>
+                                  {isSolutions && (
+                                    <>
+                                      <p className="text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                        Features
+                                      </p>
+                                      <h4 className="mt-1 text-lg font-bold text-slate-900 leading-tight">
+                                        Workflow-driven solutions
+                                      </h4>
+                                      <p className="mt-2 text-sm text-slate-600 font-normal">
+                                        From tender management to final billing — every feature designed for seamless project execution.
+                                      </p>
+                                    </>
+                                  )}
+                                  {isIndustries && (
+                                    <>
+                                      <p className="text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                        Solutions
+                                      </p>
+                                      <h4 className="mt-1 text-lg font-bold text-slate-900 leading-tight">
+                                        Built for real-world operations
+                                      </h4>
+                                      <p className="mt-2 text-sm text-slate-600 font-normal">
+                                        ERP workflows designed to match how each industry actually works.
+                                      </p>
+                                      <Link
+                                        href="/industries"
+                                        onClick={() => setShowDropdown(false)}
+                                        className="inline-flex items-center mt-4 text-sm font-bold text-primary hover:gap-1 transition-all"
+                                      >
+                                        View all industries <ChevronRight className="w-4 h-4" />
+                                      </Link>
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -328,3 +432,4 @@ export default function Navbar() {
     </>
   );
 }
+

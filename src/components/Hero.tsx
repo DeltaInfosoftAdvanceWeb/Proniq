@@ -186,14 +186,14 @@ export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
               <div className="space-y-8 text-center lg:text-left animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 <div className="space-y-6">
                   <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
-                    Cut Delays. <span className="text-gradient">Reduce Costs.</span>
+                    <span className="text-gradient">Workflow-Driven iERP Software</span>
                     <br />
-                    Boost Productivity.
+                    for Project Execution Teams
                   </h1>
                   <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                    From estimation to billing — every step of your project, perfectly connected.
-                    A seamless workflow — from your first BOQ to the final bill.
-                    Unify every stage of your project, from estimation to handover.</p>
+                    Manage tenders, BOQs, daily progress tracking, RA billing, and approvals in one seamless workflow-driven ERP.
+                    From estimation to handover — eliminate delays, reduce costs, and boost productivity across construction, manufacturing, and infrastructure projects.
+                  </p>
                 </div>
 
                 {/* Premium CTA Buttons */}
