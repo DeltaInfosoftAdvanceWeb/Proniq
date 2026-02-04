@@ -15,6 +15,10 @@ const benefitsData = [
       "Configure your cost estimation logic to match your project needs. Whether it's unit-based, lump sum, or milestone-driven, proniq adapts to your workflow and keeps budgets in control from day one.",
     image: "/p4.png",
     tag: "Cost estimation",
+    budgetPercentage: 98.2,
+    budgetStatus: "well planned",
+    statusColor: "emerald",
+    riskMessage: "All estimates are configured and approved for current phase.",
   },
   {
     id: "purchases",
@@ -23,6 +27,10 @@ const benefitsData = [
       "Tie Material Requests and Purchase Orders directly to cost estimates. The system flags duplicates and quantity mismatches before they become expensive mistakes.",
     image: "/p3.png",
     tag: "Procurement control",
+    budgetPercentage: 94.7,
+    budgetStatus: "controlled",
+    statusColor: "emerald",
+    riskMessage: "2 duplicate purchase requests flagged and prevented this week.",
   },
   {
     id: "subcontractors",
@@ -31,6 +39,10 @@ const benefitsData = [
       "Map subcontractor bills to approved work orders and measurement books. Every rupee is backed by verified progress and contract terms.",
     image: "/p5.png",
     tag: "Subcontractor billing",
+    budgetPercentage: 89.3,
+    budgetStatus: "verified",
+    statusColor: "emerald",
+    riskMessage: "All subcontractor bills are mapped to approved work orders.",
   },
   {
     id: "overruns",
@@ -39,6 +51,10 @@ const benefitsData = [
       "Get live variance insights by material, labour, and machinery. Take corrective action before overruns hit the P&L.",
     image: "/p6.png",
     tag: "Cost variance",
+    budgetPercentage: 92.4,
+    budgetStatus: "on track",
+    statusColor: "emerald",
+    riskMessage: "Concrete package is 8% above estimate this week.",
   },
 ];
 
@@ -131,17 +147,17 @@ export default function Benefits() {
                             </div>
                             <div className="flex items-baseline gap-2">
                               <span className="text-lg font-semibold text-slate-900">
-                                92.4%
+                                {activeItem.budgetPercentage}%
                               </span>
                               <span className="text-[11px] text-emerald-600">
-                                on track
+                                {activeItem.budgetStatus}
                               </span>
                             </div>
                             <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
                               <div
                                 className="h-full rounded-full"
                                 style={{
-                                  width: "92.4%",
+                                  width: `${activeItem.budgetPercentage}%`,
                                   background:
                                     "linear-gradient(90deg, rgb(9,119,153), rgb(45,189,192))",
                                 }}
@@ -154,9 +170,7 @@ export default function Benefits() {
                               Upcoming risk
                             </p>
                             <p className="text-sm font-medium">
-                              {activeItem.id === "overruns"
-                                ? "Concrete package is 8% above estimate this week."
-                                : "No critical overruns in this week’s review."}
+                              {activeItem.riskMessage}
                             </p>
                           </div>
                         </div>

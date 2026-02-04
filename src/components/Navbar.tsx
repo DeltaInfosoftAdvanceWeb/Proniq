@@ -186,7 +186,9 @@ export default function Navbar() {
             {/* ---------- LOGO ---------- */}
             <Link href="/" className="flex items-center gap-3 md:gap-6" onClick={() => setOpen(false)}>
               <img src="/proniq.png" alt="proniq" className="w-auto h-7 md:h-10 object-contain" />
-              <span className={`text-xl md:text-2xl font-bold tracking-tight transition-colors ${useWhiteText ? "text-white" : "text-slate-900"
+              <span className={`text-xl md:text-2xl font-bold tracking-tight transition-colors ${useWhiteText
+                  ? "text-white"
+                  : "bg-gradient-to-r from-blue-600 via-teal-400 to-green-500 bg-clip-text text-transparent"
                 }`}>proniq</span>
             </Link>
 
