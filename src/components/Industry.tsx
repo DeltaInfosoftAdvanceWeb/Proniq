@@ -28,7 +28,7 @@ const industries = [
         icon: Factory,
         description: "Streamline production workflows and quality control",
         gradient: "from-blue-500 to-cyan-500",
-        image: "/Manufacturing.jpeg",
+        image: "/Manuf.png",
     },
     {
         id: "interior-architecture",
