@@ -1,6 +1,11 @@
-"use client"
+'use client';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 import { useEffect, useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion";
 import {
+  X,
   ChevronRight,
   Sparkles,
   Zap,
@@ -22,6 +27,8 @@ import {
   MoreHorizontal,
 } from "lucide-react"
 
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+
 interface TenderCardProps {
   title?: string;
   authority?: string;
@@ -37,81 +44,81 @@ function TenderCard({
   date = "Oct 27, 2021",
   amount = "₹0",
 }: TenderCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
   return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-        transition: "transform 0.1s ease-out"
-      }}
-      className="bg-white rounded-xl shadow-2xl border border-slate-100 p-5 cursor-pointer hover:shadow-primary/5 relative z-50"
-    >
-      <div className="space-y-4">
-        <h3 className="font-bold text-slate-900 leading-tight text-sm">
-          {title}
-        </h3>
+    <CardContainer className="">
+      <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-5 border shadow-2xl">
+        <CardItem
+          translateZ="50"
+          className="space-y-4"
+        >
+          <CardItem
+            as="h3"
+            translateZ="60"
+            className="font-bold text-slate-900 leading-tight text-sm"
+          >
+            {title}
+          </CardItem>
 
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-          <div className="flex items-center gap-2 text-slate-500">
-            <Building2 className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium truncate">{authority}</span>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <Building2 className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium truncate">{authority}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <FileText className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{tenderId}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <Calendar className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{date}</span>
+            </CardItem>
+            <CardItem
+              translateZ="40"
+              className="flex items-center gap-2 text-slate-500"
+            >
+              <IndianRupee className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-[10px] font-medium">{amount}</span>
+            </CardItem>
           </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <FileText className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{tenderId}</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <Calendar className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{date}</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-500">
-            <IndianRupee className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[10px] font-medium">{amount}</span>
-          </div>
-        </div>
 
-        <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-          <button className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors">
-            Show Details
-            <ChevronDown className="w-3.5 h-3.5" />
-          </button>
-          <button className="text-slate-400 hover:text-slate-600 transition-colors">
-            <MoreHorizontal className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </div>
-
-
+          <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <CardItem
+              translateZ="20"
+              as="button"
+              className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              Show Details
+              <ChevronDown className="w-3.5 h-3.5" />
+            </CardItem>
+            <CardItem
+              translateZ="20"
+              as="button"
+              className="text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <MoreHorizontal className="w-4 h-4" />
+            </CardItem>
+          </div>
+        </CardItem>
+      </CardBody>
+    </CardContainer>
   );
 }
 
-export default function Page() {
+export default function Page({ scrollToTimeline }: { scrollToTimeline: any }) {
+  const router = useRouter();
   const prevScroll = useRef(0);
   const [showOverlay, setShowOverlay] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const current = window.scrollY;
@@ -158,16 +165,17 @@ export default function Page() {
 
 
         {/* Hero Section */}
-        <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-4 sm:px-6 lg:px-8" style={{ background: "#f8fafc" }}>
-          <div className="max-w-7xl mx-auto">
+        <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ background: "#f8fafc" }}>
+
+          <div className="max-w-7xl mx-auto relative z-10">
             {/* Animated badge */}
-            <div className="flex justify-center mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.1s" }}>
+            <div className="flex justify-center mb-10 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-md transition-all cursor-pointer group hover:scale-105">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                <span className="text-sm font-medium text-slate-600 group-hover:text-primary transition-colors">Next‑Gen PRONIQ Live</span>
+                <span className="text-sm font-medium text-slate-600 group-hover:text-primary transition-colors">Next‑Gen proniq Live</span>
                 <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
               </div>
             </div>
@@ -175,50 +183,42 @@ export default function Page() {
             {/* Hero content */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
               {/* Left content */}
-              <div className="space-y-8 text-center lg:text-left animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
+              <div className="space-y-8 text-center lg:text-left animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 <div className="space-y-6">
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
-                    Cut Delays. <span className="text-gradient">Reduce Costs.</span>
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.1]">
+                    <span className="text-gradient">Workflow-Driven iERP Software</span>
                     <br />
-                    Boost Productivity.
+                    for Project Execution Teams
                   </h1>
                   <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                    From estimation to billing — every step of your project, perfectly connected.
-                    A seamless workflow — from your first BOQ to the final bill.
-                    Unify every stage of your project, from estimation to handover.</p>
+                    Manage tenders, BOQs, daily progress tracking, RA billing, and approvals in one seamless workflow-driven ERP.
+                    From estimation to handover — eliminate delays, reduce costs, and boost productivity across construction, manufacturing, and infrastructure projects.
+                  </p>
                 </div>
 
                 {/* Premium CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                  <button className="group relative px-8 py-4 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                  <button className="group relative px-8 py-4 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden" onClick={scrollToTimeline}>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shimmer" />
                     <span className="relative flex items-center justify-center gap-2">
                       Launch Your Workflow
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </button>
-                  <button className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
+                  <button
+                    onClick={() => setVideoOpen(true)}
+                    className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                  >
                     <Play className="w-5 h-5 fill-slate-700" />
                     Take a Quick Tour
                   </button>
                 </div>
 
-                {/* Trust indicators */}
-                <div className="pt-8 border-t border-slate-200/60 space-y-6">
-                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">
-                    Trusted by innovative companies
-                  </p>
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                    {["Duke Plasto", "Desire Energy Solutions", "Dara Infras", "GA Infra"].map((item, i) => (
-                      <span key={i} className="text-lg font-bold text-slate-400 hover:text-slate-600 transition-colors">{item}</span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Right content - Visual */}
               <div
-                className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in opacity-0"
+                className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in"
                 style={{ animationDelay: "0.4s" }}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-[3rem] rotate-3 border border-white/50 backdrop-blur-sm" />
@@ -254,15 +254,15 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* Floating Elements */}
-                  <div className="absolute top-[15%] -right-12 z-20 animate-float" style={{ animationDelay: "1s" }}>
-                    <div className="w-[260px]">
+                  {/* Floating Elements - Hidden on mobile */}
+                  <div className="hidden md:block absolute top-[5%] -right-16 z-20 animate-float" style={{ animationDelay: "1s" }}>
+                    <div className="w-[300px]">
                       <TenderCard />
                     </div>
                   </div>
 
-                  <div className="absolute top-[55%] -right-8 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
-                    <div className="w-[300px]">
+                  <div className="hidden md:block absolute top-[50%] -right-12 z-20 animate-float" style={{ animationDelay: "2.5s" }}>
+                    <div className="w-[320px]">
                       <TenderCard
                         title="Construction of New Administrative Block at Jaipur"
                         authority="PWD, Rajasthan"
@@ -273,11 +273,11 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <div className="absolute bottom-[20%] -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float" style={{ animationDelay: "2s" }}>
+                  <div className="hidden md:block absolute bottom-[20%] -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float" style={{ animationDelay: "2s" }}>
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
                         {[1, 2, 3].map((i) => (
-                          <img src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
+                          <img key={i} src="user.png" alt="" style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
                         ))}
                       </div>
                       <div className="text-xs font-medium text-slate-600">
@@ -367,7 +367,40 @@ export default function Page() {
           perspective: 1000px;
         }
       `}</style>
-      </main>
+        <AnimatePresence>
+          {videoOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+              onClick={() => setVideoOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              >
+                <button
+                  onClick={() => setVideoOpen(false)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                <video
+                  src="/proniq.mp4"
+                  className="w-full h-full object-contain"
+                  controls
+                  autoPlay
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </main >
     </>
   )
 }
+

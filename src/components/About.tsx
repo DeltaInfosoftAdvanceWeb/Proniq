@@ -2,128 +2,110 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useEffect, useState, useRef, Fragment } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 
-const features = [
-  { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "�" },
+// Pre-calculate all positions outside component to avoid recalculation
+const precalculatedFeatures = [
+  { label: "Tender Management", angle: 0, color: "from-amber-400 to-orange-500", icon: "📋" },
   { label: "Quick Actions", angle: 45, color: "from-violet-500 to-purple-500", icon: "⚡" },
   { label: "Task Tracking", angle: 90, color: "from-pink-500 to-rose-500", icon: "✓" },
-  { label: "Progress Reports", angle: 135, color: "from-fuchsia-500 to-pink-500", icon: "�" },
+  { label: "Progress Reports", angle: 135, color: "from-fuchsia-500 to-pink-500", icon: "📈" },
   { label: "QAP", angle: 180, color: "from-emerald-400 to-green-500", icon: "🎯" },
   { label: "Dashboard", angle: 225, color: "from-cyan-400 to-teal-500", icon: "📱" },
   { label: "RA Bills", angle: 270, color: "from-blue-400 to-cyan-500", icon: "💰" },
   { label: "BOQ Upload", angle: 315, color: "from-indigo-400 to-blue-500", icon: "📊" },
-];
+].map(feature => {
+  const radius = 42;
+  return {
+    ...feature,
+    x: 50 + radius * Math.cos((feature.angle * Math.PI) / 180),
+    y: 50 + radius * Math.sin((feature.angle * Math.PI) / 180)
+  };
+});
 
 function FeatureBubbles() {
   return (
-    <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center">
-      {/* Ambient Glows */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-3xl animate-pulse" />
+    <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center scale-[0.85] sm:scale-100">
+      {/* Ambient Glows - Simplified */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 rounded-full blur-xl" />
 
-      {/* Orbital Rings */}
+      {/* Orbital Rings - Static for performance */}
       <div className="absolute inset-0 rounded-full border border-slate-200/50" />
       <div className="absolute inset-[15%] rounded-full border border-slate-200/50" />
       <div className="absolute inset-[30%] rounded-full border border-slate-100/50" />
 
-      {/* Rotating Ring */}
-      <motion.div
-        className="absolute inset-[10%] rounded-full border border-dashed border-slate-300/50"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      />
+      {/* Static ring instead of animated */}
+      <div className="absolute inset-[10%] rounded-full border border-dashed border-slate-300/30" />
 
-      {/* Central Hub */}
+      {/* Central Hub - Simplified animations */}
       <div className="relative z-20 w-32 h-32 bg-white rounded-full shadow-2xl shadow-primary/20 flex items-center justify-center p-6 border border-slate-100">
-        <motion.div
-          className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl opacity-60" />
         <Image
           src="/proniq.png"
-          alt="PRONIQ"
+          alt="proniq"
           width={80}
           height={80}
           className="relative z-10 w-full h-auto object-contain"
         />
       </div>
 
-      {/* Connecting Lines & Nodes */}
-      {features.map((feature, i) => {
-        const radius = 42; // Percentage from center
-        const x = 50 + radius * Math.cos((feature.angle * Math.PI) / 180);
-        const y = 50 + radius * Math.sin((feature.angle * Math.PI) / 180);
+      {/* Static SVG lines for better performance */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <defs>
+          <linearGradient id="lineGradient" x1="50%" y1="50%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#64748b" stopOpacity="0" />
+            <stop offset="100%" stopColor="#64748b" stopOpacity="0.3" />
+          </linearGradient>
+        </defs>
+        {precalculatedFeatures.map((feature, i) => (
+          <line
+            key={i}
+            x1="50%"
+            y1="50%"
+            x2={`${feature.x}%`}
+            y2={`${feature.y}%`}
+            stroke="url(#lineGradient)"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+            opacity="0.2"
+          />
+        ))}
+      </svg>
 
-        return (
-          <Fragment key={i}>
-            {/* Connecting Line */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-              <motion.line
-                x1="50%"
-                y1="50%"
-                x2={`${x}%`}
-                y2={`${y}%`}
-                stroke="url(#lineGradient)"
-                strokeWidth="1"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: i * 0.1 }}
-              />
-              <defs>
-                <linearGradient id="lineGradient" x1="50%" y1="50%" x2={`${x}%`} y2={`${y}%`}>
-                  <stop offset="0%" stopColor="#64748b" stopOpacity="0" />
-                  <stop offset="100%" stopColor="#64748b" stopOpacity="0.5" />
-                </linearGradient>
-              </defs>
-            </svg>
+      {/* Simplified nodes - No heavy motion animations */}
+      {precalculatedFeatures.map((feature, i) => (
+        <div
+          key={i}
+          className="absolute z-10"
+          style={{ left: `${feature.x}%`, top: `${feature.y}%` }}
+        >
+          <button
+            className={`
+              relative group flex items-center gap-2 p-2 sm:px-4 sm:py-2.5 rounded-full 
+              bg-white border border-slate-100 shadow-lg shadow-slate-200/50
+              -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
+              hover:shadow-xl hover:scale-105 transition-all duration-200
+            `}
+          >
+            <div className={`
+              w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs sm:text-sm
+              bg-gradient-to-br ${feature.color} shadow-inner
+            `}>
+              {feature.icon}
+            </div>
+            <span className="hidden sm:block font-semibold text-slate-700 text-sm group-hover:text-slate-900">
+              {feature.label}
+            </span>
 
-            {/* Node */}
-            <motion.div
-              className="absolute z-10"
-              style={{ left: `${x}%`, top: `${y}%` }}
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                delay: i * 0.1
-              }}
-            >
-              <motion.button
-                className={`
-                  relative group flex items-center gap-2 px-4 py-2.5 rounded-full 
-                  bg-white border border-slate-100 shadow-lg shadow-slate-200/50
-                  hover:shadow-xl hover:scale-105 transition-all duration-300
-                  -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
-                `}
-                whileHover={{ y: -2 }}
-              >
-                <div className={`
-                  w-8 h-8 rounded-full flex items-center justify-center text-white text-sm
-                  bg-gradient-to-br ${feature.color} shadow-inner
-                `}>
-                  {feature.icon}
-                </div>
-                <span className="font-semibold text-slate-700 text-sm group-hover:text-slate-900">
-                  {feature.label}
-                </span>
-
-                {/* Hover Glow */}
-                <div className={`
-                  absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300
-                  bg-gradient-to-r ${feature.color} blur-md -z-10
-                `} />
-              </motion.button>
-            </motion.div>
-          </Fragment>
-        );
-      })}
+            {/* Hover Glow */}
+            <div className={`
+              absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300
+              bg-gradient-to-r ${feature.color} blur-md -z-10
+            `} />
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
@@ -141,7 +123,7 @@ export default function About() {
                 <span className="text-gradient">infrastructure teams</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                PRONIQ is a unified ERP platform built to simplify execution,
+                proniq is a unified ERP platform built to simplify execution,
                 billing, and progress tracking across real-world projects. We
                 combine elegant design with operational clarity to help teams
                 deliver faster, smarter, and with confidence.
@@ -163,11 +145,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
-            <button className="group flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
-              Learn more about our team{" "}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           {/* Right column: bubbles */}
