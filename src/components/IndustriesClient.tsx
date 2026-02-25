@@ -255,7 +255,7 @@ export default function IndustriesClient() {
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                         {[
-                            { src: "/Manufacturing.jpeg", label: "Production" },
+                            { src: "/Manuf.png", label: "Production" },
                             { src: "/interior-design.jpeg", label: "Design Hub" },
                             { src: "/infrastructure.jpeg", label: "Infra Ops" },
                             { src: "/Construnction.jpeg", label: "Site Control" },
