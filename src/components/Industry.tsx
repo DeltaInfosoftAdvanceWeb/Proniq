@@ -3,14 +3,32 @@
 import { motion } from "framer-motion";
 import { Factory, Ruler, Building2, HardHat, Building, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const industries = [
+    {
+        id: "contractors",
+        title: "Contractors",
+        icon: HardHat,
+        description: "Our flagship ecosystem for General & Specialist Contractors",
+        gradient: "from-amber-500 to-orange-500",
+        image: "/Contractor.jpeg",
+    },
+    {
+        id: "construction",
+        title: "Construction",
+        icon: HardHat,
+        description: "Coordinate construction activities and site safety in real-time",
+        gradient: "from-green-500 to-emerald-500",
+        image: "/Construnction.jpeg",
+    },
     {
         id: "manufacturing",
         title: "Manufacturing",
         icon: Factory,
         description: "Streamline production workflows and quality control",
         gradient: "from-blue-500 to-cyan-500",
+        image: "/Manuf.png",
     },
     {
         id: "interior-architecture",
@@ -18,20 +36,15 @@ const industries = [
         icon: Ruler,
         description: "Manage design projects from concept to completion",
         gradient: "from-purple-500 to-pink-500",
+        image: "/interior-design.jpeg",
     },
     {
         id: "infrastructure",
         title: "Infrastructure",
         icon: Building2,
-        description: "Handle large-scale infrastructure projects",
+        description: "Handle large-scale infrastructure projects and remote sites",
         gradient: "from-orange-500 to-amber-500",
-    },
-    {
-        id: "construction",
-        title: "Construction",
-        icon: HardHat,
-        description: "Coordinate construction activities in real-time",
-        gradient: "from-green-500 to-emerald-500",
+        image: "/infrastructure.jpeg",
     },
     {
         id: "engineering",
@@ -39,6 +52,7 @@ const industries = [
         icon: Building,
         description: "Optimize engineering workflows and documentation",
         gradient: "from-indigo-500 to-blue-500",
+        image: "/Engin-eering.jpeg",
     },
 ];
 
@@ -79,7 +93,7 @@ export default function Industry() {
                 </motion.div>
 
                 {/* Industries Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mb-12">
                     {industries.map((industry, index) => (
                         <motion.div
                             key={industry.id}
@@ -89,18 +103,25 @@ export default function Industry() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="h-full"
                         >
-                            <Link href="/industries" className="block h-full group">
+                            <Link href={`/industries/${industry.id}`} className="block h-full group">
                                 <motion.div
                                     className="relative h-full p-6 rounded-2xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all overflow-hidden flex flex-col"
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
+                                    {/* Image background on hover */}
+                                    {industry.image && (
+                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                                            <Image src={industry.image} alt="" fill className="object-cover" />
+                                        </div>
+                                    )}
+
                                     {/* Gradient overlay on hover */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-0 group-hover:opacity-5 transition-opacity`} />
 
                                     {/* Icon */}
                                     <motion.div
-                                        className={`relative mb-4 w-16 h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}
+                                        className={`relative mb-4 w-16 h-16 rounded-xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center shadow-lg flex-shrink-0 z-10`}
                                         whileHover={{ rotate: [0, -10, 10, 0] }}
                                         transition={{ duration: 0.5 }}
                                     >
