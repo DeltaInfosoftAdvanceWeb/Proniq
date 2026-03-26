@@ -3,22 +3,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import "./performance.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-
-// Fonts are loaded via globals.css; no next/font usage needed.
-// const inter = Inter({
-//   variable: "--font-sans",
-//   subsets: ["latin"],
-//   display: "swap",
-// });
-//
-// const manrope = Manrope({
-//   variable: "--font-alt",
-//   subsets: ["latin"],
-//   display: "swap",
-// });
+import MainLayout from "@/components/MainLayout";
 
 export const metadata: Metadata = {
   icons: {
@@ -55,10 +41,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <SmoothScroll />
-        <Navbar />
-        {children}
-        <Footer />
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
 }
+

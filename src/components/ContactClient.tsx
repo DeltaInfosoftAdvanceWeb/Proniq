@@ -75,9 +75,9 @@ export default function ContactClient() {
         setLoading(true);
         setError(null);
 
-        // Dynamic check for supabase config
-        if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')) {
-            setError('Contact form is currently in demo mode. Please configure Supabase environment variables to enable submissions.');
+        // Check for missing variables
+        if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+            setError('Submission failed: Supabase credentials are not fully configured in .env.local.');
             setLoading(false);
             return;
         }
