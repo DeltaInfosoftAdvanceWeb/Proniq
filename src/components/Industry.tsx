@@ -7,6 +7,14 @@ import Image from "next/image";
 
 const industries = [
     {
+        id: "engineering",
+        title: "Engineering",
+        icon: Building,
+        description: "Optimize engineering workflows and documentation",
+        gradient: "from-indigo-500 to-blue-500",
+        image: "/Engin-eering.jpeg",
+    },
+    {
         id: "contractors",
         title: "Contractors",
         icon: HardHat,
@@ -45,14 +53,6 @@ const industries = [
         description: "Handle large-scale infrastructure projects and remote sites",
         gradient: "from-orange-500 to-amber-500",
         image: "/infrastructure.jpeg",
-    },
-    {
-        id: "engineering",
-        title: "Engineering",
-        icon: Building,
-        description: "Optimize engineering workflows and documentation",
-        gradient: "from-indigo-500 to-blue-500",
-        image: "/Engin-eering.jpeg",
     },
 ];
 

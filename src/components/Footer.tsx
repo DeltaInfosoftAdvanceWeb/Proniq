@@ -17,7 +17,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-slate-900 text-slate-300 border-t border-slate-800">
-            <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+            <div className="w-[95%] xl:w-[90%] max-w-[1800px] mx-auto px-6 py-16 lg:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
 
                     {/* Brand Column */}
@@ -94,9 +94,15 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-slate-500 text-sm">
-                        © {currentYear} proniq. All rights reserved.
-                    </p>
+                    <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-slate-500 text-sm">
+                        <p>
+                            © {currentYear} proniq. All rights reserved.
+                        </p>
+                        <span className="hidden md:inline text-slate-700">|</span>
+                        <p>
+                            A Product of <a href="https://www.deltainfosoft.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors font-medium">Delta Infosoft</a>
+                        </p>
+                    </div>
                     <div className="flex items-center gap-6 text-sm text-slate-500">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

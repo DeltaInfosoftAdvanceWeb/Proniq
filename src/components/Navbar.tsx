@@ -42,8 +42,11 @@ export default function Navbar() {
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const solutionsTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Check if we are on a page with a dark hero section (industry subpages)
-  const isDarkHeroPage = pathname.startsWith("/industries/") && pathname !== "/industries";
+  // Check if we are on a page with a dark hero section (industry subpages or solution pages or contact page)
+  const isDarkHeroPage = 
+    (pathname.startsWith("/industries/") && pathname !== "/industries") ||
+    solutions.some(s => pathname === `/${s.slug}`) ||
+    pathname === "/contact";
   // Determine if we should use white text
   const useWhiteText = isDarkHeroPage && !scrolled && !open;
 
@@ -236,9 +239,24 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <header className={`fixed top-0 inset-x-0 px-2 md:px-4 pt-4 pointer-events-none ${open ? 'z-[125]' : 'z-[110]'}`}>
+      {/* ---------- NOTIFICATION BAR ---------- */}
+      <div className="fixed top-0 inset-x-0 h-10 bg-slate-900 flex items-center justify-center z-[130] pointer-events-auto">
+        <p className="text-slate-300 text-xs md:text-sm font-medium">
+          Proniq - a product of{" "}
+          <a
+            href="https://www.deltainfosoft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-white transition-colors underline underline-offset-2 ml-1"
+          >
+            Delta Infosoft
+          </a>
+        </p>
+      </div>
+
+      <header className={`fixed top-10 inset-x-0 px-2 md:px-4 pt-4 pointer-events-none ${open ? 'z-[125]' : 'z-[110]'}`}>
         <div
-          className={`mx-auto max-w-6xl rounded-full transition-all duration-300 pointer-events-auto relative
+          className={`mx-auto w-[95%] xl:w-[90%] max-w-[1800px] rounded-full transition-all duration-300 pointer-events-auto relative
           ${scrolled || open
               ? "bg-white/95 backdrop-blur-xl border border-slate-200 shadow-lg py-3 px-4 md:px-6"
               : "bg-transparent py-4 px-4 md:px-6"
@@ -420,7 +438,9 @@ export default function Navbar() {
 
             {/* ---------- MOBILE TOGGLE ---------- */}
             <button
-              className="md:hidden p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-900 pointer-events-auto relative z-10"
+              className={`md:hidden p-2 rounded-full hover:bg-slate-100 transition-colors pointer-events-auto relative z-10 ${
+                useWhiteText && !open ? 'text-white hover:text-slate-900' : 'text-slate-900'
+              }`}
               onClick={() => setOpen(!open)}
               aria-label="Toggle Menu"
             >
