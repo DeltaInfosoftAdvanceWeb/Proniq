@@ -1,138 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-    Handshake,
-    Users,
-    ShoppingCart,
-    Building2,
-    Calculator,
-    Clock,
-    TrendingUp,
-    Hourglass,
-    Layers,
-    KanbanSquare,
-    Database,
-    DoorOpen,
-    Box,
-    Wifi,
-    Truck,
-    CalendarDays,
-    Store,
-    ScanBarcode,
-    Package,
-    Activity
-} from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 const products = [
-    // Row 1
-    { title: "Delta iDealer", icon: Handshake, color: "border-blue-400 text-blue-500" },
-    { title: "Delta CRM", icon: Users, color: "border-blue-400 text-blue-500" },
-    { title: "LABHCART", icon: ShoppingCart, color: "border-purple-400 text-purple-500" },
-    { title: "Delta Project", icon: Building2, color: "border-pink-400 text-pink-500" },
-    { title: "Delta iAccount", icon: Calculator, color: "border-teal-400 text-teal-500" },
-
-    // Row 2
-    { title: "Delta iAttendance", icon: Clock, color: "border-amber-400 text-amber-500" },
-    { title: "Performance Mgmt", icon: TrendingUp, color: "border-amber-400 text-amber-500" },
-    { title: "Delta MyTime", icon: Hourglass, color: "border-amber-400 text-amber-500" },
-    { title: "DELTA iERP", icon: Layers, color: "border-pink-400 text-pink-500" },
-    { title: "PRONIQ", icon: Activity, color: "border-primary text-primary", isCenter: true },
-    { title: "Delta KANBAN", icon: KanbanSquare, color: "border-cyan-400 text-cyan-500" },
-    { title: "Delta BigData", icon: Database, color: "border-cyan-400 text-cyan-500" },
-
-    // Row 3
-    { title: "Delta GateModule", icon: DoorOpen, color: "border-rose-400 text-rose-500" },
-    { title: "Delta Inventory", icon: Box, color: "border-rose-400 text-rose-500" },
-    { title: "Delta IOT", icon: Wifi, color: "border-rose-400 text-rose-500" },
-    { title: "iVendor Connect", icon: Truck, color: "border-rose-400 text-rose-500" },
-    { title: "Project Planning", icon: CalendarDays, color: "border-rose-400 text-rose-500" },
-
-    // Row 4
-    { title: "Delta iShop", icon: Store, color: "border-pink-400 text-pink-500" },
-    { title: "Delta Barcode", icon: ScanBarcode, color: "border-pink-400 text-pink-500" },
-    { title: "Delta iStock", icon: Package, color: "border-pink-400 text-pink-500" },
+    { title: "Delta iDealer", logo: "/Logos/Delta iDealer.png", category: "Sales & Distribution" },
+    { title: "Delta CRM", logo: "/Logos/Deta iCRM.png", category: "Customer Relations" },
+    { title: "LABHCART", logo: "/Logos/Labhcart.png", category: "E-Commerce" },
+    { title: "Delta BigData", logo: "/Logos/Delta BigData.png", category: "Analytics" },
+    { title: "Delta iAccount", logo: "/Logos/Delta iAccount.png", category: "Finance" },
+    { title: "Delta iAttendance", logo: "/Logos/Delta iAttendance.png", category: "HR Management" },
+    { title: "Performance Mgmt", logo: "/Logos/Performance Management  System.png", category: "HR Management" },
+    { title: "Delta MyTime", logo: "/Logos/Delta Mytime.png", category: "Time Tracking" },
+    { title: "DELTA iERP", logo: "/Logos/Delta iERP.png", category: "Enterprise Resource" },
+    { title: "proniq", logo: "/proniq.png", category: "Workflow Platform" },
+    { title: "Delta KANBAN", logo: "/Logos/Delta Kanban.png", category: "Project Management" },
+    { title: "Delta GateModule", logo: "/Logos/Delta GateModule.png", category: "Security" },
+    { title: "Delta Inventory", logo: "/Logos/Delta Inventory.png", category: "Inventory" },
+    { title: "Delta IOT", logo: "/Logos/Delta IOT.png", category: "IoT Solutions" },
+    { title: "iVendor Connect", logo: "/Logos/Delta iVendor connect.png", category: "Vendor Management" },
+    { title: "Project Planning", logo: "/Logos/Project Management.png", category: "Project Management" },
+    { title: "Delta iShop", logo: "/Logos/iShop.png", category: "E-Commerce" },
+    { title: "Delta Barcode", logo: "/Logos/Delta Barcode.png", category: "Inventory" },
+    { title: "Delta iStock", logo: "/Logos/Delta iStock.png", category: "Stock Management" },
 ];
 
-export default function ProductCarousel() {
+function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
-        <section className="py-24 bg-slate-50 overflow-hidden">
-            <div className="container mx-auto px-6 text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                    Delta's Product <span className="text-gradient">Ecosystem</span>
-                </h2>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                    A comprehensive suite of interconnected modules designed to power every aspect of your business.
-                </p>
+        <div className="group bg-white rounded-xl p-4 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-200">
+            {/* Logo */}
+            <div className="aspect-square flex items-center justify-center mb-3 bg-slate-50 rounded-lg p-3 relative">
+                {!imageLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-8 h-8 border-2 border-slate-300 border-t-primary rounded-full animate-spin" />
+                    </div>
+                )}
+                <Image
+                    src={product.logo}
+                    alt={product.title}
+                    width={64}
+                    height={64}
+                    quality={40}
+                    loading={index < 10 ? "eager" : "lazy"}
+                    onLoad={() => setImageLoaded(true)}
+                    className={`w-full h-full object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    unoptimized={false}
+                />
             </div>
 
-            <div className="container mx-auto px-4 max-w-7xl">
-                <div className="flex flex-col items-center gap-6 md:gap-8">
+            {/* Title */}
+            <h3 className="font-semibold text-sm text-slate-900 text-center mb-1 line-clamp-2">
+                {product.title}
+            </h3>
 
-                    {/* Row 1 */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(0, 5).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
-                    </div>
-
-                    {/* Row 2 */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center">
-                        {products.slice(5, 12).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
-                    </div>
-
-                    {/* Row 3 */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(12, 17).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
-                    </div>
-
-                    {/* Row 4 */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-                        {products.slice(17, 20).map((p, i) => (
-                            <ProductCard key={i} {...p} />
-                        ))}
-                    </div>
-
-                </div>
-            </div>
-        </section>
+            {/* Category */}
+            <p className="text-xs text-slate-500 text-center">
+                {product.category}
+            </p>
+        </div>
     );
 }
 
-function ProductCard({ title, icon: Icon, color, isCenter = false }: any) {
+export default function ProductCarousel() {
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -5 }}
-            className={`
-        relative flex flex-col items-center justify-center
-        bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300
-        ${isCenter ? "w-40 h-40 md:w-48 md:h-48 border-4 border-primary z-10" : "w-28 h-28 md:w-32 md:h-32 border-2"}
-        ${color}
-      `}
-        >
-            <div className={`
-        flex items-center justify-center rounded-full mb-3
-        ${isCenter ? "w-20 h-20 bg-primary/10" : "w-12 h-12 bg-slate-50"}
-      `}>
-                {isCenter ? (
-                    <img src="./proniq.png" alt="PRONIQ" className="w-14 h-14 object-contain" />
-                ) : (
-                    <Icon className={`w-6 h-6 ${isCenter ? "text-primary" : "currentColor"}`} />
-                )}
+        <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+            <div className="container mx-auto px-6">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                        Delta's Product <span className="text-gradient">Ecosystem</span>
+                    </h2>
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                        A comprehensive suite of interconnected modules designed to power every aspect of your business.
+                    </p>
+                </div>
+
+                {/* Simple Grid Layout */}
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                        {products.map((product, index) => (
+                            <ProductCard key={product.title} product={product} index={index} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Footer Note */}
+                <div className="text-center mt-12">
+                    <p className="text-sm text-slate-500">
+                        All products seamlessly integrate with each other for a unified experience
+                    </p>
+                </div>
             </div>
-            <span className={`
-        text-center font-bold leading-tight px-2
-        ${isCenter ? "text-lg text-slate-900" : "text-[10px] md:text-xs text-slate-700"}
-      `}>
-                {title}
-            </span>
-        </motion.div>
+        </section>
     );
 }

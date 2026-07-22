@@ -1,0 +1,30 @@
+/* Performance optimization: Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Optimize heavy animations */
+.animate-ping,
+.animate-pulse,
+.animate-spin {
+    will-change: auto;
+}
+
+/* Reduce animation complexity on lower-end devices */
+@media (max-width: 768px) {
+    .animate-float {
+        animation: none !important;
+    }
+
+    .animate-shimmer {
+        animation: none !important;
+    }
+}

@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
+import TenderDashboard from "@/components/TenderDashboard";
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -68,7 +69,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-75 transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-90 md:scale-100 md:pt-40 md:pb-80"
+      className="flex min-h-[100vh] md:min-h-[200vh] shrink-0 scale-[0.5] transform flex-col items-center justify-start pt-10 pb-10 [perspective:800px] sm:scale-75 md:scale-100 md:pt-40 md:pb-80"
     >
       <motion.h2
         style={{
@@ -164,12 +165,9 @@ export const Lid = ({
         }}
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
-        <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <img
-          src={src as string}
-          alt="aceternity logo"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-        />
+        <div className="absolute inset-0 rounded-lg overflow-hidden">
+          <TenderDashboard />
+        </div>
 
         {/* Left side popup annotation - Enhanced with glassmorphism */}
         <motion.div
@@ -191,7 +189,7 @@ export const Lid = ({
               ease: "easeInOut"
             }
           }}
-          className="absolute left-[-220px] top-[25%] group cursor-pointer"
+          className="hidden md:block absolute left-[-220px] top-[25%] group cursor-pointer"
         >
           <div className="relative">
             {/* Glowing connection line */}
@@ -271,7 +269,7 @@ export const Lid = ({
               ease: "easeInOut"
             }
           }}
-          className="absolute right-[-220px] top-[25%] group cursor-pointer"
+          className="hidden md:block absolute right-[-220px] top-[25%] group cursor-pointer"
         >
           <div className="relative">
             {/* Glowing connection line */}
@@ -794,6 +792,6 @@ export const OptionKey = ({ className }: { className: string }) => {
 
 const AceternityLogo = () => {
   return (
-    <img src="/proniq.png" alt="Proniq Logo" style={{ width: "60px", height: "55px" }} />
+    <img src="/proniq.png" alt="proniq Logo" style={{ width: "80px", height: "55px" }} />
   );
 };

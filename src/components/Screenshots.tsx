@@ -13,11 +13,11 @@ export default function Screenshots() {
     "/p8.png",
   ];
 
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<string | null>(null);
 
   // Close modal on Esc key
   useEffect(() => {
-    const handleEsc = (e) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelected(null);
     };
     window.addEventListener("keydown", handleEsc);
