@@ -124,6 +124,7 @@
   html,
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
   }
 
@@ -258,6 +259,7 @@ h4,
 h5,
 h6 {
   @apply font-bold tracking-tight text-balance;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 button:not(.motion-btn),

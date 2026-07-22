@@ -8,6 +8,7 @@ import Industry from "@/components/Industry";
 import WhyChoose from "@/components/WhyChoose";
 import WhoUses from "@/components/WhoUses";
 import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import TransformCTA from "@/components/TransformCTA";
 import ProductPromotionModal from "@/components/ProductPromotionModal";
 import { useRef } from "react";
@@ -43,6 +44,7 @@ export default function HomeClient() {
             <WhyChoose />
             <WhoUses />
             <About />
+            <FAQ />
             {/* CTA Section */}
             <TransformCTA />
             <ProductPromotionModal />
